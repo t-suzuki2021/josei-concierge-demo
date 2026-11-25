@@ -119,6 +119,77 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .contact .mail{font-family:var(--num);font-size:15px;color:var(--ink);user-select:all}
 footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
 
+/* themes */
+.themes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.theme{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.theme h3{font-size:18px}
+.theme ul{margin:0;padding-left:1.1em;font-size:14px}
+.theme .for{font-size:13px;color:var(--muted)}
+.th{display:inline-flex;align-items:center;font-size:12px;font-weight:700;border-radius:6px;padding:1px 9px;white-space:nowrap;align-self:flex-start;background:var(--brand-pale);color:var(--brand)}
+.th-sec{background:var(--ok-pale);color:var(--ok)} .th-mkt{background:var(--amber-pale);color:var(--amber)}
+.callout{margin-top:18px;border-left:4px solid var(--brand);background:var(--brand-pale);border-radius:0 10px 10px 0;padding:12px 16px;font-size:14px;color:var(--ink)}
+.cta.alt{background:transparent;color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand);margin-left:8px}
+
+/* filter rows + tags */
+.frow{display:grid;grid-template-columns:5em minmax(0,1fr);gap:8px;align-items:center}
+.frow>span{font-size:12px;font-weight:700;color:var(--muted)}
+.tags{display:inline-flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:11.5px;font-weight:700;border:1px solid var(--line);border-radius:6px;padding:0 7px;color:var(--muted);background:var(--paper);white-space:nowrap}
+.job-h{align-items:center}
+.job-h .mini{margin-left:auto}
+.mini{border:1.5px solid var(--brand);background:transparent;color:var(--brand);border-radius:8px;padding:4px 12px;font-size:12.5px;font-weight:700;white-space:nowrap}
+.mini:hover{background:var(--brand-pale)}
+.set.dim{opacity:.45}
+.set li.hit>span:first-child,.pset li.hit>span:first-child{font-weight:700;color:var(--ink);box-shadow:inset 3px 0 0 var(--amber);padding-left:8px}
+
+/* plan tool */
+.plan{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px;margin-top:24px;align-items:start}
+.pform,.pout{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.pform h3,.pout h3{font-size:17px}
+.fld{display:flex;flex-direction:column;gap:4px;min-width:0}
+.fld>label,.fld>.lb{font-size:13px;font-weight:700;color:var(--ink)}
+.fld small{font-size:12px;color:var(--muted);font-weight:400}
+.fld input,.fld select,.fld textarea{width:100%;min-width:0;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:9px 12px;font:inherit;font-size:16px}
+.fld textarea{min-height:104px;resize:vertical;line-height:1.6}
+.f2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end}
+.chips.wrapc{flex-wrap:wrap;overflow:visible}
+.chips button.auto{border-color:var(--brand);color:var(--brand)}
+#pCand{display:flex;flex-direction:column;gap:12px}
+.cg{display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:1px dashed var(--line)}
+.cgh{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cand{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer;font-size:13.5px;line-height:1.55}
+.cand:has(input:checked){border-color:var(--brand);background:var(--brand-pale)}
+.cand:has(input:disabled){opacity:.72;cursor:not-allowed}
+.cand input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--brand)}
+.cand b{color:var(--ink);margin-right:4px}
+.cand small{display:block;font-size:12px;color:var(--amber);font-weight:700}
+.rec{font-style:normal;font-size:11.5px;font-weight:700;background:var(--brand);color:var(--on);border-radius:999px;padding:0 8px;margin-left:6px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.stat{background:var(--paper);border-radius:10px;padding:10px 14px;min-width:0}
+.stat span{display:block;font-size:12px;color:var(--muted)}
+.stat b{font-family:var(--num);font-size:21px;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat small{display:block;font-size:11.5px;color:var(--muted);line-height:1.5}
+.pset{border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.pset-h{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pset-h .no{font-family:var(--num);font-weight:700;color:var(--ink)}
+.pset h4{font-size:15.5px}
+.pset .goal{font-size:12.5px;color:var(--muted)}
+.pset ol{list-style:none;margin:2px 0 0;padding:0;border-top:1px dashed var(--line)}
+.pset li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line);line-height:1.5}
+.pset li .h{font-family:var(--num);font-weight:600;color:var(--ink)}
+.cover{margin:0;padding:0;list-style:none;font-size:13.5px;display:flex;flex-direction:column;gap:4px}
+.cover b{color:var(--ink)}
+.warn{background:var(--amber-pale);color:var(--amber);border-radius:10px;padding:10px 14px;font-size:13.5px}
+.warn ul{margin:4px 0 0;padding-left:1.1em}
+.pnote{margin:0;padding-left:1.1em;font-size:12.5px;color:var(--muted)}
+.pact{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pact .cta{margin-top:0;margin-left:0;padding:9px 18px;font-size:14px}
+#pCopy{width:100%;min-height:160px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px;padding:10px}
+
+@media (max-width:900px){ .themes,.plan{grid-template-columns:minmax(0,1fr)} .filter{position:static} .job-h .mini{margin-left:0} }
+@media (max-width:560px){ .srow input{flex-basis:100%;max-width:none} .cta.alt{margin-left:0} .stats{grid-template-columns:minmax(0,1fr)} .frow{grid-template-columns:minmax(0,1fr);gap:2px} }
+@media print{ .hero,main>section:not(#plan),footer,.pform,.pact,#plan .eyebrow,#plan .lead,#plan h2{display:none!important} .plan{display:block;margin:0} .pout{border:0;padding:0} body{background:#fff} section{padding:0} .pset{break-inside:avoid} }
+
 @media (max-width:900px){
   .hero .wrap{grid-template-columns:minmax(0,1fr)} .sets{grid-template-columns:minmax(0,1fr)} .set{border-left:0;border-top:1px solid var(--line)} .set:first-child{border-top:0}
   .levels,.rules,.two{grid-template-columns:minmax(0,1fr)} .contact{grid-template-columns:minmax(0,1fr)}
@@ -133,13 +204,13 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
  <div class="wrap">
   <div>
    <p class="eyebrow">人材開発支援助成金（事業展開等リスキリング支援コース）対応</p>
-   <h1><span>業種と職種に合わせた、</span><span>生成AIの研修を</span><span>1年で30時間。</span></h1>
-   <p class="lead">1回10時間の研修を、初級1・初級2・中級の3セットで。助成の対象は1人あたり年度3回までなので、3セットで1年分を無駄なく使えます。カリキュラムは、令和8年8月3日以降に提出する計画届の要項に沿って組んでいます。</p>
+   <h1><span>業種と職種に合わせた</span><span>DXの研修を、</span><span>1年で30時間。</span></h1>
+   <p class="lead">テーマは、生成AI活用・セキュリティ対策・宣伝マーケティングの3つ。1回10時間の研修を、初級1・初級2・中級の3セットで。助成の対象は1人あたり年度3回までなので、3セットで1年分を無駄なく使えます。カリキュラムは、令和8年8月3日以降に提出する計画届の要項に沿って組んでいます。</p>
    <div class="facts" id="facts"></div>
-   <a class="cta" href="#menu">業種・職種別のメニューを見る</a>
+   <a class="cta" href="#plan">研修プランを作る</a><a class="cta alt" href="#menu">業種・職種別のメニューを見る</a>
   </div>
   <div class="year" aria-label="1年間の研修の組み立て">
-   <h2>1人あたり1年度の組み立て</h2>
+   <h2>1人あたり1年度の組み立て（生成AI活用の例）</h2>
    <div class="bar">
     <div><span>初級1</span><b class="num">10h</b><small>文書業務を生成AIで効率化</small></div>
     <div><span>初級2</span><b class="num">10h</b><small>データと記録を活用</small></div>
@@ -152,9 +223,22 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
 </header>
 
 <main>
+<section style="padding-bottom:0">
+ <div class="wrap">
+  <p class="eyebrow">3つのテーマ</p>
+  <h2 style="font-size:26px;margin-top:6px">生成AIに加えて、セキュリティと集客・顧客管理も選べます</h2>
+  <div class="themes">
+   <div class="theme"><span class="th th-ai">全13業種・40職種</span><h3>生成AI活用</h3><p class="for">対象：各職種の担当者</p><ul><li>初級1：文書業務を生成AIで効率化する</li><li>初級2：データと記録を活用する</li><li>中級：業務の流れを自動化する</li></ul></div>
+   <div class="theme"><span class="th th-sec">全13業種</span><h3>セキュリティ対策</h3><p class="for">対象：社内のIT・情報管理を担当する人</p><ul><li>初級1：情報資産を守る基本の対策</li><li>初級2：対策の設計と運用</li><li>中級：インシデント対応と監視</li></ul><p class="tiny">業種ごとに、扱う情報・使うシステム・国のガイドライン（医療なら「医療情報システムの安全管理に関するガイドライン」など）に合わせます。</p></div>
+   <div class="theme"><span class="th th-mkt">BtoCの6業種</span><h3>宣伝マーケティング・顧客管理</h3><p class="for">対象：集客・販促・顧客管理を担当する人</p><ul><li>初級1：集客と情報発信</li><li>初級2：顧客管理とリピートの仕組み</li><li>中級：データに基づく販促と自動化</li></ul><p class="tiny">卸売・小売、飲食・宿泊、不動産、医療、教育、金融・保険が対象。業種ごとの広告・表示のルール（景品表示法、医療広告ガイドラインなど）を踏まえます。</p></div>
+  </div>
+  <p class="callout">助成の対象は、テーマをまたいで1人あたり年度3回までです。同じテーマを3セット受けるほか、「生成AI 初級1 ＋ セキュリティ 初級1 ＋ マーケティング 初級1」のような組み合わせもできます。</p>
+ </div>
+</section>
+
 <section>
  <div class="wrap">
-  <p class="eyebrow">3つのセット</p>
+  <p class="eyebrow">3つのセット（生成AI活用の場合）</p>
   <h2 style="font-size:26px;margin-top:6px">同じ内容を繰り返さず、段階的に積み上げます</h2>
   <div class="levels">
    <div class="lvl"><span class="lv" style="background:var(--lv1)">初級1・10時間</span><h3>文書業務を生成AIで効率化する</h3><p>その職種で毎日書いている書類を題材に、生成AIで下書きし、正確さを確かめて仕上げる手法を身につけます。</p><ul><li>生成AIの仕組みと、扱う情報の判断基準</li><li>職種の文書に合った指示文の設計</li><li>3種類の書類の作成・要約・チェック</li></ul></div>
@@ -176,22 +260,59 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
    <div class="rule"><span class="ref">P39</span><h3>1人あたり年度3回まで</h3><p>助成の対象は1人1年度3回まで（年度は支給申請日で数えます）。3セットで1年分です。eラーニングは年度1回までのため、講師による研修を基本にしています。</p></div>
    <div class="rule"><span class="ref">表2</span><h3>講師と教材、実施の場所</h3><p>専門の知識を持つ講師が、テキストを使って行います。営業中の職場では行わず、会議室などで実施します。ビデオを見るだけの講座にはしません。</p></div>
    <div class="rule"><span class="ref">P29</span><h3>時間の数え方</h3><p>昼食と移動の時間は数えません。開講式・オリエンテーションは1つの計画届で60分までの扱いがあるため、各セットは科目の時間だけで10時間にしています。</p></div>
+   <div class="rule"><span class="ref">表1②</span><h3>セキュリティは担当者向けの内容で</h3><p>全従業員向けの一般的な注意喚起は、職種を問わない共通の内容と判断されるおそれがあります。社内のIT・情報管理を担当する人を対象に、業種ごとのシステムとガイドラインに沿った内容にしています。</p></div>
+   <div class="rule"><span class="ref">表1④</span><h3>マーケティングも演習用の題材で</h3><p>自社の実際の投稿・広告・販促計画をつくる時間は対象外です。演習用のモデルとデータを使って、手法を身につけます。</p></div>
   </div>
   <div class="ng"><h3>このメニューに含めていない内容（対象外の例）</h3>
    <ul><li>接遇・ビジネスマナー（表1②）</li><li>管理職・リーダーシップ研修（表1⑧）</li><li>意識改革・モチベーション研修（表1⑦）</li><li>日常会話程度の語学・話し方（表1③）</li><li>自社で使う機器の操作説明・自社製品の説明（表1④）</li><li>法令で義務づけられた講習（表1⑥）</li><li>講演会・見学会・交流会（表1⑤）</li><li>資格試験だけのもの（表1⑨）</li></ul></div>
  </div>
 </section>
 
-<section id="menu">
+<section id="plan">
+ <div class="wrap">
+  <p class="eyebrow">研修プラン作成ツール</p>
+  <h2 style="font-size:26px;margin-top:6px">ご要望を入れると、1年分の研修プランができます</h2>
+  <p class="lead" style="margin-top:10px">業種と職種を選び、困っていること・やりたいことを入れてください。合う研修を3つまで選ぶと、時間・日数・助成の見込みをまとめます。入力した内容は、この画面の中だけで使い、どこにも送信しません。</p>
+  <div class="plan">
+   <form class="pform" id="pform" onsubmit="return false" autocomplete="off">
+    <h3>1. お客様の情報とご要望</h3>
+    <div class="fld"><label for="pName">会社名 <small>（任意）</small></label><input id="pName" type="text" placeholder="例：〇〇工務店"></div>
+    <div class="f2">
+     <div class="fld"><label for="pInd">業種</label><select id="pInd"></select></div>
+     <div class="fld"><label for="pJob">職種</label><select id="pJob"></select></div>
+    </div>
+    <div class="fld"><label for="pNeed">困っていること・やりたいこと</label><textarea id="pNeed" placeholder="例：見積書の作成に時間がかかる。SNSでの集客を強化したい。情報漏えいが心配。"></textarea></div>
+    <div class="fld"><span class="lb">業務内容から選ぶ <small>（文章から読み取ったものは、枠が青くなります）</small></span><div class="chips wrapc" id="pTasks" role="group" aria-label="業務内容から選ぶ"></div></div>
+    <div class="f2">
+     <div class="fld"><label for="pN">受講する人数</label><input id="pN" type="number" min="1" max="999" value="5" inputmode="numeric"></div>
+     <div class="fld"><label for="pH">1日の受講時間</label><select id="pH"></select></div>
+    </div>
+    <div class="f2">
+     <div class="fld"><label for="pExp">生成AIの利用</label><select id="pExp"><option value="0">はじめての人が多い</option><option value="1">一部の人が使っている</option><option value="2">日常的に使っている</option></select></div>
+     <div class="fld"><label for="pFee">研修費用 <small>（1人1セット・円・任意）</small></label><input id="pFee" type="number" min="0" step="1000" placeholder="例：100000" inputmode="numeric"></div>
+    </div>
+    <h3 style="margin-top:6px">2. どんな研修をやるか <small style="font-family:var(--text);font-size:12.5px;font-weight:500;color:var(--muted)">（3つまで）</small></h3>
+    <p class="tiny" id="pRec"></p>
+    <div id="pCand"></div>
+   </form>
+   <div class="pout" id="pout" aria-live="polite"></div>
+  </div>
+ </div>
+</section>
+
+<section id="menu" style="border-top:1px solid var(--line)">
  <div class="wrap">
   <div class="menu-h">
    <p class="eyebrow">業種・職種別のメニュー</p>
-   <h2 style="font-size:26px">あなたの会社の職種を探してください</h2>
-   <p class="lead">業種を選ぶか、職種名・業務名で探せます。どの職種も、初級1・初級2・中級の3セット（各10時間）です。カリキュラムは例で、お客様の業務に合わせて調整します。</p>
+   <h2 style="font-size:26px">テーマ・業種・職種・業務内容から探せます</h2>
+   <p class="lead">営業・経理などの職種や、書類作成・集客などの業務内容でも絞り込めます。どのメニューも、初級1・初級2・中級の3セット（各10時間）です。カリキュラムは例で、お客様の業務に合わせて調整します。</p>
   </div>
   <div class="filter">
-   <div class="chips" id="chips" role="group" aria-label="業種で絞り込む"></div>
-   <div class="srow"><input type="search" id="q" placeholder="職種名・業務名で探す（例：見積、介護記録、経理）" aria-label="職種名・業務名で探す"><span class="tiny" id="count" aria-live="polite"></span></div>
+   <div class="frow"><span>テーマ</span><div class="chips" id="f-th" role="group" aria-label="テーマで絞り込む"></div></div>
+   <div class="frow"><span>業種</span><div class="chips" id="f-ind" role="group" aria-label="業種で絞り込む"></div></div>
+   <div class="frow"><span>職種</span><div class="chips" id="f-fn" role="group" aria-label="職種で絞り込む"></div></div>
+   <div class="frow"><span>業務内容</span><div class="chips" id="f-tk" role="group" aria-label="業務内容で絞り込む"></div></div>
+   <div class="srow"><input type="search" id="q" placeholder="ことばで探す（例：見積、介護記録、経理）" aria-label="職種名・業務名で探す"><span class="tiny" id="count" aria-live="polite"></span></div>
   </div>
   <div id="list"></div>
  </div>
@@ -216,7 +337,7 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
 <section id="contact" style="padding-top:0">
  <div class="wrap">
   <div class="contact">
-   <div><h2>職種に合わせたカリキュラムを、無料でお作りします</h2><p style="margin-top:6px">業種・職種と、困っている業務を伺えば、3セット分の案と、助成額の見込みをお出しします。</p></div>
+   <div><h2>職種に合わせたカリキュラムを、無料でお作りします</h2><p style="margin-top:6px">業種・職種と、困っている業務を伺えば、3セット分の案と、助成額の見込みをお出しします。上の「研修プラン作成ツール」で作ったプランをもとにご相談いただけます。</p></div>
    <div><p class="tiny">お電話</p><p class="tel">03-6908-9425</p><p class="tiny" style="margin-top:6px">メール</p><p class="mail">info@smartcontents.co.jp</p></div>
   </div>
  </div>
@@ -317,32 +438,264 @@ const CAT_SETS=[
   ['総合演習：演習用シナリオで'+j.n+'の自動化の設計書を作る','演習用の業務シナリオをもとに、自動化の範囲・手順・確認方法を設計書にまとめて発表。講師が講評',2.5,j.n+'の業務の改善の全体']]}];
 
 /* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける */
-function catSet(ii,ji,si,past){const ind=CAT_IND[ii],j=ind.jobs[ji],st=CAT_SETS[si];past=past||[];
- const rows=st.rows(j).map(r=>{const by=r[5]&&past.find(p=>r[5].test(p));
-  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],swap:{from:r[0],by}};
-  return {t:r[0],c:r[1],h:r[2],rel:r[3],ov:by||null};});
- return {lv:st.lv,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j};}
+/* ===== テーマ2：セキュリティ対策（全業種） =====
+   受講者は「社内のIT・情報管理を担当する人」。全従業員向けの一般的な注意喚起は、職種を問わない共通の内容（表1②）と
+   判断されるおそれがあるため、業種ごとに扱う情報・使うシステム・国のガイドラインに合わせた担当者向けの内容にする。
+   data＝守る情報、sys＝使うシステム・端末、law＝参照するガイドライン、threat＝狙われやすい手口 */
+const IPA='IPA「中小企業の情報セキュリティ対策ガイドライン」';
+const SEC_IND={
+ con:{data:'図面・見積・施主の個人情報',sys:'現場のタブレット・図面共有などのクラウド',law:IPA,threat:'取引先を装った請求書メール・図面の持ち出し'},
+ mfg:{data:'図面・技術情報・取引先の情報',sys:'生産設備のネットワーク・生産管理システム',law:'経済産業省「工場システムにおけるサイバー・フィジカル・セキュリティ対策ガイドライン」・'+IPA,threat:'ランサムウェアによる生産停止・取引先経由の侵入（サプライチェーン攻撃）'},
+ ret:{data:'顧客の個人情報・カード情報・仕入価格',sys:'POSレジ・ネットショップ・在庫管理システム',law:'「クレジットカード・セキュリティガイドライン」・'+IPA,threat:'ネットショップの改ざんによるカード情報の盗み取り・偽の注文'},
+ med:{data:'患者の診療情報・個人情報',sys:'電子カルテ・レセプトコンピュータ・予約システム',law:'厚生労働省「医療情報システムの安全管理に関するガイドライン」',threat:'ランサムウェアによる診療の停止・VPN機器の弱点を突いた侵入'},
+ care:{data:'利用者の健康情報・個人情報',sys:'介護記録システム・タブレット・請求ソフト',law:'個人情報保護委員会・厚生労働省「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」・'+IPA,threat:'タブレットの紛失・記録の誤送信・ランサムウェア'},
+ log:{data:'荷主・届け先の情報・運行データ',sys:'配車システム・車載端末・倉庫管理システム',law:IPA,threat:'取引先を装ったメール・システムの停止による配送の遅れ'},
+ re:{data:'顧客の個人情報・契約書・物件の鍵の情報',sys:'物件管理システム・電子契約・ポータルサイトの管理画面',law:IPA,threat:'なりすましによる振込先の変更・ポータルの管理画面の乗っ取り'},
+ food:{data:'予約客の個人情報・売上データ',sys:'POSレジ・予約台帳・キャッシュレス決済の端末',law:'「クレジットカード・セキュリティガイドライン」・'+IPA,threat:'SNSアカウントの乗っ取り・予約サイトのなりすまし'},
+ it:{data:'顧客のシステム・ソースコード・アカウント情報',sys:'開発環境・クラウド基盤・ソースコードの管理サービス',law:'経済産業省「サイバーセキュリティ経営ガイドライン」・'+IPA,threat:'ソースコードや認証情報の流出・クラウドの設定ミス'},
+ pro:{data:'顧問先の財務情報・マイナンバー',sys:'会計・給与ソフト・電子申告・ファイル共有',law:'個人情報保護委員会「特定個人情報の適正な取扱いに関するガイドライン（事業者編）」・'+IPA,threat:'顧問先を装ったメール・マイナンバーの誤送信'},
+ fin:{data:'顧客の個人情報・健康情報・契約情報',sys:'保険会社の代理店システム・顧客管理ソフト',law:'個人情報保護委員会・金融庁「金融分野における個人情報保護に関するガイドライン」',threat:'フィッシング・顧客情報の持ち出し'},
+ edu:{data:'受講者・保護者の個人情報・成績',sys:'学習管理システム・オンライン授業のツール',law:IPA,threat:'オンライン授業への不正な侵入・名簿の流出'},
+ common:{data:'顧客・取引先・従業員の情報',sys:'社内のパソコン・クラウドのメールやファイル共有',law:IPA,threat:'取引先を装ったメール・ランサムウェア'}};
+const SEC_SETS=[
+ {lv:'初級1',title:j=>j.ind+'の情報資産を守る基本の対策',goal:j=>j.data+'を守るための基本の対策を理解し、'+j.sys+'を安全に設定・管理できる',rows:j=>[
+  [j.ind+'で守るべき情報と、事故が起きたときの影響','守るべき情報（'+j.data+'）の整理、漏えい・改ざん・停止が起きたときの業務と取引への影響',1.5,j.ind+'の情報管理の業務'],
+  [j.ind+'で狙われやすい攻撃の手口と見分け方',j.threat+'などの事例、偽のメール・サイトの見分け方、被害の広がり方',1.5,'社内のIT・情報管理の業務',[j.ind+'の最新の攻撃事例の研究','公的機関が公表した事例をもとに、手口の変化と対策の当てはまりを検討する演習'],/セキュリティ|標的型|攻撃/],
+  ['アカウントと認証の管理','パスワードの方針、多要素認証の設定、退職者・異動者のアカウントの扱い',1.5,'社内のアカウント管理の業務'],
+  [j.sys+'の安全な設定','端末・クラウドの初期設定の見直し、更新プログラムの管理、紛失・盗難への備え',1.5,j.sys+'の管理の業務'],
+  ['生成AI・クラウドサービスを使うときの情報の扱い','入力してよい情報の基準、サービスの設定の確認、社内ルールの考え方',1.5,'クラウド・AIサービスの管理の業務'],
+  ['総合演習：演習用の事例で、事故の兆候を見つけて対応を判断する','演習用の事例をもとに、不審な兆候の発見・初動の判断・報告までを実施。講師が講評',2.5,j.ind+'の情報管理の業務の全体']]},
+ {lv:'初級2',title:j=>j.ind+'のセキュリティ対策を設計して運用する',goal:j=>j.law.split('・')[0]+'などに沿って、リスクを評価し、対策を設計・運用できる',rows:j=>[
+  ['情報資産の洗い出しとリスク評価の手法',j.data+'を例にした洗い出し、起こりやすさと影響の大きさによる評価',1.5,'情報管理の計画の業務',null,/リスク評価|リスクアセスメント/],
+  ['アクセス権限の設計と管理',j.sys+'の権限の分け方、必要な人だけが見られる設定、定期的な見直し',1.5,j.sys+'の管理の業務'],
+  ['バックアップと復旧の設計','ランサムウェアに備えたバックアップの取り方、復旧の手順と目標時間の決め方',1.5,'システムの保守の業務'],
+  ['取引先・委託先のセキュリティの確認','委託先に求める対策、確認の項目、契約で決めておくこと',1.5,'取引先の管理の業務'],
+  ['ガイドラインの読み方と対策への当てはめ',j.law+'の要点と、自社の規模に合った対策の選び方',1.5,j.ind+'の情報管理の業務'],
+  ['総合演習：演習用の会社モデルでリスク評価と対策の計画を作る','演習用の会社モデルをもとに、リスク評価表と対策の計画をまとめて発表。講師が講評',2.5,'情報管理の計画の業務の全体']]},
+ {lv:'中級',title:j=>j.ind+'のインシデント対応とセキュリティの監視',goal:j=>'事故の検知から報告までの対応を指揮し、'+j.sys+'の監視と改善を進められる',rows:j=>[
+  ['インシデント対応の流れ','検知・初動・封じ込め・復旧・報告の手順、関係者への連絡の順番',1.5,'事故対応の業務',null,/インシデント/],
+  ['ログの見方と不審な動きの見つけ方',j.sys+'のログの種類、確認する項目、不審な動きの見分け方',1.5,'システムの監視の業務'],
+  ['ネットワークとメールの防御の仕組み','ファイアウォール・UTM・メールの送信元確認（SPF・DKIM・DMARC）の仕組みと設定の確認',1.5,'ネットワークの管理の業務'],
+  ['生成AIを使ったセキュリティ業務の効率化','ログの要約、脆弱性情報の整理、注意喚起文の下書きにAIを使う手法と注意点',1.5,'セキュリティの運用の業務'],
+  ['個人情報が漏えいしたときの報告と連絡','個人情報保護委員会への報告と本人への通知の要件、'+j.data+'の場合の判断',1.5,j.ind+'の個人情報の管理の業務'],
+  ['総合演習：演習用のシナリオでインシデント対応の机上訓練を行う','演習用の攻撃シナリオをもとに、役割を分けて検知から報告までを机上で実施。講師が講評',2.5,'事故対応の業務の全体']]}];
+
+/* ===== テーマ3：宣伝マーケティング・顧客管理（BtoCの業種） =====
+   受講者は「集客・販促・顧客管理を担当する人」（パンフレットにも「営業企画：Webマーケティングの手法」が職務関連訓練の例として載っている）。
+   cust＝お客様、channel＝集客の経路、crm＝顧客データ、rule＝広告・表示のルール、kpi＝見る指標 */
+const MKT_IND={
+ ret:{cust:'来店客・ネットショップの購入者',channel:'Instagram・LINE公式アカウント・ネットショップ',crm:'会員・購買履歴',rule:'景品表示法・特定商取引法',kpi:'来店数・購入率・リピート率'},
+ food:{cust:'来店客',channel:'Instagram・Googleマップ・グルメサイト・LINE公式アカウント',crm:'予約・来店履歴',rule:'景品表示法・食品表示法（アレルゲンの表示など）',kpi:'予約数・来店頻度・客単価'},
+ re:{cust:'部屋や住まいを探す人',channel:'不動産ポータルサイト・自社サイト・SNS',crm:'問い合わせ・内見の履歴',rule:'不動産の表示に関する公正競争規約・宅地建物取引業法の広告のルール',kpi:'反響数・内見率・成約率'},
+ med:{cust:'患者さん・地域の住民',channel:'Googleマップ・医院のサイト・LINE公式アカウント',crm:'予約・受診の履歴',rule:'医療広告ガイドライン（医療法の広告規制）',kpi:'新患数・予約数・再診率'},
+ edu:{cust:'受講生・保護者',channel:'教室のサイト・SNS・LINE公式アカウント・チラシ',crm:'問い合わせ・体験・受講の履歴',rule:'景品表示法・特定商取引法（継続して提供するサービスのルール）',kpi:'問い合わせ数・体験からの入会率・継続率'},
+ fin:{cust:'個人のお客様',channel:'自社サイト・SNS・セミナー・LINE公式アカウント',crm:'面談・契約・更改の履歴',rule:'保険業法の募集のルール・金融サービス提供法',kpi:'問い合わせ数・面談数・継続率'}};
+const MKT_SETS=[
+ {lv:'初級1',title:j=>j.ind+'の集客と情報発信',goal:j=>j.channel.split('・')[0]+'などで、'+j.rule.split('・')[0]+'を守りながら、お客様に届く発信を企画・作成できる',rows:j=>[
+  [j.cust+'の行動と、デジタルでの集客の全体像',j.cust+'が知る・比べる・選ぶまでの流れ、'+j.channel+'の役割の違い',1.5,j.ind+'の集客の業務',null,/集客|マーケティング入門/],
+  ['発信の経路ごとの特徴と、発信内容の企画',j.channel+'の特徴、見せ方の違い、投稿の頻度と時間帯の考え方',1.5,'販促・情報発信の業務',[j.channel.split('・')[0]+'の運用の改善','投稿の結果の振り返り方、反応の良い発信の分析、改善の手順'],/SNS|インスタ/],
+  ['生成AIで告知文・投稿文を作る手法','目的と相手に合わせた文章の作成、'+j.rule+'に触れる表現の確認',1.5,'販促物の作成の業務'],
+  ['写真・画像の作り方と、権利・表示の注意点','伝わる写真の撮り方・加工、画像生成AIの使い方、著作権・肖像権と表示の注意点',1.5,'販促物の作成の業務'],
+  ['口コミ・レビューへの対応の考え方','口コミの読み取り方、返信の基本方針、返信文の作成と確認の手順',1.5,j.ind+'の顧客対応の業務'],
+  ['総合演習：演習用のモデルで1か月の発信の計画を作る','演習用の'+j.ind+'のモデルをもとに、1か月分の発信の企画と文案を作成。講師が講評',2.5,'販促の企画の業務の全体']]},
+ {lv:'初級2',title:j=>j.ind+'の顧客管理とリピートの仕組み',goal:j=>j.crm+'のデータを整理・分析し、お客様に合わせた配信とリピートの施策を設計できる',rows:j=>[
+  ['顧客データの集め方と管理の基本',j.crm+'の項目の決め方、データの整え方、個人情報保護法で守ること',1.5,'顧客管理の業務',null,/顧客管理|CRM/],
+  ['お客様の分け方と、来店・購買のデータ分析','頻度・最近の利用・金額による分け方、グループごとの特徴の読み取り',1.5,'顧客データの分析の業務'],
+  ['LINE公式アカウント・メールでの配信の設計','配信の対象の分け方、内容とタイミングの設計、配信を止める人への配慮',1.5,'販促の配信の業務',null,/LINE/],
+  ['リピート・紹介を増やす施策の設計','会員の仕組み・ポイント・クーポンの考え方、'+j.rule+'で注意すること',1.5,'販促の企画の業務'],
+  ['配信と施策の効果の測り方',j.kpi+'の見方、比べ方（ABテスト）、結果の報告のまとめ方',1.5,'販促の効果測定の業務'],
+  ['総合演習：演習用データで顧客を分析し、配信の計画を作る','演習用の顧客データをもとに、分析から配信の計画までを作成して発表。講師が講評',2.5,'顧客管理の業務の全体']]},
+ {lv:'中級',title:j=>j.ind+'のデータに基づく販促と自動化',goal:j=>'集客から再利用までのデータを組み合わせて分析し、広告と配信の自動化を設計できる',rows:j=>[
+  ['集客から再利用までの流れ（カスタマージャーニー）の設計',j.cust+'の行動の段階ごとに、接点・施策・指標を整理する手法',1.5,j.ind+'の販促の企画の業務'],
+  ['Web広告と検索対策（MEO・SEO）の仕組み','広告の種類と予算の考え方、地図検索・検索結果での見え方を良くする手法',1.5,'Web集客の業務',null,/広告|SEO|MEO/],
+  ['アクセス・予約・売上のデータを組み合わせた分析','複数のデータのつなぎ方、生成AIを使った集計と傾向の読み取り',1.5,'販促のデータ分析の業務'],
+  ['マーケティングの自動化の設計','予約・来店・購入のあとに自動で送る配信の設計、例外の扱いと確認の仕組み',1.5,'販促の配信の業務',null,/自動化/],
+  ['生成AIでお客様の声を分析する手法','アンケート・口コミの分類と要約、改善のテーマの見つけ方',1.5,'顧客の声の分析の業務'],
+  ['総合演習：演習用のシナリオで販促の年間計画と効果の測り方を作る','演習用のシナリオをもとに、年間の販促計画と効果の測り方をまとめて発表。講師が講評',2.5,'販促の企画の業務の全体']]}];
+
+/* テーマの一覧。ai は職種ごと、sec と mkt は業種ごと（受講者は担当者） */
+const CAT_TRACKS=[
+ {id:'ai',n:'生成AI活用',short:'生成AI',scope:'全業種・職種別',who:'各職種の担当者',sets:CAT_SETS,has:()=>true},
+ {id:'sec',n:'セキュリティ対策',short:'セキュリティ',scope:'全業種',who:'社内のIT・情報管理を担当する人',sets:SEC_SETS,has:ind=>!!SEC_IND[ind.id]},
+ {id:'mkt',n:'宣伝マーケティング・顧客管理',short:'マーケティング',scope:'BtoCの業種',who:'集客・販促・顧客管理を担当する人',sets:MKT_SETS,has:ind=>!!MKT_IND[ind.id]}];
+const catTrack=id=>CAT_TRACKS.find(t=>t.id===id)||CAT_TRACKS[0];
+/* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける。
+   tid＝テーマ（省略時は生成AI）。sec・mkt では ji は使わない */
+function catSet(ii,ji,si,past,tid){const ind=CAT_IND[ii],tr=catTrack(tid),st=tr.sets[si];past=past||[];
+ const j=tr.id==='ai'?ind.jobs[ji]:Object.assign({n:tr.who,who:tr.n+'の担当',ind:ind.n.replace(/（.*?）/,'')},tr.id==='sec'?SEC_IND[ind.id]:MKT_IND[ind.id]);
+ const rows=st.rows(j).map((r,x)=>{const by=r[5]&&past.find(p=>r[5].test(p)),k=(ROW_TASKS[tr.id][si][x]||[]);
+  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],k,swap:{from:r[0],by}};
+  return {t:r[0],c:r[1],h:r[2],rel:r[3],k,ov:by||null};});
+ return {lv:st.lv,si,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j,track:tr,tasks:[...new Set(rows.flatMap(r=>r.k))]};}
+
+/* ===== 絞り込み用のタグ =====
+   CAT_FUNCS＝職種のタグ（営業・経理など、業種をまたいで選ぶ）。JOB_FUNC＝職種名からタグへの対応。
+   CAT_TASKS＝業務内容のタグ。kw はお客様の要望の文章から業務内容を読み取るためのことば。
+   ROW_TASKS＝各セットの科目（上から6つ）が、どの業務内容に当たるか。 */
+const CAT_FUNCS=[
+ {id:'sales',n:'営業'},{id:'acc',n:'経理・財務'},{id:'hr',n:'人事・労務'},{id:'ga',n:'総務・事務'},
+ {id:'mk',n:'企画・マーケティング'},{id:'cs',n:'接客・販売・顧客対応'},{id:'ops',n:'現場・生産の管理'},
+ {id:'buy',n:'仕入・在庫・物流'},{id:'tech',n:'設計・技術・開発'},{id:'it',n:'情報システム・情報管理'},{id:'pro',n:'医療・介護・教育の専門職'}];
+const JOB_FUNC={
+ '施工管理':['ops'],'積算・見積':['sales','tech'],'設計（CAD・BIM）':['tech'],'工事事務':['ga','acc'],
+ '生産管理':['ops'],'品質管理':['ops'],'設備保全':['ops','tech'],'技術営業':['sales','tech'],
+ '店舗運営・販売':['cs'],'仕入・在庫管理（バイヤー）':['buy'],'EC運営':['mk','cs'],
+ '医療事務':['ga','cs'],'看護職':['pro'],'地域連携・相談員':['pro','cs'],
+ '介護職員':['pro'],'ケアマネジャー':['pro'],'生活相談員・施設事務':['ga','cs'],
+ '配車・運行管理':['ops'],'倉庫管理':['buy'],'物流事務':['ga','acc'],
+ '賃貸仲介':['sales','cs'],'物件管理':['cs'],'売買仲介':['sales'],
+ '飲食店の店舗運営':['cs','ops'],'宿泊のフロント・予約管理':['cs'],'商品企画・メニュー開発':['mk'],
+ 'システム開発エンジニア':['tech'],'ITサポート・ヘルプデスク':['it','cs'],'Webディレクター・マーケター':['mk'],
+ '会計・税務スタッフ':['acc'],'労務手続きスタッフ':['hr'],'保険代理店の営業':['sales'],
+ '講師・インストラクター':['pro'],'教務・事務':['ga'],
+ '営業':['sales'],'経理・財務':['acc'],'人事・労務':['hr'],'総務':['ga'],'マーケティング・広報':['mk'],'カスタマーサポート':['cs']};
+const TRACK_FUNC={sec:['it'],mkt:['mk']};
+const CAT_TASKS=[
+ {id:'doc',n:'書類・文書の作成',kw:/書類|文書|資料|メール|提案書|見積書|文章|下書き|案内文|契約書/},
+ {id:'data',n:'データの集計・分析',kw:/集計|分析|データ|数字|Excel|エクセル|売上|在庫|原価|グラフ/},
+ {id:'check',n:'照合・チェック',kw:/チェック|照合|ミス|間違|誤り|検査|点検|見直し|突き合わせ/},
+ {id:'media',n:'写真・画像・紙の書類の活用',kw:/写真|画像|スキャン|紙の|手書き|図面|PDF|読み取/},
+ {id:'meet',n:'会議・打合せの記録',kw:/会議|打合せ|打ち合わせ|議事録|朝礼|面談|音声|録音|文字起こし/},
+ {id:'report',n:'報告・記録のまとめ',kw:/報告|日報|週報|月報|記録|レポート/},
+ {id:'auto',n:'業務の自動化',kw:/自動|効率|時短|残業|手間|省力|工数|転記|繰り返し|エージェント/},
+ {id:'know',n:'社内の情報の検索・活用',kw:/マニュアル|検索|ナレッジ|引き継|引継|属人|ノウハウ|探す|過去の/},
+ {id:'sec',n:'情報セキュリティ・個人情報の管理',kw:/セキュリティ|漏えい|漏洩|ウイルス|パスワード|不正|ランサム|個人情報|サイバー|フィッシング|乗っ取|情報管理/},
+ {id:'pr',n:'集客・情報発信（SNS・広告）',kw:/集客|宣伝|SNS|インスタ|Instagram|広告|チラシ|発信|ホームページ|新規のお客|新規客|マーケティング|販促|PR/},
+ {id:'crm',n:'顧客管理・リピート',kw:/顧客管理|リピート|再来店|会員|LINE|ポイント|常連|顧客データ|メルマガ|CRM|顧客リスト|固定客/},
+ {id:'voc',n:'お客様の声・口コミへの対応',kw:/クレーム|口コミ|レビュー|アンケート|お客様の声|評判/}];
+const ROW_TASKS={
+ ai:[[['doc'],['doc'],['doc'],['doc','report'],['doc','check'],['doc']],
+     [['data'],['data'],['check'],['media'],['meet'],['report','data']],
+     [['auto'],['auto','report'],['know'],['auto'],['check'],['auto']]],
+ sec:[[['sec'],['sec'],['sec'],['sec'],['sec'],['sec']],
+      [['sec'],['sec'],['sec'],['sec'],['sec'],['sec']],
+      [['sec'],['sec','check'],['sec'],['sec','auto'],['sec'],['sec']]],
+ mkt:[[['pr'],['pr'],['pr','doc'],['pr','media'],['voc'],['pr']],
+      [['crm'],['crm','data'],['crm','pr'],['crm'],['data'],['crm','data']],
+      [['pr','crm'],['pr'],['data'],['auto','crm'],['voc'],['pr','data']]]};
+const catTask=id=>CAT_TASKS.find(t=>t.id===id);
+/* その業種で選べるテーマ */
+const catTracksFor=ii=>CAT_TRACKS.filter(t=>t.has(CAT_IND[ii]));
+/* 職種のタグ。sec・mkt は担当者向けなのでテーマで決まる */
+const catFuncs=(ii,ji,tid)=>tid&&tid!=='ai'?TRACK_FUNC[tid]:(JOB_FUNC[CAT_IND[ii].jobs[ji].n]||[]);
+/* 要望の文章から業務内容のタグを読み取る */
+const catNeeds=text=>CAT_TASKS.filter(t=>t.kw.test(text||'')).map(t=>t.id);
 /*CATALOG:END*/
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
+const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
+const fnName=id=>(CAT_FUNCS.find(f=>f.id===id)||{}).n||'';
+const COMMON=CAT_IND.findIndex(i=>i.id==='common');
+
+/* ===== menu: one card per job (AI) or per industry (security, marketing) ===== */
+const CARDS=[];
+CAT_IND.forEach((I,ii)=>catTracksFor(ii).forEach(t=>{const n=t.id==='ai'?I.jobs.length:1;
+ for(let ji=0;ji<n;ji++){const sets=[0,1,2].map(si=>catSet(ii,ji,si,[],t.id)),funcs=catFuncs(ii,ji,t.id);
+  const name=t.id==='ai'?I.jobs[ji].n:t.n,who=t.id==='ai'?I.jobs[ji].who:'対象：'+t.who;
+  CARDS.push({ii,ji,tid:t.id,sets,funcs,name,who,hay:[I.n,name,who,t.n,funcs.map(fnName).join(' '),sets.map(s=>s.title+' '+s.rows.map(r=>r.t).join(' ')).join(' ')].join(' ')});}}));
 const nJobs=CAT_IND.reduce((a,i)=>a+i.jobs.length,0);
-$('#facts').innerHTML=`<span><b>${CAT_IND.length}</b>業種</span><span><b>${nJobs}</b>職種</span><span><b>${nJobs*3}</b>カリキュラム</span><span><b>10</b>時間×3セット</span>`;
-let ind='all',q='';
-try{const v=localStorage.getItem('lp-ind');if(v&&(v==='all'||CAT_IND.some(i=>i.id===v)))ind=v;}catch(e){}
-function chips(){$('#chips').innerHTML=[['all','すべて']].concat(CAT_IND.map(i=>[i.id,i.n])).map(c=>`<button type="button" data-ind="${c[0]}" aria-pressed="${ind===c[0]}">${esc(c[1])}</button>`).join('');}
-const hay=j=>[j.n,j.who,j.doc.join(' '),j.data.join(' '),j.check,j.media[0],j.voice,j.flow,j.know].join(' ');
-function jobCard(ii,ji){const j=CAT_IND[ii].jobs[ji];
- return `<article class="job"><div class="job-h"><h4>${esc(j.n)}</h4><span>${esc(j.who)}</span></div><div class="sets">${[0,1,2].map(si=>{const s=catSet(ii,ji,si);
-  return `<div class="set"><span class="lv">${s.lv}・10時間</span><h5>${esc(s.title)}</h5><p class="goal">${esc(s.goal)}</p><ol>${s.rows.map(r=>`<li><span>${esc(r.t)}</span><span class="h">${r.h}h</span></li>`).join('')}<li class="sum"><span>実訓練時間の合計</span><span class="h">${s.total}h</span></li></ol></div>`;}).join('')}</div></article>`;}
+$('#facts').innerHTML=`<span><b>${CAT_IND.length}</b>業種</span><span><b>${nJobs}</b>職種</span><span><b>${CAT_TRACKS.length}</b>テーマ</span><span><b>${CARDS.length*3}</b>カリキュラム</span>`;
+
+const F={th:'all',ind:'all',fn:'all',tk:'all'};let q='';
+const OPTS={th:CAT_TRACKS.map(t=>[t.id,t.n]),ind:CAT_IND.map(i=>[i.id,i.n]),fn:CAT_FUNCS.map(f=>[f.id,f.n]),tk:CAT_TASKS.map(t=>[t.id,t.n])};
+try{const v=JSON.parse(store.get('lp-f')||'{}');Object.keys(OPTS).forEach(k=>{if(OPTS[k].some(o=>o[0]===v[k]))F[k]=v[k];});}catch(e){}
+function chips(){Object.keys(OPTS).forEach(k=>{$('#f-'+k).innerHTML=[['all','すべて']].concat(OPTS[k]).map(c=>`<button type="button" data-f="${k}" data-v="${c[0]}" aria-pressed="${F[k]===c[0]}">${esc(c[1])}</button>`).join('');});}
+function card(c){
+ return `<article class="job"><div class="job-h"><span class="th th-${c.tid}">${esc(catTrack(c.tid).short)}</span><h4>${esc(c.name)}</h4><span>${esc(c.who)}</span><span class="tags">${c.funcs.map(f=>`<span class="tag">${esc(fnName(f))}</span>`).join('')}</span><button type="button" class="mini" data-plan="${c.ii}:${c.ji}:${c.tid}">この内容でプランを作る</button></div><div class="sets">${c.sets.map(s=>
+  `<div class="set${F.tk==='all'||s.tasks.includes(F.tk)?'':' dim'}"><span class="lv">${s.lv}・10時間</span><h5>${esc(s.title)}</h5><p class="goal">${esc(s.goal)}</p><ol>${s.rows.map(r=>`<li${F.tk!=='all'&&r.k.includes(F.tk)?' class="hit"':''}><span>${esc(r.t)}</span><span class="h">${r.h}h</span></li>`).join('')}<li class="sum"><span>実訓練時間の合計</span><span class="h">${s.total}h</span></li></ol></div>`).join('')}</div></article>`;}
 function list(){const words=q.trim().split(/\s+/).filter(Boolean);let n=0;
- const html=CAT_IND.map((I,ii)=>{if(ind!=='all'&&I.id!==ind)return '';
-  const js=I.jobs.map((j,ji)=>({j,ji})).filter(x=>words.every(w=>(hay(x.j)+' '+I.n).indexOf(w)>-1));if(!js.length)return '';n+=js.length;
-  return `<div class="ind"><h3>${esc(I.n)}<small>${js.length}職種</small></h3><p>DXのねらい（計画届の例）：${esc(I.dx)}</p>${js.map(x=>jobCard(ii,x.ji)).join('')}</div>`;}).join('');
- $('#list').innerHTML=html||'<p class="empty">該当する職種が見つかりませんでした。別のことばで探すか、「すべて」を選んでください。<br>掲載のない職種も、業務を伺ってお作りします。</p>';
- $('#count').textContent=n+'職種を表示中';}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-ind]');if(!b)return;ind=b.dataset.ind;try{localStorage.setItem('lp-ind',ind);}catch(err){}chips();list();});
+ const html=CAT_IND.map((I,ii)=>{if(F.ind!=='all'&&I.id!==F.ind)return '';
+  const cs=CARDS.filter(c=>c.ii===ii&&(F.th==='all'||c.tid===F.th)&&(F.fn==='all'||c.funcs.includes(F.fn))&&(F.tk==='all'||c.sets.some(s=>s.tasks.includes(F.tk)))&&words.every(w=>c.hay.indexOf(w)>-1));
+  if(!cs.length)return '';n+=cs.length;
+  return `<div class="ind"><h3>${esc(I.n)}<small>${cs.length}件</small></h3>${cs.some(c=>c.tid==='ai')?`<p>DXのねらい（計画届の例）：${esc(I.dx)}</p>`:''}${cs.map(card).join('')}</div>`;}).join('');
+ $('#list').innerHTML=html||'<p class="empty">該当するメニューが見つかりませんでした。<br>絞り込みを減らすか、別のことばで探してください。掲載のない職種も、業務を伺ってお作りします。<br><button type="button" class="mini" data-clear style="margin-top:12px">絞り込みをすべて解除</button></p>';
+ $('#count').textContent=n+'件（'+n*3+'カリキュラム）を表示中';}
+
+/* ===== plan tool ===== */
+const P={ii:0,job:'0:0',tasks:[],pick:[],manual:false};
+const TRACK_KEY={ai:['doc','data','check','media','meet','report','auto','know'],sec:['sec'],mkt:['pr','crm','voc']};
+const NGW=[[/マナー|接遇|あいさつ|挨拶/,'接遇・ビジネスマナー','表1②'],[/管理職|リーダーシップ|幹部/,'管理職・リーダーシップ研修','表1⑧'],[/意識改革|モチベーション|やる気|マインド/,'意識改革・モチベーション研修','表1⑦'],[/英会話|語学|話し方/,'日常会話程度の語学・話し方','表1③'],[/操作説明|操作方法|使い方を覚|自社製品/,'自社で使う機器・ソフトの操作説明、自社製品の説明','表1④・P13'],[/資格試験|検定|受験対策/,'資格試験だけのもの','表1⑨'],[/法定|特別教育|義務づけ|義務付け/,'法令で義務づけられた講習','表1⑥']];
+const fi=(id)=>$('#'+id);
+function indOpts(){fi('pInd').innerHTML=CAT_IND.map((I,ii)=>`<option value="${ii}">${esc(ii===COMMON?'その他の業種':I.n)}</option>`).join('');fi('pInd').value=P.ii;
+ fi('pH').innerHTML=[2,3,4,5,6,7,8].map(h=>`<option value="${h}"${h===5?' selected':''}>${h}時間</option>`).join('');}
+function jobOpts(){const og=(ii,label)=>`<optgroup label="${esc(label)}">${CAT_IND[ii].jobs.map((j,ji)=>`<option value="${ii}:${ji}">${esc(j.n)}</option>`).join('')}</optgroup>`;
+ fi('pJob').innerHTML=(P.ii!==COMMON?og(P.ii,CAT_IND[P.ii].n+'の職種'):'')+og(COMMON,'どの業種にもある職種（営業・経理など）');
+ const [a,b]=P.job.split(':').map(Number);if(!((a===P.ii||a===COMMON)&&CAT_IND[a]&&CAT_IND[a].jobs[b]))P.job=(P.ii!==COMMON?P.ii:COMMON)+':0';
+ fi('pJob').value=P.job;}
+function cands(){const [a,b]=P.job.split(':').map(Number);
+ return catTracksFor(P.ii).flatMap(t=>[0,1,2].map(si=>({key:t.id+':'+si,tid:t.id,si,s:t.id==='ai'?catSet(a,b,si,[],'ai'):catSet(P.ii,0,si,[],t.id)})));}
+const textNeeds=()=>catNeeds(fi('pNeed').value);
+function recommend(cs,nd){const exp=+fi('pExp').value,tr=[...new Set(cs.map(c=>c.tid))];
+ const rel=t=>nd.filter(k=>TRACK_KEY[t].includes(k)).length;
+ let order=tr.filter(t=>rel(t)>0).sort((x,y)=>rel(y)-rel(x));if(!order.length)order=['ai'];
+ const slots=order.length===1?[3]:order.length===2?[2,1]:[1,1,1],out=[];
+ order.slice(0,3).forEach((t,i)=>{const st=t==='ai'&&exp===2?1:0;for(let k=0;k<slots[i]&&st+k<3;k++)out.push(t+':'+(st+k));});
+ if(out.length<3&&!out.some(k=>k.indexOf('sec:')===0))out.push('sec:0');
+ return out.slice(0,3);}
+function candHtml(cs,nd,rec){const [a,b]=P.job.split(':').map(Number);
+ return catTracksFor(P.ii).map(t=>`<div class="cg"><p class="cgh"><span class="th th-${t.id}">${esc(t.n)}</span><span class="tiny">対象：${esc(t.id==='ai'?CAT_IND[a].jobs[b].n+'の担当者':t.who)}</span></p>${cs.filter(c=>c.tid===t.id).map(c=>{const hit=nd.filter(k=>c.s.tasks.includes(k)),on=P.pick.includes(c.key);
+  return `<label class="cand"><input type="checkbox" data-cand="${c.key}"${on?' checked':''}${!on&&P.pick.length>=3?' disabled':''}><span><b>${c.s.lv}</b>${esc(c.s.title)}${rec.includes(c.key)?'<em class="rec">おすすめ</em>':''}${hit.length?`<small>ご要望に対応：${hit.map(k=>esc(catTask(k).n)).join('、')}</small>`:''}</span></label>`;}).join('')}</div>`).join('');}
+let planText='';
+function planHtml(cs,nd){const TI=id=>CAT_TRACKS.findIndex(t=>t.id===id);
+ const sel=P.pick.map(k=>cs.find(c=>c.key===k)).filter(Boolean);const cnt=id=>sel.filter(c=>c.tid===id).length;sel.sort((x,y)=>x.si-y.si||cnt(y.tid)-cnt(x.tid)||TI(x.tid)-TI(y.tid));
+ const name=fi('pName').value.trim(),head=(name?name+' 様　':'')+'研修プラン（案）';
+ if(!sel.length){planText='';return `<h3>${esc(head)}</h3><p class="empty">左の「どんな研修をやるか」から、研修を1つ以上選んでください。</p>`;}
+ const N=Math.min(999,Math.max(1,Math.floor(+fi('pN').value)||1)),H=+fi('pH').value,fee=Math.max(0,+fi('pFee').value||0);
+ const hours=sel.length*10,D=Math.ceil(10/H),wage=N*hours*1000,expOne=Math.min(fee*0.75,300000),exp=expOne*N*sel.length,total=fee*N*sel.length;
+ const [a,b]=P.job.split(':').map(Number),I=CAT_IND[P.ii],job=CAT_IND[a].jobs[b];
+ const label=c=>catTrack(c.tid).short+' '+c.s.lv;
+ const cover=nd.map(k=>{const inSel=sel.map((c,i)=>c.s.tasks.includes(k)?(i+1)+'回目':'').filter(Boolean),other=cs.filter(c=>!sel.includes(c)&&c.s.tasks.includes(k));
+  return {n:catTask(k).n,txt:inSel.length?inSel.join('・')+'で扱います':other.length?'「'+label(other[0])+'」で扱います（このプランには入っていません）':'掲載のメニューにはないため、個別にカリキュラムを調整します',ok:inSel.length>0};});
+ const ng=NGW.filter(w=>w[0].test(fi('pNeed').value));
+ const pre=sel.filter(c=>c.si>0&&!sel.some(x=>x.tid===c.tid&&x.si===c.si-1)).map(c=>label(c)+'は、同じテーマの'+catTrack(c.tid).sets[c.si-1].lv+'の内容を前提にしています。まだ受けていない方がいる場合は、先に'+catTrack(c.tid).sets[c.si-1].lv+'をおすすめします。');
+ const notes=['助成の対象は、テーマをまたいで1人あたり年度3回までです（年度は支給申請日で数えます）。',
+  '計画届は、各セットの開始日の6か月前から1か月前までに労働局へ提出します。',
+  '賃金助成は、所定労働時間内に受講した時間が対象です。金額は中小企業の場合の目安です。',
+  '助成の対象になるかは、計画届の内容をもとに労働局が判断します。提出前に社会保険労務士の確認を受けてください。'];
+ if(sel.some(c=>c.tid==='sec'))notes.unshift('セキュリティ対策は、社内のIT・情報管理を担当する方が対象です。全従業員向けの一般的な注意喚起は、職種を問わない共通の内容として対象外になるおそれがあります（表1②）。');
+ if(sel.some(c=>c.tid==='mkt'))notes.unshift('宣伝マーケティング・顧客管理は、集客・販促・顧客管理を担当する方が対象です。演習は演習用の題材で行います（表1④）。');
+ const stats=[['研修の内容',sel.length+'セット・'+hours+'時間','1セット10時間（実訓練時間）'],['日数の目安','合計'+D*sel.length+'日','1日'+H+'時間 × '+D+'日 × '+sel.length+'セット'],['賃金助成の見込み',yen(wage),N+'人 × '+hours+'時間 × 1,000円']];
+ if(fee)stats.push(['経費助成の見込み',yen(exp),'研修費用 '+yen(total)+' の75%'+(fee*0.75>300000?'（1人1訓練30万円が上限）':'')+'／実質の研修費用 '+yen(total-exp)]);
+ else stats.push(['経費助成','研修費用の75%','研修費用を入れると金額を計算します']);
+ planText=[head,'業種：'+(P.ii===COMMON?'その他の業種':I.n)+'／職種：'+job.n+'／受講人数：'+N+'人','',
+  ...stats.map(s=>s[0]+'：'+s[1]+'（'+s[2]+'）'),'',
+  ...sel.flatMap((c,i)=>['■'+(i+1)+'回目　'+catTrack(c.tid).n+'（'+c.s.lv+'・10時間）'+c.s.title,'　到達目標：'+c.s.goal,...c.s.rows.map(r=>'　・'+r.t+'（'+r.h+'時間）'),'']),
+  ...(cover.length?['■ご要望との対応',...cover.map(c=>'　・'+c.n+'：'+c.txt),'']:[]),
+  ...(ng.length?['■助成の対象外になる内容（プランに入れていません）',...ng.map(w=>'　・'+w[1]+'（'+w[2]+'）'),'']:[]),
+  '■ご注意',...pre.concat(notes).map(t=>'　・'+t)].join('\n');
+ return `<h3>${esc(head)}</h3><p class="tiny">業種：${esc(P.ii===COMMON?'その他の業種':I.n)}／職種：${esc(job.n)}／受講人数：${N}人</p>
+  <div class="stats">${stats.map(s=>`<div class="stat"><span>${esc(s[0])}</span><b>${esc(s[1])}</b><small>${esc(s[2])}</small></div>`).join('')}</div>
+  ${sel.map((c,i)=>`<div class="pset"><div class="pset-h"><span class="no">${i+1}回目</span><span class="th th-${c.tid}">${esc(catTrack(c.tid).n)}</span><span class="tag">${c.s.lv}・10時間</span><span class="tiny">1日${H}時間 × ${D}日</span></div><h4>${esc(c.s.title)}</h4><p class="goal">到達目標：${esc(c.s.goal)}</p><ol>${c.s.rows.map(r=>`<li${r.k.some(k=>nd.includes(k))?' class="hit"':''}><span>${esc(r.t)}</span><span class="h">${r.h}h</span></li>`).join('')}</ol></div>`).join('')}
+  ${cover.length?`<div><h3 style="font-size:15px;margin-bottom:6px">ご要望との対応</h3><ul class="cover">${cover.map(c=>`<li><b>${esc(c.n)}</b>：${esc(c.txt)}</li>`).join('')}</ul><p class="tiny" style="margin-top:6px">左に線のある科目が、ご要望に当たる内容です。</p></div>`:''}
+  ${ng.length?`<div class="warn">ご要望のうち、次の内容は助成の対象外のため、プランに入れていません。<ul>${ng.map(w=>`<li>${esc(w[1])}（${esc(w[2])}）</li>`).join('')}</ul></div>`:''}
+  <ul class="pnote">${pre.concat(notes).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+  <div class="pact"><button type="button" class="cta" data-copy>プランの文章をコピー</button><button type="button" class="cta alt" data-print>印刷する</button><span class="tiny" id="pMsg" role="status"></span></div><div id="pCopyBox"></div>`;}
+function update(){const cs=cands(),tn=textNeeds(),nd=[...new Set(tn.concat(P.tasks))],rec=recommend(cs,nd);
+ if(!P.manual)P.pick=rec.slice();P.pick=P.pick.filter(k=>cs.some(c=>c.key===k)).slice(0,3);
+ fi('pTasks').innerHTML=CAT_TASKS.map(t=>`<button type="button" data-task="${t.id}" aria-pressed="${P.tasks.includes(t.id)}"${tn.includes(t.id)&&!P.tasks.includes(t.id)?' class="auto"':''}>${esc(t.n)}</button>`).join('');
+ fi('pRec').innerHTML=(nd.length?'ご要望に合う研修に「おすすめ」を付けています。':'ご要望を入れると、合う研修に「おすすめ」を付けます。')+(P.manual?' <button type="button" class="mini" data-rec>おすすめの組み合わせに戻す</button>':'');
+ fi('pCand').innerHTML=candHtml(cs,nd,rec);fi('pout').innerHTML=planHtml(cs,nd);}
+
+/* ===== events ===== */
+document.addEventListener('click',e=>{const t=e.target;let b;
+ if((b=t.closest('[data-f]'))){F[b.dataset.f]=b.dataset.v;store.set('lp-f',JSON.stringify(F));chips();list();return;}
+ if(t.closest('[data-clear]')){Object.keys(F).forEach(k=>F[k]='all');q='';$('#q').value='';store.set('lp-f',JSON.stringify(F));chips();list();return;}
+ if((b=t.closest('[data-task]'))){const k=b.dataset.task,i=P.tasks.indexOf(k);i<0?P.tasks.push(k):P.tasks.splice(i,1);update();return;}
+ if(t.closest('[data-rec]')){P.manual=false;update();return;}
+ if((b=t.closest('[data-plan]'))){const [ii,ji,tid]=b.dataset.plan.split(':');if(+ii!==COMMON)P.ii=+ii;if(tid==='ai')P.job=ii+':'+ji;
+  P.manual=true;P.pick=[0,1,2].map(s=>tid+':'+s);fi('pInd').value=P.ii;jobOpts();update();$('#plan').scrollIntoView({behavior:'smooth',block:'start'});return;}
+ if(t.closest('[data-print]')){window.print();return;}
+ if(t.closest('[data-copy]')){const done=ok=>{fi('pMsg').textContent=ok?'コピーしました':'下の文章を選んでコピーしてください';if(!ok){fi('pCopyBox').innerHTML='<textarea id="pCopy" readonly aria-label="プランの文章"></textarea>';fi('pCopy').value=planText;fi('pCopy').select();}};
+  try{navigator.clipboard.writeText(planText).then(()=>done(true),()=>done(false));}catch(err){done(false);}return;}});
 $('#q').addEventListener('input',e=>{q=e.target.value;list();});
-chips();list();
+fi('pform').addEventListener('input',e=>{if(e.target.id==='pNeed'||e.target.id==='pName'||e.target.id==='pN'||e.target.id==='pFee')update();});
+fi('pform').addEventListener('change',e=>{const t=e.target;
+ if(t.id==='pInd'){P.ii=+t.value;P.manual=false;jobOpts();}
+ else if(t.id==='pJob')P.job=t.value;
+ else if(t.dataset.cand){const k=t.dataset.cand,i=P.pick.indexOf(k);P.manual=true;if(t.checked&&i<0&&P.pick.length<3)P.pick.push(k);if(!t.checked&&i>-1)P.pick.splice(i,1);}
+ update();});
+chips();list();indOpts();jobOpts();update();
 })();
 </script>
 

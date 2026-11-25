@@ -747,11 +747,148 @@ const CAT_SETS=[
   ['総合演習：演習用シナリオで'+j.n+'の自動化の設計書を作る','演習用の業務シナリオをもとに、自動化の範囲・手順・確認方法を設計書にまとめて発表。講師が講評',2.5,j.n+'の業務の改善の全体']]}];
 
 /* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける */
-function catSet(ii,ji,si,past){const ind=CAT_IND[ii],j=ind.jobs[ji],st=CAT_SETS[si];past=past||[];
- const rows=st.rows(j).map(r=>{const by=r[5]&&past.find(p=>r[5].test(p));
-  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],swap:{from:r[0],by}};
-  return {t:r[0],c:r[1],h:r[2],rel:r[3],ov:by||null};});
- return {lv:st.lv,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j};}
+/* ===== テーマ2：セキュリティ対策（全業種） =====
+   受講者は「社内のIT・情報管理を担当する人」。全従業員向けの一般的な注意喚起は、職種を問わない共通の内容（表1②）と
+   判断されるおそれがあるため、業種ごとに扱う情報・使うシステム・国のガイドラインに合わせた担当者向けの内容にする。
+   data＝守る情報、sys＝使うシステム・端末、law＝参照するガイドライン、threat＝狙われやすい手口 */
+const IPA='IPA「中小企業の情報セキュリティ対策ガイドライン」';
+const SEC_IND={
+ con:{data:'図面・見積・施主の個人情報',sys:'現場のタブレット・図面共有などのクラウド',law:IPA,threat:'取引先を装った請求書メール・図面の持ち出し'},
+ mfg:{data:'図面・技術情報・取引先の情報',sys:'生産設備のネットワーク・生産管理システム',law:'経済産業省「工場システムにおけるサイバー・フィジカル・セキュリティ対策ガイドライン」・'+IPA,threat:'ランサムウェアによる生産停止・取引先経由の侵入（サプライチェーン攻撃）'},
+ ret:{data:'顧客の個人情報・カード情報・仕入価格',sys:'POSレジ・ネットショップ・在庫管理システム',law:'「クレジットカード・セキュリティガイドライン」・'+IPA,threat:'ネットショップの改ざんによるカード情報の盗み取り・偽の注文'},
+ med:{data:'患者の診療情報・個人情報',sys:'電子カルテ・レセプトコンピュータ・予約システム',law:'厚生労働省「医療情報システムの安全管理に関するガイドライン」',threat:'ランサムウェアによる診療の停止・VPN機器の弱点を突いた侵入'},
+ care:{data:'利用者の健康情報・個人情報',sys:'介護記録システム・タブレット・請求ソフト',law:'個人情報保護委員会・厚生労働省「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」・'+IPA,threat:'タブレットの紛失・記録の誤送信・ランサムウェア'},
+ log:{data:'荷主・届け先の情報・運行データ',sys:'配車システム・車載端末・倉庫管理システム',law:IPA,threat:'取引先を装ったメール・システムの停止による配送の遅れ'},
+ re:{data:'顧客の個人情報・契約書・物件の鍵の情報',sys:'物件管理システム・電子契約・ポータルサイトの管理画面',law:IPA,threat:'なりすましによる振込先の変更・ポータルの管理画面の乗っ取り'},
+ food:{data:'予約客の個人情報・売上データ',sys:'POSレジ・予約台帳・キャッシュレス決済の端末',law:'「クレジットカード・セキュリティガイドライン」・'+IPA,threat:'SNSアカウントの乗っ取り・予約サイトのなりすまし'},
+ it:{data:'顧客のシステム・ソースコード・アカウント情報',sys:'開発環境・クラウド基盤・ソースコードの管理サービス',law:'経済産業省「サイバーセキュリティ経営ガイドライン」・'+IPA,threat:'ソースコードや認証情報の流出・クラウドの設定ミス'},
+ pro:{data:'顧問先の財務情報・マイナンバー',sys:'会計・給与ソフト・電子申告・ファイル共有',law:'個人情報保護委員会「特定個人情報の適正な取扱いに関するガイドライン（事業者編）」・'+IPA,threat:'顧問先を装ったメール・マイナンバーの誤送信'},
+ fin:{data:'顧客の個人情報・健康情報・契約情報',sys:'保険会社の代理店システム・顧客管理ソフト',law:'個人情報保護委員会・金融庁「金融分野における個人情報保護に関するガイドライン」',threat:'フィッシング・顧客情報の持ち出し'},
+ edu:{data:'受講者・保護者の個人情報・成績',sys:'学習管理システム・オンライン授業のツール',law:IPA,threat:'オンライン授業への不正な侵入・名簿の流出'},
+ common:{data:'顧客・取引先・従業員の情報',sys:'社内のパソコン・クラウドのメールやファイル共有',law:IPA,threat:'取引先を装ったメール・ランサムウェア'}};
+const SEC_SETS=[
+ {lv:'初級1',title:j=>j.ind+'の情報資産を守る基本の対策',goal:j=>j.data+'を守るための基本の対策を理解し、'+j.sys+'を安全に設定・管理できる',rows:j=>[
+  [j.ind+'で守るべき情報と、事故が起きたときの影響','守るべき情報（'+j.data+'）の整理、漏えい・改ざん・停止が起きたときの業務と取引への影響',1.5,j.ind+'の情報管理の業務'],
+  [j.ind+'で狙われやすい攻撃の手口と見分け方',j.threat+'などの事例、偽のメール・サイトの見分け方、被害の広がり方',1.5,'社内のIT・情報管理の業務',[j.ind+'の最新の攻撃事例の研究','公的機関が公表した事例をもとに、手口の変化と対策の当てはまりを検討する演習'],/セキュリティ|標的型|攻撃/],
+  ['アカウントと認証の管理','パスワードの方針、多要素認証の設定、退職者・異動者のアカウントの扱い',1.5,'社内のアカウント管理の業務'],
+  [j.sys+'の安全な設定','端末・クラウドの初期設定の見直し、更新プログラムの管理、紛失・盗難への備え',1.5,j.sys+'の管理の業務'],
+  ['生成AI・クラウドサービスを使うときの情報の扱い','入力してよい情報の基準、サービスの設定の確認、社内ルールの考え方',1.5,'クラウド・AIサービスの管理の業務'],
+  ['総合演習：演習用の事例で、事故の兆候を見つけて対応を判断する','演習用の事例をもとに、不審な兆候の発見・初動の判断・報告までを実施。講師が講評',2.5,j.ind+'の情報管理の業務の全体']]},
+ {lv:'初級2',title:j=>j.ind+'のセキュリティ対策を設計して運用する',goal:j=>j.law.split('・')[0]+'などに沿って、リスクを評価し、対策を設計・運用できる',rows:j=>[
+  ['情報資産の洗い出しとリスク評価の手法',j.data+'を例にした洗い出し、起こりやすさと影響の大きさによる評価',1.5,'情報管理の計画の業務',null,/リスク評価|リスクアセスメント/],
+  ['アクセス権限の設計と管理',j.sys+'の権限の分け方、必要な人だけが見られる設定、定期的な見直し',1.5,j.sys+'の管理の業務'],
+  ['バックアップと復旧の設計','ランサムウェアに備えたバックアップの取り方、復旧の手順と目標時間の決め方',1.5,'システムの保守の業務'],
+  ['取引先・委託先のセキュリティの確認','委託先に求める対策、確認の項目、契約で決めておくこと',1.5,'取引先の管理の業務'],
+  ['ガイドラインの読み方と対策への当てはめ',j.law+'の要点と、自社の規模に合った対策の選び方',1.5,j.ind+'の情報管理の業務'],
+  ['総合演習：演習用の会社モデルでリスク評価と対策の計画を作る','演習用の会社モデルをもとに、リスク評価表と対策の計画をまとめて発表。講師が講評',2.5,'情報管理の計画の業務の全体']]},
+ {lv:'中級',title:j=>j.ind+'のインシデント対応とセキュリティの監視',goal:j=>'事故の検知から報告までの対応を指揮し、'+j.sys+'の監視と改善を進められる',rows:j=>[
+  ['インシデント対応の流れ','検知・初動・封じ込め・復旧・報告の手順、関係者への連絡の順番',1.5,'事故対応の業務',null,/インシデント/],
+  ['ログの見方と不審な動きの見つけ方',j.sys+'のログの種類、確認する項目、不審な動きの見分け方',1.5,'システムの監視の業務'],
+  ['ネットワークとメールの防御の仕組み','ファイアウォール・UTM・メールの送信元確認（SPF・DKIM・DMARC）の仕組みと設定の確認',1.5,'ネットワークの管理の業務'],
+  ['生成AIを使ったセキュリティ業務の効率化','ログの要約、脆弱性情報の整理、注意喚起文の下書きにAIを使う手法と注意点',1.5,'セキュリティの運用の業務'],
+  ['個人情報が漏えいしたときの報告と連絡','個人情報保護委員会への報告と本人への通知の要件、'+j.data+'の場合の判断',1.5,j.ind+'の個人情報の管理の業務'],
+  ['総合演習：演習用のシナリオでインシデント対応の机上訓練を行う','演習用の攻撃シナリオをもとに、役割を分けて検知から報告までを机上で実施。講師が講評',2.5,'事故対応の業務の全体']]}];
+
+/* ===== テーマ3：宣伝マーケティング・顧客管理（BtoCの業種） =====
+   受講者は「集客・販促・顧客管理を担当する人」（パンフレットにも「営業企画：Webマーケティングの手法」が職務関連訓練の例として載っている）。
+   cust＝お客様、channel＝集客の経路、crm＝顧客データ、rule＝広告・表示のルール、kpi＝見る指標 */
+const MKT_IND={
+ ret:{cust:'来店客・ネットショップの購入者',channel:'Instagram・LINE公式アカウント・ネットショップ',crm:'会員・購買履歴',rule:'景品表示法・特定商取引法',kpi:'来店数・購入率・リピート率'},
+ food:{cust:'来店客',channel:'Instagram・Googleマップ・グルメサイト・LINE公式アカウント',crm:'予約・来店履歴',rule:'景品表示法・食品表示法（アレルゲンの表示など）',kpi:'予約数・来店頻度・客単価'},
+ re:{cust:'部屋や住まいを探す人',channel:'不動産ポータルサイト・自社サイト・SNS',crm:'問い合わせ・内見の履歴',rule:'不動産の表示に関する公正競争規約・宅地建物取引業法の広告のルール',kpi:'反響数・内見率・成約率'},
+ med:{cust:'患者さん・地域の住民',channel:'Googleマップ・医院のサイト・LINE公式アカウント',crm:'予約・受診の履歴',rule:'医療広告ガイドライン（医療法の広告規制）',kpi:'新患数・予約数・再診率'},
+ edu:{cust:'受講生・保護者',channel:'教室のサイト・SNS・LINE公式アカウント・チラシ',crm:'問い合わせ・体験・受講の履歴',rule:'景品表示法・特定商取引法（継続して提供するサービスのルール）',kpi:'問い合わせ数・体験からの入会率・継続率'},
+ fin:{cust:'個人のお客様',channel:'自社サイト・SNS・セミナー・LINE公式アカウント',crm:'面談・契約・更改の履歴',rule:'保険業法の募集のルール・金融サービス提供法',kpi:'問い合わせ数・面談数・継続率'}};
+const MKT_SETS=[
+ {lv:'初級1',title:j=>j.ind+'の集客と情報発信',goal:j=>j.channel.split('・')[0]+'などで、'+j.rule.split('・')[0]+'を守りながら、お客様に届く発信を企画・作成できる',rows:j=>[
+  [j.cust+'の行動と、デジタルでの集客の全体像',j.cust+'が知る・比べる・選ぶまでの流れ、'+j.channel+'の役割の違い',1.5,j.ind+'の集客の業務',null,/集客|マーケティング入門/],
+  ['発信の経路ごとの特徴と、発信内容の企画',j.channel+'の特徴、見せ方の違い、投稿の頻度と時間帯の考え方',1.5,'販促・情報発信の業務',[j.channel.split('・')[0]+'の運用の改善','投稿の結果の振り返り方、反応の良い発信の分析、改善の手順'],/SNS|インスタ/],
+  ['生成AIで告知文・投稿文を作る手法','目的と相手に合わせた文章の作成、'+j.rule+'に触れる表現の確認',1.5,'販促物の作成の業務'],
+  ['写真・画像の作り方と、権利・表示の注意点','伝わる写真の撮り方・加工、画像生成AIの使い方、著作権・肖像権と表示の注意点',1.5,'販促物の作成の業務'],
+  ['口コミ・レビューへの対応の考え方','口コミの読み取り方、返信の基本方針、返信文の作成と確認の手順',1.5,j.ind+'の顧客対応の業務'],
+  ['総合演習：演習用のモデルで1か月の発信の計画を作る','演習用の'+j.ind+'のモデルをもとに、1か月分の発信の企画と文案を作成。講師が講評',2.5,'販促の企画の業務の全体']]},
+ {lv:'初級2',title:j=>j.ind+'の顧客管理とリピートの仕組み',goal:j=>j.crm+'のデータを整理・分析し、お客様に合わせた配信とリピートの施策を設計できる',rows:j=>[
+  ['顧客データの集め方と管理の基本',j.crm+'の項目の決め方、データの整え方、個人情報保護法で守ること',1.5,'顧客管理の業務',null,/顧客管理|CRM/],
+  ['お客様の分け方と、来店・購買のデータ分析','頻度・最近の利用・金額による分け方、グループごとの特徴の読み取り',1.5,'顧客データの分析の業務'],
+  ['LINE公式アカウント・メールでの配信の設計','配信の対象の分け方、内容とタイミングの設計、配信を止める人への配慮',1.5,'販促の配信の業務',null,/LINE/],
+  ['リピート・紹介を増やす施策の設計','会員の仕組み・ポイント・クーポンの考え方、'+j.rule+'で注意すること',1.5,'販促の企画の業務'],
+  ['配信と施策の効果の測り方',j.kpi+'の見方、比べ方（ABテスト）、結果の報告のまとめ方',1.5,'販促の効果測定の業務'],
+  ['総合演習：演習用データで顧客を分析し、配信の計画を作る','演習用の顧客データをもとに、分析から配信の計画までを作成して発表。講師が講評',2.5,'顧客管理の業務の全体']]},
+ {lv:'中級',title:j=>j.ind+'のデータに基づく販促と自動化',goal:j=>'集客から再利用までのデータを組み合わせて分析し、広告と配信の自動化を設計できる',rows:j=>[
+  ['集客から再利用までの流れ（カスタマージャーニー）の設計',j.cust+'の行動の段階ごとに、接点・施策・指標を整理する手法',1.5,j.ind+'の販促の企画の業務'],
+  ['Web広告と検索対策（MEO・SEO）の仕組み','広告の種類と予算の考え方、地図検索・検索結果での見え方を良くする手法',1.5,'Web集客の業務',null,/広告|SEO|MEO/],
+  ['アクセス・予約・売上のデータを組み合わせた分析','複数のデータのつなぎ方、生成AIを使った集計と傾向の読み取り',1.5,'販促のデータ分析の業務'],
+  ['マーケティングの自動化の設計','予約・来店・購入のあとに自動で送る配信の設計、例外の扱いと確認の仕組み',1.5,'販促の配信の業務',null,/自動化/],
+  ['生成AIでお客様の声を分析する手法','アンケート・口コミの分類と要約、改善のテーマの見つけ方',1.5,'顧客の声の分析の業務'],
+  ['総合演習：演習用のシナリオで販促の年間計画と効果の測り方を作る','演習用のシナリオをもとに、年間の販促計画と効果の測り方をまとめて発表。講師が講評',2.5,'販促の企画の業務の全体']]}];
+
+/* テーマの一覧。ai は職種ごと、sec と mkt は業種ごと（受講者は担当者） */
+const CAT_TRACKS=[
+ {id:'ai',n:'生成AI活用',short:'生成AI',scope:'全業種・職種別',who:'各職種の担当者',sets:CAT_SETS,has:()=>true},
+ {id:'sec',n:'セキュリティ対策',short:'セキュリティ',scope:'全業種',who:'社内のIT・情報管理を担当する人',sets:SEC_SETS,has:ind=>!!SEC_IND[ind.id]},
+ {id:'mkt',n:'宣伝マーケティング・顧客管理',short:'マーケティング',scope:'BtoCの業種',who:'集客・販促・顧客管理を担当する人',sets:MKT_SETS,has:ind=>!!MKT_IND[ind.id]}];
+const catTrack=id=>CAT_TRACKS.find(t=>t.id===id)||CAT_TRACKS[0];
+/* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける。
+   tid＝テーマ（省略時は生成AI）。sec・mkt では ji は使わない */
+function catSet(ii,ji,si,past,tid){const ind=CAT_IND[ii],tr=catTrack(tid),st=tr.sets[si];past=past||[];
+ const j=tr.id==='ai'?ind.jobs[ji]:Object.assign({n:tr.who,who:tr.n+'の担当',ind:ind.n.replace(/（.*?）/,'')},tr.id==='sec'?SEC_IND[ind.id]:MKT_IND[ind.id]);
+ const rows=st.rows(j).map((r,x)=>{const by=r[5]&&past.find(p=>r[5].test(p)),k=(ROW_TASKS[tr.id][si][x]||[]);
+  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],k,swap:{from:r[0],by}};
+  return {t:r[0],c:r[1],h:r[2],rel:r[3],k,ov:by||null};});
+ return {lv:st.lv,si,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j,track:tr,tasks:[...new Set(rows.flatMap(r=>r.k))]};}
+
+/* ===== 絞り込み用のタグ =====
+   CAT_FUNCS＝職種のタグ（営業・経理など、業種をまたいで選ぶ）。JOB_FUNC＝職種名からタグへの対応。
+   CAT_TASKS＝業務内容のタグ。kw はお客様の要望の文章から業務内容を読み取るためのことば。
+   ROW_TASKS＝各セットの科目（上から6つ）が、どの業務内容に当たるか。 */
+const CAT_FUNCS=[
+ {id:'sales',n:'営業'},{id:'acc',n:'経理・財務'},{id:'hr',n:'人事・労務'},{id:'ga',n:'総務・事務'},
+ {id:'mk',n:'企画・マーケティング'},{id:'cs',n:'接客・販売・顧客対応'},{id:'ops',n:'現場・生産の管理'},
+ {id:'buy',n:'仕入・在庫・物流'},{id:'tech',n:'設計・技術・開発'},{id:'it',n:'情報システム・情報管理'},{id:'pro',n:'医療・介護・教育の専門職'}];
+const JOB_FUNC={
+ '施工管理':['ops'],'積算・見積':['sales','tech'],'設計（CAD・BIM）':['tech'],'工事事務':['ga','acc'],
+ '生産管理':['ops'],'品質管理':['ops'],'設備保全':['ops','tech'],'技術営業':['sales','tech'],
+ '店舗運営・販売':['cs'],'仕入・在庫管理（バイヤー）':['buy'],'EC運営':['mk','cs'],
+ '医療事務':['ga','cs'],'看護職':['pro'],'地域連携・相談員':['pro','cs'],
+ '介護職員':['pro'],'ケアマネジャー':['pro'],'生活相談員・施設事務':['ga','cs'],
+ '配車・運行管理':['ops'],'倉庫管理':['buy'],'物流事務':['ga','acc'],
+ '賃貸仲介':['sales','cs'],'物件管理':['cs'],'売買仲介':['sales'],
+ '飲食店の店舗運営':['cs','ops'],'宿泊のフロント・予約管理':['cs'],'商品企画・メニュー開発':['mk'],
+ 'システム開発エンジニア':['tech'],'ITサポート・ヘルプデスク':['it','cs'],'Webディレクター・マーケター':['mk'],
+ '会計・税務スタッフ':['acc'],'労務手続きスタッフ':['hr'],'保険代理店の営業':['sales'],
+ '講師・インストラクター':['pro'],'教務・事務':['ga'],
+ '営業':['sales'],'経理・財務':['acc'],'人事・労務':['hr'],'総務':['ga'],'マーケティング・広報':['mk'],'カスタマーサポート':['cs']};
+const TRACK_FUNC={sec:['it'],mkt:['mk']};
+const CAT_TASKS=[
+ {id:'doc',n:'書類・文書の作成',kw:/書類|文書|資料|メール|提案書|見積書|文章|下書き|案内文|契約書/},
+ {id:'data',n:'データの集計・分析',kw:/集計|分析|データ|数字|Excel|エクセル|売上|在庫|原価|グラフ/},
+ {id:'check',n:'照合・チェック',kw:/チェック|照合|ミス|間違|誤り|検査|点検|見直し|突き合わせ/},
+ {id:'media',n:'写真・画像・紙の書類の活用',kw:/写真|画像|スキャン|紙の|手書き|図面|PDF|読み取/},
+ {id:'meet',n:'会議・打合せの記録',kw:/会議|打合せ|打ち合わせ|議事録|朝礼|面談|音声|録音|文字起こし/},
+ {id:'report',n:'報告・記録のまとめ',kw:/報告|日報|週報|月報|記録|レポート/},
+ {id:'auto',n:'業務の自動化',kw:/自動|効率|時短|残業|手間|省力|工数|転記|繰り返し|エージェント/},
+ {id:'know',n:'社内の情報の検索・活用',kw:/マニュアル|検索|ナレッジ|引き継|引継|属人|ノウハウ|探す|過去の/},
+ {id:'sec',n:'情報セキュリティ・個人情報の管理',kw:/セキュリティ|漏えい|漏洩|ウイルス|パスワード|不正|ランサム|個人情報|サイバー|フィッシング|乗っ取|情報管理/},
+ {id:'pr',n:'集客・情報発信（SNS・広告）',kw:/集客|宣伝|SNS|インスタ|Instagram|広告|チラシ|発信|ホームページ|新規のお客|新規客|マーケティング|販促|PR/},
+ {id:'crm',n:'顧客管理・リピート',kw:/顧客管理|リピート|再来店|会員|LINE|ポイント|常連|顧客データ|メルマガ|CRM|顧客リスト|固定客/},
+ {id:'voc',n:'お客様の声・口コミへの対応',kw:/クレーム|口コミ|レビュー|アンケート|お客様の声|評判/}];
+const ROW_TASKS={
+ ai:[[['doc'],['doc'],['doc'],['doc','report'],['doc','check'],['doc']],
+     [['data'],['data'],['check'],['media'],['meet'],['report','data']],
+     [['auto'],['auto','report'],['know'],['auto'],['check'],['auto']]],
+ sec:[[['sec'],['sec'],['sec'],['sec'],['sec'],['sec']],
+      [['sec'],['sec'],['sec'],['sec'],['sec'],['sec']],
+      [['sec'],['sec','check'],['sec'],['sec','auto'],['sec'],['sec']]],
+ mkt:[[['pr'],['pr'],['pr','doc'],['pr','media'],['voc'],['pr']],
+      [['crm'],['crm','data'],['crm','pr'],['crm'],['data'],['crm','data']],
+      [['pr','crm'],['pr'],['data'],['auto','crm'],['voc'],['pr','data']]]};
+const catTask=id=>CAT_TASKS.find(t=>t.id===id);
+/* その業種で選べるテーマ */
+const catTracksFor=ii=>CAT_TRACKS.filter(t=>t.has(CAT_IND[ii]));
+/* 職種のタグ。sec・mkt は担当者向けなのでテーマで決まる */
+const catFuncs=(ii,ji,tid)=>tid&&tid!=='ai'?TRACK_FUNC[tid]:(JOB_FUNC[CAT_IND[ii].jobs[ji].n]||[]);
+/* 要望の文章から業務内容のタグを読み取る */
+const catNeeds=text=>CAT_TASKS.filter(t=>t.kw.test(text||'')).map(t=>t.id);
 /*CATALOG:END*/
 const IND_RE=[[/建設|工事|工務/,'con'],[/歯科|医療|クリニック|病院/,'med'],[/介護|福祉/,'care'],[/製造|印刷|工業/,'mfg'],[/運送|運輸|物流|倉庫/,'log'],[/不動産/,'re'],[/飲食|カフェ|宿泊|旅館|ホテル/,'food'],[/小売|卸売|商店/,'ret'],[/情報|ソフトウェア/,'it'],[/会計|税理士|社労士|社会保険労務士|法律/,'pro'],[/保険|金融/,'fin'],[/教育|学習|スクール/,'edu']];
 const indIdx=c=>{const r=IND_RE.find(x=>x[0].test(c.ind));const id=r?r[1]:'common';return CAT_IND.findIndex(x=>x.id===id);};
@@ -1081,10 +1218,12 @@ function layout1(rows,H,strict){const out=[];let day=0,used=H,clock=0,lunch=0;co
  return {sched:out,days:day};}
 function curBuild(){
  const k=S.cur,c=byId(k.cid),H=+k.perDay||5,past=curPast();let o;
- if(k.src==='series'){const st=catSet(k.ii,k.ji,k.si,past.map(p=>p.t));
+ if(k.src==='series'){const st=catSet(k.ii,k.ji,k.si,past.map(p=>p.t),k.tid),cn=c.ind.replace(/（.*?）/,''),gl=st.goal.replace(/る$/,'るようにする');
   o={rows:st.rows,title:st.lv+'「'+st.title+'」',job:st.job.n,ng:[],
    dropped:st.rows.filter(r=>r.swap).map(r=>({t:r.swap.from,by:r.swap.by,to:r.t})),ovs:st.rows.filter(r=>r.ov).map(r=>({t:r.t,by:r.ov})),
-   dx:'当社は'+c.ind.replace(/（.*?）/,'')+'を営んでいる。'+st.ind.dx+'ため、'+st.job.n+'を担当する従業員に、生成AIを使った業務の手法を3段階で習得させる。本訓練はその'+st.lv+'として、'+st.goal.replace(/られる$/,'られるようにする')+'ことを目的とする。'};}
+   dx:st.track.id==='sec'?'当社は'+cn+'を営んでいる。'+st.job.data+'を扱っており、'+st.job.sys+'の利用が進むなかで、デジタル化を安全に進めるための情報セキュリティ対策を担う人材の育成が必要である。そのため、社内のIT・情報管理を担当する従業員に、セキュリティ対策を3段階で習得させる。本訓練はその'+st.lv+'として、'+gl+'ことを目的とする。'
+    :st.track.id==='mkt'?'当社は'+cn+'を営んでいる。'+st.job.channel+'を使ったデジタルでの集客と、'+st.job.crm+'のデータを使った顧客管理を進めるため、集客・販促・顧客管理を担当する従業員に、デジタルマーケティングの手法を3段階で習得させる。本訓練はその'+st.lv+'として、'+gl+'ことを目的とする。'
+    :'当社は'+cn+'を営んでいる。'+st.ind.dx+'ため、'+st.job.n+'を担当する従業員に、生成AIを使った業務の手法を3段階で習得させる。本訓練はその'+st.lv+'として、'+gl+'ことを目的とする。'};}
  else{const T=+k.hours,con=/建設|工事|工務/.test(c.ind),tags=curTags();
   const ovIds={};past.forEach(p=>PAST_KW.forEach(r=>{if(r[0].test(p.t))ovIds[r[1]]={by:p};}));
   const pool=MODS.filter(m=>!m.ind||(m.ind==='con')===con);
@@ -1113,14 +1252,15 @@ function curChecks(r){const ser=r.src==='series',H=r.H;return [
  {ok:H<7,info:H>=7,t:'1日'+H+'時間・所定労働時間内での実施',p:'所定労働時間の外や所定休日に行った時間は、賃金助成の対象外です。'+(H>=7?'1日'+H+'時間の場合は、お客様の所定労働時間に収まるか確認してください。':'1日'+H+'時間なら、通常の勤務時間内に収まります。')},
  {ok:!r.dropped.length&&!r.ovs.length,adj:r.dropped.length&&!r.ovs.length,warn:r.ovs.length,t:'これまでの研修との重なり',p:(r.dropped.length?r.dropped.map(x=>'「'+x.t+'」は「'+x.by+'」と重なるため外し、'+(x.to?'「'+x.to+'」に差し替えました。':'応用の内容を選びました。')).join(''):'')+(r.ovs.length?r.ovs.map(x=>'「'+x.t+'」は「'+x.by+'」と重なる可能性があります。内容を確認してください。').join(''):'')+(!r.dropped.length&&!r.ovs.length?'重なる科目はありません。':'')}];}
 function curV(){const k=S.cur,c=byId(k.cid),tags=curTags(),r=k.res,ser=k.src==='series';
- const pastL=PAST[k.cid]||[],pastT=curPast().map(p=>p.t),ind=CAT_IND[k.ii],sets=[0,1,2].map(i=>catSet(k.ii,k.ji,i,pastT));
+ const pastL=PAST[k.cid]||[],pastT=curPast().map(p=>p.t),ind=CAT_IND[k.ii],trks=catTracksFor(k.ii),trk=catTrack(k.tid),sets=[0,1,2].map(i=>catSet(k.ii,k.ji,i,pastT,k.tid));
  const banner=cl.wish.sent&&!k.imported?`<div class="card banner"><span>${ic('chat','s')} <b>${esc(CO.name)}から研修のご要望が届いています。</b>お客様の画面で選んだ内容を取り込めます。</span><button class="btn p sm" data-act="curimport">取り込む</button></div>`:'';
  const T=ser?10:+k.hours,H=+k.perDay||5;
  const input=`<div class="card cur-in">
   <div class="seg"><button data-act="cursrc" data-v="wish" aria-pressed="${!ser}">要望から作る</button><button data-act="cursrc" data-v="series" aria-pressed="${ser}">業種・職種の3セットから</button></div>
   <div class="fld"><label for="curC">お客様</label><select id="curC" data-curc="1">${CASES.map(x=>`<option value="${x.id}" ${x.id===k.cid?'selected':''}>${esc(x.co)}</option>`).join('')}</select><span class="tiny">${esc(c.ind)}・従業員${total(c)}名</span></div>
   ${ser?`<div class="fld"><label for="curInd">業種</label><select id="curInd" data-curind="1">${CAT_IND.map((x,i)=>`<option value="${i}" ${i===k.ii?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>
-  <div class="fld"><label for="curJb">職種</label><select id="curJb" data-curjob="1">${ind.jobs.map((x,i)=>`<option value="${i}" ${i===k.ji?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${esc(ind.jobs[k.ji].who)}</span></div>
+  <div class="fld"><label for="curTid">テーマ</label><select id="curTid" data-curtid="1">${trks.map(x=>`<option value="${x.id}" ${x.id===trk.id?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${trks.length<3?'宣伝マーケティング・顧客管理は、BtoCの業種で選べます。':'助成の対象は、テーマをまたいで1人あたり年度3回までです。'}</span></div>
+  ${trk.id==='ai'?`<div class="fld"><label for="curJb">職種</label><select id="curJb" data-curjob="1">${ind.jobs.map((x,i)=>`<option value="${i}" ${i===k.ji?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${esc(ind.jobs[k.ji].who)}</span></div>`:`<div class="fld"><span class="lb">受講する人</span><p>${esc(trk.who)}</p><span class="tiny">${trk.id==='sec'?'全従業員向けの一般的な注意喚起は、職種を問わない共通の内容として対象外になるおそれがあります（表1②）。':'演習は演習用の題材で行います。自社の実際の投稿・広告をつくる時間は対象外です（表1④）。'}</span></div>`}
   <div class="fld"><span class="lb">つくるセット（1人あたり年度3回まで助成の対象）</span><div class="sets">${sets.map((x,i)=>`<button class="setb" data-act="curset" data-i="${i}" aria-pressed="${k.si===i}"><span class="chip ${i===2?'info':'brand'}">${x.lv}・10時間</span><b>${esc(x.title)}</b><span class="tiny">${esc(x.goal)}</span></button>`).join('')}</div><p class="tiny">3セットで年30時間。科目は互いに重ならないように組んでいます。</p></div>`
   :`<div class="fld"><label for="curJob">受講する人の職務</label><input type="text" id="curJob" data-bind="cur.job" value="${esc(k.job)}"></div>
   <div class="fld"><span class="lb">困っている業務・身につけたいこと</span><div class="chips">${NEEDS.map(x=>`<button class="pick" data-act="curtag" data-k="${x[0]}" aria-pressed="${!!tags[x[0]]}">${x[1]}</button>`).join('')}</div></div>
@@ -1453,9 +1593,10 @@ document.addEventListener('input',e=>{const t=e.target;
 document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset&&t.dataset.file!=null){A.upload({i:t.dataset.file});return;}
  if(t.dataset&&t.dataset.card){A.wiz({step:1});return;}
- if(t.dataset&&t.dataset.curind){Object.assign(S.cur,{ii:+t.value,ji:0,res:null});render();return;}
+ if(t.dataset&&t.dataset.curind){Object.assign(S.cur,{ii:+t.value,ji:0,res:null});if(!catTracksFor(S.cur.ii).some(x=>x.id===S.cur.tid))S.cur.tid='ai';render();return;}
+ if(t.dataset&&t.dataset.curtid){Object.assign(S.cur,{tid:t.value,res:null});render();return;}
  if(t.dataset&&t.dataset.curjob){Object.assign(S.cur,{ji:+t.value,res:null});render();return;}
- if(t.dataset&&t.dataset.curc){Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(t.value))),ji:0,cid:t.value,past:{},extra:[],out:{},res:null,imported:false});(PAST[t.value]||[]).forEach(p=>S.cur.past[p.id]=true);render();return;}
+ if(t.dataset&&t.dataset.curc){Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(t.value))),ji:0,cid:t.value,tid:'ai',past:{},extra:[],out:{},res:null,imported:false});(PAST[t.value]||[]).forEach(p=>S.cur.past[p.id]=true);render();return;}
  if(t.dataset&&t.dataset.curpast){S.cur.past[t.dataset.curpast]=t.checked;S.cur.res=null;render();return;}
  if(t.dataset&&t.dataset.srsel){byId(t.dataset.srsel).sr=t.value;render();toast('担当の社労士事務所を変更しました');return;}
  if(t.dataset&&t.dataset.re&&t.type!=='checkbox'){const id=t.id;render();const n=document.getElementById(id);if(n&&n.focus){n.focus();}return;}
