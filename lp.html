@@ -50,6 +50,16 @@ section{padding-block:56px}
 .hero .facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:13.5px}
 .hero .facts b{font-family:var(--num);font-size:22px;color:var(--ink);margin-right:4px}
 .cta{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:var(--on);border:0;border-radius:10px;padding:12px 22px;font-weight:700;text-decoration:none;margin-top:24px}
+/* banner back to the application-management app */
+.appbn{display:flex;align-items:center;gap:14px;margin-top:18px;max-width:540px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;text-decoration:none;color:var(--body)}
+.appbn:hover{border-color:var(--brand)}
+.appbn .ico{flex:none;width:44px;height:44px;border-radius:11px;background:var(--brand);display:grid;place-items:center}
+.appbn .ico svg{width:28px;height:28px;fill:var(--on)}
+.appbn .tx{display:flex;flex-direction:column;min-width:0}
+.appbn small{font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--brand)}
+.appbn b{font-family:var(--display);font-size:17px;color:var(--ink);line-height:1.35}
+.appbn .d{font-size:12.5px;color:var(--muted);line-height:1.5}
+.appbn .go{margin-left:auto;font-size:20px;font-weight:700;color:var(--brand)}
 /* 30h bar */
 .year{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:14px}
 .year h2{font-size:15px}
@@ -224,6 +234,7 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
    <p class="lead">テーマは、生成AI活用・セキュリティ対策・宣伝マーケティングの3つ。1回10時間の研修を、初級1・初級2・中級の3セットで。助成の対象は1人あたり年度3回までなので、3セットで1年分を無駄なく使えます。カリキュラムは、令和8年8月3日以降に提出する計画届の要項に沿って組んでいます。</p>
    <div class="facts" id="facts"></div>
    <a class="cta" href="#plan">研修プランを作る</a><a class="cta alt" href="#menu">業種・職種別のメニューを見る</a>
+   <a class="appbn" data-app href="https://t-suzuki2021.github.io/josei-concierge-demo/#staff" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 43a17 17 0 0 1 34 0z"/><rect x="11" y="45" width="42" height="6" rx="3"/><circle cx="32" cy="21.5" r="4"/><rect x="30.5" y="23" width="3" height="5"/></svg></span><span class="tx"><small>助成金の申請を管理する画面</small><b>申請管理メニュー</b><span class="d">人材開発支援助成金コンシェルジュ（試作）に戻る</span></span><span class="go" aria-hidden="true">→</span></a>
   </div>
   <div class="year" aria-label="1年間の研修の組み立て">
    <h2>1人あたり1年度の組み立て（生成AI活用の例）</h2>
@@ -360,7 +371,7 @@ footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
  </div>
 </section>
 </main>
-<footer><div class="wrap">株式会社スマートコンテンツ ｜ 業種・職種別 AI研修メニュー（たたき台）</div></footer>
+<footer><div class="wrap">株式会社スマートコンテンツ ｜ 業種・職種別 AI研修メニュー（たたき台） ｜ <a data-app href="https://t-suzuki2021.github.io/josei-concierge-demo/#staff" target="_blank" rel="noopener">申請管理メニューに戻る</a></div></footer>
 
 <script>
 (function(){
@@ -712,6 +723,8 @@ fi('pform').addEventListener('change',e=>{const t=e.target;
  else if(t.id==='pJob')P.job=t.value;
  else if(t.dataset.cand){const k=t.dataset.cand,i=P.pick.indexOf(k);P.manual=true;if(t.checked&&i<0&&P.pick.length<3)P.pick.push(k);if(!t.checked&&i>-1)P.pick.splice(i,1);}
  update();});
+/* on the public site the app is a sibling page, so go back in the same tab */
+if(/(^|.)github.io$/.test(location.hostname))document.querySelectorAll('[data-app]').forEach(a=>a.removeAttribute('target'));
 chips();list();indOpts();jobOpts();update();
 })();
 </script>
