@@ -167,6 +167,15 @@ button.tstep:hover .tname{text-decoration:underline}
 .side button{display:flex;align-items:center;gap:10px;border:0;background:transparent;border-radius:9px;padding:10px 12px;font-weight:700;font-size:13.5px;color:var(--body);text-align:left;white-space:nowrap}
 .side button[aria-current=true]{background:var(--brand-pale);color:var(--brand)}
 .side .cnt{margin-left:auto;background:var(--warn);color:var(--surface);border-radius:999px;font-size:11px;padding:0 7px;font-family:var(--num)}
+.acct{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin-bottom:18px}
+.acct .av{flex:none;width:36px;height:36px;border-radius:50%;background:var(--brand-pale);color:var(--brand);display:grid;place-items:center}
+.acct .fld{flex:none;min-width:230px}
+.acct p{flex:1;min-width:240px;font-size:13px;margin:0}
+.acct p .tiny{display:block;margin-top:2px}
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.roles>div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.roles b{color:var(--fg);font-size:14px}
+.own{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--muted)}
 .side .new{margin-bottom:12px;justify-content:center;background:var(--brand);color:var(--on-brand)}
 .side .bn{margin-top:14px;display:flex;flex-direction:column;gap:3px;border-radius:12px;padding:12px 14px;background:var(--brand);color:var(--on-brand);text-decoration:none;white-space:normal;line-height:1.45}
 .side .bn:hover{filter:brightness(1.08)}
@@ -467,7 +476,7 @@ button.tstep:hover .tname{text-decoration:underline}
   .tname{min-width:6.5em}
 }
 @media (max-width:640px){
-  .vals,.opps,.lk,.tpl,.hgrid,.pgrid{grid-template-columns:minmax(0,1fr)} .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vals,.opps,.lk,.tpl,.hgrid,.pgrid,.roles{grid-template-columns:minmax(0,1fr)} .acct .fld{flex:1;min-width:0} .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
   .td{grid-template-columns:38px minmax(0,1fr)} .td-a{grid-column:1/-1;justify-content:flex-end}
   .dcard{grid-template-columns:minmax(0,1fr)} .thumb{display:none}
   .sdet{grid-template-columns:minmax(0,1fr)} .sdet>div{border-right:0;border-bottom:1px solid var(--line-2)} .sdet>div:last-child{border-bottom:0}
@@ -610,7 +619,7 @@ const BRANDS=[
 const TENANTS={
  smacon:{name:'スマートコンテンツ',staff:'山田',sr:'提携先の社会保険労務士事務所',brand:0},
  other:{name:'サンプル社会保険労務士事務所',staff:'田中',sr:'自事務所',brand:1}};
-const S={view:'overview',staff:'today',caseId:null,tab:'flow',mode:'board',filter:'all',q:'',done:{},block:null,modal:null,
+const S={view:'overview',staff:'today',acct:'s1',own:'all',caseId:null,tab:'flow',mode:'board',filter:'all',q:'',done:{},block:null,modal:null,
  t:Object.assign({},TENANTS.smacon),
  calc:{n:5,h:12,fee:200000,course:'reskill'},
  client:{screen:'home',docs:['none','none','none','auto'],ans:{},sent:false,fixes:{},editing:null,help:null,agree:false,planOk:false},
@@ -919,6 +928,15 @@ const CASES=[
 const MIDORI=CASES[0];
 CASES.forEach((c,i)=>{c.sr=[0,2,3].indexOf(i)>-1?'p1':'p2';});
 const byId=id=>CASES.find(c=>c.id===id);
+/* 申請担当とアカウント。s1 は設定の「担当者名」と同じ人。S.acct が 'admin' のときは管理アカウントで、全担当の案件が見える */
+const STAFFS=[{id:'s1'},{id:'s2',n:'佐藤'},{id:'s3',n:'中村'}];
+['s1','s1','s1','s2','s2','s3','s3','s1'].forEach((o,i)=>{CASES[i].owner=o;});
+const isAdmin=()=>S.acct==='admin';
+const staffNm=id=>{const x=STAFFS.find(v=>v.id===id);return x?(x.n||S.t.staff.replace(/（.*?）/,'')):'未定';};
+const ownerNm=c=>staffNm(c.owner);
+const meId=()=>isAdmin()?'s1':S.acct;
+const VIS=()=>isAdmin()?CASES:CASES.filter(c=>c.owner===S.acct);
+const canSee=id=>VIS().some(c=>c.id===id);
 const total=c=>c.emp[0]+c.emp[1]+c.emp[2];
 const sei=c=>c.rep.split(' ')[0];
 const staffShort=()=>S.t.staff.replace(/（.*?）/,'');
@@ -986,8 +1004,8 @@ const pipe=st=>'<span class="pipe">'+SNAME.map((_,i)=>`<i class="${i<st?'d':i===
 function tline(c,clickable){const stg=STG(c);return `<div class="tline" role="list">${SNAME.map((n,i)=>{const cls=i<c.stage?'d':i===c.stage?'c':'';const tag=clickable?'button':'div';
  return `<${tag} class="tstep ${cls}" role="listitem" ${clickable?`data-act="stage" data-id="${c.id}" data-i="${i}" aria-label="${n}の説明"`:''}><span class="tdot">${i<c.stage?ic('check','s'):i+1}</span><span class="tname">${n}</span><span class="tdate">${stg[i].short}</span>${i===c.stage?'<span class="here">いまここ</span>':''}</${tag}>`;}).join('')}</div>`;}
 function nudgeText(c){const m=c.miss.length?c.miss.map(s=>'・'+s).join('\n'):'・（不足はありません）';const n=nextDue(c);
- return `${sei(c)}様\n\nお世話になっております。${S.t.name}の${staffShort()}です。\n人材開発支援助成金の手続きで、あと下記だけお願いできますでしょうか。\n\n${m}\n\n下のリンクから、スマホで撮影してアップしていただくだけで結構です。\nhttps://josei.example/r/${c.id}-XXXX\n\n${n&&c.stage>0?`※ ${n.label}は ${fmt(n.d)} です。過ぎると助成の対象外になるため、お早めにお願いいたします。\n\n`:''}ご不明な点は、このLINEにそのままご返信ください。\nよろしくお願いいたします。`;}
-function offerText(o){const c=byId(o.cid);return `${sei(c)}様\n\nいつもお世話になっております。${S.t.name}の${staffShort()}です。\n\n${o.msg}\n\n15分ほどオンラインでご説明できます。ご都合のよい日時を2〜3ついただけますでしょうか。\n\nよろしくお願いいたします。`;}
+ return `${sei(c)}様\n\nお世話になっております。${S.t.name}の${ownerNm(c)}です。\n人材開発支援助成金の手続きで、あと下記だけお願いできますでしょうか。\n\n${m}\n\n下のリンクから、スマホで撮影してアップしていただくだけで結構です。\nhttps://josei.example/r/${c.id}-XXXX\n\n${n&&c.stage>0?`※ ${n.label}は ${fmt(n.d)} です。過ぎると助成の対象外になるため、お早めにお願いいたします。\n\n`:''}ご不明な点は、このLINEにそのままご返信ください。\nよろしくお願いいたします。`;}
+function offerText(o){const c=byId(o.cid);return `${sei(c)}様\n\nいつもお世話になっております。${S.t.name}の${ownerNm(c)}です。\n\n${o.msg}\n\n15分ほどオンラインでご説明できます。ご都合のよい日時を2〜3ついただけますでしょうか。\n\nよろしくお願いいたします。`;}
 
 /* ================= OVERVIEW ================= */
 function overview(){
@@ -1024,7 +1042,7 @@ function overview(){
   <h2>ほかの事業者でも、そのまま使える設計</h2>
   <p class="lead">社労士事務所、研修会社、ITベンダーのどこが使っても成り立つよう、設定で差し替えられるようにしています。右上の「表示ブランド」で、社労士事務所が使った場合の見え方を確認できます。</p>
   <div class="three">
-   <div class="card"><h3>ブランドを差し替える</h3><p>社名・色・担当者名を設定するだけで、お客様の画面が自社の名前になります。</p></div>
+   <div class="card"><h3>ブランドを差し替える</h3><p>社名・色・担当者名を設定するだけで、お客様の画面が自社の名前になります。申請担当ごとのアカウントと、全員分を見られる管理アカウントを分けられます。</p></div>
    <div class="card"><h3>コースごとにテンプレート化</h3><p>リスキリング支援、人材育成支援、人への投資促進など、コースごとに書類と質問のセットを切り替えます。</p></div>
    <div class="card"><h3>研修の記録とつなぐ</h3><p>研修会社の受講記録や、勤怠・給与のデータを取り込み、毎月の書類集めを減らします。</p></div>
   </div>
@@ -1036,7 +1054,7 @@ function overview(){
 
 /* ================= STAFF ================= */
 // メニューの定義。操作マニュアルもこの定義から作るので、画面を足すときはここに足す
-const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
+const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['team','user','担当者',1],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
 const CTABS=[['flow','流れとチェック','7つの段階のどこにいるかと、いまの段階でやること・期限を確認します。段階を押すと、必要な情報と期限が開きます。'],
  ['docs','書類とAIチェック','お客様から届いた書類と、書類どうしをAIで照合した結果を確認します。食い違いがあれば、直し方が出ます。'],
  ['calc','助成額の試算','受講者数・訓練時間・研修費用から、助成額の見込みを計算します。'],
@@ -1044,23 +1062,39 @@ const CTABS=[['flow','流れとチェック','7つの段階のどこにいるか
  ['log','やりとり','お客様・労働局とのやりとりと、自動で行った処理の記録です。'],
  ['offer','提案','このお客様に次に提案できる内容と、提案メモの作成です。']];
 function staff(){
- const left=TODAY().filter(a=>!S.done[a.id]).length;
- const nav=SNAV;
- const body=S.caseId?caseDetail(byId(S.caseId)):({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
- return `<div class="wrap st"><aside class="side" aria-label="スタッフ画面のメニュー">
+ const left=TODAY().filter(a=>!S.done[a.id]&&canSee(a.cid)).length;
+ const nav=SNAV.filter(n=>!n[3]||isAdmin());
+ if(S.staff==='team'&&!isAdmin())S.staff='today';
+ if(S.caseId&&!canSee(S.caseId))S.caseId=null;
+ const none=()=>`<div class="ph"><div><h1>カリキュラム作成</h1></div></div><div class="card empty"><p><b>担当するお客様が、まだありません。</b></p><p>管理アカウントの「担当者」の画面で、お客様を割り当ててください。</p></div>`;
+ const body=S.caseId?caseDetail(byId(S.caseId)):S.staff==='cur'&&!VIS().length?none():({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,team:teamV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
+ return acctBar()+`<div class="wrap st"><aside class="side" aria-label="スタッフ画面のメニュー">
   <button class="new" data-act="newcase">${ic('plus')}新しい案件</button>
   ${nav.map(n=>`<button data-act="snav" data-s="${n[0]}" aria-current="${S.caseId?n[0]==='cases':S.staff===n[0]}">${ic(n[1])}${n[2]}${n[0]==='today'&&left?`<span class="cnt">${left}</span>`:''}</button>`).join('')}
   <a class="bn" href="https://t-suzuki2021.github.io/josei-concierge-demo/lp.html" target="_blank" rel="noopener" title="業種・職種別の研修メニューを、新しいタブで開きます"><small>提案に使えるページ</small><b><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="3" y="13" width="5" height="8" rx="1"/><rect x="9.5" y="8" width="5" height="13" rx="1"/><rect x="16" y="3" width="5" height="18" rx="1"/></svg>研修メニュー</b><span>業種・職種別のメニューと、研修プラン作成ツールを開く →</span></a>
  </aside><div class="main">${body}</div></div>`;}
 
+function acctBar(){const n=VIS().length;
+ return `<div class="wrap"><div class="acct"><span class="av">${ic('user')}</span>
+  <div class="fld"><label for="acctSel">アカウント</label><select id="acctSel" data-acct="1"><optgroup label="申請担当（自分の担当のお客様だけ）">${STAFFS.map(x=>`<option value="${x.id}" ${S.acct===x.id?'selected':''}>${esc(staffNm(x.id))}（申請担当）</option>`).join('')}</optgroup><optgroup label="管理（全員分）"><option value="admin" ${isAdmin()?'selected':''}>管理者（全担当を表示）</option></optgroup></select></div>
+  <p>${isAdmin()?`<span class="chip brand">管理アカウント</span> 全担当のお客様 ${n}社を表示しています。担当の変更と、担当者の追加ができます。`:`<span class="chip mute">申請担当のアカウント</span> ${n?esc(staffNm(S.acct))+"さんが担当するお客様 "+n+"社だけを表示しています。":esc(staffNm(S.acct))+"さんが担当するお客様は、まだありません。"}`}<span class="tiny">試作のため、ここで切り替えます。実際の画面では、ログインしたアカウントで決まります。</span></p></div></div>`;}
+function teamV(){const near=c=>{const n=nextDue(c);return n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;},todo=TODAY().filter(a=>!S.done[a.id]);
+ return `<div class="ph"><div><h1>担当者</h1><p class="sub">申請担当ごとの担当件数と期限を確認し、お客様の担当を変更できます。この画面は、管理アカウントだけに表示されます。</p></div></div>
+ <div class="pgrid">${STAFFS.map(x=>{const cs=CASES.filter(c=>c.owner===x.id),sum=cs.reduce((a,c)=>{const e=est(c);return a+(e?e.all:0);},0);
+  return `<article class="card pc"><div class="h"><div><h3>${esc(staffNm(x.id))}</h3><p class="tiny">申請担当のアカウント</p></div><button class="btn o sm" data-act="asacct" data-id="${x.id}">この担当の画面を見る</button></div>
+   <dl class="kv"><dt>担当のお客様</dt><dd>${cs.length}社${cs.length?'（'+cs.map(c=>esc(c.co.replace(/株式会社|有限会社/g,''))).join('、')+'）':''}</dd><dt>今日やること</dt><dd>${todo.filter(a=>cs.some(c=>c.id===a.cid)).length}件</dd><dt>期限まで14日以内</dt><dd>${cs.filter(near).length}件</dd><dt>助成額の見込み</dt><dd>${sum?man(sum):'—'}</dd></dl></article>`;}).join('')}</div>
+ <div class="card pad" style="display:flex;flex-direction:column;gap:10px"><h2 style="font-size:15px">担当者を追加する</h2><div class="addp" style="grid-template-columns:minmax(0,320px) auto;justify-content:start"><div class="fld"><label for="nsN">担当者名</label><input type="text" id="nsN" placeholder="例）木村"></div><button class="btn p sm" data-act="addstaff">${ic('plus','s')}追加する</button></div><p class="tiny">追加すると、申請担当のアカウントが1つ増えます。下の表で、担当するお客様を割り当ててください。</p></div>
+ <h2 style="font-size:16px;margin-top:6px">お客様ごとの申請担当</h2>
+ <div class="card tscroll"><table style="min-width:700px"><thead><tr><th>会社</th><th>段階</th><th>次の期限</th><th>誰の番</th><th>申請担当</th></tr></thead><tbody>${CASES.map(c=>{const n=nextDue(c);return `<tr><td><b>${esc(c.co)}</b></td><td>${SNAME[c.stage]}</td><td class="num">${n?fmt(n.d):'—'}</td><td>${waitChip(c)}</td><td>${ownSel(c)}</td></tr>`;}).join('')}</tbody></table></div>`;}
+const ownSel=c=>`<select data-ownsel="${c.id}" aria-label="${esc(c.co)}の申請担当">${STAFFS.map(x=>`<option value="${x.id}" ${c.owner===x.id?'selected':''}>${esc(staffNm(x.id))}</option>`).join('')}</select>`;
 function todayV(){
- const items=TODAY().filter(a=>!S.done[a.id]);
- const counts=SNAME.map((_,i)=>CASES.filter(c=>c.stage===i).length),mx=Math.max.apply(null,counts)||1;
- const dl=CASES.map(c=>({c,n:nextDue(c)})).filter(x=>x.n&&x.c.stage>=1&&x.c.stage!==3).sort((a,b)=>a.n.d-b.n.d).slice(0,4);
- const auto=['訓練日から、計画届と支給申請の期限を計算（8件）','研修の受講記録を取り込み（2社）','出勤簿と受講記録を突き合わせ（2社）','カリキュラムの対象外の内容をチェック（1件）','労働局のメールを要約して案件に記録（1件）'];
- return `<div class="ph"><div><h1>${esc(staffShort())}さん、今日やることは${items.length}件です</h1><p class="sub">期限の近い順に並んでいます。上から片づければ、抜け漏れはありません。</p></div></div>
+ const items=TODAY().filter(a=>!S.done[a.id]&&canSee(a.cid));
+ const counts=SNAME.map((_,i)=>VIS().filter(c=>c.stage===i).length),mx=Math.max.apply(null,counts)||1;
+ const dl=VIS().map(c=>({c,n:nextDue(c)})).filter(x=>x.n&&x.c.stage>=1&&x.c.stage!==3).sort((a,b)=>a.n.d-b.n.d).slice(0,4);
+ const auto=['訓練日から、計画届と支給申請の期限を計算（'+VIS().length+'件）','研修の受講記録を取り込み（2社）','出勤簿と受講記録を突き合わせ（2社）','カリキュラムの対象外の内容をチェック（1件）','労働局のメールを要約して案件に記録（1件）'];
+ return `<div class="ph"><div><h1>${isAdmin()?'全担当の今日やることは':esc(staffNm(S.acct))+'さん、今日やることは'}${items.length}件です</h1><p class="sub">期限の近い順に並んでいます。上から片づければ、抜け漏れはありません。</p></div></div>
  <div class="cols"><div class="card todo">${items.length?items.map(a=>{const k=TKIND[a.type],c=byId(a.cid);return `<div class="td"><span class="td-ic ${k[1]}">${ic(k[0],'l')}</span>
-   <div><p class="td-k"><span>${k[2]}</span><span>${esc(c.co)}</span><span>${SNAME[c.stage]}</span></p><p class="td-t">${a.title}</p><p class="td-d">${a.desc}</p></div>
+   <div><p class="td-k"><span>${k[2]}</span><span>${esc(c.co)}</span><span>${SNAME[c.stage]}</span>${isAdmin()?`<span>担当：${esc(ownerNm(c))}</span>`:''}</p><p class="td-t">${a.title}</p><p class="td-d">${a.desc}</p></div>
    <div class="td-a"><button class="btn p sm" data-act="todo" data-a="${a.id}">${a.btn}</button><button class="done-b" data-act="tdone" data-a="${a.id}" aria-label="済みにする" title="済みにする">${ic('check')}</button></div></div>`;}).join('')
    :`<div class="empty"><p><b>今日やることは、すべて終わりました。</b></p><p>新しい動きがあれば、ここに出ます。</p></div>`}</div>
   <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
@@ -1069,18 +1103,18 @@ function todayV(){
    <div class="card pad sidecard"><h3>今日、自動で済んだこと</h3><ul class="auto">${auto.map(a=>`<li>${ic('check','s')}<span>${a}</span></li>`).join('')}</ul></div>
   </div></div>`;}
 
-function filtered(){return CASES.filter(c=>{const n=nextDue(c);const near=n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;
+function filtered(){return VIS().filter(c=>{if(isAdmin()&&S.own!=='all'&&c.owner!==S.own)return false;const n=nextDue(c);const near=n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;
  return (S.filter==='all'||(S.filter==='client'&&c.wait==='client')||(S.filter==='us'&&c.wait==='us')||(S.filter==='exp'&&near))&&(!S.q||c.co.indexOf(S.q)>-1);});}
 function caseList(){const list=filtered();
  if(!list.length)return `<div class="card empty">条件に合う案件はありません。</div>`;
- if(S.mode==='board')return `<div class="board">${SNAME.map((s,i)=>{const cs=list.filter(c=>c.stage===i);return `<div class="kcol"><h3><span>${s}</span><span class="num">${cs.length}</span></h3>${cs.map(c=>`<button class="kc" data-act="open" data-id="${c.id}"><b>${esc(c.co)}</b>${waitChip(c)}<span class="kc-m">${COURSE(c.course).short}・${c.people}名</span>${c.miss.length?`<span class="kc-x">不足：${esc(missShort(c))}</span>`:''}${dueChip(c)}</button>`).join('')}</div>`;}).join('')}</div>`;
- return `<div class="card tscroll"><table style="min-width:860px"><thead><tr><th>会社</th><th>段階</th><th>誰の番</th><th>コース</th><th>受講者</th><th>不足</th><th>次の期限</th><th>更新</th></tr></thead><tbody>${list.map(c=>{const n=nextDue(c);return `<tr class="row" data-act="open" data-id="${c.id}"><td><b>${esc(c.co)}</b></td><td>${pipe(c.stage)}</td><td>${waitChip(c)}</td><td>${COURSE(c.course).short}</td><td class="num">${c.people}名</td><td>${c.miss.length?`<span class="kc-x">${esc(missShort(c))}</span>`:'<span class="chip ok">なし</span>'}</td><td class="num">${n?n.label+' '+fmt(n.d):'—'}</td><td class="tiny">${c.upd}</td></tr>`;}).join('')}</tbody></table></div>`;}
+ if(S.mode==='board')return `<div class="board">${SNAME.map((s,i)=>{const cs=list.filter(c=>c.stage===i);return `<div class="kcol"><h3><span>${s}</span><span class="num">${cs.length}</span></h3>${cs.map(c=>`<button class="kc" data-act="open" data-id="${c.id}"><b>${esc(c.co)}</b>${waitChip(c)}<span class="kc-m">${COURSE(c.course).short}・${c.people}名${isAdmin()?'・担当：'+esc(ownerNm(c)):''}</span>${c.miss.length?`<span class="kc-x">不足：${esc(missShort(c))}</span>`:''}${dueChip(c)}</button>`).join('')}</div>`;}).join('')}</div>`;
+ return `<div class="card tscroll"><table style="min-width:860px"><thead><tr><th>会社</th><th>申請担当</th><th>段階</th><th>誰の番</th><th>コース</th><th>受講者</th><th>不足</th><th>次の期限</th><th>更新</th></tr></thead><tbody>${list.map(c=>{const n=nextDue(c);return `<tr class="row" data-act="open" data-id="${c.id}"><td><b>${esc(c.co)}</b></td><td>${esc(ownerNm(c))}</td><td>${pipe(c.stage)}</td><td>${waitChip(c)}</td><td>${COURSE(c.course).short}</td><td class="num">${c.people}名</td><td>${c.miss.length?`<span class="kc-x">${esc(missShort(c))}</span>`:'<span class="chip ok">なし</span>'}</td><td class="num">${n?n.label+' '+fmt(n.d):'—'}</td><td class="tiny">${c.upd}</td></tr>`;}).join('')}</tbody></table></div>`;}
 function casesV(){
  const near=c=>{const n=nextDue(c);return n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;};
- const tiles=[['all','進行中の案件',CASES.filter(c=>c.stage<6).length,''],['client','お客様待ち',CASES.filter(c=>c.wait==='client').length,''],['us','自社の対応',CASES.filter(c=>c.wait==='us').length,''],['exp','期限まで14日以内',CASES.filter(near).length,'w']];
- return `<div class="ph"><div><h1>案件</h1><p class="sub">カードを押すと、全体の流れと、その段階でやることを確認できます。</p></div></div>
+ const tiles=[['all','進行中の案件',VIS().filter(c=>c.stage<6).length,''],['client','お客様待ち',VIS().filter(c=>c.wait==='client').length,''],['us','自社の対応',VIS().filter(c=>c.wait==='us').length,''],['exp','期限まで14日以内',VIS().filter(near).length,'w']];
+ return `<div class="ph"><div><h1>${isAdmin()?'案件（全担当）':'案件'}</h1><p class="sub">カードを押すと、全体の流れと、その段階でやることを確認できます。</p></div></div>
  <div class="tiles">${tiles.map(t=>`<button class="tile ${t[3]}" data-act="filter" data-f="${t[0]}" aria-pressed="${S.filter===t[0]}"><span class="l">${t[1]}</span><span class="n num">${t[2]}</span></button>`).join('')}</div>
- <div class="bar"><input type="search" id="caseQ" placeholder="会社名でさがす" value="${esc(S.q)}" aria-label="会社名でさがす">
+ <div class="bar"><input type="search" id="caseQ" placeholder="会社名でさがす" value="${esc(S.q)}" aria-label="会社名でさがす">${isAdmin()?`<select id="ownF" data-ownf="1" aria-label="申請担当で絞り込む"><option value="all">すべての担当</option>${STAFFS.map(x=>`<option value="${x.id}" ${S.own===x.id?'selected':''}>担当：${esc(staffNm(x.id))}</option>`).join('')}</select>`:''}
   <div class="seg2"><button data-act="mode" data-m="board" aria-pressed="${S.mode==='board'}">ボード</button><button data-act="mode" data-m="list" aria-pressed="${S.mode==='list'}">一覧</button></div></div>
  <div id="caseList">${caseList()}</div>`;}
 
@@ -1091,8 +1125,8 @@ function caseDetail(c){
  const tabs=CTABS;
  const body=({flow:tabFlow,docs:tabDocs,calc:tabCalc,apply:tabApply,log:tabLog,offer:tabOffer})[S.tab](c);
  return `<button class="lnk back" data-act="closecase">${ic('back','s')}案件にもどる</button>
- <div class="ph"><div><h1>${esc(c.co)}</h1><p class="sub">${esc(c.ind)}・従業員${total(c)}名・${COURSE(c.course).short}・${esc(c.train)}（${c.hours}時間×${c.people}名）　${waitChip(c)}</p></div>
-  <div class="r"><button class="btn o sm" data-act="nudge" data-id="${c.id}">${ic('chat','s')}催促文をつくる</button>${c.stage<6?`<button class="btn p sm" data-act="advance" data-id="${c.id}">次の段階へ：${SNAME[c.stage+1]}</button>`:''}</div></div>
+ <div class="ph"><div><h1>${esc(c.co)}</h1><p class="sub">${esc(c.ind)}・従業員${total(c)}名・${COURSE(c.course).short}・${esc(c.train)}（${c.hours}時間×${c.people}名）・申請担当：${esc(ownerNm(c))}　${waitChip(c)}</p></div>
+  <div class="r">${isAdmin()?`<label class="own">申請担当 ${ownSel(c)}</label>`:''}<button class="btn o sm" data-act="nudge" data-id="${c.id}">${ic('chat','s')}催促文をつくる</button>${c.stage<6?`<button class="btn p sm" data-act="advance" data-id="${c.id}">次の段階へ：${SNAME[c.stage+1]}</button>`:''}</div></div>
  ${stageCard(c)}
  ${S.block===c.id?`<div class="card blocked">まだ進められません。残っているもの：${esc(c.miss.join('・'))}</div>`:''}
  <div class="tabs" role="tablist">${tabs.map(t=>`<button role="tab" data-act="tab" data-t="${t[0]}" aria-selected="${S.tab===t[0]}">${t[1]}</button>`).join('')}</div>
@@ -1162,9 +1196,9 @@ function crmV(){
  return `<div class="ph"><div><h1>顧客・提案</h1><p class="sub">研修の内容・受講者数・助成額が、そのまま顧客台帳になります。提案のきっかけは自動で見つけます。</p></div></div>
  <div class="card note am">${ic('clock','l')}<div><h3>リスキリング支援コースと人への投資促進コースは、令和8年度末までの時限措置です</h3><p>計画届は訓練開始日の1か月前までに出す必要があります。年度内に研修を始めたいお客様には、早めの声かけが必要です。</p></div></div>
  <h2 style="font-size:16px">いま提案できるお客様</h2>
- <div class="opps">${OPPS.map(oppCard).join('')}</div>
+ <div class="opps">${OPPS.filter(o=>canSee(o.cid)).map(oppCard).join('')||'<div class="card empty">いま提案できるお客様はありません。</div>'}</div>
  <h2 style="font-size:16px;margin-top:6px">顧客台帳</h2>
- <div class="card tscroll"><table style="min-width:800px"><thead><tr><th>会社</th><th>業種</th><th>従業員</th><th>研修</th><th>受講者</th><th>助成額の見込み</th><th>段階</th></tr></thead><tbody>${CASES.map(c=>{const e=est(c);return `<tr class="row" data-act="open" data-id="${c.id}"><td><b>${esc(c.co)}</b></td><td>${esc(c.ind)}</td><td class="num">${total(c)}名</td><td>${esc(c.train)}</td><td class="num">${c.people}名</td><td class="num">${e?man(e.all):'—'}</td><td>${SNAME[c.stage]}</td></tr>`;}).join('')}</tbody></table></div>`;}
+ <div class="card tscroll"><table style="min-width:800px"><thead><tr><th>会社</th><th>業種</th><th>従業員</th><th>研修</th><th>受講者</th><th>助成額の見込み</th><th>段階</th></tr></thead><tbody>${VIS().map(c=>{const e=est(c);return `<tr class="row" data-act="open" data-id="${c.id}"><td><b>${esc(c.co)}</b></td><td>${esc(c.ind)}</td><td class="num">${total(c)}名</td><td>${esc(c.train)}</td><td class="num">${c.people}名</td><td class="num">${e?man(e.all):'—'}</td><td>${SNAME[c.stage]}</td></tr>`;}).join('')}</tbody></table></div>`;}
 
 function helpBody(client){
  const demo=MIDORI,d=dates(demo);
@@ -1197,12 +1231,15 @@ function settingsV(){
  <div class="set">
   <div class="card pad" style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:16px">ブランド</h2>
    <div class="fld"><label for="tName">会社名</label><input type="text" id="tName" data-bind="t.name" value="${esc(S.t.name)}"></div>
-   <div class="fld"><label for="tStaff">担当者名</label><input type="text" id="tStaff" data-bind="t.staff" value="${esc(S.t.staff)}"></div>
+   <div class="fld"><label for="tStaff">担当者名（1人目の申請担当）</label><input type="text" id="tStaff" data-bind="t.staff" value="${esc(S.t.staff)}"></div>
    <div class="fld"><span class="lb">申請書類の作成・提出をする社労士</span><p style="font-size:13px">${esc(S.filer==='self'?srName(MIDORI):S.partners.length+'事務所と提携中')} <button class="lnk" data-act="snav" data-s="partner">提携社労士の画面で設定 ${ic('arrow','s')}</button></p></div>
    <div class="fld"><span class="lb">色</span><div class="sws">${BRANDS.map((b,i)=>`<button class="swatch" style="background:${b.l}" data-act="brand" data-i="${i}" aria-pressed="${S.t.brand===i}" aria-label="${b.n}" title="${b.n}"></button>`).join('')}</div></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><p class="eyebrow">お客様の画面での見え方</p><div class="prev" id="brandPrev">${brandPrev()}</div><div><button class="btn o sm" data-act="view" data-v="client">お客様の画面で確認する</button></div></div>
  </div>
+ <div class="card pad"><h2 style="font-size:16px">アカウントと権限</h2><p class="tiny" style="margin-top:4px">申請担当ごとにアカウントを分け、全体は管理アカウントで見ます。</p>
+  <div class="roles"><div><b>申請担当のアカウント</b><span>担当者ごとに1つ。自分が担当するお客様の案件・期限・提案だけが見えます。</span><span class="tiny">いまの申請担当：${STAFFS.map(x=>esc(staffNm(x.id))).join('、')}（${STAFFS.length}名）</span></div>
+  <div><b>管理アカウント</b><span>全担当の案件を見られます。お客様の担当の変更と、担当者の追加ができます。</span><span class="tiny">${isAdmin()?`<button class="lnk" data-act="snav" data-s="team">担当者の画面をひらく ${ic('arrow','s')}</button>`:'上の「アカウント」で「管理者」を選ぶと、担当者の画面が出ます。'}</span></div></div></div>
  <div class="card pad" style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:16px">コースのテンプレート</h2><p class="tiny">コースごとに、集める書類と質問のセットを切り替えます。</p>
   <div class="tpl">${tpl.map(t=>`<div class="${t[2]?'on':''}"><b>${t[0]}</b>${t[1]} ${t[2]?'<span class="chip brand">使用中</span>':''}</div>`).join('')}</div></div>
  <div class="card pad"><h2 style="font-size:16px">お客様に聞く質問</h2><p class="tiny" style="margin:4px 0 8px">書類や公開情報から分かることは、聞きません。オフにした質問は、お客様の画面から消えます。</p>
@@ -1267,7 +1304,7 @@ function curV(){const k=S.cur,c=byId(k.cid),tags=curTags(),r=k.res,ser=k.src==='
  const T=ser?10:+k.hours,H=+k.perDay||5;
  const input=`<div class="card cur-in">
   <div class="seg"><button data-act="cursrc" data-v="wish" aria-pressed="${!ser}">要望から作る</button><button data-act="cursrc" data-v="series" aria-pressed="${ser}">業種・職種の3セットから</button></div>
-  <div class="fld"><label for="curC">お客様</label><select id="curC" data-curc="1">${CASES.map(x=>`<option value="${x.id}" ${x.id===k.cid?'selected':''}>${esc(x.co)}</option>`).join('')}</select><span class="tiny">${esc(c.ind)}・従業員${total(c)}名</span></div>
+  <div class="fld"><label for="curC">お客様</label><select id="curC" data-curc="1">${VIS().map(x=>`<option value="${x.id}" ${x.id===k.cid?'selected':''}>${esc(x.co)}</option>`).join('')}</select><span class="tiny">${esc(c.ind)}・従業員${total(c)}名</span></div>
   ${ser?`<div class="fld"><label for="curInd">業種</label><select id="curInd" data-curind="1">${CAT_IND.map((x,i)=>`<option value="${i}" ${i===k.ii?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>
   <div class="fld"><label for="curTid">テーマ</label><select id="curTid" data-curtid="1">${trks.map(x=>`<option value="${x.id}" ${x.id===trk.id?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${trks.length<3?'宣伝マーケティング・顧客管理は、BtoCの業種で選べます。':'助成の対象は、テーマをまたいで1人あたり年度3回までです。'}</span></div>
   ${trk.id==='ai'?`<div class="fld"><label for="curJb">職種</label><select id="curJb" data-curjob="1">${ind.jobs.map((x,i)=>`<option value="${i}" ${i===k.ji?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${esc(ind.jobs[k.ji].who)}</span></div>`:`<div class="fld"><span class="lb">受講する人</span><p>${esc(trk.who)}</p><span class="tiny">${trk.id==='sec'?'全従業員向けの一般的な注意喚起は、職種を問わない共通の内容として対象外になるおそれがあります（表1②）。':'演習は演習用の題材で行います。自社の実際の投稿・広告をつくる時間は対象外です（表1④）。'}</span></div>`}
@@ -1306,12 +1343,12 @@ function partnerV(){const self=S.filer==='self';
  <div class="card pad" style="display:flex;flex-direction:column;gap:10px"><span class="lb" style="font-weight:700;font-size:13px">申請書類の作成・提出をする人</span>
   <div class="seg" style="max-width:520px"><button data-act="filer" data-v="partner" aria-pressed="${!self}">提携先の社労士事務所</button><button data-act="filer" data-v="self" aria-pressed="${self}">自社（社労士事務所の場合）</button></div>
   ${self?`<div class="fld" style="max-width:520px"><label for="selfSr">担当の社会保険労務士</label><input type="text" id="selfSr" data-bind="selfSr" value="${esc(S.selfSr)}"></div>`:''}</div>
- ${self?'':`<div class="pgrid">${S.partners.map((p,i)=>{const cs=CASES.filter(c=>srOf(c).id===p.id);return `<article class="card pc"><div class="h"><div><h3>${esc(p.n)}</h3><p class="tiny">担当：${esc(p.who)}</p></div><span class="chip ok">提携中</span></div>
+ ${self?'':`<div class="pgrid">${S.partners.map((p,i)=>{const cs=VIS().filter(c=>srOf(c).id===p.id);return `<article class="card pc"><div class="h"><div><h3>${esc(p.n)}</h3><p class="tiny">担当：${esc(p.who)}</p></div><span class="chip ok">提携中</span></div>
    <dl class="kv"><dt>対応エリア</dt><dd>${esc(p.area)}</dd><dt>対応コース</dt><dd>${esc(p.courses)}</dd><dt>連絡方法</dt><dd>${esc(p.contact)}</dd><dt>担当の案件</dt><dd>${cs.length}件（${cs.map(c=>esc(c.co.replace(/株式会社|有限会社/,''))).join('、')||'なし'}）</dd></dl>
    <div class="qrow" style="border-top:1px solid var(--line-2);padding-top:10px"><span>書類・申請データ・AIチェックの結果を共有する</span><button class="sw" role="switch" aria-checked="${p.share}" aria-label="${esc(p.n)}と共有" data-act="tog" data-k="partners.${i}.share"><i></i></button></div></article>`;}).join('')}</div>
  <div class="card pad" style="display:flex;flex-direction:column;gap:10px"><h2 style="font-size:15px">提携先を追加する</h2><div class="addp"><div class="fld"><label for="npN">事務所名</label><input type="text" id="npN" placeholder="例）○○社会保険労務士事務所"></div><div class="fld"><label for="npW">担当の社労士</label><input type="text" id="npW" placeholder="例）山田 太郎"></div><div class="fld"><label for="npA">対応エリア</label><input type="text" id="npA" placeholder="例）関東"></div><button class="btn p" data-act="addpartner">${ic('plus','s')}追加</button></div></div>
  <h2 style="font-size:16px;margin-top:6px">案件ごとの担当</h2>
- <div class="card tscroll"><table style="min-width:640px"><thead><tr><th>会社</th><th>段階</th><th>次の期限</th><th>担当の社労士事務所</th></tr></thead><tbody>${CASES.map(c=>{const n=nextDue(c);return `<tr><td><b>${esc(c.co)}</b></td><td>${SNAME[c.stage]}</td><td class="num">${n?fmt(n.d):'—'}</td><td><select data-srsel="${c.id}" aria-label="${esc(c.co)}の担当">${S.partners.map(p=>`<option value="${p.id}" ${srOf(c).id===p.id?'selected':''}>${esc(p.n)}</option>`).join('')}</select></td></tr>`;}).join('')}</tbody></table></div>`}
+ <div class="card tscroll"><table style="min-width:640px"><thead><tr><th>会社</th><th>段階</th><th>次の期限</th><th>担当の社労士事務所</th></tr></thead><tbody>${VIS().map(c=>{const n=nextDue(c);return `<tr><td><b>${esc(c.co)}</b></td><td>${SNAME[c.stage]}</td><td class="num">${n?fmt(n.d):'—'}</td><td><select data-srsel="${c.id}" aria-label="${esc(c.co)}の担当">${S.partners.map(p=>`<option value="${p.id}" ${srOf(c).id===p.id?'selected':''}>${esc(p.n)}</option>`).join('')}</select></td></tr>`;}).join('')}</tbody></table></div>`}
  <div class="card"><div class="grp"><h3>社労士事務所に共有されるもの</h3></div>${[['書類一式','お客様がアップした書類と、研修会社から届いたカリキュラム'],['申請データ','電子申請に入力する順に並べた項目'],['AIチェックの結果','訓練時間、対象外の内容、出勤簿と受講記録の突き合わせ'],['期限','計画届と支給申請の期限、あと何日か']].map(r=>`<div class="ap"><span class="k">${r[0]}</span><span class="v">${r[1]}</span><span></span></div>`).join('')}</div>`;}
 
 /* ================= CLIENT ================= */
@@ -1342,7 +1379,7 @@ function cHome(){const s=cStat(),c=MIDORI,d=dates(c),T=cTasks();
   <details class="pre"><summary>${ic('check')}${pf.length}項目は、すでに入力してあります</summary><div class="rows">${pf.map(r=>`<div class="ir"><span class="k">${r[0]}</span><span class="v">${esc(r[1])}</span><span class="s">${SRC[r[2]]}</span></div>`).join('')}</div></details>
   <h3 class="sec"><span>このあとやること</span></h3>
   ${later.map(l=>`<div class="task later" aria-disabled="true"><span class="ti">${ic('cal','l')}</span><span><b>${l[1]}</b><span>${l[0]}・${l[3]}</span></span><span class="r"><span class="mins">${ic('clock','s')}約${l[2]}分</span></span></div>`).join('')}
-  <div class="p-help"><span>分からないことは、担当の${esc(staffShort())}まで。</span><button class="btn g sm" data-act="msg" data-m="実際の画面では、LINEのトークが開きます">${ic('chat','s')}LINEで質問</button></div></div>`;}
+  <div class="p-help"><span>分からないことは、担当の${esc(ownerNm(MIDORI))}まで。</span><button class="btn g sm" data-act="msg" data-m="実際の画面では、LINEのトークが開きます">${ic('chat','s')}LINEで質問</button></div></div>`;}
 const EXT=()=>[[['所定労働時間','8時間／日'],['休日','土日祝'],['資格等手当','規定なし']],[['対象者','5名'],['雇用形態','正社員'],['雇用保険','加入']],[['対象月','先月'],['出勤簿','5名分・日ごとの始業終業あり'],['賃金台帳','5名分']]];
 function cDocs(){
  return pBar('会社の書類をアップする')+`<div class="p-body"><p class="p-lead">スマホで撮った写真でも、PDFでも大丈夫です。アップするとAIが読み取り、必要な項目を自動で入力します。</p>
@@ -1385,7 +1422,7 @@ function cConfirm(){const s=cStat(),a=cl.ans;
  <button class="btn p lg block" data-act="send" ${cl.agree?'':'disabled'}>この内容で送信する</button>
  <p class="tiny">まだそろっていない書類があっても送信できます。あとからこのページで追加できます。</p></div>`;}
 function cDone(){syncMidori();const m=MIDORI.miss,d=dates(MIDORI);
- return pBar('送信しました')+`<div class="p-body"><div class="fin"><span class="ring">${ic('check','l')}</span><h2>ありがとうございます</h2><p class="p-lead">${esc(staffShort())}が内容を確認し、計画届の準備を進めます。計画届の提出期限は ${fmt(d.pt)} です。</p>
+ return pBar('送信しました')+`<div class="p-body"><div class="fin"><span class="ring">${ic('check','l')}</span><h2>ありがとうございます</h2><p class="p-lead">${esc(ownerNm(MIDORI))}が内容を確認し、計画届の準備を進めます。計画届の提出期限は ${fmt(d.pt)} です。</p>
  <div class="left"><b>残っていること</b>${m.length?m.map(x=>`<div>□ ${esc(x)}</div>`).join(''):'<div>ありません。次は訓練が始まったら、毎月の書類をお願いします。</div>'}</div></div>
  <button class="btn o lg block" data-act="cnav" data-s="home">やることリストにもどる</button></div>`;}
 function cHelp(){const d=dates(MIDORI);
@@ -1451,18 +1488,22 @@ const ACTDOC={view:0,go:0,snav:0,tab:0,close:0,creset:0,mopen:0,mjump:0,
  curapply:[null,'カリキュラム案の研修名と時間数を、案件に反映します'],
  filer:[null,'申請書類の作成・提出を、提携社労士に頼むか自社で行うかを切り替えます'],
  addpartner:[null,'社労士事務所を提携先に追加します'],
+ asacct:[null,'その申請担当のアカウントに切り替えて、担当者から見える画面を確認します'],
+ addstaff:[null,'申請担当のアカウントを1つ追加します'],
  wtag:['困っている業務を選ぶ','研修で解決したい業務を選びます'],
  wsend:[null,'選んだ内容を担当スタッフに送ります']};
 // 画面を一時的に切り替えて、その画面のHTMLを作る（状態はもとにもどす）
-function snap(p,fn){const sk=['view','staff','caseId','tab','block','calc','modal'],ck=['screen','help','editing'],sv={},cv={};
+function snap(p,fn){const sk=['view','staff','caseId','tab','block','calc','modal','acct','own'],ck=['screen','help','editing'],sv={},cv={};
  sk.forEach(k=>sv[k]=S[k]);ck.forEach(k=>cv[k]=cl[k]);Object.assign(S,p.S||{});Object.assign(cl,p.cl||{});
  try{return fn();}finally{Object.assign(S,sv);Object.assign(cl,cv);}}
 function mPages(){const P=[],c=MIDORI,T=cTasks();
- SNAV.forEach(n=>P.push({g:'staff',k:n[0],t:n[2],path:'スタッフ画面 › 左のメニュー「'+n[2]+'」',w:1100,html:snap({S:{view:'staff',staff:n[0],caseId:null,block:null}},staff)}));
+ SNAV.forEach(n=>P.push({g:'staff',k:n[0],t:n[2],path:'スタッフ画面 › '+(n[3]?'アカウントで「管理者」を選ぶ › ':'')+'左のメニュー「'+n[2]+'」',w:1100,html:snap({S:{view:'staff',staff:n[0],caseId:null,block:null,acct:n[3]?'admin':'s1',own:'all'}},staff)}));
+ P.push({g:'staff',k:'acct',t:'アカウントを切り替える',path:'スタッフ画面 › 上の「アカウント」',w:1100,desc:'申請担当のアカウントでは、自分が担当するお客様の案件だけが出ます。管理アカウントでは、全担当の案件が出て、担当の変更と担当者の追加ができます。',
+  html:['s1','admin'].map(a=>snap({S:{acct:a}},acctBar)).join('')});
  P.push({g:'staff',k:'newcase',t:'新しい案件をつくる',path:'スタッフ画面 › メニューの上の「新しい案件」',w:580,desc:'名刺の写真を選ぶと、会社名と担当者をAIが読み取り、公開情報で残りを埋めます。研修と日程を決めると、お客様用の専用リンクを発行します。',
   html:[0,2].map(st=>'<div class="modal-box mbox">'+MOD.newcase({type:'newcase',step:st,n:NEWCO[0]})+'</div>').join('')});
  CTABS.forEach(t=>P.push({g:'case',k:t[0],t:t[1],desc:t[2],path:'スタッフ画面 › 案件 › 案件のカードを押す › タブ「'+t[1]+'」',w:1100,
-  html:snap({S:{view:'staff',caseId:c.id,tab:t[0],block:null,calc:{n:c.people,h:c.hours,fee:c.fee,course:'reskill'}}},staff)}));
+  html:snap({S:{view:'staff',acct:'s1',caseId:c.id,tab:t[0],block:null,calc:{n:c.people,h:c.hours,fee:c.fee,course:'reskill'}}},staff)}));
  Object.keys(CVIEW).forEach(k=>{const tk=T.find(x=>x.k===k);P.push({g:'client',k,path:'お客様の画面 › '+(tk?'ホームの「'+tk.t+'」を押す':CPATH[k]||''),w:400,
   html:snap({cl:{screen:k,help:null,editing:null}},()=>'<div class="phone">'+CVIEW[k]()+'</div>')});});
  return P;}
@@ -1476,7 +1517,7 @@ function mScan(p){const d=document.createElement('div');d.innerHTML=p.html;
   const bc=b.cloneNode(true);bc.querySelectorAll('.n,.num,.cnt').forEach(x=>x.remove());const name=doc[0]||sq(bc.textContent)||b.getAttribute('aria-label')||b.title||'';if(!name)return;
   const key=doc[0]?a:a+'|'+name;if(seen[key])return;seen[key]=1;
   p.ops.push({a,name,dk:doc[0]||a==='todo'?a:a+'|'+name.replace(/[0-9０-９]+/g,'#'),desc:a==='msg'?sq(b.dataset.m).replace(/（試作[^）]*）/g,''):doc[1]});});
- p.fields=[];d.querySelectorAll('input,select,textarea').forEach(e=>{if(/checkbox|radio|file|hidden/.test(e.type)||e.closest('table')||e.dataset.srsel)return;
+ p.fields=[];d.querySelectorAll('input,select,textarea').forEach(e=>{if(/checkbox|radio|file|hidden/.test(e.type)||e.closest('table')||e.dataset.srsel||e.dataset.ownsel||(e.dataset.acct&&p.k!=='acct'))return;
   const l=e.id&&d.querySelector('label[for="'+e.id+'"]');const t=sq((l&&l.textContent)||e.getAttribute('aria-label')||e.placeholder);if(t&&p.fields.indexOf(t)<0)p.fields.push(t);});
  p.shot=p.html.replace(/\sid="[^"]*"/g,'').replace(/\sfor="[^"]*"/g,'').replace(/\sdata-act=/g,' data-x=');
  p.id='m-'+p.g+'-'+p.k;}
@@ -1527,7 +1568,7 @@ const MOD={
    <div class="fld"><label for="nTrain">研修</label><select id="nTrain"><option>AI活用研修（AI Office）12時間</option></select></div>
    <div class="plan"><b>訓練開始日を ${fmt(st)} にした場合</b><span>計画届の提出期間：${fmt(addM(st,-6))} 〜 ${fmt(addM(st,-1))}</span><span>事前準備の期限：${fmt(addM(st,-1))}</span></div>
    <div class="m-acts"><button class="btn g" data-act="close">やめる</button><button class="btn p" data-act="wiz" data-step="3">専用リンクを発行する</button></div>`;}
-  return `<h2>リンクを発行しました</h2>${wz}<p class="tiny">案件に追加し、PMSに顧客を登録しました。下の文面をLINEで送れば完了です。</p><textarea id="mTxt" style="min-height:160px" aria-label="送付文">${esc(`${n.rep.split(' ')[0]}様\n\n${S.t.name}の${staffShort()}です。\n研修の助成金のご準備は、下のリンクから進められます。やることと、それぞれの所要時間も書いてあります。\nhttps://josei.example/r/${m.cid||'new'}-XXXX\n\nよろしくお願いいたします。`)}</textarea><div class="m-acts"><button class="btn g" data-act="close">閉じる</button><button class="btn p" data-act="copyta">${ic('copy','s')}コピーする</button></div>`;}
+  return `<h2>リンクを発行しました</h2>${wz}<p class="tiny">案件に追加し、PMSに顧客を登録しました。下の文面をLINEで送れば完了です。</p><textarea id="mTxt" style="min-height:160px" aria-label="送付文">${esc(`${n.rep.split(' ')[0]}様\n\n${S.t.name}の${staffNm(meId())}です。\n研修の助成金のご準備は、下のリンクから進められます。やることと、それぞれの所要時間も書いてあります。\nhttps://josei.example/r/${m.cid||'new'}-XXXX\n\nよろしくお願いいたします。`)}</textarea><div class="m-acts"><button class="btn g" data-act="close">閉じる</button><button class="btn p" data-act="copyta">${ic('copy','s')}コピーする</button></div>`;}
 };
 function renderModal(){const m=$('#modal');if(!S.modal){m.hidden=true;m.innerHTML='';return;}
  m.hidden=false;m.innerHTML=`<div class="modal-bg" data-act="close"></div><div class="modal-box" role="dialog" aria-modal="true"><button class="x" data-act="close" aria-label="閉じる">${ic('x','s')}</button>${MOD[S.modal.type](S.modal)}</div>`;}
@@ -1543,6 +1584,8 @@ const A={
  snav(d){S.staff=d.s;S.caseId=null;S.block=null;render();},
  open(d){S.view='staff';S.staff='cases';S.caseId=d.id;S.tab=d.tab||'flow';S.block=null;const c=byId(d.id);S.calc={n:c.people,h:c.hours,fee:c.fee,course:COURSE(c.course).capN?c.course:'reskill'};setHash();render();window.scrollTo(0,0);},
  closecase(){S.caseId=null;S.block=null;render();},
+ asacct(d){setAcct(d.id);S.staff='today';render();window.scrollTo(0,0);toast(staffNm(d.id)+'さんのアカウントに切り替えました');},
+ addstaff(){const i=$('#nsN'),v=(i.value||'').trim();if(!v){toast('担当者名を入力してください');i.focus();return;}STAFFS.push({id:'s'+Date.now(),n:v});render();toast(v+'さんのアカウントを追加しました');},
  tab(d){S.tab=d.t;render();},
  filter(d){S.filter=d.f;render();},
  mode(d){S.mode=d.m;render();},
@@ -1557,7 +1600,7 @@ const A={
  offer(d){S.modal={type:'offer',o:d.o};renderModal();},
  newcase(){S.modal={type:'newcase',step:0,n:NEWCO[(seq-8)%NEWCO.length]};renderModal();},
  wiz(d){const st=+d.step;if(st===1){S.modal.step=1;renderModal();setTimeout(()=>{if(S.modal&&S.modal.type==='newcase'){S.modal.step=2;renderModal();}},1300);return;}
-  if(st===3){const n=S.modal.n;const c=mk(n.co,n.ind,n.rep,n.emp,0,70,14,{wait:'client',miss:['会社の書類','質問5つ'],upd:'たった今'});CASES.push(c);S.modal={type:'newcase',step:3,cid:c.id,n:n};render();}},
+  if(st===3){const n=S.modal.n;const c=mk(n.co,n.ind,n.rep,n.emp,0,70,14,{wait:'client',miss:['会社の書類','質問5つ'],upd:'たった今'});c.owner=meId();c.sr='p1';CASES.push(c);S.modal={type:'newcase',step:3,cid:c.id,n:n};render();}},
  close(){S.modal=null;renderModal();},
  copy(d){copy(d.text);},
  copyta(){const t=$('#mTxt');if(t){t.select();copy(t.value);}},
@@ -1606,7 +1649,10 @@ document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset&&t.dataset.curind){Object.assign(S.cur,{ii:+t.value,ji:0,res:null});if(!catTracksFor(S.cur.ii).some(x=>x.id===S.cur.tid))S.cur.tid='ai';render();return;}
  if(t.dataset&&t.dataset.curtid){Object.assign(S.cur,{tid:t.value,res:null});render();return;}
  if(t.dataset&&t.dataset.curjob){Object.assign(S.cur,{ji:+t.value,res:null});render();return;}
- if(t.dataset&&t.dataset.curc){Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(t.value))),ji:0,cid:t.value,tid:'ai',past:{},extra:[],out:{},res:null,imported:false});(PAST[t.value]||[]).forEach(p=>S.cur.past[p.id]=true);render();return;}
+ if(t.dataset&&t.dataset.curc){setCurC(t.value);render();return;}
+ if(t.dataset&&t.dataset.acct){setAcct(t.value);render();toast(isAdmin()?'管理アカウントに切り替えました。全担当の案件を表示します':staffNm(t.value)+'さんのアカウントに切り替えました');return;}
+ if(t.dataset&&t.dataset.ownsel){const c=byId(t.dataset.ownsel);c.owner=t.value;render();toast(c.co+'の申請担当を、'+staffNm(t.value)+'さんに変更しました');return;}
+ if(t.dataset&&t.dataset.ownf){S.own=t.value;render();return;}
  if(t.dataset&&t.dataset.curpast){S.cur.past[t.dataset.curpast]=t.checked;S.cur.res=null;render();return;}
  if(t.dataset&&t.dataset.srsel){byId(t.dataset.srsel).sr=t.value;render();toast('担当の社労士事務所を変更しました');return;}
  if(t.dataset&&t.dataset.re&&t.type!=='checkbox'){const id=t.id;render();const n=document.getElementById(id);if(n&&n.focus){n.focus();}return;}
@@ -1614,6 +1660,8 @@ document.addEventListener('change',e=>{const t=e.target;
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&S.modal)A.close();});
 window.addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(['overview','staff','client','manual'].indexOf(v)>-1&&v!==S.view){S.view=v;render();}});
 
+function setCurC(id){Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(id))),ji:0,cid:id,tid:'ai',past:{},extra:[],out:{},res:null,imported:false});(PAST[id]||[]).forEach(p=>S.cur.past[p.id]=true);}
+function setAcct(id){S.acct=id;S.own='all';S.caseId=null;S.block=null;if(S.staff==='team'&&!isAdmin())S.staff='today';if(!canSee(S.cur.cid)&&VIS().length)setCurC(VIS()[0].id);}
 function render(){syncMidori();applyBrand();
  document.querySelectorAll('#views button').forEach(b=>b.setAttribute('aria-current',String(b.dataset.v===S.view)));
  $('#logoMark').innerHTML=ic('grad');
