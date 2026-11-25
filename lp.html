@@ -608,13 +608,52 @@ const catTracksFor=ii=>CAT_TRACKS.filter(t=>t.has(CAT_IND[ii]));
 const catFuncs=(ii,ji,tid)=>tid&&tid!=='ai'?TRACK_FUNC[tid]:(JOB_FUNC[CAT_IND[ii].jobs[ji].n]||[]);
 /* 要望の文章から業務内容のタグを読み取る */
 const catNeeds=text=>CAT_TASKS.filter(t=>t.kw.test(text||'')).map(t=>t.id);
+
+/* ===== 研修プラン（LPの「研修プラン作成ツール」と、試作の「カリキュラム作成 › 年間プラン」で共通） ===== */
+const CAT_COMMON=CAT_IND.findIndex(i=>i.id==='common');
+/* テーマごとに、どの業務内容のご要望に応えるか */
+const PLAN_KEY={ai:['doc','data','check','media','meet','report','auto','know'],sec:['sec'],mkt:['pr','crm','voc']};
+/* ご要望の文章に出てきたら、助成の対象外として外す内容 */
+const PLAN_NG=[[/マナー|接遇|あいさつ|挨拶/,'接遇・ビジネスマナー','表1②'],[/管理職|リーダーシップ|幹部/,'管理職・リーダーシップ研修','表1⑧'],[/意識改革|モチベーション|やる気|マインド/,'意識改革・モチベーション研修','表1⑦'],[/英会話|語学|話し方/,'日常会話程度の語学・話し方','表1③'],[/操作説明|操作方法|使い方を覚|自社製品/,'自社で使う機器・ソフトの操作説明、自社製品の説明','表1④・P13'],[/資格試験|検定|受験対策/,'資格試験だけのもの','表1⑨'],[/法定|特別教育|義務づけ|義務付け/,'法令で義務づけられた講習','表1⑥']];
+/* 業種 ii と職種 job（"業種の番号:職種の番号"）で選べる研修。key は "テーマ:セット" */
+function catCands(ii,job){const [a,b]=job.split(':').map(Number);
+ return catTracksFor(ii).flatMap(t=>[0,1,2].map(si=>({key:t.id+':'+si,tid:t.id,si,s:t.id==='ai'?catSet(a,b,si,[],'ai'):catSet(ii,0,si,[],t.id)})));}
+/* ご要望の業務内容 nd と、生成AIの利用状況 exp（0 はじめて／1 一部／2 日常的）から、おすすめの3回分を選ぶ */
+function catRecommend(cs,nd,exp){const tr=[...new Set(cs.map(c=>c.tid))];
+ const rel=t=>nd.filter(k=>PLAN_KEY[t].includes(k)).length;
+ let order=tr.filter(t=>rel(t)>0).sort((x,y)=>rel(y)-rel(x));if(!order.length)order=['ai'];
+ const slots=order.length===1?[3]:order.length===2?[2,1]:[1,1,1],out=[];
+ order.slice(0,3).forEach((t,i)=>{const st=t==='ai'&&exp===2?1:0;for(let k=0;k<slots[i]&&st+k<3;k++)out.push(t+':'+(st+k));});
+ if(out.length<3&&!out.some(k=>k.indexOf('sec:')===0))out.push('sec:0');
+ return out.slice(0,3);}
+/* 選んだ研修を、受ける順（初級→中級、同じ段階は件数の多いテーマから）に並べる */
+function catOrder(sel){const TI=id=>CAT_TRACKS.findIndex(t=>t.id===id),cnt=id=>sel.filter(c=>c.tid===id).length;
+ return sel.slice().sort((x,y)=>x.si-y.si||cnt(y.tid)-cnt(x.tid)||TI(x.tid)-TI(y.tid));}
+/* プランを URL の # のあとに入れて、LP と試作のあいだで受け渡す（# のあとはサーバーに送られない）。
+   中身：ind 業種ID、job "業種ID:職種の番号"、picks、n 人数、h 1日の時間、fee、exp、need ご要望、name 会社名、tasks */
+const PLAN_URL={app:'https://t-suzuki2021.github.io/josei-concierge-demo/',lp:'https://t-suzuki2021.github.io/josei-concierge-demo/lp.html'};
+const planEncode=p=>'#plan='+encodeURIComponent(JSON.stringify(p));
+function planDecode(h){const m=/[#&]plan=([^&]*)/.exec(h||'');if(!m)return null;
+ try{const p=JSON.parse(decodeURIComponent(m[1]));return p&&typeof p==='object'&&!Array.isArray(p)?p:null;}catch(e){return null;}}
+/* 受け取ったプランを、番号に直して確かめる。おかしな値は捨てる */
+function planNorm(p){const ii=CAT_IND.findIndex(x=>x.id===p.ind);if(ii<0)return null;
+ const q=String(p.job||'').split(':'),ja=CAT_IND.findIndex(x=>x.id===q[0]),jb=parseInt(q[1],10);
+ const job=ja>-1&&(ja===ii||ja===CAT_COMMON)&&CAT_IND[ja].jobs[jb]?ja+':'+jb:(ii!==CAT_COMMON?ii:CAT_COMMON)+':0';
+ const keys=catCands(ii,job).map(c=>c.key),num=(v,lo,hi,d)=>{v=Math.floor(+v);return isFinite(v)&&v>=lo&&v<=hi?v:d;};
+ return {ii,job,picks:(Array.isArray(p.picks)?p.picks:[]).filter(k=>keys.indexOf(k)>-1).slice(0,3),
+  n:num(p.n,1,999,5),h:num(p.h,2,8,5),fee:num(p.fee,0,99999999,0),exp:num(p.exp,0,2,0),
+  need:String(p.need||'').slice(0,800),name:String(p.name||'').slice(0,80),tasks:(Array.isArray(p.tasks)?p.tasks:[]).filter(t=>catTask(t))};}
+/* 番号のプランを、URL に入れる形に直す */
+const planOut=(ii,job,o)=>{const q=job.split(':').map(Number);return Object.assign({ind:CAT_IND[ii].id,job:CAT_IND[q[0]].id+':'+q[1]},o);};
 /*CATALOG:END*/
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const yen=n=>Math.round(n).toLocaleString('ja-JP')+'円';
 const store={get(k){try{return localStorage.getItem(k);}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
 const fnName=id=>(CAT_FUNCS.find(f=>f.id===id)||{}).n||'';
-const COMMON=CAT_IND.findIndex(i=>i.id==='common');
+const COMMON=CAT_COMMON;
+/* 公開サイトでは、試作と同じサイトなので同じタブで移る */
+const ONSITE=/(^|\.)github\.io$/.test(location.hostname);
 
 /* ===== menu: one card per job (AI) or per industry (security, marketing) ===== */
 const CARDS=[];
@@ -642,8 +681,6 @@ function list(){const words=q.trim().split(/\s+/).filter(Boolean);let n=0;
 
 /* ===== plan tool ===== */
 const P={ii:0,job:'0:0',tasks:[],pick:[],manual:false};
-const TRACK_KEY={ai:['doc','data','check','media','meet','report','auto','know'],sec:['sec'],mkt:['pr','crm','voc']};
-const NGW=[[/マナー|接遇|あいさつ|挨拶/,'接遇・ビジネスマナー','表1②'],[/管理職|リーダーシップ|幹部/,'管理職・リーダーシップ研修','表1⑧'],[/意識改革|モチベーション|やる気|マインド/,'意識改革・モチベーション研修','表1⑦'],[/英会話|語学|話し方/,'日常会話程度の語学・話し方','表1③'],[/操作説明|操作方法|使い方を覚|自社製品/,'自社で使う機器・ソフトの操作説明、自社製品の説明','表1④・P13'],[/資格試験|検定|受験対策/,'資格試験だけのもの','表1⑨'],[/法定|特別教育|義務づけ|義務付け/,'法令で義務づけられた講習','表1⑥']];
 const fi=(id)=>$('#'+id);
 function indOpts(){fi('pInd').innerHTML=CAT_IND.map((I,ii)=>`<option value="${ii}">${esc(ii===COMMON?'その他の業種':I.n)}</option>`).join('');fi('pInd').value=P.ii;
  fi('pH').innerHTML=[2,3,4,5,6,7,8].map(h=>`<option value="${h}"${h===5?' selected':''}>${h}時間</option>`).join('');}
@@ -651,22 +688,15 @@ function jobOpts(){const og=(ii,label)=>`<optgroup label="${esc(label)}">${CAT_I
  fi('pJob').innerHTML=(P.ii!==COMMON?og(P.ii,CAT_IND[P.ii].n+'の職種'):'')+og(COMMON,'どの業種にもある職種（営業・経理など）');
  const [a,b]=P.job.split(':').map(Number);if(!((a===P.ii||a===COMMON)&&CAT_IND[a]&&CAT_IND[a].jobs[b]))P.job=(P.ii!==COMMON?P.ii:COMMON)+':0';
  fi('pJob').value=P.job;}
-function cands(){const [a,b]=P.job.split(':').map(Number);
- return catTracksFor(P.ii).flatMap(t=>[0,1,2].map(si=>({key:t.id+':'+si,tid:t.id,si,s:t.id==='ai'?catSet(a,b,si,[],'ai'):catSet(P.ii,0,si,[],t.id)})));}
+const cands=()=>catCands(P.ii,P.job);
 const textNeeds=()=>catNeeds(fi('pNeed').value);
-function recommend(cs,nd){const exp=+fi('pExp').value,tr=[...new Set(cs.map(c=>c.tid))];
- const rel=t=>nd.filter(k=>TRACK_KEY[t].includes(k)).length;
- let order=tr.filter(t=>rel(t)>0).sort((x,y)=>rel(y)-rel(x));if(!order.length)order=['ai'];
- const slots=order.length===1?[3]:order.length===2?[2,1]:[1,1,1],out=[];
- order.slice(0,3).forEach((t,i)=>{const st=t==='ai'&&exp===2?1:0;for(let k=0;k<slots[i]&&st+k<3;k++)out.push(t+':'+(st+k));});
- if(out.length<3&&!out.some(k=>k.indexOf('sec:')===0))out.push('sec:0');
- return out.slice(0,3);}
+const recommend=(cs,nd)=>catRecommend(cs,nd,+fi('pExp').value);
 function candHtml(cs,nd,rec){const [a,b]=P.job.split(':').map(Number);
  return catTracksFor(P.ii).map(t=>`<div class="cg"><p class="cgh"><span class="th th-${t.id}">${esc(t.n)}</span><span class="tiny">対象：${esc(t.id==='ai'?CAT_IND[a].jobs[b].n+'の担当者':t.who)}</span></p>${cs.filter(c=>c.tid===t.id).map(c=>{const hit=nd.filter(k=>c.s.tasks.includes(k)),on=P.pick.includes(c.key);
   return `<label class="cand"><input type="checkbox" data-cand="${c.key}"${on?' checked':''}${!on&&P.pick.length>=3?' disabled':''}><span><b>${c.s.lv}</b>${esc(c.s.title)}${rec.includes(c.key)?'<em class="rec">おすすめ</em>':''}${hit.length?`<small>ご要望に対応：${hit.map(k=>esc(catTask(k).n)).join('、')}</small>`:''}</span></label>`;}).join('')}</div>`).join('');}
 let planText='';
 function planHtml(cs,nd){const TI=id=>CAT_TRACKS.findIndex(t=>t.id===id);
- const sel=P.pick.map(k=>cs.find(c=>c.key===k)).filter(Boolean);const cnt=id=>sel.filter(c=>c.tid===id).length;sel.sort((x,y)=>x.si-y.si||cnt(y.tid)-cnt(x.tid)||TI(x.tid)-TI(y.tid));
+ const sel=catOrder(P.pick.map(k=>cs.find(c=>c.key===k)).filter(Boolean));
  const name=fi('pName').value.trim(),head=(name?name+' 様　':'')+'研修プラン（案）';
  if(!sel.length){planText='';return `<h3>${esc(head)}</h3><p class="empty">左の「どんな研修をやるか」から、研修を1つ以上選んでください。</p>`;}
  const N=Math.min(999,Math.max(1,Math.floor(+fi('pN').value)||1)),H=+fi('pH').value,fee=Math.max(0,+fi('pFee').value||0);
@@ -675,7 +705,7 @@ function planHtml(cs,nd){const TI=id=>CAT_TRACKS.findIndex(t=>t.id===id);
  const label=c=>catTrack(c.tid).short+' '+c.s.lv;
  const cover=nd.map(k=>{const inSel=sel.map((c,i)=>c.s.tasks.includes(k)?(i+1)+'回目':'').filter(Boolean),other=cs.filter(c=>!sel.includes(c)&&c.s.tasks.includes(k));
   return {n:catTask(k).n,txt:inSel.length?inSel.join('・')+'で扱います':other.length?'「'+label(other[0])+'」で扱います（このプランには入っていません）':'掲載のメニューにはないため、個別にカリキュラムを調整します',ok:inSel.length>0};});
- const ng=NGW.filter(w=>w[0].test(fi('pNeed').value));
+ const ng=PLAN_NG.filter(w=>w[0].test(fi('pNeed').value));
  const pre=sel.filter(c=>c.si>0&&!sel.some(x=>x.tid===c.tid&&x.si===c.si-1)).map(c=>label(c)+'は、同じテーマの'+catTrack(c.tid).sets[c.si-1].lv+'の内容を前提にしています。まだ受けていない方がいる場合は、先に'+catTrack(c.tid).sets[c.si-1].lv+'をおすすめします。');
  const notes=['助成の対象は、テーマをまたいで1人あたり年度3回までです（年度は支給申請日で数えます）。',
   '計画届は、各セットの開始日の6か月前から1か月前までに労働局へ提出します。',
@@ -698,7 +728,7 @@ function planHtml(cs,nd){const TI=id=>CAT_TRACKS.findIndex(t=>t.id===id);
   ${cover.length?`<div><h3 style="font-size:15px;margin-bottom:6px">ご要望との対応</h3><ul class="cover">${cover.map(c=>`<li><b>${esc(c.n)}</b>：${esc(c.txt)}</li>`).join('')}</ul><p class="tiny" style="margin-top:6px">左に線のある科目が、ご要望に当たる内容です。</p></div>`:''}
   ${ng.length?`<div class="warn">ご要望のうち、次の内容は助成の対象外のため、プランに入れていません。<ul>${ng.map(w=>`<li>${esc(w[1])}（${esc(w[2])}）</li>`).join('')}</ul></div>`:''}
   <ul class="pnote">${pre.concat(notes).map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
-  <div class="pact"><button type="button" class="cta" data-copy>プランの文章をコピー</button><button type="button" class="cta alt" data-print>印刷する</button><span class="tiny" id="pMsg" role="status"></span></div><div id="pCopyBox"></div>`;}
+  <div class="pact"><a class="cta" href="${esc(PLAN_URL.app+planEncode(planOut(P.ii,P.job,{picks:sel.map(c=>c.key),n:N,h:H,fee,exp:+fi('pExp').value,need:fi('pNeed').value.slice(0,800),name,tasks:P.tasks})))}"${ONSITE?'':' target="_blank" rel="noopener"'}>申請管理に取り込む</a><button type="button" class="cta alt" data-copy>プランの文章をコピー</button><button type="button" class="cta alt" data-print>印刷する</button><span class="tiny" id="pMsg" role="status"></span></div><div id="pCopyBox"></div><p class="tiny">「申請管理に取り込む」を押すと、申請管理（試作）のカリキュラム作成に、このプランがそのまま入ります。プランの内容はリンクの中だけで受け渡し、どこにも保存しません。</p>`;}
 function update(){const cs=cands(),tn=textNeeds(),nd=[...new Set(tn.concat(P.tasks))],rec=recommend(cs,nd);
  if(!P.manual)P.pick=rec.slice();P.pick=P.pick.filter(k=>cs.some(c=>c.key===k)).slice(0,3);
  fi('pTasks').innerHTML=CAT_TASKS.map(t=>`<button type="button" data-task="${t.id}" aria-pressed="${P.tasks.includes(t.id)}"${tn.includes(t.id)&&!P.tasks.includes(t.id)?' class="auto"':''}>${esc(t.n)}</button>`).join('');
@@ -724,8 +754,14 @@ fi('pform').addEventListener('change',e=>{const t=e.target;
  else if(t.dataset.cand){const k=t.dataset.cand,i=P.pick.indexOf(k);P.manual=true;if(t.checked&&i<0&&P.pick.length<3)P.pick.push(k);if(!t.checked&&i>-1)P.pick.splice(i,1);}
  update();});
 /* on the public site the app is a sibling page, so go back in the same tab */
-if(/(^|.)github.io$/.test(location.hostname))document.querySelectorAll('[data-app]').forEach(a=>a.removeAttribute('target'));
-chips();list();indOpts();jobOpts();update();
+if(ONSITE)document.querySelectorAll('[data-app]').forEach(a=>a.removeAttribute('target'));
+/* 申請管理（試作）から開いたときは、受け取ったプランを入れる */
+function takePlan(){const p=planDecode(location.hash),n=p&&planNorm(p);if(!n)return false;
+ P.ii=n.ii;P.job=n.job;P.tasks=n.tasks;if(n.picks.length){P.pick=n.picks;P.manual=true;}else P.manual=false;
+ fi('pInd').value=P.ii;jobOpts();fi('pName').value=n.name;fi('pNeed').value=n.need;fi('pN').value=n.n;fi('pH').value=String(n.h);fi('pFee').value=n.fee||'';fi('pExp').value=String(n.exp);
+ try{history.replaceState(null,'','#plan');}catch(e){}return true;}
+chips();list();indOpts();jobOpts();const took=takePlan();update();if(took)setTimeout(()=>{const t=$('#plan');if(t)t.scrollIntoView();},60);
+window.addEventListener('hashchange',()=>{if(takePlan()){update();$('#plan').scrollIntoView();}});
 })();
 </script>
 
