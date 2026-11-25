@@ -418,6 +418,11 @@ button.tstep:hover .tname{text-decoration:underline}
 .pick{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:700;color:var(--body)}
 .pick[aria-pressed=true]{border-color:var(--brand);background:var(--brand-pale);color:var(--brand)}
 .past{display:flex;flex-direction:column;gap:6px}
+.sets{display:flex;flex-direction:column;gap:6px}
+.setb{text-align:left;border:1.5px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 11px;display:flex;flex-direction:column;gap:3px;align-items:flex-start;color:var(--body)}
+.setb[aria-pressed=true]{border-color:var(--brand);background:var(--brand-pale)}
+.setb b{font-size:13px;color:var(--fg);line-height:1.45}
+.ctable .tag{display:inline-block;margin-left:6px;vertical-align:1px}
 .past label{display:flex;gap:8px;align-items:flex-start;font-size:13px;border:1px solid var(--line-2);border-radius:8px;padding:8px 10px}
 .past input{margin-top:3px}
 .ctable td,.ctable th{vertical-align:top}
@@ -624,10 +629,19 @@ const srName=c=>S.filer==='self'?S.t.name+'（'+S.selfSr+'）':srOf(c).n;
    must be taught by an instructor with expertise using teaching materials, not on the live work floor. */
 const NEEDS=[['estimate','見積・積算'],['report','報告書・日報'],['doc','提案書・資料'],['mail','メール・顧客対応'],['data','データの集計・分析'],['minutes','議事録・情報共有'],['auto','定型業務の自動化'],['know','社内の情報の検索']];
 const NEED_KW={estimate:/見積|積算/,report:/報告|日報|写真/,doc:/資料|提案書|計画書|企画/,mail:/メール|問い合わせ|顧客/,data:/集計|分析|データ|エクセル|Excel|表計算/,minutes:/議事録|会議|共有/,auto:/自動|定型|手作業/,know:/検索|ナレッジ|マニュアル|社内の情報/};
-const NG=[[/マナー|接遇|電話応対|名刺交換|ビジネス文書の基本/,'ビジネスマナー・接遇','職種を問わない共通のスキルのため'],[/管理職|リーダーシップ|マネジメント/,'管理職・リーダーシップ','役職として求められる知識の訓練のため'],[/意識改革|モチベーション|やる気/,'意識改革・モチベーション','職務の知識・技能の習得を目的としないため']];
+const NG=[[/マナー|接遇|電話応対|名刺交換|ビジネス文書の基本/,'ビジネスマナー・接遇','職種を問わず共通して必要なスキルのため（表1②）'],
+ [/管理職|リーダーシップ|マネジメント研修/,'管理職・リーダーシップ','役職として求められる知識の訓練のため（表1⑧）'],
+ [/意識改革|モチベーション|やる気|モラール/,'意識改革・モチベーション','職務の知識・技能の習得を目的としないため（表1⑦）'],
+ [/語学|英会話|話し方/,'語学・話し方','趣味教養にあたるため（表1③）'],
+ [/運転免許|普通自動車/,'運転免許','職務に間接的に必要な内容のため（表1①）'],
+ [/特別教育|法定講習|安全衛生教育/,'法定の講習','法令で事業主に実施が義務づけられた講習のため（表1⑥）'],
+ [/自社製品|製品説明|商品説明/,'自社製品の説明','通常の事業活動にあたるため（表1④❼）'],
+ [/操作説明|使い方の説明|操作方法を覚え/,'ツール・機器の操作説明','自社の業務で使う機器・端末の操作説明は通常の事業活動にあたるため（表1④❻）'],
+ [/見学|視察|交流会|講演会/,'見学・講演会','職業能力開発に直接関連しない形式のため（表1⑤）'],
+ [/経営改善の指導|コンサル/,'コンサルタントの指導','通常の事業活動にあたるため（表1④❶）']];
 const MODS=[
  {id:'m1',o:1,t:'生成AIの仕組みと業務で使うときのリスク管理',c:'回答が作られる仕組み、誤った情報の見分け方、情報漏えい・著作権への対策',rel:'業務の文書・データを扱う際の判断基準',tags:[],base:6},
- {id:'m1b',alt:'m1',o:1,t:'生成AIの業務利用ルールと情報管理の実践',c:'扱ってよい情報の分類、入力前のチェック手順、社内ルール案の作成演習',rel:'顧客情報・図面などを扱う業務の安全管理',tags:[],base:4},
+ {id:'m1b',alt:'m1',o:1,t:'生成AIの業務利用ルールと情報管理の実践',c:'扱ってよい情報の分類、入力前のチェック手順、演習用の題材でルール案をつくる演習',rel:'顧客情報・図面などを扱う業務の安全管理',tags:[],base:4},
  {id:'m2',o:2,t:'業務文書のためのプロンプト設計',c:'指示の組み立て方、例の示し方、出力形式の指定、結果の検証',rel:'見積・報告などの書類作成業務',tags:['doc','report','estimate'],base:5},
  {id:'m2b',alt:'m2',o:2,t:'業務別プロンプトの応用とテンプレート化',c:'担当業務ごとの指示文の型づくり、条件分岐、チームで使い回す方法',rel:'繰り返し発生する書類作成業務',tags:['doc','report','auto'],base:3},
  {id:'m3',o:3,t:'見積書・積算資料の作成をAIで効率化する手法',c:'仕様書からの数量の拾い出しの補助、単価表との照合、根拠の確認方法',rel:'積算・見積の担当業務',tags:['estimate'],ind:'con',base:0},
@@ -637,13 +651,112 @@ const MODS=[
  {id:'m6',o:6,t:'表計算データの集計・分析にAIを使う手法',c:'集計の指示の出し方、関数・グラフの作成補助、分析結果の読み取り',rel:'工程・原価・売上などの管理業務',tags:['data'],base:1},
  {id:'m7',o:7,t:'顧客対応メールと問い合わせ回答の文案作成',c:'用件に合わせた文案の作成、言い回しの調整、送信前の確認手順',rel:'顧客・取引先とのやりとりの業務',tags:['mail'],base:1},
  {id:'m8',o:8,t:'議事録の作成と情報共有の効率化',c:'会議の音声の文字起こし、要約と決定事項の抽出、共有の型づくり',rel:'打合せ・会議の記録業務',tags:['minutes'],base:1},
- {id:'m9',o:9,t:'定型業務の自動化の設計',c:'業務の流れの分解、AIに任せる部分と人が確認する部分の切り分け、手順書の作成',rel:'繰り返し発生する事務作業',tags:['auto'],base:1},
+ {id:'m9',o:9,t:'定型業務の自動化の設計',c:'業務の流れの分解、AIに任せる部分と人が確認する部分の切り分け、演習用の業務での手順の書き出し',rel:'繰り返し発生する事務作業',tags:['auto'],base:1},
  {id:'m10',o:10,t:'社内の文書を検索・活用する仕組みの考え方',c:'文書の整理の仕方、検索に向いた書き方、AIに社内資料を参照させる方法',rel:'過去の資料・ノウハウを使う業務',tags:['know'],base:1},
  {id:'m11',o:11,t:'資料・図解の作成にAIを使う手法',c:'構成案の作成、図解・表の作成補助、伝わりやすさの見直し',rel:'提案書・説明資料の作成業務',tags:['doc'],base:1},
  {id:'m12',o:12,t:'AIで作った成果物の品質を確かめる手法',c:'事実確認の手順、数値の検算、チェックリストの作り方',rel:'書類の正確さが求められる業務',tags:['estimate','data','doc'],base:2}];
 const PAST_KW=[[/入門|基本|基礎知識|リスク/,'m1'],[/プロンプト/,'m2'],[/議事録/,'m8'],[/Excel|エクセル|集計/,'m6'],[/メール/,'m7'],[/報告書|日報/,'m4']];
+/*CATALOG:START*/
+/* 業種・職種別 AI研修メニュー（人材開発支援助成金 事業展開等リスキリング支援コース向けのたたき台）
+   このファイルが元データです。mock.html と lp.html には build-catalog.js で埋め込みます。
+   方針（令和8年8月3日以降に提出する計画届の支給要領・パンフレットに沿う）:
+   - 1セット＝実訓練時間10時間。1人1年度3回まで助成対象なので、初級1・初級2・中級の3セットで年30時間。
+   - 3セットの科目は互いに重ならない（初級1＝文書、初級2＝データ・記録、中級＝業務の流れの自動化）。
+   - 職務に直接関連する内容だけにする（表1①②：DX関連でも間接的な内容・共通スキルは対象外）。
+   - 演習は演習用の題材で行い、自社の実際の書類・マニュアル・計画をつくる時間にしない（表1④）。
+   - 特定の製品の操作説明にしない（表1④❻、DX訓練の注記「既存アプリの操作方法の習得のみは対象外」）。
+   - 開講式・オリエンテーションは含めない（1つの計画届で累計60分までの扱いがあるため、各セットは内容だけで10時間）。 */
+const CAT_IND=[
+ {id:'con',n:'建設業',dx:'現場の書類作成と記録のデジタル化を進め、生成AIを使って書類作成と情報共有の時間を減らす',jobs:[
+  {n:'施工管理',who:'現場の工程・品質・安全の管理',doc:['施工計画書','作業日報','安全書類（KY活動記録・作業手順書）'],data:['工程表と出来高','実行予算と原価'],check:'図面と数量表',media:['現場写真の整理と写真台帳の作成','撮影した写真の分類、説明文の作成、写真台帳の形式への整理'],voice:'現場の打合せ・朝礼',flow:'日報から週報・月報への集計',know:'仕様書・過去の施工記録',care:'図面・施主の情報'},
+  {n:'積算・見積',who:'図面・仕様書からの数量の算出と見積の作成',doc:['見積書','見積条件書','工事内訳の説明資料'],data:['単価表と過去の見積実績','協力会社の見積の比較'],check:'図面と見積内訳',media:['図面・仕様書から必要な情報を拾い出す手法','図面の画像やPDFから数量・仕様を抜き出す手順と、確認の方法'],voice:'施主・協力会社との打合せ',flow:'協力会社からの見積の比較・集計',know:'過去の見積と単価の資料',care:'見積金額・取引先の情報'},
+  {n:'設計（CAD・BIM）',who:'建物・設備の設計図と設計資料の作成',doc:['設計説明書','仕様書','施主への提案資料'],data:['面積・数量の算出表','設計変更の履歴'],check:'設計図と仕様書',media:['パース・イメージ図の作成にAIを使う手法','画像生成の指示の出し方、提案用の図の作成、著作権の注意点'],voice:'設計の打合せ',flow:'設計変更の記録と関係者への連絡',know:'法規の資料・過去の設計資料',care:'設計図・施主の情報'},
+  {n:'工事事務',who:'契約・請求・各種届出などの事務',doc:['工事契約の確認資料','請求書の送付文','官公庁への届出書類'],data:['請求・入金の管理表','協力会社への支払い一覧'],check:'注文書と請求書',media:['紙の書類を読み取ってデータにする手法','スキャンした書類から必要な項目を抜き出し、表に整理する手順'],voice:'社内の工事会議',flow:'請求書の受け取りから支払いまでの処理',know:'事務の手順・過去の届出書類',care:'契約金額・取引先の情報'}]},
+ {id:'mfg',n:'製造業',dx:'生産・品質のデータと記録のデジタル化を進め、生成AIを使って報告と分析の業務を効率化する',jobs:[
+  {n:'生産管理',who:'生産計画と進捗・在庫の管理',doc:['生産計画の説明資料','作業指示書','納期回答の連絡文'],data:['生産実績と稼働率','在庫と部品の発注データ'],check:'受注データと生産計画',media:['工程の写真・図面から情報を読み取る手法','写真や図面から必要な情報を読み取り、記録に整理する手順'],voice:'生産会議',flow:'受注から生産指示までの処理',know:'過去の生産記録・トラブルの記録',care:'顧客の図面・受注情報'},
+  {n:'品質管理',who:'製品の検査と不良の原因分析・対策',doc:['検査成績書','不良の報告書（なぜなぜ分析）','顧客への回答書'],data:['検査データ','不良の発生データ'],check:'図面の公差と検査結果',media:['外観検査の画像をAIで分類する考え方','画像による良否判定の仕組み、判定用の画像の集め方、判定の限界'],voice:'品質会議',flow:'不良の報告から対策の記録までの流れ',know:'過去の不良事例・規格書',care:'顧客の図面・品質情報'},
+  {n:'設備保全',who:'設備の点検・修理と保全計画',doc:['点検記録','故障の報告書','保全計画の説明資料'],data:['設備の稼働・停止の記録','部品の交換履歴'],check:'点検基準と点検記録',media:['設備の写真・音の記録を活用する手法','写真や音の記録から異常の兆候を整理する方法と、AIの判定の限界'],voice:'保全の打合せ',flow:'故障の連絡から修理記録までの流れ',know:'設備の取扱説明書・過去の故障記録',care:'設備の仕様・取引先の情報'},
+  {n:'技術営業',who:'顧客への技術提案と仕様の調整',doc:['技術提案書','仕様の確認書','見積の説明資料'],data:['引き合い・受注のデータ','製品の仕様の比較表'],check:'顧客の要求仕様と提案内容',media:['説明図・図解の作成にAIを使う手法','提案資料に使う図解・表の作成と、内容の確認の方法'],voice:'顧客との技術打合せ',flow:'引き合いから見積提出までの流れ',know:'製品カタログ・過去の提案資料',care:'顧客の図面・価格の情報'}]},
+ {id:'ret',n:'卸売・小売業',dx:'販売・在庫のデータ活用とネット販売を進め、生成AIで販促と商品管理を効率化する',jobs:[
+  {n:'店舗運営・販売',who:'店頭での販売と売場づくり',doc:['販促POP・売場の案内文','商品の説明文','日々の店舗報告'],data:['売上と客数のデータ','曜日・天候別の売れ行き'],check:'発注データと納品書',media:['売場の写真から陳列を見直す手法','写真をもとにした陳列の比較、画像の読み取りと改善案の整理'],voice:'店舗のミーティング',flow:'日々の売上報告から週次の振り返りまで',know:'商品情報・過去の販促の記録',care:'顧客の購買情報'},
+  {n:'仕入・在庫管理（バイヤー）',who:'商品の選定・仕入と在庫の管理',doc:['商品の選定理由書','取引先への発注・条件の連絡文','新商品の提案資料'],data:['在庫と回転率のデータ','仕入価格と粗利のデータ'],check:'発注書と請求書',media:['商品の画像と仕様を整理する手法','取引先の資料や商品画像から仕様を抜き出し、商品台帳に整理する手順'],voice:'取引先との商談',flow:'在庫の確認から発注までの流れ',know:'取引先の資料・過去の仕入実績',care:'仕入価格・取引先の情報'},
+  {n:'EC運営',who:'ネットショップの商品登録・販促・問い合わせ対応',doc:['商品ページの説明文','メルマガ・SNSの投稿文','問い合わせへの回答文'],data:['アクセスと購入のデータ','広告の成果データ'],check:'商品ページと在庫・価格のデータ',media:['商品画像の作成・加工にAIを使う手法','画像の生成・背景の加工、表示の注意点（景品表示法・著作権）'],voice:'ショップ運営の会議',flow:'注文から出荷連絡までの流れ',know:'商品マスタ・過去の問い合わせ記録',care:'顧客の個人情報'}]},
+ {id:'med',n:'医療（病院・クリニック）',dx:'院内の書類と記録のデジタル化を進め、生成AIで事務と記録の負担を減らす',jobs:[
+  {n:'医療事務',who:'受付・会計・レセプト業務',doc:['患者さんへのお知らせ文','院内の掲示物','返戻・査定の確認資料'],data:['患者数と診療報酬のデータ','予約のデータ'],check:'レセプトとカルテの記載',media:['紙の問診票・書類を読み取ってデータにする手法','スキャンした問診票などから項目を抜き出す手順と、個人情報の扱い'],voice:'院内のミーティング',flow:'予約の受け付けから来院前の連絡まで',know:'診療報酬の資料・院内の手順書',care:'患者の個人情報・診療情報'},
+  {n:'看護職',who:'患者のケアと看護記録',doc:['看護記録の要約','看護計画の下書き','申し送りの文書'],data:['バイタル・ケアの記録','業務量・勤務表のデータ'],check:'指示書と実施記録',media:['患者さん向け説明資料の図解を作る手法','説明資料を図や表で分かりやすくする手法と、医療情報の確認手順'],voice:'申し送り・カンファレンス',flow:'申し送りの記録から共有までの流れ',know:'看護手順・医療安全の資料',care:'患者の個人情報・診療情報'},
+  {n:'地域連携・相談員',who:'他院・介護施設との連絡調整と退院支援',doc:['紹介状への返書の下書き','退院支援の計画書','連携先への連絡文'],data:['紹介・逆紹介の実績','連携先の一覧'],check:'紹介状と受け入れ条件',media:['連携先の情報を集めて一覧にする手法','公開情報から連携先の情報を集め、一覧に整理する手順'],voice:'退院支援のカンファレンス',flow:'紹介の受け付けから返書までの流れ',know:'連携先の資料・制度の資料',care:'患者の個人情報'}]},
+ {id:'care',n:'介護・福祉',dx:'介護記録と事務のデジタル化を進め、生成AIで記録・連絡の負担を減らす',jobs:[
+  {n:'介護職員',who:'利用者の日常生活の支援と記録',doc:['介護記録','ヒヤリハット報告書','家族への連絡文'],data:['食事・排せつ・バイタルの記録','事故・ヒヤリハットの記録'],check:'ケアプランと実施記録',media:['写真・図を使った説明資料を作る手法','利用者・家族向けの資料を図や写真で分かりやすくする手法'],voice:'申し送り・ケア会議',flow:'記録の入力から申し送りまでの流れ',know:'介護の手順・過去の事故事例',care:'利用者の個人情報・健康情報'},
+  {n:'ケアマネジャー',who:'ケアプランの作成と関係者の調整',doc:['ケアプランの下書き','モニタリング記録','サービス担当者会議の記録'],data:['利用者ごとのサービス利用実績','給付管理のデータ'],check:'ケアプランとサービス提供票',media:['聞き取りのメモからアセスメントを整理する手法','聞き取りのメモから要点を整理し、記録の形式に整える手順'],voice:'サービス担当者会議',flow:'訪問後の記録からケアプランの見直しまで',know:'制度の資料・地域のサービス情報',care:'利用者の個人情報・健康情報'},
+  {n:'生活相談員・施設事務',who:'入退所の相談・契約と施設の事務',doc:['入所の説明資料','契約書類の確認資料','家族への連絡文'],data:['入退所・稼働率のデータ','請求のデータ'],check:'契約書と請求データ',media:['広報紙・案内資料を作る手法','施設の案内やお知らせを、写真と図で分かりやすく作る手法'],voice:'入所判定の会議',flow:'問い合わせから見学・契約までの流れ',know:'制度の資料・過去の相談記録',care:'利用者・家族の個人情報'}]},
+ {id:'log',n:'運輸・物流',dx:'配送・倉庫のデータ活用を進め、生成AIで配車と事務の業務を効率化する',jobs:[
+  {n:'配車・運行管理',who:'配送計画と車両・乗務員の管理',doc:['運行指示書','乗務員への連絡文','事故・遅延の報告書'],data:['配送実績と走行データ','車両の稼働データ'],check:'配送依頼と運行実績',media:['地図と配送データでルートを比べる手法','地図と配送データを使ったルートの比較、AIによる最適化の考え方と限界'],voice:'運行の打合せ',flow:'配送依頼の受け付けから配車までの流れ',know:'取引先ごとの配送条件・過去の運行記録',care:'荷主・届け先の情報'},
+  {n:'倉庫管理',who:'入出庫・在庫の管理と作業の管理',doc:['作業指示書','入出庫の報告','荷主への報告書'],data:['入出庫と在庫のデータ','作業時間と生産性のデータ'],check:'出荷指示と出荷実績',media:['伝票・ラベルを読み取ってデータにする手法','紙の伝票やラベルの画像から項目を読み取り、表に整理する手順'],voice:'倉庫の作業の打合せ',flow:'入荷予定の受け付けから入庫記録まで',know:'荷主ごとの作業条件・過去のトラブルの記録',care:'荷主・届け先の情報'},
+  {n:'物流事務',who:'受注・請求・荷主との連絡',doc:['荷主への見積・案内文','請求書の送付文','問い合わせへの回答文'],data:['運賃・請求のデータ','荷主ごとの取扱量'],check:'運送の実績と請求書',media:['送り状・受領書を読み取ってデータにする手法','送り状や受領書から項目を読み取り、表に整理する手順'],voice:'荷主との打合せ',flow:'受注から請求までの処理',know:'運賃表・過去の問い合わせ記録',care:'荷主・届け先の情報'}]},
+ {id:'re',n:'不動産業',dx:'物件情報と顧客対応のデジタル化を進め、生成AIで広告・報告の業務を効率化する',jobs:[
+  {n:'賃貸仲介',who:'物件の紹介と契約の手続き',doc:['物件の紹介文・広告文','重要事項説明の準備資料','お客様への提案メール'],data:['問い合わせと成約のデータ','周辺の賃料相場のデータ'],check:'物件情報と広告の表示',media:['物件写真・間取り図を活用する手法','写真の補正・説明文の作成と、不動産の表示に関するルールの確認'],voice:'お客様との面談',flow:'問い合わせから内見予約までの流れ',know:'物件資料・過去の契約事例',care:'顧客の個人情報'},
+  {n:'物件管理',who:'入居者対応・修繕・オーナーへの報告',doc:['オーナーへの月次報告書','入居者へのお知らせ','修繕の提案書'],data:['入居率と賃料のデータ','修繕の履歴と費用'],check:'契約内容と請求・入金',media:['建物の点検写真を整理して報告する手法','点検写真の分類と説明文の作成、報告書の形式への整理'],voice:'オーナーとの打合せ',flow:'入居者からの連絡の受け付けから手配まで',know:'管理規約・過去の修繕記録',care:'入居者・オーナーの個人情報'},
+  {n:'売買仲介',who:'査定・販売活動・契約',doc:['査定の説明資料','販売図面・広告文','売主への活動報告'],data:['成約事例と価格のデータ','反響のデータ'],check:'調査資料と販売資料',media:['物件写真と周辺情報の資料を作る手法','写真の補正と説明文、周辺情報の整理と表示の注意点'],voice:'売主・買主との面談',flow:'反響の受け付けから案内までの流れ',know:'法令・税制の資料・過去の取引事例',care:'顧客の個人情報・資産の情報'}]},
+ {id:'food',n:'飲食・宿泊業',dx:'予約・販売のデータ活用を進め、生成AIで販促と事務の業務を効率化する',jobs:[
+  {n:'飲食店の店舗運営',who:'店舗の運営・発注・売上の管理',doc:['店舗の日報','メニュー・お知らせの文面','衛生管理の記録'],data:['売上と客数のデータ','食材の原価と発注データ'],check:'発注書と納品書',media:['メニュー写真・販促物を作る手法','料理写真の補正・説明文、SNS投稿用の画像の作成'],voice:'店舗ミーティング',flow:'売上の締めから日報・発注までの流れ',know:'レシピ・過去の売上記録',care:'顧客の予約情報'},
+  {n:'宿泊のフロント・予約管理',who:'予約・問い合わせ対応とフロント業務',doc:['予約確認メール・案内文','外国語でのご案内','口コミへの返信文'],data:['予約と稼働率のデータ','予約経路ごとの実績'],check:'予約サイトと予約台帳',media:['館内案内を図と写真で作る手法','写真と図を使った館内案内の作成、AI翻訳の確認方法'],voice:'スタッフミーティング',flow:'予約の受け付けから到着前の連絡まで',know:'館内の案内情報・過去の問い合わせ記録',care:'宿泊者の個人情報'},
+  {n:'商品企画・メニュー開発',who:'新しいメニューや商品の企画',doc:['企画書','商品の説明文','原価計算の説明資料'],data:['販売実績と原価のデータ','お客様アンケート'],check:'レシピと原価表・アレルゲンの表示',media:['試作のイメージ画像・パッケージ案を作る手法','画像生成による試作のイメージ、食品表示の注意点'],voice:'企画会議',flow:'アンケートの集計から改善案の整理まで',know:'過去の企画・販売の記録',care:'取引先・レシピの情報'}]},
+ {id:'it',n:'情報通信業',dx:'開発・運用の業務に生成AIを取り入れ、設計・テスト・問い合わせ対応を効率化する',jobs:[
+  {n:'システム開発エンジニア',who:'システムの設計・開発・テスト',doc:['要件定義書・設計書','テスト仕様書','ソースコードの説明とレビューのコメント'],data:['障害・問い合わせの記録','工数・進捗のデータ'],check:'仕様書とプログラム',media:['画面のラフ・構成図を作る手法','画面のラフや構成図の作成にAIを使う手法と確認の方法'],voice:'顧客との要件の打合せ',flow:'コードの確認（レビュー）からテストまでの流れ',know:'設計書・過去の障害記録',care:'顧客のシステム・データ'},
+  {n:'ITサポート・ヘルプデスク',who:'問い合わせ対応とIT環境の支援',doc:['問い合わせへの回答文','障害の報告書','利用者向けの手順書'],data:['問い合わせの件数と内容','機器・ライセンスの台帳'],check:'問い合わせの記録と対応履歴',media:['画面の画像から状況を読み取る手法','利用者から届いた画面の画像をもとに、原因の候補を整理する手順'],voice:'対応の振り返りの会議',flow:'問い合わせの受け付けから回答・記録まで',know:'過去の問い合わせ記録・製品の資料',care:'利用者の個人情報・アカウント情報'},
+  {n:'Webディレクター・マーケター',who:'Webサイト・広告の企画と運用',doc:['サイトの構成案','記事・広告の文案','クライアントへの報告書'],data:['アクセス解析のデータ','広告の成果データ'],check:'原稿と表示のルール（景品表示法など）',media:['バナー・画像の作成にAIを使う手法','画像生成の指示の出し方、権利と表示の注意点'],voice:'クライアントとの打合せ',flow:'月次のデータ集計から報告書作成まで',know:'過去の制作物・業界の資料',care:'クライアントの情報'}]},
+ {id:'pro',n:'士業・専門サービス',dx:'顧問先とのやりとりと書類処理のデジタル化を進め、生成AIで定型業務を効率化する',jobs:[
+  {n:'会計・税務スタッフ',who:'記帳・決算・税務の補助',doc:['顧問先への説明資料','決算報告の下書き','税務の質問への回答案'],data:['試算表・仕訳のデータ','顧問先ごとの業績データ'],check:'証憑と仕訳',media:['領収書・請求書を読み取ってデータにする手法','紙の証憑から項目を読み取り、仕訳の候補を作る手順と確認の方法'],voice:'顧問先との面談',flow:'証憑の受け取りから記帳までの流れ',know:'税法の資料・過去の相談記録',care:'顧問先の財務情報'},
+  {n:'労務手続きスタッフ',who:'社会保険・労働保険の手続きと給与計算',doc:['顧問先への案内文','手続きの説明資料','法改正のお知らせ'],data:['給与・勤怠のデータ','手続きの進捗管理表'],check:'勤怠と給与のデータ',media:['届出書類を読み取って入力を補助する手法','紙の書類から項目を読み取り、入力の候補を作る手順と確認の方法'],voice:'顧問先との面談',flow:'手続きの依頼の受け付けから完了報告まで',know:'法令・通達の資料・過去の相談記録',care:'従業員の個人情報・マイナンバー'}]},
+ {id:'fin',n:'金融・保険',dx:'顧客対応と事務のデジタル化を進め、生成AIで提案と手続きの業務を効率化する',jobs:[
+  {n:'保険代理店の営業',who:'保険の提案・契約・保全',doc:['提案内容の説明文','お客様への案内文','面談記録'],data:['契約と更改のデータ','見込み客のデータ'],check:'申込書と提案内容',media:['保障内容を図解で説明する資料を作る手法','保障の比較を図や表で分かりやすくする手法と、表示のルールの確認'],voice:'お客様との面談',flow:'満期・更改の案内から手続きまでの流れ',know:'商品パンフレット・約款・過去の事例',care:'顧客の個人情報・健康情報'}]},
+ {id:'edu',n:'教育・学習支援',dx:'教材作成と受講者管理のデジタル化を進め、生成AIで準備と事務の時間を減らす',jobs:[
+  {n:'講師・インストラクター',who:'授業の準備・実施と評価',doc:['教材・ワークシート','授業の計画','受講者・保護者へのお知らせ'],data:['成績・出欠のデータ','アンケートのデータ'],check:'教材と出題範囲',media:['教材の図解・画像を作る手法','図やイラストの作成にAIを使う手法と、著作権の確認'],voice:'授業の振り返り・面談',flow:'小テストの採点から成績の記録まで',know:'過去の教材・指導記録',care:'受講者の個人情報・成績'},
+  {n:'教務・事務',who:'受講者の募集・管理と事務',doc:['募集の案内・お知らせ','受講者への連絡文','運営の報告書'],data:['申込と受講のデータ','売上と入金のデータ'],check:'申込データと請求',media:['案内資料・チラシを作る手法','写真や図を使った案内資料の作成と、表示の確認方法'],voice:'運営会議',flow:'申込の受け付けから受講案内まで',know:'規程・過去の問い合わせ記録',care:'受講者の個人情報'}]},
+ {id:'common',n:'全業種共通の職種',dx:'事務部門の業務のデジタル化を進め、生成AIで書類作成とデータ活用を効率化する',jobs:[
+  {n:'営業',who:'顧客への提案と商談',doc:['提案書','商談の報告','お客様へのメール'],data:['商談・受注のデータ','顧客ごとの売上'],check:'見積と契約内容',media:['提案資料の図解・スライドを作る手法','構成案から図解・スライドを作る手法と確認の方法'],voice:'商談',flow:'商談の記録から次の提案までの流れ',know:'過去の提案書・顧客の記録',care:'顧客の情報・価格の情報'},
+  {n:'経理・財務',who:'請求・支払い・決算の業務',doc:['月次の報告資料','取引先への連絡文','経費精算の確認・差し戻しの文面'],data:['試算表・予算実績のデータ','売掛金・買掛金のデータ'],check:'請求書と入金・支払いの記録',media:['請求書・領収書を読み取ってデータにする手法','紙やPDFの書類から項目を読み取り、仕訳の候補を作る手順'],voice:'月次の会議',flow:'請求書の受け取りから支払いまでの処理',know:'経理規程・過去の処理事例',care:'財務情報・取引先の情報'},
+  {n:'人事・労務',who:'採用・労務管理・人事制度の運用',doc:['求人票・募集の文面','従業員への案内文','面接の記録'],data:['勤怠と残業のデータ','採用の応募データ'],check:'勤怠と給与の記録',media:['採用広報の画像・資料を作る手法','求人用の写真・図の作成と、表示の注意点'],voice:'面接・面談',flow:'応募の受け付けから面接の調整まで',know:'就業規則・過去の問い合わせ記録',care:'従業員・応募者の個人情報'},
+  {n:'総務',who:'社内の事務・設備・文書の管理',doc:['社内のお知らせ','契約書の確認資料','稟議の文書'],data:['備品・契約の管理表','経費のデータ'],check:'契約書と請求',media:['紙の書類を読み取って管理表にする手法','紙の書類を読み取り、管理表に整理する手順'],voice:'社内の会議',flow:'申請の受け付けから承認・記録まで',know:'社内規程・過去の文書',care:'従業員・取引先の情報'},
+  {n:'マーケティング・広報',who:'販促・広告・SNS・広報',doc:['プレスリリース','SNS・広告の文案','販促の企画書'],data:['広告・SNSの成果データ','お客様アンケート'],check:'原稿と表示のルール（景品表示法など）',media:['販促用の画像・動画の作成にAIを使う手法','画像・動画生成の指示の出し方、権利と表示の注意点'],voice:'企画会議',flow:'月次の成果の集計から報告まで',know:'過去の販促物・市場の資料',care:'顧客の情報'},
+  {n:'カスタマーサポート',who:'お客様からの問い合わせ対応',doc:['問い合わせへの回答文','よくある質問の原稿','対応の報告'],data:['問い合わせの件数と内容','満足度のデータ'],check:'回答内容と契約・規約',media:['お客様から届いた写真・書類を読み取る手法','写真や書類から状況を読み取り、回答の候補を整理する手順'],voice:'お客様との通話',flow:'問い合わせの受け付けから回答・記録まで',know:'過去の問い合わせ記録・製品の資料',care:'顧客の個人情報'}]}];
+
+/* 3セットの型。各科目は [科目名, 内容, 時間, 職務との関連, 重なったときの差し替え（任意）, 過去の研修と重なる語] */
+const CAT_SETS=[
+ {lv:'初級1',key:'doc',title:j=>'生成AIで'+j.n+'の文書業務を効率化する',goal:j=>j.doc[0]+'・'+j.doc[1]+'などを生成AIで下書きし、正確さを確かめて仕上げられる',rows:j=>[
+  ['生成AIの仕組みと、'+j.care+'を扱うときの判断基準','回答が作られる仕組み、誤った情報の見分け方、'+j.care+'を入力してよいかの判断と対策',1.5,j.care+'を扱う'+j.n+'の業務',[j.care+'の取り扱いの事例研究','事例をもとに、入力してよい情報・いけない情報を判断する演習、誤りが起きたときの対応'],/入門|基本|基礎知識|リスク|仕組み/],
+  [j.n+'の文書に合った指示文（プロンプト）の設計','目的・条件・出力形式の指定、例の示し方、'+j.doc[0]+'を題材にした比較演習',1.5,j.n+'の書類作成業務',[j.n+'の業務別の指示文の型づくり','担当業務ごとの指示文の型、条件の分け方、チームで使い回す方法'],/プロンプト|指示文/],
+  [j.doc[0]+'の下書きを作る手法','必要な項目の洗い出し、AIによる下書き、事実と数値の確認手順',1.5,j.doc[0]+'の作成業務'],
+  [j.doc[1]+'の作成と要約','メモや箇条書きからの作成、要点の抽出、読み手に合わせた書き分け',1.5,j.doc[1]+'の作成業務'],
+  [j.doc[2]+'の作成とチェック','下書きの作成、記載漏れ・誤りの確認、表現の見直し',1.5,j.doc[2]+'の作成業務'],
+  ['総合演習：'+j.n+'の文書業務を通しで行う','演習用の題材を使い、下書き・確認・修正までを一人ずつ実施。講師が添削',2.5,j.n+'の書類作成業務の全体']]},
+ {lv:'初級2',key:'data',title:j=>'生成AIで'+j.n+'のデータと記録を活用する',goal:j=>j.data[0]+'などのデータや'+j.voice+'の記録を、生成AIで集計・整理して報告にまとめられる',rows:j=>[
+  [j.data[0]+'の集計にAIを使う手法','表データの整え方、集計の指示の出し方、結果の検算',1.5,j.data[0]+'を扱う管理業務',[j.data[0]+'の集計の自動化と検証','集計手順の自動化、結果を検算する仕組み、例外データの扱い'],/Excel|エクセル|集計|表計算/],
+  [j.data[1]+'の分析と読み取り','グラフの作成、傾向と異常値の読み取り、報告用の要点の整理',1.5,j.data[1]+'を使う判断・報告業務',null,/分析/],
+  [j.check+'の照合にAIを使う手法','書類どうしの食い違いを洗い出す手順、AIが見落としやすい点と人による確認',1.5,j.check+'を確認する業務'],
+  [j.media[0],j.media[1],1.5,j.n+'の記録・資料作成業務',null,/画像|写真/],
+  [j.voice+'の記録を音声から作る','文字起こしの精度を上げる工夫、要約と決定事項の抽出、記録の形式への整理',1.5,j.voice+'の記録業務',[j.voice+'の記録から次の行動を整理する手法','記録からの課題・担当・期限の抽出、関係者への共有文の作成'],/議事録|文字起こし|音声/],
+  ['総合演習：演習用データで'+j.n+'の報告資料を作る','演習用のデータと記録から、集計・分析・報告資料の作成までを実施。講師が講評',2.5,j.n+'の報告業務の全体']]},
+ {lv:'中級',key:'flow',title:j=>'生成AIで'+j.n+'の業務の流れを自動化する',goal:j=>j.flow+'など、'+j.n+'の業務の流れを分析し、AIを使った自動化を設計できる',rows:j=>[
+  [j.n+'の業務の流れの分析と、AIを使う箇所の見つけ方','業務の分解、AIに任せる部分と人が確認する部分の切り分け、効果の見積り（演習用の業務シナリオで）',1.5,j.n+'の業務全体の改善'],
+  [j.flow+'の自動化の設計','ノーコードツール・RPAとAIの組み合わせ方、例外が起きたときの扱い',1.5,j.flow+'の業務',[j.flow+'の自動化の例外処理と検証','例外の洗い出し、人が判断する場面の設計、動作の確かめ方'],/自動化|RPA|ノーコード/],
+  [j.know+'をAIで検索・活用する仕組み','社内の文書を参照させる仕組み（RAG）の考え方、検索しやすい文書の整え方、回答の確かめ方',1.5,j.know+'を使う業務',[j.know+'の検索の精度を高める手法','文書の分け方・名前の付け方、検索結果の評価、更新の仕組み'],/検索|ナレッジ|RAG/],
+  ['AIエージェントで複数の手順をまとめて進める手法','作業の分け方と指示の出し方、人の承認を入れる位置、'+j.n+'の業務での使いどころ',1.5,j.n+'の複数の手順にまたがる業務',null,/エージェント/],
+  ['AIの出力の品質を評価する手法','評価の観点と基準の作り方、誤りの記録と改善、'+j.care+'の取り扱いの確認',1.5,j.n+'の書類・データの正確さの管理'],
+  ['総合演習：演習用シナリオで'+j.n+'の自動化の設計書を作る','演習用の業務シナリオをもとに、自動化の範囲・手順・確認方法を設計書にまとめて発表。講師が講評',2.5,j.n+'の業務の改善の全体']]}];
+
+/* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける */
+function catSet(ii,ji,si,past){const ind=CAT_IND[ii],j=ind.jobs[ji],st=CAT_SETS[si];past=past||[];
+ const rows=st.rows(j).map(r=>{const by=r[5]&&past.find(p=>r[5].test(p));
+  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],swap:{from:r[0],by}};
+  return {t:r[0],c:r[1],h:r[2],rel:r[3],ov:by||null};});
+ return {lv:st.lv,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j};}
+/*CATALOG:END*/
+const IND_RE=[[/建設|工事|工務/,'con'],[/歯科|医療|クリニック|病院/,'med'],[/介護|福祉/,'care'],[/製造|印刷|工業/,'mfg'],[/運送|運輸|物流|倉庫/,'log'],[/不動産/,'re'],[/飲食|カフェ|宿泊|旅館|ホテル/,'food'],[/小売|卸売|商店/,'ret'],[/情報|ソフトウェア/,'it'],[/会計|税理士|社労士|社会保険労務士|法律/,'pro'],[/保険|金融/,'fin'],[/教育|学習|スクール/,'edu']];
+const indIdx=c=>{const r=IND_RE.find(x=>x[0].test(c.ind));const id=r?r[1]:'common';return CAT_IND.findIndex(x=>x.id===id);};
+const PER_DAY=[2,3,4,5,6,7,8];
 const PAST={c1:[{id:'h1',t:'生成AI入門（基本操作とリスク）',h:6,when:'2025年10月'},{id:'h2',t:'プロンプト作成の基礎',h:4,when:'2026年3月'}]};
-S.cur={cid:'c1',job:'施工管理・積算・事務',text:'見積書と施工報告書の作成に時間がかかっている。現場の写真やメモから報告書を作れるようにしたい。ついでにビジネスマナーの研修も入れてほしい。',tags:{estimate:true,report:true},hours:10,mode:'通学制（講師が来社）',past:{h1:true,h2:true},extra:[],out:{},res:null,gen:false,imported:false};
+S.cur={cid:'c1',job:'施工管理・積算・事務',text:'見積書と施工報告書の作成に時間がかかっている。現場の写真やメモから報告書を作れるようにしたい。ついでにビジネスマナーの研修も入れてほしい。',tags:{estimate:true,report:true},hours:10,mode:'通学制（講師が来社）',past:{h1:true,h2:true},extra:[],out:{},res:null,gen:false,imported:false,src:'wish',ii:0,ji:0,si:0,perDay:5};
 const CO={name:'株式会社みどり設備',kana:'ミドリセツビ',num:'0000000000001',zip:'〒335-0021',addr:'埼玉県戸田市新曽0-0-0',rep:'緑川 太郎',repKana:'ミドリカワ タロウ',tel:'048-000-0000',mobile:'090-0000-0000',mail:'t.midorikawa@midori-setsubi.example'};
 let seq=0;
 function mk(co,ind,rep,emp,stage,startIn,len,o){seq++;return Object.assign({id:'c'+seq,no:seq,co,ind,rep,emp,stage,startIn,len,course:'reskill',train:'AI活用研修（AI Office）',hours:12,people:5,fee:200000,wait:'us',miss:[],upd:'',docsN:0,docsT:6},o||{});}
@@ -737,7 +850,7 @@ function overview(){
   {i:'today',who:'スタッフ',h:'期限を落とさず、ミスなく進む',li:['計画届・支給申請の期限を、訓練日から自動で計算','出勤簿と受講記録、賃金台帳を自動で突き合わせ','対象外になる研修内容を、計画の段階で検知','今日やることが、優先順に1画面で並ぶ'],go:['staff','today','「今日やること」を見る']},
   {i:'camera',who:'お客様',h:'やることと所要時間が、いつも分かる',li:['いまの段階と、次の期限を最初に表示','やることごとに、想定の作業時間を表示','事業内職業能力開発計画はひな形から作成','訓練中は、毎月の書類をLINEでお知らせ'],go:['client','','お客様の画面を見る']},
   {i:'bulb',who:'営業',h:'研修の実績が、次の提案につながる',li:['研修内容・受講者数・助成額が顧客台帳に貯まる','時限措置の終了や追加申請の時期を自動で知らせる','AI研修からAI Officeの導入まで、一続きで提案'],go:['staff','crm','「顧客・提案」を見る']},
-  {i:'grad',who:'研修の企画',h:'要望を入れるだけで、カリキュラムのたたき台',li:['お客様の要望から、要項に沿った10時間のカリキュラム案を作成','マナー研修など対象外の内容は、自動で外す','これまでの研修と重ならない科目を選ぶ','計画届に添えるDX化の内容の下書きも作る'],go:['staff','cur','「カリキュラム作成」を見る']},
+  {i:'grad',who:'研修の企画',h:'要望を入れるだけで、カリキュラムのたたき台',li:['お客様の要望、または業種・職種から、要項に沿った10時間のカリキュラム案を作成','初級1・初級2・中級の3セット（年30時間）を、科目が重ならないように用意','1日の受講時間（2〜8時間）に合わせて時間割を作成','マナー研修など対象外の内容は自動で外し、DX化の内容の下書きも作る'],go:['staff','cur','「カリキュラム作成」を見る']},
   {i:'shield',who:'提携社労士',h:'作成・提出は、提携する社労士へ',li:['提携する社労士事務所を登録し、案件ごとに担当を決める','書類・申請データ・AIチェックの結果をそのまま共有','社労士事務所が使う場合は、自事務所で作成・提出する設定に'],go:['staff','partner','「提携社労士」を見る']},
   {i:'link',who:'連携',h:'研修の記録や勤怠とつながる',li:['研修の受講記録（LMS）を自動で取り込み','勤怠・給与システムから出勤簿と賃金台帳を受け取る','PMS、LINE、Gmail、Slackと連携','AI導入補助金コンシェルジュと顧客を共有'],go:['staff','links','「連携」を見る']}];
  return `<div class="wrap ov">
@@ -951,59 +1064,88 @@ function settingsV(){
 /* ================= CURRICULUM BUILDER ================= */
 function curPast(){const k=S.cur;return (PAST[k.cid]||[]).filter(p=>k.past[p.id]).concat(k.extra.map(t=>({t,custom:1})));}
 function curTags(){const k=S.cur,t={};Object.keys(NEED_KW).forEach(x=>{const on=k.tags[x]!==undefined?k.tags[x]:NEED_KW[x].test(k.text);if(on)t[x]=1;});return t;}
+/* 1日の受講時間 H に合わせて時間割を組む。9:00開始、1日5時間以上なら12:00〜13:00に昼食（訓練時間に数えない）。科目は1時間未満に分けない */
+function layout(rows,H){const a=layout1(rows,H,1),b=layout1(rows,H,0);return b.days<a.days?b:a;} /* 切れ端なしで組み、日数が増えるときだけ分割を許す */
+function layout1(rows,H,strict){const out=[];let day=0,used=H,clock=0,lunch=0;const tm=m=>Math.floor(m/60)+':'+pad(Math.round(m%60));
+ rows.forEach(r=>{let left=r.h;const parts=[];
+  while(left>0.001){
+   if(used>=H-0.001){day++;used=0;clock=540;lunch=0;out.push({day});}
+   if(H>4&&!lunch&&clock>=720){out.push({lunch:1,from:tm(clock),to:tm(clock+60)});clock+=60;lunch=1;}
+   let take=Math.min(left,H-used);
+   if(strict&&take<left-0.001&&take<0.999&&used>0&&left<=H){used=H;continue;} /* 1時間未満の切れ端は作らず翌日にまわす */
+   if(H>4&&!lunch&&clock<720&&clock+take*60>720)take=(720-clock)/60;
+   const p=Object.assign({},r,{from:tm(clock),to:tm(clock+take*60),h:Math.round(take*100)/100});out.push(p);parts.push(p);
+   clock+=take*60;used+=take;left-=take;}
+  if(parts.length>1)parts.forEach((p,i)=>{p.part=(i+1)+'/'+parts.length;});});
+ return {sched:out,days:day};}
 function curBuild(){
- const k=S.cur,c=byId(k.cid),T=+k.hours,con=/建設|工事|工務/.test(c.ind),tags=curTags();
- const past=curPast(),ovIds={};past.forEach(p=>PAST_KW.forEach(r=>{if(r[0].test(p.t))ovIds[r[1]]={by:p};}));
- const ng=NG.filter(r=>r[0].test(k.text));
- const pool=MODS.filter(m=>!m.ind||(m.ind==='con')===con);
- const dropped=pool.filter(m=>ovIds[m.id]).map(m=>({m,by:ovIds[m.id].by}));
- const ok0=m=>!ovIds[m.id]&&!k.out[m.id];const avail=pool.filter(m=>ok0(m)&&!(m.alt&&ok0(MODS.find(x=>x.id===m.alt))));
- const score=m=>m.base+m.tags.filter(x=>tags[x]).length*10+(m.tags.length&&m.tags.every(x=>!tags[x])?-2:0);
- const n=Math.floor((T-1)/1.5),rest=Math.round((T-0.5-n*1.5)*10)/10;
- const pick=avail.slice().sort((a,b)=>score(b)-score(a)||a.o-b.o).slice(0,n).sort((a,b)=>a.o-b.o);
- const rows=[{t:'開講・オリエンテーション',c:'研修のねらいと進め方の説明',rel:'',h:.5,fixed:1}].concat(pick.map(m=>({id:m.id,t:m.t,c:m.c,rel:m.rel,h:1.5})),[{t:'総合演習と成果発表',c:'自分の担当業務の課題を選び、学んだ手法で解決策をつくって発表。講師が講評',rel:k.job+'の実務の課題',h:rest,fixed:1}]);
- /* lay out on days of up to 5 hours, 9:30 start, lunch 12:00-13:00 not counted */
- const sched=[];let day=0,used=99,clock=0;
- const tm=m=>Math.floor(m/60)+':'+pad(m%60);
- let lunch=0;rows.forEach(r=>{if(used+r.h>5.01){day++;used=0;clock=570;lunch=0;sched.push({day});}
-  if(!lunch&&clock+r.h*60>720){sched.push({lunch:1,from:tm(clock),to:tm(clock+60)});clock+=60;lunch=1;}
-  sched.push(Object.assign({from:tm(clock),to:tm(clock+r.h*60)},r));clock+=r.h*60;used+=r.h;});
- const total=rows.reduce((a,r)=>a+r.h,0);
- let want=k.text;NG.forEach(r=>{want=want.split('。').filter(s=>!r[0].test(s)).join('。');});want=want.replace(/[。\s]+$/,'');
- const dx=`当社は${c.ind.replace(/（.*?）/,'')}を営んでいる。${want?want+'。':''}そこで、生成AIを業務に取り入れ、書類作成とデータ活用のデジタル化を進める。これに伴い、${k.job}を担当する従業員に、生成AIを使った業務の手法を習得させる訓練を実施したい。`;
- k.res={rows,sched,total,days:day,dropped,ng,dx,c};}
-function curV(){const k=S.cur,c=byId(k.cid),tags=curTags(),r=k.res;
- const pastL=PAST[k.cid]||[];
+ const k=S.cur,c=byId(k.cid),H=+k.perDay||5,past=curPast();let o;
+ if(k.src==='series'){const st=catSet(k.ii,k.ji,k.si,past.map(p=>p.t));
+  o={rows:st.rows,title:st.lv+'「'+st.title+'」',job:st.job.n,ng:[],
+   dropped:st.rows.filter(r=>r.swap).map(r=>({t:r.swap.from,by:r.swap.by,to:r.t})),ovs:st.rows.filter(r=>r.ov).map(r=>({t:r.t,by:r.ov})),
+   dx:'当社は'+c.ind.replace(/（.*?）/,'')+'を営んでいる。'+st.ind.dx+'ため、'+st.job.n+'を担当する従業員に、生成AIを使った業務の手法を3段階で習得させる。本訓練はその'+st.lv+'として、'+st.goal.replace(/られる$/,'られるようにする')+'ことを目的とする。'};}
+ else{const T=+k.hours,con=/建設|工事|工務/.test(c.ind),tags=curTags();
+  const ovIds={};past.forEach(p=>PAST_KW.forEach(r=>{if(r[0].test(p.t))ovIds[r[1]]={by:p};}));
+  const pool=MODS.filter(m=>!m.ind||(m.ind==='con')===con);
+  const ok0=m=>!ovIds[m.id]&&!k.out[m.id];const avail=pool.filter(m=>ok0(m)&&!(m.alt&&ok0(MODS.find(x=>x.id===m.alt))));
+  const score=m=>m.base+m.tags.filter(x=>tags[x]).length*10+(m.tags.length&&m.tags.every(x=>!tags[x])?-2:0);
+  const n=Math.floor((T-1)/1.5),rest=Math.round((T-0.5-n*1.5)*10)/10;
+  const pick=avail.slice().sort((a,b)=>score(b)-score(a)||a.o-b.o).slice(0,n).sort((a,b)=>a.o-b.o);
+  const rows=[{t:'開講・オリエンテーション',c:'研修のねらいと進め方の説明',rel:'',h:.5,fixed:1}].concat(pick.map(m=>({id:m.id,t:m.t,c:m.c,rel:m.rel,h:1.5})),[{t:'総合演習と成果発表',c:'演習用の業務課題を使い、学んだ手法で解決策をつくって発表。講師が講評',rel:k.job+'の業務',h:rest,fixed:1}]);
+  let want=k.text;NG.forEach(r=>{want=want.split('。').filter(x=>!r[0].test(x)).join('。');});want=want.replace(/[。\s]+$/,'');
+  o={rows,title:'生成AIを使った業務効率化の実践',job:k.job,ng:NG.filter(r=>r[0].test(k.text)),ovs:[],
+   dropped:pool.filter(m=>ovIds[m.id]).map(m=>({t:m.t,by:ovIds[m.id].by.t,to:''})),
+   dx:'当社は'+c.ind.replace(/（.*?）/,'')+'を営んでいる。'+(want?want+'。':'')+'そこで、生成AIを業務に取り入れ、書類作成とデータ活用のデジタル化を進める。これに伴い、'+k.job+'を担当する従業員に、生成AIを使った業務の手法を習得させる訓練を実施したい。'};}
+ const L=layout(o.rows,H);
+ k.res=Object.assign(o,{sched:L.sched,days:L.days,total:Math.round(o.rows.reduce((a,r)=>a+r.h,0)*100)/100,c,H,src:k.src});}
+/* 令和8年8月3日以降に提出する計画届の指針（リスキリング支援コース パンフレット P13・P28・P29・P39）に沿っているか */
+function curChecks(r){const ser=r.src==='series',H=r.H;return [
+ {ok:r.total>=10,t:'実訓練時間 '+r.total+'時間（10時間以上）',p:'昼食などの休憩と移動の時間は数えていません。小休止（1回30分以下）は1日60分まで、開講式・オリエンテーションは1つの計画届で合計60分まで数えられますが、この案は'+(ser?'どちらも含めず、科目の時間だけで10時間にしています。':'開講・オリエンテーションの30分だけを含めています。')},
+ {ok:!r.ng.length,adj:r.ng.length,t:'ご要望のうち対象外の内容',p:r.ng.length?r.ng.map(x=>'ご要望の「'+x[1]+'」は、'+x[2]+'対象外です。カリキュラムから外しました。').join(''):(ser?'3セットの科目は、対象外の内容を含まないように組んでいます。':'対象外になる内容は、ご要望に含まれていません。')},
+ {ok:true,t:'職務に直接関連する内容か（表1①②）',p:'各科目に、'+r.job+'の業務との関連を書いています。令和8年8月3日以降の計画では、職務に間接的な内容や、接遇・マナーなど職種を問わない共通のスキルは、DX関連でも対象外です。'},
+ {ok:true,t:'通常の事業活動にあたらないか（表1④）',p:'演習は演習用の題材・データで行い、自社の実際の書類・マニュアル・計画をつくる時間にはしていません。自社で使う機器・端末の操作説明や、自社製品の説明も含めていません。'},
+ {ok:true,t:'操作方法を覚えるだけの訓練にしない',p:'文章の入力や書式の変更程度の初歩的な操作だけの訓練や、既存のアプリを購入して操作方法を覚えるだけの訓練は対象外です。特定の製品の画面操作ではなく、生成AIを使った業務の手法として組み立てています。'},
+ {ok:true,t:'そのほかの対象外の目的（表1③⑤⑥⑦⑧⑨）',p:'趣味教養、講演会・見学会、法令で義務づけられた講習、意識改革研修、管理職研修、資格試験だけのものは含めていません。'},
+ {ok:true,t:'実施の方法（表2）',p:'会議室など、営業中の職場ではない場所で行います。計画届に書いた日時どおりに実施し、日時が変わるときは変更届が必要です。ビデオを見るだけの講座にはせず、テキスト（教材）を使います。'},
+ {ok:true,t:'講師の要件',p:'部外講師の場合は、この分野の講師経験が3年以上、または実務経験が10年以上など、専門の知識を持つ講師が必要です。講師の経歴を確認しておいてください。'},
+ {ok:true,info:ser,t:'受講回数（1人あたり年度3回まで）',p:'助成の対象は1人1年度3回までです（年度は支給申請日で数え、4月〜翌年3月）。eラーニングは年度1回までです。'+(ser?'このシリーズは3セットで3回分を使います。ほかの研修と合わせて3回を超えないようにしてください。':'')},
+ {ok:H<7,info:H>=7,t:'1日'+H+'時間・所定労働時間内での実施',p:'所定労働時間の外や所定休日に行った時間は、賃金助成の対象外です。'+(H>=7?'1日'+H+'時間の場合は、お客様の所定労働時間に収まるか確認してください。':'1日'+H+'時間なら、通常の勤務時間内に収まります。')},
+ {ok:!r.dropped.length&&!r.ovs.length,adj:r.dropped.length&&!r.ovs.length,warn:r.ovs.length,t:'これまでの研修との重なり',p:(r.dropped.length?r.dropped.map(x=>'「'+x.t+'」は「'+x.by+'」と重なるため外し、'+(x.to?'「'+x.to+'」に差し替えました。':'応用の内容を選びました。')).join(''):'')+(r.ovs.length?r.ovs.map(x=>'「'+x.t+'」は「'+x.by+'」と重なる可能性があります。内容を確認してください。').join(''):'')+(!r.dropped.length&&!r.ovs.length?'重なる科目はありません。':'')}];}
+function curV(){const k=S.cur,c=byId(k.cid),tags=curTags(),r=k.res,ser=k.src==='series';
+ const pastL=PAST[k.cid]||[],pastT=curPast().map(p=>p.t),ind=CAT_IND[k.ii],sets=[0,1,2].map(i=>catSet(k.ii,k.ji,i,pastT));
  const banner=cl.wish.sent&&!k.imported?`<div class="card banner"><span>${ic('chat','s')} <b>${esc(CO.name)}から研修のご要望が届いています。</b>お客様の画面で選んだ内容を取り込めます。</span><button class="btn p sm" data-act="curimport">取り込む</button></div>`:'';
+ const T=ser?10:+k.hours,H=+k.perDay||5;
  const input=`<div class="card cur-in">
+  <div class="seg"><button data-act="cursrc" data-v="wish" aria-pressed="${!ser}">要望から作る</button><button data-act="cursrc" data-v="series" aria-pressed="${ser}">業種・職種の3セットから</button></div>
   <div class="fld"><label for="curC">お客様</label><select id="curC" data-curc="1">${CASES.map(x=>`<option value="${x.id}" ${x.id===k.cid?'selected':''}>${esc(x.co)}</option>`).join('')}</select><span class="tiny">${esc(c.ind)}・従業員${total(c)}名</span></div>
-  <div class="fld"><label for="curJob">受講する人の職務</label><input type="text" id="curJob" data-bind="cur.job" value="${esc(k.job)}"></div>
+  ${ser?`<div class="fld"><label for="curInd">業種</label><select id="curInd" data-curind="1">${CAT_IND.map((x,i)=>`<option value="${i}" ${i===k.ii?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>
+  <div class="fld"><label for="curJb">職種</label><select id="curJb" data-curjob="1">${ind.jobs.map((x,i)=>`<option value="${i}" ${i===k.ji?'selected':''}>${esc(x.n)}</option>`).join('')}</select><span class="tiny">${esc(ind.jobs[k.ji].who)}</span></div>
+  <div class="fld"><span class="lb">つくるセット（1人あたり年度3回まで助成の対象）</span><div class="sets">${sets.map((x,i)=>`<button class="setb" data-act="curset" data-i="${i}" aria-pressed="${k.si===i}"><span class="chip ${i===2?'info':'brand'}">${x.lv}・10時間</span><b>${esc(x.title)}</b><span class="tiny">${esc(x.goal)}</span></button>`).join('')}</div><p class="tiny">3セットで年30時間。科目は互いに重ならないように組んでいます。</p></div>`
+  :`<div class="fld"><label for="curJob">受講する人の職務</label><input type="text" id="curJob" data-bind="cur.job" value="${esc(k.job)}"></div>
   <div class="fld"><span class="lb">困っている業務・身につけたいこと</span><div class="chips">${NEEDS.map(x=>`<button class="pick" data-act="curtag" data-k="${x[0]}" aria-pressed="${!!tags[x[0]]}">${x[1]}</button>`).join('')}</div></div>
-  <div class="fld"><label for="curText">お客様のご要望（そのまま貼り付けてOK）</label><textarea id="curText" rows="4" data-bind="cur.text">${esc(k.text)}</textarea></div>
+  <div class="fld"><label for="curText">お客様のご要望（そのまま貼り付けてOK）</label><textarea id="curText" rows="4" data-bind="cur.text">${esc(k.text)}</textarea></div>`}
   <div class="fld"><span class="lb">これまでに実施した研修（重ならないようにします）</span><div class="past">${pastL.map(p=>`<label><input type="checkbox" data-curpast="${p.id}" ${k.past[p.id]?'checked':''}><span>${esc(p.t)}<br><span class="tiny">${p.when}・${p.h}時間</span></span></label>`).join('')}${k.extra.map(t=>`<label><input type="checkbox" checked disabled><span>${esc(t)}<br><span class="tiny">追加した研修</span></span></label>`).join('')}${!pastL.length&&!k.extra.length?'<p class="tiny">記録はありません。</p>':''}</div>
    <div style="display:flex;gap:6px"><input type="text" id="curAdd" placeholder="例）議事録作成のAI活用 3時間" aria-label="実施した研修を追加"><button class="btn g sm" data-act="curadd">追加</button></div></div>
-  <div class="calc" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="fld"><label for="curH">実訓練時間</label><select id="curH" data-bind="cur.hours">${[10,12,15].map(h=>`<option value="${h}" ${+k.hours===h?'selected':''}>${h}時間</option>`).join('')}</select></div>
-   <div class="fld"><label for="curM">実施方法</label><select id="curM" data-bind="cur.mode">${['通学制（講師が来社）','同時双方向型のオンライン'].map(m=>`<option ${k.mode===m?'selected':''}>${m}</option>`).join('')}</select></div></div>
+  <div class="calc" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+   ${ser?'':`<div class="fld"><label for="curH">実訓練時間</label><select id="curH" data-bind="cur.hours" data-re="1">${[10,12,15].map(h=>`<option value="${h}" ${+k.hours===h?'selected':''}>${h}時間</option>`).join('')}</select></div>`}
+   <div class="fld"><label for="curPD">1日の受講時間</label><select id="curPD" data-bind="cur.perDay" data-re="1">${PER_DAY.map(h=>`<option value="${h}" ${H===h?'selected':''}>1日${h}時間</option>`).join('')}</select></div>
+   <div class="fld" style="${ser?'':'grid-column:1/-1'}"><label for="curM">実施方法</label><select id="curM" data-bind="cur.mode">${['通学制（講師が来社）','同時双方向型のオンライン'].map(m=>`<option ${k.mode===m?'selected':''}>${m}</option>`).join('')}</select></div></div>
+  <p class="tiny">${T}時間を1日${H}時間で行うと、約${Math.ceil(T/H-0.001)}日間です（9:00開始${H>4?'・昼食1時間':''}）。</p>
   <button class="btn p lg block" data-act="curgen">${ic('spark','s')}${r?'もう一度つくる':'たたき台をつくる'}</button>
-  <p class="tiny">要件は実訓練時間10時間以上です。お客様の負担が少ないよう、10時間を基本にしています。</p></div>`;
+  <p class="tiny">要件は実訓練時間10時間以上です。令和8年8月3日以降に提出する計画届の要項に沿って組み立てます。</p></div>`;
  let out;
  if(k.gen)out=`<div class="card gen"><div class="read"><span class="spin"></span>要項に沿ってカリキュラムを組み立てています</div><p class="tiny">対象外の内容と、過去の研修との重なりを確認しています</p></div>`;
- else if(!r)out=`<div class="card gen">${ic('grad','l')}<p><b>左の内容から、計画届に添付できる形のカリキュラム案をつくります</b></p><p class="tiny">対象外になる内容は自動で外し、これまでの研修と重ならない科目を選びます。</p></div>`;
- else{const chk=[
-   {ok:r.total>=10,t:'実訓練時間 '+r.total+'時間（10時間以上）',p:'昼食の休憩は数えていません。開講・オリエンテーションの30分は、1つの計画で合計60分まで数えられます。'},
-   {ok:!r.ng.length,adj:r.ng.length,t:'対象外の内容',p:r.ng.length?r.ng.map(x=>`ご要望の「${x[1]}」は、${x[2]}対象外です（令和8年8月3日以降の計画）。カリキュラムから外しました。`).join(''):'接遇・マナーなどの共通スキル、管理職研修、意識改革研修は含まれていません。'},
-   {ok:!r.dropped.length,adj:r.dropped.length,t:'これまでの研修との重なり',p:r.dropped.length?r.dropped.map(x=>`「${MODS.find(m=>m.id===x.m.id).t}」は「${x.by.t}」と重なるため外し、応用の内容を選びました。`).join(''):'重なる科目はありません。'},
-   {ok:true,t:'職務との関連',p:'各科目に、'+esc(k.job)+'の業務との関連を書いています。計画届のカリキュラムにそのまま使えます。'},
-   {ok:true,t:'ツールの操作説明だけにしない',p:'自社で使う機器・端末の操作説明は対象外のため、特定の製品の画面操作ではなく、生成AIを使った業務の手法として組み立てています。'},
-   {ok:true,t:'講師と教材',p:'専門の知識を持つ講師が、テキスト（教材）を使って行う形です。営業中の職場で行う訓練は対象外のため、会議室などで実施します。'}];
-  out=`<div class="card"><div class="pad" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><div><h2 style="font-size:16px">カリキュラム案：生成AIを使った業務効率化の実践</h2><p class="tiny">${esc(r.c.co)}・${esc(k.mode)}・${r.days}日間・実訓練時間 ${r.total}時間</p></div><span class="chip brand">リスキリング支援コース（DX化に伴う訓練）</span></div>
-   <div class="tscroll"><table class="ctable"><thead><tr><th>時間</th><th>科目と内容</th><th style="text-align:right">時間数</th></tr></thead><tbody>${r.sched.map(s=>s.day?`<tr class="day"><td colspan="3">${s.day}日目</td></tr>`:s.lunch?`<tr class="lunch"><td class="t">${s.from}〜${s.to}</td><td>昼食の休憩（訓練時間に数えません）</td><td class="h">—</td></tr>`
-    :`<tr><td class="t">${s.from}〜${s.to}</td><td><b>${esc(s.t)}</b>${esc(s.c)}${s.rel?`<p class="rel">職務との関連：${esc(s.rel)}</p>`:''}${s.id?`<button class="lnk" style="margin-top:4px" data-act="curswap" data-id="${s.id}">別の科目に入れ替える</button>`:''}</td><td class="h">${s.h}h</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="2">実訓練時間の合計</td><td class="h">${r.total}h</td></tr></tfoot></table></div></div>
-  <div class="card"><div class="grp"><h3>要項に沿っているかの自動チェック</h3></div>${chk.map(x=>`<div class="chk">${x.adj?'<span class="chip amber">調整済み</span>':x.ok?'<span class="chip ok">'+ic('check','s')+'OK</span>':'<span class="chip warn">要対応</span>'}<div><b>${x.t}</b><p>${x.p}</p></div></div>`).join('')}</div>
-  <div class="card pad" style="display:flex;flex-direction:column;gap:8px"><h2 style="font-size:15px">事業展開等実施計画「DX化の内容」の下書き</h2><p class="tiny">計画届に添える書類の記入欄です。お客様の言葉をもとに作っています。</p><textarea id="mTxt" rows="4" aria-label="DX化の内容の下書き">${esc(r.dx)}</textarea></div>
+ else if(!r)out=`<div class="card gen">${ic('grad','l')}<p><b>左の内容から、計画届に添付できる形のカリキュラム案をつくります</b></p><p class="tiny">対象外になる内容は自動で外し、これまでの研修と重ならない科目を選びます。1日の受講時間に合わせて時間割を組みます。</p></div>`;
+ else{const chk=curChecks(r);
+  out=`<div class="card"><div class="pad" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><div><h2 style="font-size:16px">カリキュラム案：${esc(r.title)}</h2><p class="tiny">${esc(r.c.co)}・${esc(k.mode)}・1日${r.H}時間・${r.days}日間・実訓練時間 ${r.total}時間</p></div><span class="chip brand">リスキリング支援コース（DX化に伴う訓練）</span></div>
+   <div class="tscroll"><table class="ctable"><thead><tr><th>時間</th><th>科目と内容</th><th style="text-align:right">時間数</th></tr></thead><tbody>${r.sched.map(x=>x.day?`<tr class="day"><td colspan="3">${x.day}日目</td></tr>`:x.lunch?`<tr class="lunch"><td class="t">${x.from}〜${x.to}</td><td>昼食の休憩（訓練時間に数えません）</td><td class="h">—</td></tr>`
+    :`<tr><td class="t">${x.from}〜${x.to}</td><td><b>${esc(x.t)}${x.part?'（'+x.part+'）':''}${x.swap?'<span class="chip amber tag">差し替え</span>':''}${x.ov?'<span class="chip warn tag">重なりの可能性</span>':''}</b>${esc(x.c)}${x.rel?`<p class="rel">職務との関連：${esc(x.rel)}</p>`:''}${x.id&&!x.part?`<button class="lnk" style="margin-top:4px" data-act="curswap" data-id="${x.id}">別の科目に入れ替える</button>`:''}</td><td class="h">${x.h}h</td></tr>`).join('')}</tbody><tfoot><tr><td colspan="2">実訓練時間の合計</td><td class="h">${r.total}h</td></tr></tfoot></table></div></div>
+  <div class="card"><div class="grp"><h3>令和8年8月3日以降の要項に沿っているかの自動チェック</h3></div>${chk.map(x=>`<div class="chk">${x.warn?'<span class="chip warn">要確認</span>':x.adj?'<span class="chip amber">調整済み</span>':x.info?'<span class="chip info">確認</span>':x.ok?'<span class="chip ok">'+ic('check','s')+'OK</span>':'<span class="chip warn">要対応</span>'}<div><b>${x.t}</b><p>${x.p}</p></div></div>`).join('')}
+   <p class="tiny" style="padding:10px 18px 14px">出典：<a href="${URL_P_RESKILL}" target="_blank" rel="noopener">事業展開等リスキリング支援コースのパンフレット（令和8年8月3日以降の計画届が対象）</a> P13・P28・P29・P39</p></div>
+  <div class="card pad" style="display:flex;flex-direction:column;gap:8px"><h2 style="font-size:15px">事業展開等実施計画「DX化の内容」の下書き</h2><p class="tiny">計画届に添える書類の記入欄です。${ser?'業種と職種の内容から作っています。':'お客様の言葉をもとに作っています。'}</p><textarea id="mTxt" rows="4" aria-label="DX化の内容の下書き">${esc(r.dx)}</textarea></div>
   <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn p" data-act="curapply">${ic('check','s')}この案を案件に反映する</button><button class="btn o" data-act="msg" data-m="お客様の画面に、研修案の確認をお願いする通知を出しました（試作）">お客様に確認をお願いする</button><button class="btn g" data-act="msg" data-m="カリキュラム表を書き出しました（試作のためファイルは作られません）">カリキュラム表を書き出す</button></div>
   <p class="tiny">たたき台です。最終的に助成の対象になるかは労働局が判断します。計画届の前に、提携社労士の確認を受けてください。</p>`;}
- return `<div class="ph"><div><h1>研修カリキュラムの作成</h1><p class="sub">お客様の要望を入れるだけで、人材開発支援助成金の要項に沿った10時間のカリキュラム案をつくります。</p></div></div>${banner}
+ return `<div class="ph"><div><h1>研修カリキュラムの作成</h1><p class="sub">お客様の要望、または業種・職種の3セット（年30時間）から、令和8年8月3日以降の要項に沿った10時間のカリキュラム案をつくります。1日の受講時間も選べます。</p></div></div>${banner}
  <div class="cur">${input}<div style="display:flex;flex-direction:column;gap:14px;min-width:0">${out}</div></div>`;}
 
 /* ================= PARTNERS ================= */
@@ -1148,6 +1290,8 @@ const ACTDOC={view:0,go:0,snav:0,tab:0,close:0,creset:0,mopen:0,mjump:0,
  seg:['選択肢を選ぶ','質問の答えを選びます。入力は自動で保存されます'],
  fix:[null,'違っている項目だけを直します'],fixok:[null,'直した内容を確定します'],
  send:[null,'入力した内容をまとめて送信します'],
+ cursrc:[null,'カリキュラムを、お客様の要望から作るか、業種・職種ごとの3セットから選ぶかを切り替えます'],
+ curset:['セットを選ぶ','初級1・初級2・中級のうち、どのセットのカリキュラムを作るかを選びます'],
  curtag:['困っている業務を選ぶ','研修で解決したい業務を選びます。要望の文章からも自動で選ばれます'],
  curgen:[null,'要望・職務・過去の研修から、要項に沿ったカリキュラム案をつくります'],
  curswap:[null,'その科目を、別の科目に入れ替えます'],
@@ -1252,7 +1396,7 @@ const A={
  filter(d){S.filter=d.f;render();},
  mode(d){S.mode=d.m;render();},
  stage(d){S.modal={type:'stage',id:d.id,i:+d.i};renderModal();},
- todo(d){const a=TODAY().find(x=>x.id===d.a);if(a.act==='cur'){Object.assign(S.cur,{cid:a.cid,job:'受付・歯科助手・事務',text:'予約の電話対応と、問診票や患者さんへのお知らせの作成に時間がかかっている。AIを使って事務作業を減らしたい。受付のマナー研修も入れたい。',tags:{},past:{},extra:[],out:{},res:null,imported:false});S.view='staff';S.staff='cur';S.caseId=null;render();window.scrollTo(0,0);return;}if(a.act==='nudge'){S.modal={type:'nudge',id:a.cid};renderModal();}else A.open({id:a.cid,tab:a.tab});},
+ todo(d){const a=TODAY().find(x=>x.id===d.a);if(a.act==='cur'){Object.assign(S.cur,{src:'wish',cid:a.cid,job:'受付・歯科助手・事務',text:'予約の電話対応と、問診票や患者さんへのお知らせの作成に時間がかかっている。AIを使って事務作業を減らしたい。受付のマナー研修も入れたい。',tags:{},past:{},extra:[],out:{},res:null,imported:false});S.view='staff';S.staff='cur';S.caseId=null;render();window.scrollTo(0,0);return;}if(a.act==='nudge'){S.modal={type:'nudge',id:a.cid};renderModal();}else A.open({id:a.cid,tab:a.tab});},
  tdone(d){S.done[d.a]=true;toast('済みにしました');render();},
  advance(d){const c=byId(d.id);if(c.miss.length||c.check&&!c.fixed){S.block=c.id;if(!c.miss.length)c.miss=['AIチェックの要対応'];render();return;}
   if(c.stage<6){if(c===MIDORI)c.manual=c.stage+1;else c.stage++;}
@@ -1281,10 +1425,12 @@ const A={
  send(){cl.sent=true;cl.screen='done';render();window.scrollTo(0,0);},
  curtag(d){const k=S.cur;k.tags[d.k]=!curTags()[d.k];render();},
  curgen(){const k=S.cur;k.gen=true;render();setTimeout(()=>{curBuild();k.gen=false;if(S.view==='staff'&&S.staff==='cur')render();},1100);},
+ cursrc(d){S.cur.src=d.v;S.cur.res=null;render();},
+ curset(d){S.cur.si=+d.i;S.cur.res=null;render();},
  curswap(d){const k=S.cur;k.out[d.id]=true;curBuild();render();toast('別の科目に入れ替えました');},
  curadd(){const i=$('#curAdd'),v=(i.value||'').trim();if(!v){toast('研修名を入力してください');i.focus();return;}S.cur.extra.push(v);S.cur.res=null;render();toast('追加しました。重なる科目はたたき台から外します');},
- curimport(){const k=S.cur,w=cl.wish;if(k.cid!=='c1'){Object.assign(k,{cid:'c1',job:'施工管理・積算・事務',past:{h1:true,h2:true},extra:[],out:{}});}k.tags=Object.assign({},w.tags);if(w.text)k.text=w.text;if(w.past)k.extra.push(w.past);k.imported=true;k.res=null;render();toast('お客様のご要望を取り込みました');},
- curapply(){const k=S.cur,r=k.res,c=byId(k.cid);c.train='生成AIを使った業務効率化の実践（'+r.total+'時間）';c.hours=r.total;if(c.check==='manner'){c.check=null;S.done.a3=true;}render();toast(c.co+'の案件に反映しました');},
+ curimport(){const k=S.cur,w=cl.wish;k.src='wish';if(k.cid!=='c1'){Object.assign(k,{cid:'c1',job:'施工管理・積算・事務',past:{h1:true,h2:true},extra:[],out:{}});}k.tags=Object.assign({},w.tags);if(w.text)k.text=w.text;if(w.past)k.extra.push(w.past);k.imported=true;k.res=null;render();toast('お客様のご要望を取り込みました');},
+ curapply(){const k=S.cur,r=k.res,c=byId(k.cid);c.train=r.title+'（'+r.total+'時間）';c.hours=r.total;if(c.check==='manner'){c.check=null;S.done.a3=true;}render();toast(c.co+'の案件に反映しました');},
  filer(d){S.filer=d.v;render();},
  addpartner(){const n=$('#npN').value.trim(),w=$('#npW').value.trim(),a=$('#npA').value.trim();if(!n){toast('事務所名を入力してください');$('#npN').focus();return;}S.partners.push({id:'p'+Date.now(),n,who:w||'—',area:a||'—',courses:'—',contact:'—',share:true});render();toast('提携先を追加しました');},
  wtag(d){cl.wish.tags[d.k]=!cl.wish.tags[d.k];render();},
@@ -1306,7 +1452,9 @@ document.addEventListener('input',e=>{const t=e.target;
 document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset&&t.dataset.file!=null){A.upload({i:t.dataset.file});return;}
  if(t.dataset&&t.dataset.card){A.wiz({step:1});return;}
- if(t.dataset&&t.dataset.curc){Object.assign(S.cur,{cid:t.value,past:{},extra:[],out:{},res:null,imported:false});(PAST[t.value]||[]).forEach(p=>S.cur.past[p.id]=true);render();return;}
+ if(t.dataset&&t.dataset.curind){Object.assign(S.cur,{ii:+t.value,ji:0,res:null});render();return;}
+ if(t.dataset&&t.dataset.curjob){Object.assign(S.cur,{ji:+t.value,res:null});render();return;}
+ if(t.dataset&&t.dataset.curc){Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(t.value))),ji:0,cid:t.value,past:{},extra:[],out:{},res:null,imported:false});(PAST[t.value]||[]).forEach(p=>S.cur.past[p.id]=true);render();return;}
  if(t.dataset&&t.dataset.curpast){S.cur.past[t.dataset.curpast]=t.checked;S.cur.res=null;render();return;}
  if(t.dataset&&t.dataset.srsel){byId(t.dataset.srsel).sr=t.value;render();toast('担当の社労士事務所を変更しました');return;}
  if(t.dataset&&t.dataset.re&&t.type!=='checkbox'){const id=t.id;render();const n=document.getElementById(id);if(n&&n.focus){n.focus();}return;}

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>業種・職種別 AI研修メニュー</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap">
+<style>
+/* Layout: a hero that states "10h x 3 = 30h", the three levels, the rules the menu follows, then a filterable list of every industry and job. One reading column, menu cards widen to three set columns on desktop. */
+:root{
+  --paper:#F3F5F9; --surface:#FFFFFF; --sunk:#E6EAF1; --ink:#131C2E; --body:#3E4757; --muted:#646D7E; --line:#D3D9E3;
+  --brand:#2B4A8B; --brand-pale:#E3E9F6; --lv1:#4D78C9; --lv2:#2B4A8B; --lv3:#16294F; --on:#FFFFFF;
+  --amber:#8A4A0C; --amber-pale:#F7EBDC; --ok:#1B7448; --ok-pale:#DCF0E3;
+  --display:'Zen Kaku Gothic New','Noto Sans JP','Hiragino Sans',system-ui,sans-serif;
+  --text:'Noto Sans JP','Hiragino Sans','Yu Gothic UI',system-ui,sans-serif;
+  --num:'IBM Plex Sans','Noto Sans JP',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#0F1522; --surface:#172033; --sunk:#1E2940; --ink:#EDF1F8; --body:#C3CBD9; --muted:#97A1B3; --line:#2C3850;
+  --brand:#93B1EE; --brand-pale:#1C2A46; --lv1:#7FA3E6; --lv2:#93B1EE; --lv3:#C5D5F5; --on:#0F1522;
+  --amber:#F0B979; --amber-pale:#3A2A17; --ok:#7DD3A3; --ok-pale:#173826; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#0F1522; --surface:#172033; --sunk:#1E2940; --ink:#EDF1F8; --body:#C3CBD9; --muted:#97A1B3; --line:#2C3850;
+  --brand:#93B1EE; --brand-pale:#1C2A46; --lv1:#7FA3E6; --lv2:#93B1EE; --lv3:#C5D5F5; --on:#0F1522;
+  --amber:#F0B979; --amber-pale:#3A2A17; --ok:#7DD3A3; --ok-pale:#173826; color-scheme:dark }
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--body);font-family:var(--text);font-size:15px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);color:var(--ink);margin:0;line-height:1.35;text-wrap:balance}
+p{margin:0}
+a{color:var(--brand)}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+section{padding-block:56px}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;color:var(--brand)}
+.lead{max-width:40em;font-size:16px}
+.tiny{font-size:12.5px;color:var(--muted)}
+.num{font-family:var(--num);font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding-block:48px 40px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center}
+.hero h1{font-size:clamp(30px,4.6vw,48px);font-weight:900;letter-spacing:.01em;margin:10px 0 16px}
+.hero h1 span{display:inline-block}
+.hero .facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;font-size:13.5px}
+.hero .facts b{font-family:var(--num);font-size:22px;color:var(--ink);margin-right:4px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--brand);color:var(--on);border:0;border-radius:10px;padding:12px 22px;font-weight:700;text-decoration:none;margin-top:24px}
+/* 30h bar */
+.year{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px;display:flex;flex-direction:column;gap:14px}
+.year h2{font-size:15px}
+.bar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.bar div{border-radius:8px;padding:12px 12px 10px;color:var(--on);display:flex;flex-direction:column;gap:2px;min-width:0}
+.bar div:nth-child(1){background:var(--lv1)} .bar div:nth-child(2){background:var(--lv2)} .bar div:nth-child(3){background:var(--lv3)}
+.bar b{font-family:var(--num);font-size:24px;line-height:1.1}
+.bar span{font-size:12.5px;font-weight:700}
+.bar small{font-size:11.5px;opacity:.9;line-height:1.45}
+.scale{display:flex;justify-content:space-between;font-family:var(--num);font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:6px}
+
+/* levels */
+.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:24px}
+.lvl{border-top:4px solid var(--lv1);padding-top:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.lvl:nth-child(2){border-color:var(--lv2)} .lvl:nth-child(3){border-color:var(--lv3)}
+.lvl h3{font-size:18px}
+.lvl ul{margin:0;padding-left:1.1em;font-size:14px}
+
+/* rules */
+.rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px;margin-top:24px}
+.rule{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;padding:14px 0;border-top:1px solid var(--line)}
+.rule .ref{font-family:var(--num);font-size:12px;font-weight:700;color:var(--amber);background:var(--amber-pale);border-radius:6px;padding:2px 8px;align-self:start;white-space:nowrap}
+.rule h3{font-size:15.5px}
+.rule p{grid-column:2;font-size:14px}
+.ng{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.ng h3{font-size:15px;margin-bottom:6px}
+.ng ul{margin:0;padding-left:1.1em;font-size:13.5px;columns:2;column-gap:28px}
+
+/* menu */
+.menu-h{display:flex;flex-direction:column;gap:14px}
+.filter{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding-block:12px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;scrollbar-width:thin}
+.chips button{flex:none;border:1.5px solid var(--line);background:var(--surface);color:var(--body);border-radius:999px;padding:5px 13px;font-size:13px;font-weight:700;white-space:nowrap}
+.chips button[aria-pressed=true]{border-color:var(--brand);background:var(--brand);color:var(--on)}
+.srow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.srow input{flex:1;min-width:0;max-width:420px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:10px;padding:9px 12px;font:inherit;font-size:14px}
+.ind{display:flex;flex-direction:column;gap:14px;padding-top:30px}
+.ind>h3{font-size:22px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.ind>h3 small{font-family:var(--text);font-size:13px;font-weight:500;color:var(--muted)}
+.ind>p{font-size:13.5px;color:var(--muted);max-width:46em}
+.job{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.job-h{display:flex;align-items:baseline;gap:6px 14px;flex-wrap:wrap;padding:14px 18px;border-bottom:1px solid var(--line)}
+.job-h h4{font-size:18px}
+.job-h span{font-size:13px;color:var(--muted)}
+.sets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.set{padding:14px 18px 16px;display:flex;flex-direction:column;gap:8px;min-width:0;border-left:1px solid var(--line)}
+.set:first-child{border-left:0}
+.lv{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--on);border-radius:999px;padding:2px 10px;align-self:flex-start}
+.set:nth-child(1) .lv{background:var(--lv1)} .set:nth-child(2) .lv{background:var(--lv2)} .set:nth-child(3) .lv{background:var(--lv3)}
+.set h5{font-family:var(--display);font-size:15px;color:var(--ink);margin:0;line-height:1.45}
+.set .goal{font-size:12.5px;color:var(--muted)}
+.set ol{list-style:none;margin:2px 0 0;padding:0;display:flex;flex-direction:column;border-top:1px dashed var(--line)}
+.set li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px dashed var(--line);line-height:1.5}
+.set li .h{font-family:var(--num);font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.set li.sum{border-bottom:0;font-weight:700;color:var(--ink)}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+
+/* subsidy + contact */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:24px}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.box h3{font-size:17px}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;font-size:14px;margin:0}
+.kv dt{color:var(--muted)} .kv dd{margin:0;color:var(--ink);font-weight:500}
+.steps{margin:0;padding-left:1.3em;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.note{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:28px;display:flex;flex-direction:column;gap:4px}
+.contact{background:var(--brand-pale);border-radius:16px;padding:28px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 28px;align-items:center}
+.contact h2{font-size:22px}
+.contact .tel{font-family:var(--num);font-size:22px;font-weight:700;color:var(--ink);user-select:all}
+.contact .mail{font-family:var(--num);font-size:15px;color:var(--ink);user-select:all}
+footer{padding-block:28px;font-size:12.5px;color:var(--muted)}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)} .sets{grid-template-columns:minmax(0,1fr)} .set{border-left:0;border-top:1px solid var(--line)} .set:first-child{border-top:0}
+  .levels,.rules,.two{grid-template-columns:minmax(0,1fr)} .contact{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){ section{padding-block:40px} .ng ul{columns:1} .bar b{font-size:20px} }
+@media (prefers-reduced-motion:reduce){ *{scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+
+<header class="hero">
+ <div class="wrap">
+  <div>
+   <p class="eyebrow">人材開発支援助成金（事業展開等リスキリング支援コース）対応</p>
+   <h1><span>業種と職種に合わせた、</span><span>生成AIの研修を</span><span>1年で30時間。</span></h1>
+   <p class="lead">1回10時間の研修を、初級1・初級2・中級の3セットで。助成の対象は1人あたり年度3回までなので、3セットで1年分を無駄なく使えます。カリキュラムは、令和8年8月3日以降に提出する計画届の要項に沿って組んでいます。</p>
+   <div class="facts" id="facts"></div>
+   <a class="cta" href="#menu">業種・職種別のメニューを見る</a>
+  </div>
+  <div class="year" aria-label="1年間の研修の組み立て">
+   <h2>1人あたり1年度の組み立て</h2>
+   <div class="bar">
+    <div><span>初級1</span><b class="num">10h</b><small>文書業務を生成AIで効率化</small></div>
+    <div><span>初級2</span><b class="num">10h</b><small>データと記録を活用</small></div>
+    <div><span>中級</span><b class="num">10h</b><small>業務の流れを自動化</small></div>
+   </div>
+   <div class="scale"><span>0h</span><span>10h</span><span>20h</span><span>30h</span></div>
+   <p class="tiny">1回＝実訓練時間10時間（昼食・移動の時間は含みません）。1日の受講時間は2〜8時間から選べます。例：1日2時間なら5日、1日5時間なら2日、1日8時間なら2日。</p>
+  </div>
+ </div>
+</header>
+
+<main>
+<section>
+ <div class="wrap">
+  <p class="eyebrow">3つのセット</p>
+  <h2 style="font-size:26px;margin-top:6px">同じ内容を繰り返さず、段階的に積み上げます</h2>
+  <div class="levels">
+   <div class="lvl"><span class="lv" style="background:var(--lv1)">初級1・10時間</span><h3>文書業務を生成AIで効率化する</h3><p>その職種で毎日書いている書類を題材に、生成AIで下書きし、正確さを確かめて仕上げる手法を身につけます。</p><ul><li>生成AIの仕組みと、扱う情報の判断基準</li><li>職種の文書に合った指示文の設計</li><li>3種類の書類の作成・要約・チェック</li></ul></div>
+   <div class="lvl"><span class="lv" style="background:var(--lv2)">初級2・10時間</span><h3>データと記録を活用する</h3><p>職種で扱う数字や記録を、生成AIで集計・照合・整理して、報告にまとめる手法を身につけます。</p><ul><li>データの集計と分析</li><li>書類どうしの照合</li><li>写真・画像の活用、会議の記録</li></ul></div>
+   <div class="lvl"><span class="lv" style="background:var(--lv3)">中級・10時間</span><h3>業務の流れを自動化する</h3><p>職種の業務の流れを分析し、AIを使った自動化を設計できるようになります。</p><ul><li>業務の分析とAIを使う箇所の見つけ方</li><li>自動化の設計・社内文書の検索の仕組み</li><li>AIエージェントと品質の評価</li></ul></div>
+  </div>
+ </div>
+</section>
+
+<section style="background:var(--surface);border-block:1px solid var(--line)">
+ <div class="wrap">
+  <p class="eyebrow">要項に沿った設計</p>
+  <h2 style="font-size:26px;margin-top:6px">令和8年8月3日以降の計画届のルールに合わせています</h2>
+  <p class="lead" style="margin-top:10px">8月3日以降に提出する計画では、DX・GXに関する訓練でも、職務に間接的な内容や、職種を問わない共通のスキルは助成の対象外になりました。このメニューは次の点を守って組んでいます。</p>
+  <div class="rules">
+   <div class="rule"><span class="ref">表1①②</span><h3>職務に直接関連する内容だけ</h3><p>各科目に、その職種のどの業務に役立つかを明記しています。マナーや一般教養のような共通のスキルは入れていません。</p></div>
+   <div class="rule"><span class="ref">表1④</span><h3>演習は演習用の題材で</h3><p>自社の実際の書類・マニュアル・計画をつくる時間は「通常の事業活動」として対象外です。演習には演習用の題材とデータを使います。</p></div>
+   <div class="rule"><span class="ref">P13</span><h3>操作方法を覚えるだけにしない</h3><p>既存のアプリの操作方法を覚えるだけの訓練や、初歩的な操作だけの訓練は対象外です。特定の製品の画面操作ではなく、生成AIを使った業務の手法を学びます。</p></div>
+   <div class="rule"><span class="ref">P39</span><h3>1人あたり年度3回まで</h3><p>助成の対象は1人1年度3回まで（年度は支給申請日で数えます）。3セットで1年分です。eラーニングは年度1回までのため、講師による研修を基本にしています。</p></div>
+   <div class="rule"><span class="ref">表2</span><h3>講師と教材、実施の場所</h3><p>専門の知識を持つ講師が、テキストを使って行います。営業中の職場では行わず、会議室などで実施します。ビデオを見るだけの講座にはしません。</p></div>
+   <div class="rule"><span class="ref">P29</span><h3>時間の数え方</h3><p>昼食と移動の時間は数えません。開講式・オリエンテーションは1つの計画届で60分までの扱いがあるため、各セットは科目の時間だけで10時間にしています。</p></div>
+  </div>
+  <div class="ng"><h3>このメニューに含めていない内容（対象外の例）</h3>
+   <ul><li>接遇・ビジネスマナー（表1②）</li><li>管理職・リーダーシップ研修（表1⑧）</li><li>意識改革・モチベーション研修（表1⑦）</li><li>日常会話程度の語学・話し方（表1③）</li><li>自社で使う機器の操作説明・自社製品の説明（表1④）</li><li>法令で義務づけられた講習（表1⑥）</li><li>講演会・見学会・交流会（表1⑤）</li><li>資格試験だけのもの（表1⑨）</li></ul></div>
+ </div>
+</section>
+
+<section id="menu">
+ <div class="wrap">
+  <div class="menu-h">
+   <p class="eyebrow">業種・職種別のメニュー</p>
+   <h2 style="font-size:26px">あなたの会社の職種を探してください</h2>
+   <p class="lead">業種を選ぶか、職種名・業務名で探せます。どの職種も、初級1・初級2・中級の3セット（各10時間）です。カリキュラムは例で、お客様の業務に合わせて調整します。</p>
+  </div>
+  <div class="filter">
+   <div class="chips" id="chips" role="group" aria-label="業種で絞り込む"></div>
+   <div class="srow"><input type="search" id="q" placeholder="職種名・業務名で探す（例：見積、介護記録、経理）" aria-label="職種名・業務名で探す"><span class="tiny" id="count" aria-live="polite"></span></div>
+  </div>
+  <div id="list"></div>
+ </div>
+</section>
+
+<section style="padding-top:8px">
+ <div class="wrap">
+  <p class="eyebrow">助成の目安と進め方</p>
+  <h2 style="font-size:26px;margin-top:6px">研修費用の75%と、研修時間の賃金が助成されます</h2>
+  <div class="two">
+   <div class="box"><h3>助成の目安（中小企業の場合）</h3>
+    <dl class="kv"><dt>経費助成</dt><dd>研修費用の75%</dd><dt>賃金助成</dt><dd>1人1時間あたり1,000円（所定労働時間内の受講に限ります）</dd><dt>経費の上限</dt><dd>1人1訓練あたり30万円（10〜100時間未満の場合）</dd><dt>期間</dt><dd>令和8年度末までの時限措置</dd></dl>
+    <p class="tiny">出典：厚生労働省「人材開発支援助成金（事業展開等リスキリング支援コース）のご案内（詳細版）」。令和8年8月3日以降に提出された計画届が対象です。</p></div>
+   <div class="box"><h3>1セットごとの進め方</h3>
+    <ol class="steps"><li>職種と業務を伺い、カリキュラムを調整</li><li>訓練開始日の6か月前から1か月前までに、計画届を労働局へ提出</li><li>計画どおりに研修を実施（1日2〜8時間）</li><li>研修の終了日の翌日から2か月以内に、支給申請</li></ol>
+    <p class="tiny">計画届は研修開始の1か月前までに必要です。3セットを1年で受ける場合は、早めのご相談をおすすめします。申請書類の作成・提出は、社会保険労務士または事業主ご本人が行います。</p></div>
+  </div>
+  <div class="note"><p>掲載のカリキュラムは、要項に沿って組んだ例です。助成の対象になるかは、計画届の内容をもとに労働局が判断します。計画届の提出前に、社会保険労務士の確認を受けてください。</p><p>受講する方の職務によって、対象になる科目は変わります。職種に合わない科目は差し替えて調整します。</p></div>
+ </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+ <div class="wrap">
+  <div class="contact">
+   <div><h2>職種に合わせたカリキュラムを、無料でお作りします</h2><p style="margin-top:6px">業種・職種と、困っている業務を伺えば、3セット分の案と、助成額の見込みをお出しします。</p></div>
+   <div><p class="tiny">お電話</p><p class="tel">03-6908-9425</p><p class="tiny" style="margin-top:6px">メール</p><p class="mail">info@smartcontents.co.jp</p></div>
+  </div>
+ </div>
+</section>
+</main>
+<footer><div class="wrap">株式会社スマートコンテンツ ｜ 業種・職種別 AI研修メニュー（たたき台）</div></footer>
+
+<script>
+(function(){
+'use strict';
+/*CATALOG:START*/
+/* 業種・職種別 AI研修メニュー（人材開発支援助成金 事業展開等リスキリング支援コース向けのたたき台）
+   このファイルが元データです。mock.html と lp.html には build-catalog.js で埋め込みます。
+   方針（令和8年8月3日以降に提出する計画届の支給要領・パンフレットに沿う）:
+   - 1セット＝実訓練時間10時間。1人1年度3回まで助成対象なので、初級1・初級2・中級の3セットで年30時間。
+   - 3セットの科目は互いに重ならない（初級1＝文書、初級2＝データ・記録、中級＝業務の流れの自動化）。
+   - 職務に直接関連する内容だけにする（表1①②：DX関連でも間接的な内容・共通スキルは対象外）。
+   - 演習は演習用の題材で行い、自社の実際の書類・マニュアル・計画をつくる時間にしない（表1④）。
+   - 特定の製品の操作説明にしない（表1④❻、DX訓練の注記「既存アプリの操作方法の習得のみは対象外」）。
+   - 開講式・オリエンテーションは含めない（1つの計画届で累計60分までの扱いがあるため、各セットは内容だけで10時間）。 */
+const CAT_IND=[
+ {id:'con',n:'建設業',dx:'現場の書類作成と記録のデジタル化を進め、生成AIを使って書類作成と情報共有の時間を減らす',jobs:[
+  {n:'施工管理',who:'現場の工程・品質・安全の管理',doc:['施工計画書','作業日報','安全書類（KY活動記録・作業手順書）'],data:['工程表と出来高','実行予算と原価'],check:'図面と数量表',media:['現場写真の整理と写真台帳の作成','撮影した写真の分類、説明文の作成、写真台帳の形式への整理'],voice:'現場の打合せ・朝礼',flow:'日報から週報・月報への集計',know:'仕様書・過去の施工記録',care:'図面・施主の情報'},
+  {n:'積算・見積',who:'図面・仕様書からの数量の算出と見積の作成',doc:['見積書','見積条件書','工事内訳の説明資料'],data:['単価表と過去の見積実績','協力会社の見積の比較'],check:'図面と見積内訳',media:['図面・仕様書から必要な情報を拾い出す手法','図面の画像やPDFから数量・仕様を抜き出す手順と、確認の方法'],voice:'施主・協力会社との打合せ',flow:'協力会社からの見積の比較・集計',know:'過去の見積と単価の資料',care:'見積金額・取引先の情報'},
+  {n:'設計（CAD・BIM）',who:'建物・設備の設計図と設計資料の作成',doc:['設計説明書','仕様書','施主への提案資料'],data:['面積・数量の算出表','設計変更の履歴'],check:'設計図と仕様書',media:['パース・イメージ図の作成にAIを使う手法','画像生成の指示の出し方、提案用の図の作成、著作権の注意点'],voice:'設計の打合せ',flow:'設計変更の記録と関係者への連絡',know:'法規の資料・過去の設計資料',care:'設計図・施主の情報'},
+  {n:'工事事務',who:'契約・請求・各種届出などの事務',doc:['工事契約の確認資料','請求書の送付文','官公庁への届出書類'],data:['請求・入金の管理表','協力会社への支払い一覧'],check:'注文書と請求書',media:['紙の書類を読み取ってデータにする手法','スキャンした書類から必要な項目を抜き出し、表に整理する手順'],voice:'社内の工事会議',flow:'請求書の受け取りから支払いまでの処理',know:'事務の手順・過去の届出書類',care:'契約金額・取引先の情報'}]},
+ {id:'mfg',n:'製造業',dx:'生産・品質のデータと記録のデジタル化を進め、生成AIを使って報告と分析の業務を効率化する',jobs:[
+  {n:'生産管理',who:'生産計画と進捗・在庫の管理',doc:['生産計画の説明資料','作業指示書','納期回答の連絡文'],data:['生産実績と稼働率','在庫と部品の発注データ'],check:'受注データと生産計画',media:['工程の写真・図面から情報を読み取る手法','写真や図面から必要な情報を読み取り、記録に整理する手順'],voice:'生産会議',flow:'受注から生産指示までの処理',know:'過去の生産記録・トラブルの記録',care:'顧客の図面・受注情報'},
+  {n:'品質管理',who:'製品の検査と不良の原因分析・対策',doc:['検査成績書','不良の報告書（なぜなぜ分析）','顧客への回答書'],data:['検査データ','不良の発生データ'],check:'図面の公差と検査結果',media:['外観検査の画像をAIで分類する考え方','画像による良否判定の仕組み、判定用の画像の集め方、判定の限界'],voice:'品質会議',flow:'不良の報告から対策の記録までの流れ',know:'過去の不良事例・規格書',care:'顧客の図面・品質情報'},
+  {n:'設備保全',who:'設備の点検・修理と保全計画',doc:['点検記録','故障の報告書','保全計画の説明資料'],data:['設備の稼働・停止の記録','部品の交換履歴'],check:'点検基準と点検記録',media:['設備の写真・音の記録を活用する手法','写真や音の記録から異常の兆候を整理する方法と、AIの判定の限界'],voice:'保全の打合せ',flow:'故障の連絡から修理記録までの流れ',know:'設備の取扱説明書・過去の故障記録',care:'設備の仕様・取引先の情報'},
+  {n:'技術営業',who:'顧客への技術提案と仕様の調整',doc:['技術提案書','仕様の確認書','見積の説明資料'],data:['引き合い・受注のデータ','製品の仕様の比較表'],check:'顧客の要求仕様と提案内容',media:['説明図・図解の作成にAIを使う手法','提案資料に使う図解・表の作成と、内容の確認の方法'],voice:'顧客との技術打合せ',flow:'引き合いから見積提出までの流れ',know:'製品カタログ・過去の提案資料',care:'顧客の図面・価格の情報'}]},
+ {id:'ret',n:'卸売・小売業',dx:'販売・在庫のデータ活用とネット販売を進め、生成AIで販促と商品管理を効率化する',jobs:[
+  {n:'店舗運営・販売',who:'店頭での販売と売場づくり',doc:['販促POP・売場の案内文','商品の説明文','日々の店舗報告'],data:['売上と客数のデータ','曜日・天候別の売れ行き'],check:'発注データと納品書',media:['売場の写真から陳列を見直す手法','写真をもとにした陳列の比較、画像の読み取りと改善案の整理'],voice:'店舗のミーティング',flow:'日々の売上報告から週次の振り返りまで',know:'商品情報・過去の販促の記録',care:'顧客の購買情報'},
+  {n:'仕入・在庫管理（バイヤー）',who:'商品の選定・仕入と在庫の管理',doc:['商品の選定理由書','取引先への発注・条件の連絡文','新商品の提案資料'],data:['在庫と回転率のデータ','仕入価格と粗利のデータ'],check:'発注書と請求書',media:['商品の画像と仕様を整理する手法','取引先の資料や商品画像から仕様を抜き出し、商品台帳に整理する手順'],voice:'取引先との商談',flow:'在庫の確認から発注までの流れ',know:'取引先の資料・過去の仕入実績',care:'仕入価格・取引先の情報'},
+  {n:'EC運営',who:'ネットショップの商品登録・販促・問い合わせ対応',doc:['商品ページの説明文','メルマガ・SNSの投稿文','問い合わせへの回答文'],data:['アクセスと購入のデータ','広告の成果データ'],check:'商品ページと在庫・価格のデータ',media:['商品画像の作成・加工にAIを使う手法','画像の生成・背景の加工、表示の注意点（景品表示法・著作権）'],voice:'ショップ運営の会議',flow:'注文から出荷連絡までの流れ',know:'商品マスタ・過去の問い合わせ記録',care:'顧客の個人情報'}]},
+ {id:'med',n:'医療（病院・クリニック）',dx:'院内の書類と記録のデジタル化を進め、生成AIで事務と記録の負担を減らす',jobs:[
+  {n:'医療事務',who:'受付・会計・レセプト業務',doc:['患者さんへのお知らせ文','院内の掲示物','返戻・査定の確認資料'],data:['患者数と診療報酬のデータ','予約のデータ'],check:'レセプトとカルテの記載',media:['紙の問診票・書類を読み取ってデータにする手法','スキャンした問診票などから項目を抜き出す手順と、個人情報の扱い'],voice:'院内のミーティング',flow:'予約の受け付けから来院前の連絡まで',know:'診療報酬の資料・院内の手順書',care:'患者の個人情報・診療情報'},
+  {n:'看護職',who:'患者のケアと看護記録',doc:['看護記録の要約','看護計画の下書き','申し送りの文書'],data:['バイタル・ケアの記録','業務量・勤務表のデータ'],check:'指示書と実施記録',media:['患者さん向け説明資料の図解を作る手法','説明資料を図や表で分かりやすくする手法と、医療情報の確認手順'],voice:'申し送り・カンファレンス',flow:'申し送りの記録から共有までの流れ',know:'看護手順・医療安全の資料',care:'患者の個人情報・診療情報'},
+  {n:'地域連携・相談員',who:'他院・介護施設との連絡調整と退院支援',doc:['紹介状への返書の下書き','退院支援の計画書','連携先への連絡文'],data:['紹介・逆紹介の実績','連携先の一覧'],check:'紹介状と受け入れ条件',media:['連携先の情報を集めて一覧にする手法','公開情報から連携先の情報を集め、一覧に整理する手順'],voice:'退院支援のカンファレンス',flow:'紹介の受け付けから返書までの流れ',know:'連携先の資料・制度の資料',care:'患者の個人情報'}]},
+ {id:'care',n:'介護・福祉',dx:'介護記録と事務のデジタル化を進め、生成AIで記録・連絡の負担を減らす',jobs:[
+  {n:'介護職員',who:'利用者の日常生活の支援と記録',doc:['介護記録','ヒヤリハット報告書','家族への連絡文'],data:['食事・排せつ・バイタルの記録','事故・ヒヤリハットの記録'],check:'ケアプランと実施記録',media:['写真・図を使った説明資料を作る手法','利用者・家族向けの資料を図や写真で分かりやすくする手法'],voice:'申し送り・ケア会議',flow:'記録の入力から申し送りまでの流れ',know:'介護の手順・過去の事故事例',care:'利用者の個人情報・健康情報'},
+  {n:'ケアマネジャー',who:'ケアプランの作成と関係者の調整',doc:['ケアプランの下書き','モニタリング記録','サービス担当者会議の記録'],data:['利用者ごとのサービス利用実績','給付管理のデータ'],check:'ケアプランとサービス提供票',media:['聞き取りのメモからアセスメントを整理する手法','聞き取りのメモから要点を整理し、記録の形式に整える手順'],voice:'サービス担当者会議',flow:'訪問後の記録からケアプランの見直しまで',know:'制度の資料・地域のサービス情報',care:'利用者の個人情報・健康情報'},
+  {n:'生活相談員・施設事務',who:'入退所の相談・契約と施設の事務',doc:['入所の説明資料','契約書類の確認資料','家族への連絡文'],data:['入退所・稼働率のデータ','請求のデータ'],check:'契約書と請求データ',media:['広報紙・案内資料を作る手法','施設の案内やお知らせを、写真と図で分かりやすく作る手法'],voice:'入所判定の会議',flow:'問い合わせから見学・契約までの流れ',know:'制度の資料・過去の相談記録',care:'利用者・家族の個人情報'}]},
+ {id:'log',n:'運輸・物流',dx:'配送・倉庫のデータ活用を進め、生成AIで配車と事務の業務を効率化する',jobs:[
+  {n:'配車・運行管理',who:'配送計画と車両・乗務員の管理',doc:['運行指示書','乗務員への連絡文','事故・遅延の報告書'],data:['配送実績と走行データ','車両の稼働データ'],check:'配送依頼と運行実績',media:['地図と配送データでルートを比べる手法','地図と配送データを使ったルートの比較、AIによる最適化の考え方と限界'],voice:'運行の打合せ',flow:'配送依頼の受け付けから配車までの流れ',know:'取引先ごとの配送条件・過去の運行記録',care:'荷主・届け先の情報'},
+  {n:'倉庫管理',who:'入出庫・在庫の管理と作業の管理',doc:['作業指示書','入出庫の報告','荷主への報告書'],data:['入出庫と在庫のデータ','作業時間と生産性のデータ'],check:'出荷指示と出荷実績',media:['伝票・ラベルを読み取ってデータにする手法','紙の伝票やラベルの画像から項目を読み取り、表に整理する手順'],voice:'倉庫の作業の打合せ',flow:'入荷予定の受け付けから入庫記録まで',know:'荷主ごとの作業条件・過去のトラブルの記録',care:'荷主・届け先の情報'},
+  {n:'物流事務',who:'受注・請求・荷主との連絡',doc:['荷主への見積・案内文','請求書の送付文','問い合わせへの回答文'],data:['運賃・請求のデータ','荷主ごとの取扱量'],check:'運送の実績と請求書',media:['送り状・受領書を読み取ってデータにする手法','送り状や受領書から項目を読み取り、表に整理する手順'],voice:'荷主との打合せ',flow:'受注から請求までの処理',know:'運賃表・過去の問い合わせ記録',care:'荷主・届け先の情報'}]},
+ {id:'re',n:'不動産業',dx:'物件情報と顧客対応のデジタル化を進め、生成AIで広告・報告の業務を効率化する',jobs:[
+  {n:'賃貸仲介',who:'物件の紹介と契約の手続き',doc:['物件の紹介文・広告文','重要事項説明の準備資料','お客様への提案メール'],data:['問い合わせと成約のデータ','周辺の賃料相場のデータ'],check:'物件情報と広告の表示',media:['物件写真・間取り図を活用する手法','写真の補正・説明文の作成と、不動産の表示に関するルールの確認'],voice:'お客様との面談',flow:'問い合わせから内見予約までの流れ',know:'物件資料・過去の契約事例',care:'顧客の個人情報'},
+  {n:'物件管理',who:'入居者対応・修繕・オーナーへの報告',doc:['オーナーへの月次報告書','入居者へのお知らせ','修繕の提案書'],data:['入居率と賃料のデータ','修繕の履歴と費用'],check:'契約内容と請求・入金',media:['建物の点検写真を整理して報告する手法','点検写真の分類と説明文の作成、報告書の形式への整理'],voice:'オーナーとの打合せ',flow:'入居者からの連絡の受け付けから手配まで',know:'管理規約・過去の修繕記録',care:'入居者・オーナーの個人情報'},
+  {n:'売買仲介',who:'査定・販売活動・契約',doc:['査定の説明資料','販売図面・広告文','売主への活動報告'],data:['成約事例と価格のデータ','反響のデータ'],check:'調査資料と販売資料',media:['物件写真と周辺情報の資料を作る手法','写真の補正と説明文、周辺情報の整理と表示の注意点'],voice:'売主・買主との面談',flow:'反響の受け付けから案内までの流れ',know:'法令・税制の資料・過去の取引事例',care:'顧客の個人情報・資産の情報'}]},
+ {id:'food',n:'飲食・宿泊業',dx:'予約・販売のデータ活用を進め、生成AIで販促と事務の業務を効率化する',jobs:[
+  {n:'飲食店の店舗運営',who:'店舗の運営・発注・売上の管理',doc:['店舗の日報','メニュー・お知らせの文面','衛生管理の記録'],data:['売上と客数のデータ','食材の原価と発注データ'],check:'発注書と納品書',media:['メニュー写真・販促物を作る手法','料理写真の補正・説明文、SNS投稿用の画像の作成'],voice:'店舗ミーティング',flow:'売上の締めから日報・発注までの流れ',know:'レシピ・過去の売上記録',care:'顧客の予約情報'},
+  {n:'宿泊のフロント・予約管理',who:'予約・問い合わせ対応とフロント業務',doc:['予約確認メール・案内文','外国語でのご案内','口コミへの返信文'],data:['予約と稼働率のデータ','予約経路ごとの実績'],check:'予約サイトと予約台帳',media:['館内案内を図と写真で作る手法','写真と図を使った館内案内の作成、AI翻訳の確認方法'],voice:'スタッフミーティング',flow:'予約の受け付けから到着前の連絡まで',know:'館内の案内情報・過去の問い合わせ記録',care:'宿泊者の個人情報'},
+  {n:'商品企画・メニュー開発',who:'新しいメニューや商品の企画',doc:['企画書','商品の説明文','原価計算の説明資料'],data:['販売実績と原価のデータ','お客様アンケート'],check:'レシピと原価表・アレルゲンの表示',media:['試作のイメージ画像・パッケージ案を作る手法','画像生成による試作のイメージ、食品表示の注意点'],voice:'企画会議',flow:'アンケートの集計から改善案の整理まで',know:'過去の企画・販売の記録',care:'取引先・レシピの情報'}]},
+ {id:'it',n:'情報通信業',dx:'開発・運用の業務に生成AIを取り入れ、設計・テスト・問い合わせ対応を効率化する',jobs:[
+  {n:'システム開発エンジニア',who:'システムの設計・開発・テスト',doc:['要件定義書・設計書','テスト仕様書','ソースコードの説明とレビューのコメント'],data:['障害・問い合わせの記録','工数・進捗のデータ'],check:'仕様書とプログラム',media:['画面のラフ・構成図を作る手法','画面のラフや構成図の作成にAIを使う手法と確認の方法'],voice:'顧客との要件の打合せ',flow:'コードの確認（レビュー）からテストまでの流れ',know:'設計書・過去の障害記録',care:'顧客のシステム・データ'},
+  {n:'ITサポート・ヘルプデスク',who:'問い合わせ対応とIT環境の支援',doc:['問い合わせへの回答文','障害の報告書','利用者向けの手順書'],data:['問い合わせの件数と内容','機器・ライセンスの台帳'],check:'問い合わせの記録と対応履歴',media:['画面の画像から状況を読み取る手法','利用者から届いた画面の画像をもとに、原因の候補を整理する手順'],voice:'対応の振り返りの会議',flow:'問い合わせの受け付けから回答・記録まで',know:'過去の問い合わせ記録・製品の資料',care:'利用者の個人情報・アカウント情報'},
+  {n:'Webディレクター・マーケター',who:'Webサイト・広告の企画と運用',doc:['サイトの構成案','記事・広告の文案','クライアントへの報告書'],data:['アクセス解析のデータ','広告の成果データ'],check:'原稿と表示のルール（景品表示法など）',media:['バナー・画像の作成にAIを使う手法','画像生成の指示の出し方、権利と表示の注意点'],voice:'クライアントとの打合せ',flow:'月次のデータ集計から報告書作成まで',know:'過去の制作物・業界の資料',care:'クライアントの情報'}]},
+ {id:'pro',n:'士業・専門サービス',dx:'顧問先とのやりとりと書類処理のデジタル化を進め、生成AIで定型業務を効率化する',jobs:[
+  {n:'会計・税務スタッフ',who:'記帳・決算・税務の補助',doc:['顧問先への説明資料','決算報告の下書き','税務の質問への回答案'],data:['試算表・仕訳のデータ','顧問先ごとの業績データ'],check:'証憑と仕訳',media:['領収書・請求書を読み取ってデータにする手法','紙の証憑から項目を読み取り、仕訳の候補を作る手順と確認の方法'],voice:'顧問先との面談',flow:'証憑の受け取りから記帳までの流れ',know:'税法の資料・過去の相談記録',care:'顧問先の財務情報'},
+  {n:'労務手続きスタッフ',who:'社会保険・労働保険の手続きと給与計算',doc:['顧問先への案内文','手続きの説明資料','法改正のお知らせ'],data:['給与・勤怠のデータ','手続きの進捗管理表'],check:'勤怠と給与のデータ',media:['届出書類を読み取って入力を補助する手法','紙の書類から項目を読み取り、入力の候補を作る手順と確認の方法'],voice:'顧問先との面談',flow:'手続きの依頼の受け付けから完了報告まで',know:'法令・通達の資料・過去の相談記録',care:'従業員の個人情報・マイナンバー'}]},
+ {id:'fin',n:'金融・保険',dx:'顧客対応と事務のデジタル化を進め、生成AIで提案と手続きの業務を効率化する',jobs:[
+  {n:'保険代理店の営業',who:'保険の提案・契約・保全',doc:['提案内容の説明文','お客様への案内文','面談記録'],data:['契約と更改のデータ','見込み客のデータ'],check:'申込書と提案内容',media:['保障内容を図解で説明する資料を作る手法','保障の比較を図や表で分かりやすくする手法と、表示のルールの確認'],voice:'お客様との面談',flow:'満期・更改の案内から手続きまでの流れ',know:'商品パンフレット・約款・過去の事例',care:'顧客の個人情報・健康情報'}]},
+ {id:'edu',n:'教育・学習支援',dx:'教材作成と受講者管理のデジタル化を進め、生成AIで準備と事務の時間を減らす',jobs:[
+  {n:'講師・インストラクター',who:'授業の準備・実施と評価',doc:['教材・ワークシート','授業の計画','受講者・保護者へのお知らせ'],data:['成績・出欠のデータ','アンケートのデータ'],check:'教材と出題範囲',media:['教材の図解・画像を作る手法','図やイラストの作成にAIを使う手法と、著作権の確認'],voice:'授業の振り返り・面談',flow:'小テストの採点から成績の記録まで',know:'過去の教材・指導記録',care:'受講者の個人情報・成績'},
+  {n:'教務・事務',who:'受講者の募集・管理と事務',doc:['募集の案内・お知らせ','受講者への連絡文','運営の報告書'],data:['申込と受講のデータ','売上と入金のデータ'],check:'申込データと請求',media:['案内資料・チラシを作る手法','写真や図を使った案内資料の作成と、表示の確認方法'],voice:'運営会議',flow:'申込の受け付けから受講案内まで',know:'規程・過去の問い合わせ記録',care:'受講者の個人情報'}]},
+ {id:'common',n:'全業種共通の職種',dx:'事務部門の業務のデジタル化を進め、生成AIで書類作成とデータ活用を効率化する',jobs:[
+  {n:'営業',who:'顧客への提案と商談',doc:['提案書','商談の報告','お客様へのメール'],data:['商談・受注のデータ','顧客ごとの売上'],check:'見積と契約内容',media:['提案資料の図解・スライドを作る手法','構成案から図解・スライドを作る手法と確認の方法'],voice:'商談',flow:'商談の記録から次の提案までの流れ',know:'過去の提案書・顧客の記録',care:'顧客の情報・価格の情報'},
+  {n:'経理・財務',who:'請求・支払い・決算の業務',doc:['月次の報告資料','取引先への連絡文','経費精算の確認・差し戻しの文面'],data:['試算表・予算実績のデータ','売掛金・買掛金のデータ'],check:'請求書と入金・支払いの記録',media:['請求書・領収書を読み取ってデータにする手法','紙やPDFの書類から項目を読み取り、仕訳の候補を作る手順'],voice:'月次の会議',flow:'請求書の受け取りから支払いまでの処理',know:'経理規程・過去の処理事例',care:'財務情報・取引先の情報'},
+  {n:'人事・労務',who:'採用・労務管理・人事制度の運用',doc:['求人票・募集の文面','従業員への案内文','面接の記録'],data:['勤怠と残業のデータ','採用の応募データ'],check:'勤怠と給与の記録',media:['採用広報の画像・資料を作る手法','求人用の写真・図の作成と、表示の注意点'],voice:'面接・面談',flow:'応募の受け付けから面接の調整まで',know:'就業規則・過去の問い合わせ記録',care:'従業員・応募者の個人情報'},
+  {n:'総務',who:'社内の事務・設備・文書の管理',doc:['社内のお知らせ','契約書の確認資料','稟議の文書'],data:['備品・契約の管理表','経費のデータ'],check:'契約書と請求',media:['紙の書類を読み取って管理表にする手法','紙の書類を読み取り、管理表に整理する手順'],voice:'社内の会議',flow:'申請の受け付けから承認・記録まで',know:'社内規程・過去の文書',care:'従業員・取引先の情報'},
+  {n:'マーケティング・広報',who:'販促・広告・SNS・広報',doc:['プレスリリース','SNS・広告の文案','販促の企画書'],data:['広告・SNSの成果データ','お客様アンケート'],check:'原稿と表示のルール（景品表示法など）',media:['販促用の画像・動画の作成にAIを使う手法','画像・動画生成の指示の出し方、権利と表示の注意点'],voice:'企画会議',flow:'月次の成果の集計から報告まで',know:'過去の販促物・市場の資料',care:'顧客の情報'},
+  {n:'カスタマーサポート',who:'お客様からの問い合わせ対応',doc:['問い合わせへの回答文','よくある質問の原稿','対応の報告'],data:['問い合わせの件数と内容','満足度のデータ'],check:'回答内容と契約・規約',media:['お客様から届いた写真・書類を読み取る手法','写真や書類から状況を読み取り、回答の候補を整理する手順'],voice:'お客様との通話',flow:'問い合わせの受け付けから回答・記録まで',know:'過去の問い合わせ記録・製品の資料',care:'顧客の個人情報'}]}];
+
+/* 3セットの型。各科目は [科目名, 内容, 時間, 職務との関連, 重なったときの差し替え（任意）, 過去の研修と重なる語] */
+const CAT_SETS=[
+ {lv:'初級1',key:'doc',title:j=>'生成AIで'+j.n+'の文書業務を効率化する',goal:j=>j.doc[0]+'・'+j.doc[1]+'などを生成AIで下書きし、正確さを確かめて仕上げられる',rows:j=>[
+  ['生成AIの仕組みと、'+j.care+'を扱うときの判断基準','回答が作られる仕組み、誤った情報の見分け方、'+j.care+'を入力してよいかの判断と対策',1.5,j.care+'を扱う'+j.n+'の業務',[j.care+'の取り扱いの事例研究','事例をもとに、入力してよい情報・いけない情報を判断する演習、誤りが起きたときの対応'],/入門|基本|基礎知識|リスク|仕組み/],
+  [j.n+'の文書に合った指示文（プロンプト）の設計','目的・条件・出力形式の指定、例の示し方、'+j.doc[0]+'を題材にした比較演習',1.5,j.n+'の書類作成業務',[j.n+'の業務別の指示文の型づくり','担当業務ごとの指示文の型、条件の分け方、チームで使い回す方法'],/プロンプト|指示文/],
+  [j.doc[0]+'の下書きを作る手法','必要な項目の洗い出し、AIによる下書き、事実と数値の確認手順',1.5,j.doc[0]+'の作成業務'],
+  [j.doc[1]+'の作成と要約','メモや箇条書きからの作成、要点の抽出、読み手に合わせた書き分け',1.5,j.doc[1]+'の作成業務'],
+  [j.doc[2]+'の作成とチェック','下書きの作成、記載漏れ・誤りの確認、表現の見直し',1.5,j.doc[2]+'の作成業務'],
+  ['総合演習：'+j.n+'の文書業務を通しで行う','演習用の題材を使い、下書き・確認・修正までを一人ずつ実施。講師が添削',2.5,j.n+'の書類作成業務の全体']]},
+ {lv:'初級2',key:'data',title:j=>'生成AIで'+j.n+'のデータと記録を活用する',goal:j=>j.data[0]+'などのデータや'+j.voice+'の記録を、生成AIで集計・整理して報告にまとめられる',rows:j=>[
+  [j.data[0]+'の集計にAIを使う手法','表データの整え方、集計の指示の出し方、結果の検算',1.5,j.data[0]+'を扱う管理業務',[j.data[0]+'の集計の自動化と検証','集計手順の自動化、結果を検算する仕組み、例外データの扱い'],/Excel|エクセル|集計|表計算/],
+  [j.data[1]+'の分析と読み取り','グラフの作成、傾向と異常値の読み取り、報告用の要点の整理',1.5,j.data[1]+'を使う判断・報告業務',null,/分析/],
+  [j.check+'の照合にAIを使う手法','書類どうしの食い違いを洗い出す手順、AIが見落としやすい点と人による確認',1.5,j.check+'を確認する業務'],
+  [j.media[0],j.media[1],1.5,j.n+'の記録・資料作成業務',null,/画像|写真/],
+  [j.voice+'の記録を音声から作る','文字起こしの精度を上げる工夫、要約と決定事項の抽出、記録の形式への整理',1.5,j.voice+'の記録業務',[j.voice+'の記録から次の行動を整理する手法','記録からの課題・担当・期限の抽出、関係者への共有文の作成'],/議事録|文字起こし|音声/],
+  ['総合演習：演習用データで'+j.n+'の報告資料を作る','演習用のデータと記録から、集計・分析・報告資料の作成までを実施。講師が講評',2.5,j.n+'の報告業務の全体']]},
+ {lv:'中級',key:'flow',title:j=>'生成AIで'+j.n+'の業務の流れを自動化する',goal:j=>j.flow+'など、'+j.n+'の業務の流れを分析し、AIを使った自動化を設計できる',rows:j=>[
+  [j.n+'の業務の流れの分析と、AIを使う箇所の見つけ方','業務の分解、AIに任せる部分と人が確認する部分の切り分け、効果の見積り（演習用の業務シナリオで）',1.5,j.n+'の業務全体の改善'],
+  [j.flow+'の自動化の設計','ノーコードツール・RPAとAIの組み合わせ方、例外が起きたときの扱い',1.5,j.flow+'の業務',[j.flow+'の自動化の例外処理と検証','例外の洗い出し、人が判断する場面の設計、動作の確かめ方'],/自動化|RPA|ノーコード/],
+  [j.know+'をAIで検索・活用する仕組み','社内の文書を参照させる仕組み（RAG）の考え方、検索しやすい文書の整え方、回答の確かめ方',1.5,j.know+'を使う業務',[j.know+'の検索の精度を高める手法','文書の分け方・名前の付け方、検索結果の評価、更新の仕組み'],/検索|ナレッジ|RAG/],
+  ['AIエージェントで複数の手順をまとめて進める手法','作業の分け方と指示の出し方、人の承認を入れる位置、'+j.n+'の業務での使いどころ',1.5,j.n+'の複数の手順にまたがる業務',null,/エージェント/],
+  ['AIの出力の品質を評価する手法','評価の観点と基準の作り方、誤りの記録と改善、'+j.care+'の取り扱いの確認',1.5,j.n+'の書類・データの正確さの管理'],
+  ['総合演習：演習用シナリオで'+j.n+'の自動化の設計書を作る','演習用の業務シナリオをもとに、自動化の範囲・手順・確認方法を設計書にまとめて発表。講師が講評',2.5,j.n+'の業務の改善の全体']]}];
+
+/* 1セットぶんの科目を返す。past は過去に受けた研修名の配列。重なる科目は差し替え、差し替えがなければ印を付ける */
+function catSet(ii,ji,si,past){const ind=CAT_IND[ii],j=ind.jobs[ji],st=CAT_SETS[si];past=past||[];
+ const rows=st.rows(j).map(r=>{const by=r[5]&&past.find(p=>r[5].test(p));
+  if(by&&r[4])return {t:r[4][0],c:r[4][1],h:r[2],rel:r[3],swap:{from:r[0],by}};
+  return {t:r[0],c:r[1],h:r[2],rel:r[3],ov:by||null};});
+ return {lv:st.lv,title:st.title(j),goal:st.goal(j),rows,total:rows.reduce((a,r)=>a+r.h,0),ind,job:j};}
+/*CATALOG:END*/
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nJobs=CAT_IND.reduce((a,i)=>a+i.jobs.length,0);
+$('#facts').innerHTML=`<span><b>${CAT_IND.length}</b>業種</span><span><b>${nJobs}</b>職種</span><span><b>${nJobs*3}</b>カリキュラム</span><span><b>10</b>時間×3セット</span>`;
+let ind='all',q='';
+try{const v=localStorage.getItem('lp-ind');if(v&&(v==='all'||CAT_IND.some(i=>i.id===v)))ind=v;}catch(e){}
+function chips(){$('#chips').innerHTML=[['all','すべて']].concat(CAT_IND.map(i=>[i.id,i.n])).map(c=>`<button type="button" data-ind="${c[0]}" aria-pressed="${ind===c[0]}">${esc(c[1])}</button>`).join('');}
+const hay=j=>[j.n,j.who,j.doc.join(' '),j.data.join(' '),j.check,j.media[0],j.voice,j.flow,j.know].join(' ');
+function jobCard(ii,ji){const j=CAT_IND[ii].jobs[ji];
+ return `<article class="job"><div class="job-h"><h4>${esc(j.n)}</h4><span>${esc(j.who)}</span></div><div class="sets">${[0,1,2].map(si=>{const s=catSet(ii,ji,si);
+  return `<div class="set"><span class="lv">${s.lv}・10時間</span><h5>${esc(s.title)}</h5><p class="goal">${esc(s.goal)}</p><ol>${s.rows.map(r=>`<li><span>${esc(r.t)}</span><span class="h">${r.h}h</span></li>`).join('')}<li class="sum"><span>実訓練時間の合計</span><span class="h">${s.total}h</span></li></ol></div>`;}).join('')}</div></article>`;}
+function list(){const words=q.trim().split(/\s+/).filter(Boolean);let n=0;
+ const html=CAT_IND.map((I,ii)=>{if(ind!=='all'&&I.id!==ind)return '';
+  const js=I.jobs.map((j,ji)=>({j,ji})).filter(x=>words.every(w=>(hay(x.j)+' '+I.n).indexOf(w)>-1));if(!js.length)return '';n+=js.length;
+  return `<div class="ind"><h3>${esc(I.n)}<small>${js.length}職種</small></h3><p>DXのねらい（計画届の例）：${esc(I.dx)}</p>${js.map(x=>jobCard(ii,x.ji)).join('')}</div>`;}).join('');
+ $('#list').innerHTML=html||'<p class="empty">該当する職種が見つかりませんでした。別のことばで探すか、「すべて」を選んでください。<br>掲載のない職種も、業務を伺ってお作りします。</p>';
+ $('#count').textContent=n+'職種を表示中';}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ind]');if(!b)return;ind=b.dataset.ind;try{localStorage.setItem('lp-ind',ind);}catch(err){}chips();list();});
+$('#q').addEventListener('input',e=>{q=e.target.value;list();});
+chips();list();
+})();
+</script>
+
+</body>
+</html>
