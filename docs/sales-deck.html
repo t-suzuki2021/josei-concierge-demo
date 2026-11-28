@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>コンシェルジュ ご提案資料</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css"><link rel="icon" href="../favicon-app-32.png">
+<style>
+.pg svg.fig{width:100%;height:auto;display:block}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pain{border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:#fff;display:grid;grid-template-columns:46px 1fr;gap:4px 14px;align-items:start}
+.pain .ic{grid-row:span 3;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:var(--warn-pale);color:var(--warn)}
+.pain .ic svg{width:24px;height:24px}
+.pain h3{margin:0;font-size:18px;line-height:1.4}
+.pain p{margin:0;color:var(--muted);font-size:14px;line-height:1.7}
+.pain .res{font-size:13px;font-weight:700;color:var(--warn)}
+.band{display:flex;align-items:center;gap:22px;border-radius:14px;background:var(--navy);color:#fff;padding:22px 28px}
+.band b{font-size:18px}.band span{color:#C3CCE0;font-size:13.5px;line-height:1.6}
+.band .bn{font:700 40px/1 var(--num);color:#8FB0F2;white-space:nowrap}
+.pts{display:flex;flex-direction:column;gap:10px}
+.pt{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;border-radius:12px;padding:10px 14px;background:var(--sunk)}
+.pt i{font-style:normal;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--brand);color:#fff;font:700 15px/1 var(--num)}
+.pt b{display:block;font-size:15px;line-height:1.4}.pt span{display:block;font-size:12.5px;color:var(--muted);line-height:1.55}
+.rules{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.rule{border-radius:12px;padding:12px 14px;background:var(--sunk);font-size:12.5px;line-height:1.6;color:var(--muted)}
+.rule b{display:block;color:var(--fg);font-size:14.5px;margin-bottom:2px}
+.mt{display:grid;grid-template-columns:96px 1fr 44px;gap:8px;align-items:center;font-size:12.5px}
+.mt .meter{height:8px}.mt .v{font:700 12.5px/1 var(--num);text-align:right}
+.mts{display:flex;flex-direction:column;gap:7px;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.mts h4{margin:0 0 2px;font-size:13px;color:var(--muted)}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.vs>div{padding:9px 14px;border-bottom:1px solid var(--line-2);line-height:1.55}
+.vs>div:nth-child(odd){background:var(--sunk);color:var(--muted)}
+.vs>div.h{font-weight:700;font-size:12.5px;background:var(--navy);color:#fff}
+.vs>div.h.b{background:var(--brand)}
+.roles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.role{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;display:flex;flex-direction:column}
+.role .im{height:205px;overflow:hidden;background:var(--sunk);border-bottom:1px solid var(--line)}
+.role .im img{width:100%;height:100%;object-fit:cover;object-position:top left}
+.role .tx{padding:12px 14px;display:flex;flex-direction:column;gap:5px}
+.role .tx h3{margin:0;font-size:16px}
+.role .tx p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}
+.role ul{margin:2px 0 0;padding-left:1.1em;font-size:12.5px;line-height:1.6}
+.pat{border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;border:2px solid var(--c);background:#fff}
+.pat .hd{display:flex;align-items:center;gap:12px}
+.pat .hd .ic{width:44px;height:44px;border-radius:12px;background:var(--c);color:#fff;display:grid;place-items:center}
+.pat .hd .ic svg{width:24px;height:24px}
+.pat h3{margin:0;font-size:19px}.pat .hd small{display:block;color:var(--muted);font-size:12.5px}
+.pat ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.pat li{display:grid;grid-template-columns:24px 1fr 90px;gap:10px;align-items:center;font-size:14.5px;line-height:1.5}
+.pat li>i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--c-pale);color:var(--c);display:grid;place-items:center;font:700 11.5px/1 var(--num)}
+.pat li .who{font-size:11.5px;font-weight:700;text-align:right;color:var(--c)}
+.pat li.sr .who{color:var(--teal)}
+.pat.p1{--c:var(--brand);--c-pale:var(--brand-pale)}.pat.p2{--c:var(--teal);--c-pale:var(--teal-pale)}
+.ids{width:100%;border-collapse:collapse;font-size:13.5px}
+.ids td,.ids th{padding:8px 12px;border-bottom:1px solid var(--line-2);text-align:left}
+.ids th{font-size:12px;color:var(--muted);background:var(--sunk)}
+.ids code{font:600 14px/1 var(--num);background:var(--brand-pale);color:var(--brand);padding:4px 8px;border-radius:6px}
+.url{display:block;font:700 22px/1.3 var(--num);color:var(--brand);word-break:break-all;text-decoration:none}
+.steps5{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative}
+.st5{padding:0 10px;display:flex;flex-direction:column;gap:8px;align-items:flex-start;position:relative}
+.st5 .dot{width:52px;height:52px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font:700 18px/1 var(--num);position:relative;z-index:1;box-shadow:0 0 0 6px #fff}
+.st5.hl .dot{background:var(--accent)}
+.st5 b{font-size:16px}.st5 p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.65}
+.st5 .who{font-size:11.5px;font-weight:700;color:var(--brand)}
+.steps5::before{content:'';position:absolute;left:36px;right:60px;top:25px;height:3px;background:var(--line)}
+.price{border-radius:16px;background:var(--navy);color:#fff;padding:24px 26px;display:flex;flex-direction:column;gap:10px;justify-content:center}
+.price .big{font:700 40px/1.2 var(--sans)}
+.price p{margin:0;color:#C3CCE0;font-size:14px;line-height:1.8}
+.contact{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.contact div{display:flex;align-items:baseline;gap:16px}
+.contact .k{font:700 13px/1 var(--num);color:#8FB0F2;width:70px}
+.contact .v{font:700 28px/1.2 var(--num);color:#fff}
+.tbl-wrap{overflow-x:auto}
+.g3{display:grid;grid-template-columns:270px 560px 1fr;gap:22px;align-items:start}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips .chip{font-size:13px;padding:6px 12px}
+.flow.v{flex-direction:column}.flow.v>.ar{flex:0 0 18px}.flow.v>.ar::before{transform:rotate(90deg)}
+.ex{display:inline-block;font:700 11.5px/1 var(--sans);color:#A44A1C;background:var(--accent-pale);border-radius:6px;padding:4px 8px;margin-left:8px;vertical-align:middle}
+@media screen and (max-width:900px){
+ .pains,.rules,.roles{grid-template-columns:1fr}
+ .steps5{grid-template-columns:1fr;gap:16px}.steps5::before{display:none}
+ .band{flex-direction:column;align-items:flex-start}
+ .vs{font-size:12px}
+ .g3{grid-template-columns:1fr}
+ .g3 .shot{max-width:100%}
+ .url{font-size:16px}
+ .contact .v{font-size:20px}
+ .price .big{font-size:28px}
+ .pat li{grid-template-columns:22px 1fr}.pat li .who{grid-column:2;text-align:left}
+}
+</style>
+</head><body>
+<div class="topbar noprint"><b>人材開発支援助成金コンシェルジュ</b><span class="t">ご提案資料（研修会社・社労士事務所の皆さまへ）</span><span class="sp"></span><a href="sales-deck.pdf" download>PDFで保存</a><a href="javascript:print()">印刷</a></div>
+<main class="doc">
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">研修会社・社労士事務所の皆さまへ</span>
+<h1><small>人材開発支援助成金コンシェルジュ</small>助成金の申請業務を、<br>仕組みで回す。</h1>
+<p>期限の計算、書類集め、AIによる二重チェック、<br>社労士の確認印、工数の見える化まで。<br>人材開発支援助成金の申請業務を、ひとつの画面で。</p>
+<div class="ver">ご提案資料　2026年11月版</div></div>
+<div class="art"><svg viewBox="0 0 520 400" role="img" aria-label="カレンダーと書類、確認印のイラスト">
+<ellipse cx="260" cy="210" rx="245" ry="175" fill="#1D2D52"/>
+<rect x="70" y="80" width="190" height="170" rx="18" fill="#fff"/><rect x="70" y="80" width="190" height="42" rx="18" fill="#2E4C8C"/><rect x="70" y="104" width="190" height="18" fill="#2E4C8C"/>
+<rect x="100" y="66" width="10" height="30" rx="5" fill="#8FB0F2"/><rect x="220" y="66" width="10" height="30" rx="5" fill="#8FB0F2"/>
+<g fill="#E5EBF7"><rect x="90" y="138" width="30" height="24" rx="5"/><rect x="128" y="138" width="30" height="24" rx="5"/><rect x="166" y="138" width="30" height="24" rx="5"/><rect x="204" y="138" width="30" height="24" rx="5"/><rect x="90" y="170" width="30" height="24" rx="5"/><rect x="128" y="170" width="30" height="24" rx="5"/><rect x="204" y="170" width="30" height="24" rx="5"/><rect x="90" y="202" width="30" height="24" rx="5"/><rect x="128" y="202" width="30" height="24" rx="5"/><rect x="166" y="202" width="30" height="24" rx="5"/></g>
+<rect x="166" y="170" width="30" height="24" rx="5" fill="#E8743B"/><text x="181" y="187" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="IBM Plex Sans,sans-serif">!</text>
+<rect x="250" y="120" width="190" height="240" rx="16" fill="#fff" transform="rotate(5 345 240)"/>
+<g transform="rotate(5 345 240)"><rect x="272" y="146" width="110" height="12" rx="6" fill="#2E4C8C"/><rect x="272" y="172" width="146" height="9" rx="4.5" fill="#D6DBE3"/><rect x="272" y="190" width="130" height="9" rx="4.5" fill="#D6DBE3"/><rect x="272" y="208" width="140" height="9" rx="4.5" fill="#D6DBE3"/>
+<rect x="272" y="232" width="146" height="40" rx="8" fill="#DDF1E5"/><path d="M284 252l7 7 13-14" stroke="#1B7448" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="312" y="246" width="90" height="9" rx="4.5" fill="#1B7448" opacity=".5"/>
+<circle cx="380" cy="318" r="30" fill="none" stroke="#B3362B" stroke-width="5"/><text x="380" y="314" text-anchor="middle" font-size="12" font-weight="700" fill="#B3362B" font-family="Noto Sans JP,sans-serif">社労士</text><text x="380" y="331" text-anchor="middle" font-size="11" font-weight="700" fill="#B3362B" font-family="Noto Sans JP,sans-serif">確認</text></g>
+<circle cx="440" cy="96" r="34" fill="#8FB0F2"/><path d="M440 74l5 14 14 5-14 5-5 14-5-14-14-5 14-5z" fill="#14213D"/><text x="440" y="150" text-anchor="middle" font-size="13" font-weight="700" fill="#8FB0F2" font-family="IBM Plex Sans,sans-serif">AI × 2</text>
+<circle cx="110" cy="300" r="26" fill="#E8743B"/><path d="M98 300l8 8 16-17" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">よくあるお悩み</span></div><h2>助成金の申請業務、<em>こんなこと</em>が起きていませんか</h2></div>
+<div class="pg-body">
+<div class="pains">
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></svg></span><h3>締切に気づくのが遅れる</h3><p>計画届・支給申請の期限を人が計算。土日祝や年末年始の扱いで迷う。</p><span class="res">→ 期限を過ぎると申請できないことも</span></div>
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M10 13l4 4M14 13l-4 4"/></svg></span><h3>書類の不備・差し戻し</h3><p>発行日の古い証明書、人数や金額の食い違い。気づくのは提出の直前。</p><span class="res">→ 取り直し・再提出の手間</span></div>
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></span><h3>Excelとメールで進行管理</h3><p>どの会社がどの段階か、誰の番か。ファイルとメールを探さないと分からない。</p><span class="res">→ 確認と報告に時間がかかる</span></div>
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M14 15c3 0 8 1 8 5"/></svg></span><h3>ダブルチェックに人手</h3><p>書類の読み合わせを2人で目視。繁忙期は確認待ちが積み上がる。</p><span class="res">→ 人を増やさないと件数を増やせない</span></div>
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/><path d="M18 3l3 3M21 3l-3 3"/></svg></span><h3>担当ごとの属人化</h3><p>要件の判断や書類の進め方が担当者の頭の中。休み・退職で止まる。</p><span class="res">→ 引き継ぎができない</span></div>
+<div class="pain"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 20h18M6 16v-4M11 16V8M16 16v-6"/><path d="M19 4l-2 2" /></svg></span><h3>工数が見えない</h3><p>1社にどれだけ時間がかかったか、誰がどれだけ進めたかが分からない。</p><span class="res">→ 値付けや評価の根拠がない</span></div>
+</div>
+<div class="band"><span class="bn">2回</span><div><b>期限は2回、計画届から支給申請まで半年以上。</b><br><span>計画届は訓練開始の6か月前〜1か月前、支給申請は訓練終了の翌日から2か月以内。長い期間、多くの書類と関係者を、漏れなくつなぐ仕組みが必要です。</span></div></div>
+</div>
+<div class="pg-foot"><span class="ch">01 課題</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">02</span><span class="sep"></span><span class="sub">解決の全体像</span></div><h2>4つの役割が、<em>同じ流れ</em>を見ながら進めます</h2></div>
+<div class="pg-body">
+<div class="split even" style="flex:0 0 auto">
+<svg class="fig" viewBox="0 0 560 300" role="img" aria-label="お客様・申請担当・管理者・社労士がコンシェルジュを中心につながる図">
+<g stroke="#B7C2D6" stroke-width="3" fill="none"><path d="M160 46 L210 120"/><path d="M400 46 L350 120"/><path d="M160 254 L210 190"/><path d="M400 254 L350 190"/></g>
+<g font-family="Noto Sans JP,sans-serif">
+<rect x="190" y="112" width="180" height="86" rx="16" fill="#14213D"/><text x="280" y="146" text-anchor="middle" font-size="17" font-weight="700" fill="#fff">コンシェルジュ</text><text x="280" y="168" text-anchor="middle" font-size="11.5" fill="#C3CCE0">期限・書類・進み具合を</text><text x="280" y="184" text-anchor="middle" font-size="11.5" fill="#C3CCE0">ひとつの画面で管理</text>
+<circle cx="280" cy="64" r="30" fill="#E8743B"/><text x="280" y="61" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="IBM Plex Sans,sans-serif">AI-1</text><text x="280" y="76" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="IBM Plex Sans,sans-serif">AI-2</text><path d="M280 94 L280 112" stroke="#E8743B" stroke-width="3"/>
+<rect x="6" y="8" width="160" height="76" rx="12" fill="#E5EBF7"/><text x="22" y="36" font-size="15" font-weight="700" fill="#2E4C8C">お客様</text><text x="22" y="56" font-size="11.5" fill="#5F6878">スマホで撮って出す</text><text x="22" y="72" font-size="11.5" fill="#5F6878">いまやることが分かる</text>
+<rect x="394" y="8" width="160" height="76" rx="12" fill="#ECE6F8"/><text x="410" y="36" font-size="15" font-weight="700" fill="#6A4BB5">申請担当</text><text x="410" y="56" font-size="11.5" fill="#5F6878">今日やること・催促</text><text x="410" y="72" font-size="11.5" fill="#5F6878">書類の確認・引き継ぎ</text>
+<rect x="6" y="216" width="160" height="76" rx="12" fill="#FBF0D9"/><text x="22" y="244" font-size="15" font-weight="700" fill="#B7791F">管理者</text><text x="22" y="264" font-size="11.5" fill="#5F6878">担当の割り当て</text><text x="22" y="280" font-size="11.5" fill="#5F6878">全体の進み具合・工数</text>
+<rect x="394" y="216" width="160" height="70" rx="12" fill="#DDF2F0"/><text x="410" y="242" font-size="15" font-weight="700" fill="#11807A">社労士（資格者）</text><text x="410" y="262" font-size="11.5" fill="#5F6878">確認印・作成・提出</text><text x="410" y="278" font-size="11.5" fill="#5F6878">→ 労働局へ</text>
+</g></svg>
+<div class="pts">
+<div class="pt"><i>1</i><div><b>締切も含めて、進行を管理</b><span>訓練日から期限を自動で計算。今日やることが優先順に並びます。</span></div></div>
+<div class="pt"><i>2</i><div><b>AIが二重チェックを代わりに</b><span>2つのAIが別々に読んで突き合わせ。分かれたところだけ人が確認。</span></div></div>
+<div class="pt"><i>3</i><div><b>最後は社労士の確認印</b><span>登録番号つきの確認印がないと、提出を記録できません。</span></div></div>
+<div class="pt"><i>4</i><div><b>工数と進み具合が数字で見える</b><span>段階ごとの％と想定時間。スタッフの評価や値付けの根拠に。</span></div></div>
+</div></div>
+<div class="stages" style="--n:7">
+<div class="stage s1"><span class="sn">1</span><b>検討</b><small>コースと研修内容</small></div>
+<div class="stage s2"><span class="sn">2</span><b>事前準備</b><small>会社の書類を集める</small></div>
+<div class="stage s3"><span class="sn">3</span><b>計画届の提出</b><small>開始の6か月前〜1か月前</small></div>
+<div class="stage s4"><span class="sn">4</span><b>訓練の実施</b><small>出欠と時間を記録</small></div>
+<div class="stage s5"><span class="sn">5</span><b>支給申請</b><small>終了の翌日から2か月以内</small></div>
+<div class="stage s6"><span class="sn">6</span><b>審査・支給決定</b><small>労働局からの問い合わせ</small></div>
+<div class="stage s7"><span class="sn">7</span><b>入金</b><small>決定後に確認</small></div>
+</div>
+</div>
+<div class="pg-foot"><span class="ch">02 解決の全体像</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">ポイント1　締切も含めて進行管理</span></div><h2>期限は、<em>訓練の日付から自動で</em>計算します</h2></div>
+<div class="pg-body">
+<svg class="fig" viewBox="0 0 1152 236" role="img" aria-label="計画届と支給申請の期限のタイムライン">
+<g font-family="Noto Sans JP,sans-serif">
+<line x1="30" y1="132" x2="1122" y2="132" stroke="#B7C2D6" stroke-width="3"/>
+<rect x="80" y="84" width="360" height="40" rx="8" fill="#DDF2F0"/><text x="260" y="109" text-anchor="middle" font-size="15" font-weight="700" fill="#11807A">計画届の提出期間</text>
+<rect x="580" y="84" width="150" height="40" rx="8" fill="#ECE6F8"/><text x="655" y="109" text-anchor="middle" font-size="15" font-weight="700" fill="#6A4BB5">訓練</text>
+<rect x="740" y="84" width="300" height="40" rx="8" fill="#FCE9DE"/><text x="890" y="109" text-anchor="middle" font-size="15" font-weight="700" fill="#A44A1C">支給申請の期間</text>
+<g fill="#5F6878" font-size="12.5"><circle cx="80" cy="132" r="6" fill="#11807A"/><text x="80" y="156" text-anchor="middle">訓練開始の6か月前</text>
+<circle cx="440" cy="132" r="8" fill="#B3362B"/><text x="440" y="156" text-anchor="middle" font-weight="700" fill="#B3362B">1か月前（締切）</text>
+<circle cx="580" cy="132" r="6" fill="#6A4BB5"/><text x="580" y="156" text-anchor="middle">訓練開始日</text>
+<circle cx="730" cy="132" r="6" fill="#6A4BB5"/><text x="718" y="174" text-anchor="middle">訓練終了日</text>
+<circle cx="1040" cy="132" r="8" fill="#B3362B"/><text x="1040" y="156" text-anchor="middle" font-weight="700" fill="#B3362B">翌日から2か月（締切）</text></g>
+<path d="M440 54 L440 78" stroke="#B3362B" stroke-width="2" stroke-dasharray="4 3"/><rect x="322" y="18" width="236" height="36" rx="18" fill="#B3362B"/><text x="440" y="41" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">労働局に届いた日が提出日</text>
+<g><rect x="250" y="190" width="170" height="34" rx="17" fill="#E5EBF7"/><text x="335" y="212" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E4C8C">近づくとお知らせ</text><path d="M335 190 L360 140" stroke="#8FB0F2" stroke-width="2"/></g>
+<g><rect x="452" y="190" width="200" height="34" rx="17" fill="#FBF0D9"/><text x="552" y="212" text-anchor="middle" font-size="12.5" font-weight="700" fill="#B7791F">変更届は種類ごとに期限</text><path d="M552 190 L510 140" stroke="#E2B866" stroke-width="2"/></g>
+<g><rect x="860" y="190" width="170" height="34" rx="17" fill="#E5EBF7"/><text x="945" y="212" text-anchor="middle" font-size="12.5" font-weight="700" fill="#2E4C8C">近づくとお知らせ</text><path d="M945 190 L960 140" stroke="#8FB0F2" stroke-width="2"/></g>
+<rect x="1060" y="34" width="86" height="54" rx="10" fill="#14213D"/><text x="1103" y="57" text-anchor="middle" font-size="11.5" fill="#C3CCE0">日曜なら</text><text x="1103" y="76" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">→ 翌開庁日</text><path d="M1080 88 L1050 120" stroke="#14213D" stroke-width="2"/>
+</g></svg>
+<div class="rules">
+<div class="rule"><b>土日祝・年末年始</b>期限が閉庁日にあたるときは、翌開庁日に自動でずらします。</div>
+<div class="rule"><b>変更届の期限</b>訓練の日程・内容などが変わったら、変更の種類ごとに期限を計算します。</div>
+<div class="rule"><b>リマインド</b>期限の近い順に「今日やること」へ。お客様の画面にも残り日数が出ます。</div>
+<div class="rule"><b>段階ごとの進み具合％</b>7つの段階それぞれで、何％まで進んだかを数字で表示します。</div>
+</div>
+<div class="flow"><div class="fs"><span class="k">入力するのは</span><b>訓練の開始日・終了日</b><small>カリキュラムの日程から自動で入ります</small></div><div class="ar"></div><div class="fs"><span class="k">自動で計算</span><b>計画届・変更届・支給申請の期限</b><small>閉庁日は翌開庁日に</small></div><div class="ar"></div><div class="fs hl"><span class="k">自動で表示</span><b>今日やること・残り日数</b><small>担当・お客様・社労士の画面に</small></div></div>
+<div class="note"><b>ご注意</b>祝日の暦や個別の扱いは、最終的に管轄の労働局の判断に従います。期限の表示は、管理の漏れを防ぐための目安です。</div>
+</div>
+<div class="pg-foot"><span class="ch">03 ポイント1 進行管理</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">ポイント1　締切も含めて進行管理</span></div><h2>朝ひらけば、<em>今日やること</em>が優先順に並んでいます</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col">
+<ol class="calls">
+<li><i>1</i><div><b>今日やること</b><span>期限の近い順に並びます。上から片づければ、抜け漏れが起きにくくなります。</span></div></li>
+<li><i>2</i><div><b>近い期限</b><span>「あと9日」などの残り日数を、色つきで表示します。</span></div></li>
+<li><i>3</i><div><b>気づきを自動で</b><span>対象外になる研修内容や書類の不足を、早い段階でお知らせします。</span></div></li>
+</ol>
+<div class="mts"><h4>段階ごとの進み具合（例）</h4>
+<div class="mt"><span>事前準備</span><span class="meter"><i style="width:100%"></i></span><span class="v">100%</span></div>
+<div class="mt"><span>計画届</span><span class="meter"><i style="width:100%"></i></span><span class="v">100%</span></div>
+<div class="mt"><span>訓練の実施中</span><span class="meter"><i style="width:100%"></i></span><span class="v">100%</span></div>
+<div class="mt"><span>支給申請</span><span class="meter"><i style="width:31%;background:var(--accent)"></i></span><span class="v">31%</span></div>
+<div class="mt"><span>追加の支給申請</span><span class="meter"><i style="width:0"></i></span><span class="v">0%</span></div>
+</div>
+</div>
+<div class="col">
+<div class="browser cut" style="--h:290px"><img src="img/s-today.png" alt="申請担当の今日やること画面"><span class="pin" style="left:22%;top:30%">1</span><span class="pin" style="left:76%;top:46%">2</span><span class="pin" style="left:24%;top:58%">3</span></div>
+<div style="display:grid;grid-template-columns:250px 1fr;gap:16px;align-items:center">
+<div class="shot"><img src="img/s-nudge.png" alt="LINE用の催促文"></div>
+<div><b style="font-size:15px">催促文もワンクリック</b><p style="margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.7">不足している書類だけを並べたLINE用の文面を作ります。期限も自動で文面に入ります。</p></div>
+</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">03 ポイント1 進行管理</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">ポイント2　AIが二重チェックを代替</span></div><h2>2つのAIが別々に読み、<em>分かれたところだけ</em>人が確認</h2></div>
+<div class="pg-body">
+<svg class="fig" viewBox="0 0 1152 250" role="img" aria-label="AI-1とAI-2による二重チェックから社労士の確認印までの流れ">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8C97B0"/></marker></defs>
+<g stroke="#8C97B0" stroke-width="2.5" fill="none" marker-end="url(#ah)">
+<path d="M160 125 C190 125 190 70 216 70"/><path d="M160 125 C190 125 190 190 216 190"/>
+<path d="M450 70 C490 70 490 125 512 125"/><path d="M450 190 C490 190 490 125 512 125"/>
+<path d="M590 112 C610 80 610 66 636 66"/><path d="M590 138 C610 170 610 186 636 186"/>
+<path d="M840 66 C860 66 860 80 876 80"/><path d="M840 186 C860 186 860 90 876 90"/>
+<path d="M1010 118 L1010 150"/>
+</g>
+<g font-family="Noto Sans JP,sans-serif">
+<rect x="8" y="88" width="152" height="74" rx="12" fill="#F1F3F7"/><text x="84" y="119" text-anchor="middle" font-size="15" font-weight="700" fill="#181C25">書類</text><text x="84" y="140" text-anchor="middle" font-size="11.5" fill="#5F6878">スマホの写真・PDF</text>
+<rect x="218" y="32" width="232" height="76" rx="12" fill="#E5EBF7"/><text x="234" y="60" font-size="15" font-weight="700" fill="#2E4C8C">AI-1　ルールで確認</text><text x="234" y="82" font-size="11.5" fill="#5F6878">発行日・有効期限・会社名</text><text x="234" y="98" font-size="11.5" fill="#5F6878">人数・金額などを要件と照合</text>
+<rect x="218" y="152" width="232" height="76" rx="12" fill="#ECE6F8"/><text x="234" y="180" font-size="15" font-weight="700" fill="#6A4BB5">AI-2　別の読み方で読む</text><text x="234" y="202" font-size="11.5" fill="#5F6878">AI-1とは別に読み取り</text><text x="234" y="218" font-size="11.5" fill="#5F6878">結果を突き合わせる</text>
+<path d="M552 86 L594 125 L552 164 L510 125z" fill="#14213D"/><text x="552" y="122" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">突き</text><text x="552" y="137" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">合わせ</text>
+<text x="606" y="52" font-size="11.5" font-weight="700" fill="#1B7448">一致</text><text x="606" y="214" font-size="11.5" font-weight="700" fill="#A44A1C">分かれた</text>
+<rect x="638" y="30" width="202" height="72" rx="12" fill="#DDF1E5"/><text x="654" y="60" font-size="15" font-weight="700" fill="#1B7448">OK</text><text x="654" y="82" font-size="11.5" fill="#5F6878">担当者が見て「確認済み」に</text>
+<rect x="638" y="150" width="202" height="72" rx="12" fill="#FCE9DE"/><text x="654" y="180" font-size="15" font-weight="700" fill="#A44A1C">人が確認（要確認）</text><text x="654" y="202" font-size="11.5" fill="#5F6878">確認済み、または差し替え依頼</text>
+<rect x="878" y="44" width="264" height="74" rx="12" fill="#DDF2F0"/><text x="894" y="74" font-size="15" font-weight="700" fill="#11807A">社労士（資格者）が確認</text><text x="894" y="96" font-size="11.5" fill="#5F6878">書類ごとに内容と添付をチェック</text>
+<rect x="878" y="152" width="264" height="84" rx="12" fill="#14213D"/><circle cx="912" cy="194" r="20" fill="none" stroke="#F06B5D" stroke-width="3"/><text x="912" y="199" text-anchor="middle" font-size="12" font-weight="700" fill="#F06B5D">印</text><text x="944" y="186" font-size="14" font-weight="700" fill="#fff">登録番号つき確認印</text><text x="944" y="208" font-size="11.5" fill="#C3CCE0">押すと、提出を記録できる</text><text x="944" y="225" font-size="11" fill="#8FB0F2">確認印がないと記録できません</text>
+</g></svg>
+<table class="tbl"><thead><tr><th style="width:18%">ダブルチェック</th><th style="width:38%">これまで</th><th>コンシェルジュ</th></tr></thead><tbody>
+<tr><td><b>1人目</b></td><td>担当者が目視で読み合わせ</td><td><span class="chip b">AI-1</span> 要件のルールで自動チェック。アップした直後に結果が出ます</td></tr>
+<tr><td><b>2人目</b></td><td>別のスタッフが、もう一度目視</td><td><span class="chip b">AI-2</span> 別の読み方で読み取り、AI-1と突き合わせ</td></tr>
+<tr><td><b>判断が要る所</b></td><td>全部の書類を同じ手間で確認</td><td><span class="chip o">人</span> 判定が分かれた書類・項目だけに集中して確認</td></tr>
+<tr><td><b>最終確認</b></td><td>紙やメールで社労士に回す</td><td><span class="chip g">社労士</span> 画面で書類ごとに確認し、登録番号つきの確認印</td></tr>
+</tbody></table>
+</div>
+<div class="pg-foot"><span class="ch">04 ポイント2 AIチェック</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">ポイント2　AIが二重チェックを代替</span></div><h2>AIの結果は全員に共有。<em>最後は社労士の確認印</em></h2></div>
+<div class="pg-body"><div class="g3">
+<div class="phone cut" style="--h:470px;width:260px"><img src="img/c-docs-ai.png" alt="お客様の書類とAIチェック画面"><span class="pin" style="left:80%;top:31%">1</span><span class="pin" style="left:84%;top:90%">2</span></div>
+<figure class="shot"><img src="img/r-confbox.png" alt="社労士の確認と確認印"><span class="pin" style="left:4%;top:19%">3</span><span class="pin" style="left:4%;top:46%">4</span><span class="pin" style="left:20%;top:88%">5</span></figure>
+<ol class="calls">
+<li><i>1</i><div><b>判定が分かれた</b><span>AI-1とAI-2の結果が違う書類には印がつき、人の確認に回ります。</span></div></li>
+<li><i>2</i><div><b>確認済み</b><span>担当者が確かめると、お客様の画面にも表示されます。</span></div></li>
+<li><i>3</i><div><b>3か所に同じ結果</b><span>お客様・申請担当・社労士の画面に、同じ判定が出ます。</span></div></li>
+<li><i>4</i><div><b>書類ごとに確認</b><span>社労士が内容と添付をひとつずつチェック。</span></div></li>
+<li><i>5</i><div><b>登録番号つき確認印</b><span>押すと提出を記録できるようになります。</span></div></li>
+</ol>
+</div></div>
+<div class="pg-foot"><span class="ch">04 ポイント2 AIチェック</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">お客様マイページ</span></div><h2>お客様は、<em>スマホで撮って出す</em>だけ</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<ol class="calls">
+<li><i>1</i><div><b>いまの段階と、次の期限</b><span>「計画届の提出期限まで あと31日」のように、最初に表示します。</span></div></li>
+<li><i>2</i><div><b>いまやることと、かかる時間</b><span>やることごとに「約18分」などの目安。迷わず手をつけられます。</span></div></li>
+<li><i>3</i><div><b>撮って出すと、AIがすぐ確認</b><span>発行日・有効期限・会社名・人数・金額を、その場でチェック。</span></div></li>
+<li><i>4</i><div><b>助成金の見込み</b><span>経費助成・賃金助成の見込み額。実際の額は労働局の審査で決まります。</span></div></li>
+</ol>
+<div class="tip"><b>ポイント</b>お客様に長い依頼文を読んでもらう必要はありません。入力は「5つの質問」と「書類の写真」が中心です。</div>
+<div class="good"><b>安心</b>GビズIDのパスワードや口座の情報は、このツールでは預かりません。</div>
+</div>
+<div class="phones">
+<div class="phone cut" style="--h:470px;width:260px"><img src="img/c-home.png" alt="お客様のホーム画面"><span class="pin" style="left:10%;top:18%">1</span><span class="pin" style="left:93%;top:65%">2</span><span class="pin" style="left:14%;top:72%">3</span></div>
+<div class="phone sm cut" style="--h:400px"><img src="img/c-money.png" alt="助成金の見込み画面"><span class="pin" style="left:8%;top:30%">4</span></div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 お客様マイページ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">申請書類の下書き・提出前チェック・引き継ぎ</span></div><h2>集めた書類から、<em>申請書類の材料</em>までつながります</h2></div>
+<div class="pg-body"><div class="split r">
+<div class="browser cut" style="--h:470px"><img src="img/s-forms.png" alt="申請書類タブの画面" style="margin-top:-310px"><span class="pin" style="left:22%;top:44%">1</span><span class="pin" style="left:96%;top:62%">2</span><span class="pin" style="left:60%;top:31%">3</span><span class="pin" style="left:80%;top:31%">4</span></div>
+<div class="col">
+<ol class="calls">
+<li><i>1</i><div><b>書類に使うデータ</b><span>集めた書類・お客様の回答・カリキュラムから自動で入ります。直すと、すべての書類に反映。</span></div></li>
+<li><i>2</i><div><b>出どころの印</b><span>「書類」「公開情報」「ご回答」など、どこから来たデータかが一目で分かります。</span></div></li>
+<li><i>3</i><div><b>提出前の自動チェック</b><span>カリキュラム・契約書・計画届の日時や受講料の食い違いを、提出前に洗い出します。</span></div></li>
+<li><i>4</i><div><b>社労士への引き継ぎ</b><span>書類一式とメッセージをまとめて渡します。社労士の画面でそのまま確認できます。</span></div></li>
+</ol>
+<div class="warn"><b>社労士法27条への配慮</b>社労士でない運営（研修会社など）の使い方では、運営側は申請書類の下書きを作りません。下書きは社労士の画面で、社労士が作ります。</div>
+<div class="note" style="font-size:12.5px">様式の項目は要点の言い換えです。提出は最新の公式様式で行います。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 申請書類</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">工数の見える化</span></div><h2>1社にかかる時間を、<em>項目ごとに積み上げ</em>て見せます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<div style="display:flex;align-items:flex-end;gap:16px"><div class="stat"><span class="v">約23〜25<small>時間</small></span><span class="l">1社あたりの標準工数<span class="ex">例</span></span></div><div class="stat"><span class="v" style="color:var(--accent)">＋60<small>分</small></span><span class="l">変更届など1件ごとのイレギュラー</span></div></div>
+<svg class="fig" viewBox="0 0 520 132" role="img" aria-label="段階ごとの標準工数の積み上げ棒グラフ（例）">
+<g font-family="IBM Plex Sans,Noto Sans JP,sans-serif">
+<rect x="10" y="10" width="91" height="40" fill="#2E4C8C"/><rect x="101" y="10" width="84" height="40" fill="#11807A"/><rect x="185" y="10" width="38" height="40" fill="#6A4BB5"/><rect x="223" y="10" width="154" height="40" fill="#E8743B"/><rect x="377" y="10" width="70" height="40" fill="#1B7448"/><rect x="447" y="10" width="23" height="40" fill="#B7791F"/>
+<rect x="472" y="10" width="38" height="40" fill="#FCE9DE" stroke="#E8743B" stroke-width="2" stroke-dasharray="4 3"/><text x="491" y="35" text-anchor="middle" font-size="11" font-weight="700" fill="#A44A1C">+α</text>
+<g font-size="12" font-weight="700" fill="#fff" text-anchor="middle"><text x="55" y="35">4.8h</text><text x="143" y="35">4.4h</text><text x="204" y="35">2.0</text><text x="300" y="35">8.1h</text><text x="412" y="35">3.7h</text></g>
+<g font-size="11.5" fill="#5F6878"><rect x="10" y="66" width="10" height="10" fill="#2E4C8C"/><text x="25" y="76">事前準備</text><rect x="100" y="66" width="10" height="10" fill="#11807A"/><text x="115" y="76">計画届</text><rect x="178" y="66" width="10" height="10" fill="#6A4BB5"/><text x="193" y="76">訓練の実施中</text><rect x="282" y="66" width="10" height="10" fill="#E8743B"/><text x="297" y="76">支給申請</text><rect x="364" y="66" width="10" height="10" fill="#1B7448"/><text x="379" y="76">追加の支給申請</text>
+<rect x="10" y="90" width="10" height="10" fill="#B7791F"/><text x="25" y="100">支給決定のあと 1.2h</text><rect x="178" y="90" width="10" height="10" fill="#FCE9DE" stroke="#E8743B"/><text x="193" y="100">イレギュラー（変更届・問い合わせ対応など）</text></g>
+<text x="10" y="124" font-size="11" fill="#8C97B0">合計 約24.2時間（標準）＋イレギュラー。数値は試作の仮の標準値です。</text>
+</g></svg>
+<ol class="calls blue">
+<li><i>1</i><div><b>項目ごとに想定時間</b><span>やること・書類（出どころ別）・人が確かめる要件に、標準の時間を割り当て。</span></div></li>
+<li><i>2</i><div><b>比重で％を積み上げ</b><span>比重＝項目の時間÷段階の合計。済んだ項目の分だけ進み具合が上がります。</span></div></li>
+<li><i>3</i><div><b>イレギュラーも記録</b><span>変更届は1件60分を自動で加算。ほかの対応は作業時間として記録できます。</span></div></li>
+</ol>
+</div>
+<figure class="shot"><img src="img/s-pgcard.png" alt="案件の進み具合と工数のカード"><span class="pin" style="left:4%;top:4%">2</span><span class="pin" style="left:86%;top:28%">1</span><span class="pin" style="left:4%;top:79%">3</span></figure>
+</div></div>
+<div class="pg-foot"><span class="ch">07 工数の見える化</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">スタッフ評価</span></div><h2>誰が、どれだけ進めたか。<em>時給スタッフも適正に評価</em></h2></div>
+<div class="pg-body">
+<div class="split even" style="flex:0 0 auto">
+<div class="col">
+<svg class="fig" viewBox="0 0 540 200" role="img" aria-label="担当者ごとの済んだ工数と残りの棒グラフ（デモデータ）">
+<g font-family="IBM Plex Sans,Noto Sans JP,sans-serif">
+<text x="0" y="16" font-size="13" font-weight="700" fill="#181C25">担当者ごとの工数（時間）</text>
+<g font-size="13" font-weight="700" fill="#181C25"><text x="0" y="58">山田</text><text x="0" y="108">佐藤</text><text x="0" y="158">中村</text></g>
+<rect x="56" y="38" width="73" height="30" rx="4" fill="#1B7448"/><rect x="129" y="38" width="327" height="30" rx="4" fill="#E8EBF0"/>
+<rect x="56" y="88" width="132" height="30" rx="4" fill="#1B7448"/><rect x="188" y="88" width="175" height="30" rx="4" fill="#E8EBF0"/>
+<rect x="56" y="138" width="180" height="30" rx="4" fill="#1B7448"/><rect x="236" y="138" width="22" height="30" rx="4" fill="#E8EBF0"/>
+<g font-size="12.5" font-weight="700" fill="#fff"><text x="64" y="58">16.9</text><text x="64" y="108">30.8</text><text x="64" y="158">41.9</text></g>
+<g font-size="12" fill="#5F6878"><text x="464" y="58">残り 76.0</text><text x="371" y="108">残り 40.8</text><text x="266" y="158">残り 5.0</text></g>
+<rect x="56" y="182" width="12" height="12" fill="#1B7448"/><text x="74" y="193" font-size="11.5" fill="#5F6878">済んだ工数（標準時間で換算）</text><rect x="270" y="182" width="12" height="12" fill="#E8EBF0"/><text x="288" y="193" font-size="11.5" fill="#5F6878">残り　※デモデータ（架空）</text>
+</g></svg>
+<div class="tip"><b>評価の目安（活用例）</b>済んだ工数（標準時間で換算）÷ 実際の勤務時間。時間をかけた人ではなく、進めた人が評価されます。</div>
+</div>
+<div class="browser cut" style="--h:290px"><img src="img/a-team.png" alt="管理者の担当者画面"><span class="pin" style="left:40%;top:57%">1</span><span class="pin" style="left:62%;top:57%">2</span></div>
+</div>
+<div class="cards">
+<div class="card pale"><h3>時給スタッフの適正評価</h3><p>かかった時間ではなく、進めた分を標準時間で換算。早く正確に進めた人が、正しく評価されます（活用例）。</p></div>
+<div class="card"><h3>担当の割り当て</h3><p>担当ごとの件数・進み具合・残りの工数を見て、管理者が担当を替えたり、担当者を追加したりできます。</p></div>
+<div class="card"><h3>値付け・受注の根拠</h3><p>1社あたりの標準工数とイレギュラーの実績から、料金設定や受けられる件数を考えられます。</p></div>
+</div>
+</div>
+<div class="pg-foot"><span class="ch">07 工数の見える化</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">カリキュラム作成</span></div><h2>要望を入れるだけで、<em>10時間のカリキュラム案</em></h2></div>
+<div class="pg-body"><div class="split r">
+<div class="browser cut" style="--h:470px"><img src="img/s-curres.png" alt="研修カリキュラムの作成画面"><span class="pin" style="left:23%;top:80%">1</span><span class="pin" style="left:54%;top:27%">3</span></div>
+<div class="col">
+<div class="flow v">
+<div class="fs"><span class="k">1　要望を入れる</span><small>お客様の要望をそのまま貼り付け。職務と困っている業務を選ぶだけ。</small></div>
+<div class="ar"></div>
+<div class="fs"><span class="k">2　対象外を外し、重複を避ける</span><small>対象外になりやすい内容は自動で外し、過去に実施した研修と重ならない科目を選びます。</small></div>
+<div class="ar"></div>
+<div class="fs hl"><span class="k">3　時間割つきの案</span><small>1日の受講時間（2〜8時間）に合わせて、計画届に添付できる形の10時間の案を作ります。</small></div>
+</div>
+<div class="cards c2" style="gap:10px">
+<div class="card" style="padding:12px 14px"><span class="big" style="font-size:28px">3通り</span><p>要望から／業種・職種の3セット／年間プラン（研修メニューと連動）</p></div>
+<div class="card" style="padding:12px 14px"><span class="big" style="font-size:28px">年30時間</span><p>初級1・初級2・中級の3セットを、科目が重ならないように用意</p></div>
+</div>
+<div class="note" style="font-size:12.5px">令和8年8月3日以降の計画届の要項に沿って組み立てます。対象になるかの最終判断は労働局が行います。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 カリキュラム作成</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">4つの役割と画面</span></div><h2>役割ごとに、<em>見られる画面と案件</em>が変わります</h2></div>
+<div class="pg-body">
+<div class="roles">
+<div class="role"><div class="im"><img src="img/c-home.png" alt="お客様のマイページ"></div><div class="tx"><span class="chip b">スマホ</span><h3>お客様</h3><p>自社のマイページだけ。</p><ul><li>いまやること・期限</li><li>書類を撮って出す</li><li>AIの確認結果・メッセージ</li></ul></div></div>
+<div class="role"><div class="im"><img src="img/s-board.png" alt="申請担当の案件ボード"></div><div class="tx"><span class="chip" style="background:var(--violet-pale);color:var(--violet)">PC</span><h3>申請担当</h3><p>自分が担当するお客様だけ。</p><ul><li>今日やること・案件ボード</li><li>書類とAIチェック・催促</li><li>社労士への引き継ぎ</li></ul></div></div>
+<div class="role"><div class="im"><img src="img/a-cover.png" alt="管理者の対応範囲画面"></div><div class="tx"><span class="chip y">PC</span><h3>管理者</h3><p>自社の全担当の案件。</p><ul><li>担当の割り当て・追加</li><li>担当者ごとの進み具合・工数</li><li>標準の作業時間・対応範囲</li></ul></div></div>
+<div class="role"><div class="im"><img src="img/r-home.png" alt="社労士の確認マイページ"></div><div class="tx"><span class="chip g">PC</span><h3>社労士（資格者）</h3><p>引き継がれた案件だけ。</p><ul><li>受け取り・差し戻し</li><li>書類ごとの確認・確認印</li><li>提出・受理・支給決定の記録</li></ul></div></div>
+</div>
+<div class="flow">
+<div class="fs"><span class="k">お客様</span><b>撮って出す</b></div><div class="ar"></div>
+<div class="fs"><span class="k">AI-1・AI-2</span><b>二重チェック</b></div><div class="ar"></div>
+<div class="fs"><span class="k">申請担当</span><b>確認・引き継ぎ</b></div><div class="ar"></div>
+<div class="fs hl"><span class="k">社労士</span><b>確認印・提出</b></div><div class="ar"></div>
+<div class="fs"><span class="k">管理者</span><b>全体と工数を把握</b></div>
+</div>
+</div>
+<div class="pg-foot"><span class="ch">09 役割と画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">2つの使い方</span></div><h2>研修会社でも、社労士事務所でも。<em>同じシステム</em>で使えます</h2></div>
+<div class="pg-body"><div class="split even">
+<div class="pat p1"><div class="hd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></span><div><h3>研修会社の使い方</h3><small>書類集めと進行管理。申請書類の作成・提出は提携社労士</small></div></div>
+<ol>
+<li><i>1</i><span>研修の提案・カリキュラム案の作成</span><span class="who">研修会社</span></li>
+<li><i>2</i><span>お客様の書類集めと、AIの二重チェック</span><span class="who">研修会社</span></li>
+<li><i>3</i><span>期限の管理・進行管理・催促</span><span class="who">研修会社</span></li>
+<li><i>4</i><span>提携社労士へ書類一式を引き継ぐ</span><span class="who">研修会社</span></li>
+<li class="sr"><i>5</i><span>申請書類の下書き・作成と確認印</span><span class="who">提携社労士</span></li>
+<li class="sr"><i>6</i><span>提出・労働局からの問い合わせ対応</span><span class="who">提携社労士</span></li>
+</ol>
+<div class="warn" style="margin-top:auto"><b>社労士法27条に配慮</b>運営側（研修会社）は申請書類の下書きを作りません。下書きは社労士の画面で社労士が作ります。お客様と社労士の契約・報酬は直接決めていただきます。</div>
+</div>
+<div class="pat p2"><div class="hd"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 4v6c0 5-4 8-8 10-4-2-8-5-8-10V6z"/><path d="M8 12l3 3 5-6"/></svg></span><div><h3>社労士事務所の使い方</h3><small>受付から作成・提出まで、一気通貫</small></div></div>
+<ol>
+<li><i>1</i><span>お客様の受付と書類集め</span><span class="who">事務所</span></li>
+<li><i>2</i><span>AIの二重チェックと要件の確認</span><span class="who">事務所</span></li>
+<li><i>3</i><span>期限・進行管理と、スタッフの工数管理</span><span class="who">事務所</span></li>
+<li><i>4</i><span>申請書類の下書きと、提出前の自動チェック</span><span class="who">事務所</span></li>
+<li class="sr"><i>5</i><span>社労士の確認と、登録番号つき確認印</span><span class="who">社労士</span></li>
+<li class="sr"><i>6</i><span>提出・受理・支給決定の記録</span><span class="who">社労士</span></li>
+</ol>
+<div class="good" style="margin-top:auto"><b>こんな効果も</b>スタッフの作業を標準時間で見える化。研修会社と組めば、案件の入口（研修の提案）も広がります。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">10 2つの使い方</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">11</span><span class="sep"></span><span class="sub">導入効果の試算</span></div><h2>手間のかかる4つの作業を、<em>どれだけ減らせるか</em><span class="ex">試算・例</span></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<div style="display:flex;gap:28px;align-items:flex-end">
+<div class="stat"><span class="l">1社あたり（試算）</span><span class="v">13<small>h</small> → 5<small>h</small></span></div>
+<div class="stat"><span class="l">年20社なら（試算）</span><span class="v" style="color:var(--accent)">約160<small>時間減</small></span></div>
+</div>
+<table class="tbl"><thead><tr><th>作業（1社あたり・例）</th><th class="c">これまで</th><th class="c">導入後</th></tr></thead><tbody>
+<tr><td>書類の確認（2人で目視）</td><td class="c">6h</td><td class="c y">3h</td></tr>
+<tr><td>期限の計算・管理</td><td class="c">2h</td><td class="c y">0.5h</td></tr>
+<tr><td>お客様への催促・連絡</td><td class="c">3h</td><td class="c y">1h</td></tr>
+<tr><td>進み具合の確認・報告</td><td class="c">2h</td><td class="c y">0.5h</td></tr>
+</tbody></table>
+<div class="warn"><b>ご注意</b>上の数字は、考え方を示すための<b>仮の前提による計算例</b>で、実績ではありません。効果は業務の進め方や案件の内容で変わります。御社の件数・体制に合わせて、個別に試算します。</div>
+</div>
+<div class="col">
+<svg class="fig" viewBox="0 0 600 330" role="img" aria-label="4つの作業のこれまでと導入後の時間の比較（試算・例）">
+<g font-family="IBM Plex Sans,Noto Sans JP,sans-serif">
+<text x="0" y="18" font-size="14" font-weight="700" fill="#181C25">1社あたりの時間（試算・例）</text>
+<g stroke="#E8EBF0"><line x1="40" y1="70" x2="590" y2="70"/><line x1="40" y1="130" x2="590" y2="130"/><line x1="40" y1="190" x2="590" y2="190"/></g>
+<line x1="40" y1="250" x2="590" y2="250" stroke="#B7C2D6" stroke-width="2"/>
+<g font-size="11" fill="#8C97B0" text-anchor="end"><text x="34" y="254">0</text><text x="34" y="194">2h</text><text x="34" y="134">4h</text><text x="34" y="74">6h</text></g>
+<g fill="#C9D1DE"><rect x="70" y="70" width="44" height="180" rx="4"/><rect x="200" y="190" width="44" height="60" rx="4"/><rect x="330" y="160" width="44" height="90" rx="4"/><rect x="460" y="190" width="44" height="60" rx="4"/></g>
+<g fill="#2E4C8C"><rect x="120" y="160" width="44" height="90" rx="4"/><rect x="250" y="235" width="44" height="15" rx="4"/><rect x="380" y="220" width="44" height="30" rx="4"/><rect x="510" y="235" width="44" height="15" rx="4"/></g>
+<g font-size="12.5" font-weight="700" text-anchor="middle"><g fill="#5F6878"><text x="92" y="63">6h</text><text x="222" y="183">2h</text><text x="352" y="153">3h</text><text x="482" y="183">2h</text></g><g fill="#2E4C8C"><text x="142" y="153">3h</text><text x="272" y="228">0.5h</text><text x="402" y="213">1h</text><text x="532" y="228">0.5h</text></g></g>
+<g font-size="12.5" fill="#181C25" text-anchor="middle" font-weight="700"><text x="117" y="274">書類の確認</text><text x="247" y="274">期限の管理</text><text x="377" y="274">催促・連絡</text><text x="507" y="274">進み具合の報告</text></g>
+<g font-size="11" fill="#5F6878" text-anchor="middle"><text x="117" y="292">AIが2人分を代替</text><text x="247" y="292">自動で計算</text><text x="377" y="292">LINE文を自動で</text><text x="507" y="292">画面を見れば分かる</text></g>
+<rect x="330" y="306" width="12" height="12" fill="#C9D1DE"/><text x="348" y="317" font-size="11.5" fill="#5F6878">これまで</text><rect x="420" y="306" width="12" height="12" fill="#2E4C8C"/><text x="438" y="317" font-size="11.5" fill="#5F6878">導入後（例）</text>
+</g></svg>
+<div class="tip"><b>考え方</b>人の手は「AIの判定が分かれた所」「お客様とのやりとり」「社労士の最終確認」に集中させ、確認・計算・報告の繰り返しを仕組みに任せます。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">11 導入効果</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">12</span><span class="sep"></span><span class="sub">セキュリティ・運用</span></div><h2>大切な情報は、<em>預からない・見せすぎない・記録する</em></h2></div>
+<div class="pg-body">
+<div class="cards c4">
+<div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></span><h3>IDとパスワードを預からない</h3><p>GビズIDや電子申請のログイン情報は入力・保存しません。口座の情報も預かりません。</p></div>
+<div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span><h3>二段階認証</h3><p>ログインのときにSMSの確認コードで本人を確かめます。アカウントごとに設定できます。</p></div>
+<div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2h9l5 5v15H6z"/><path d="M9 12h8M9 16h8M9 8h3"/></svg></span><h3>操作の記録</h3><p>ログイン・担当の変更・引き継ぎ・提出の記録などを残します。記録は消せません。</p></div>
+<div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/></svg></span><h3>役割ごとの表示範囲</h3><p>お客様は自社だけ、申請担当は担当分だけ、社労士は引き継がれた案件だけを表示。</p></div>
+</div>
+<div class="split even" style="gap:22px">
+<div class="browser cut" style="--h:250px"><img src="img/login.png" alt="ログインとアカウントの画面"><span class="pin" style="left:40%;top:68%">2</span></div>
+<figure class="shot"><img src="img/o-audit.png" alt="操作の記録の画面"><span class="pin" style="left:3%;top:44%">3</span></figure>
+</div>
+</div>
+<div class="pg-foot"><span class="ch">12 セキュリティ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">13</span><span class="sep"></span><span class="sub">導入の流れ</span></div><h2>まずは<em>デモで触って</em>、数社から始められます</h2></div>
+<div class="pg-body">
+<div class="steps5">
+<div class="st5"><span class="dot">1</span><b>お打ち合わせ</b><p>いまの進め方・件数・体制をお聞きし、使い方（研修会社型／社労士事務所型）を決めます。</p></div>
+<div class="st5"><span class="dot">2</span><b>デモ</b><p>役割ごとのデモIDで、お客様・担当・社労士の画面を実際に操作していただきます。</p></div>
+<div class="st5"><span class="dot">3</span><b>初期設定</b><p>担当者・提携社労士・標準の作業時間・書類の社内ルールなどを設定します。</p></div>
+<div class="st5"><span class="dot">4</span><b>試行</b><p>数社の案件で使い始め、画面の流れと作業時間を確かめます。</p></div>
+<div class="st5 hl"><span class="dot">5</span><b>本運用</b><p>実績に合わせて標準の作業時間を見直し、対象の案件を広げます。</p></div>
+</div>
+<div class="cards">
+<div class="card pale"><h3>ご用意いただくもの</h3><p>担当者の一覧、提携社労士の情報（研修会社の場合）、いまの書類の集め方・進め方がわかる資料。</p></div>
+<div class="card"><h3>当社が行うこと</h3><p>初期設定、操作のご説明、役割ごとの操作マニュアル（画面から自動で作るため、機能が変わっても最新に保てます）。</p></div>
+<div class="card"><h3>事前にご確認いただくこと</h3><p>提携の形・報酬は、社労士法との関係を社労士にご確認ください。助成の対象かどうかの最終判断は労働局です。</p></div>
+</div>
+<div class="mts" style="gap:10px;padding:16px 18px"><h4>初期設定で決めること（例）</h4><div class="chips"><span class="chip b">提出する人（研修会社型・社労士事務所型）</span><span class="chip b">管理者・申請担当のアカウント</span><span class="chip b">提携社労士と登録番号</span><span class="chip b">お客様ごとの担当の割り当て</span><span class="chip o">標準の作業時間</span><span class="chip o">証明書の発行日ルール（1・2・3・6か月）</span><span class="chip g">二段階認証</span></div></div>
+</div>
+<div class="pg-foot"><span class="ch">13 導入の流れ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">14</span><span class="sep"></span><span class="sub">料金</span></div><h2>使い方と規模に合わせて、<em>個別にお見積り</em>します</h2></div>
+<div class="pg-body"><div class="split" style="grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);flex:0 0 auto">
+<div class="price"><span style="font-size:13px;font-weight:700;color:#8FB0F2">料金</span><span class="big">個別にお見積り</span><p>研修会社型か社労士事務所型か、担当者の人数、年間の案件数、必要な機能によって変わります。お打ち合わせのうえ、御社に合わせたお見積りをお出しします。</p></div>
+<div class="col">
+<h3 style="margin:0;font-size:17px">課金の考え方<span class="ex">例</span></h3>
+<table class="tbl"><thead><tr><th style="width:26%">項目</th><th>考え方（例）</th></tr></thead><tbody>
+<tr><td><b>初期費用</b></td><td>初期設定・標準の作業時間の調整・操作のご説明</td></tr>
+<tr><td><b>月額</b></td><td>申請担当・管理者のアカウント数に応じて</td></tr>
+<tr><td><b>案件数</b></td><td>年間に管理する案件（お客様）の数に応じて</td></tr>
+<tr><td><b>オプション</b></td><td>カリキュラム作成、研修メニュー（業種・職種別）との連動 など</td></tr>
+</tbody></table>
+<div class="note">上の表は課金の組み立て方の例で、確定した料金体系ではありません。お客様（申請する企業）と社労士のアカウントの扱いも、使い方に合わせてご相談します。</div>
+</div>
+</div>
+<div class="cards c4" style="gap:12px;margin-top:6px">
+<div class="card" style="padding:14px 16px"><h3>進行管理</h3><p>期限の自動計算・今日やること・催促文</p></div>
+<div class="card" style="padding:14px 16px"><h3>AIの二重チェック</h3><p>AI-1・AI-2の突き合わせと社労士の確認印</p></div>
+<div class="card" style="padding:14px 16px"><h3>4つの役割の画面</h3><p>お客様・申請担当・管理者・社労士</p></div>
+<div class="card" style="padding:14px 16px"><h3>工数とカリキュラム</h3><p>進み具合％・標準工数・10時間の案</p></div>
+</div></div>
+<div class="pg-foot"><span class="ch">14 料金</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">15</span><span class="sep"></span><span class="sub">デモのご案内</span></div><h2>役割ごとのIDで、<em>いますぐ</em>触っていただけます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<div class="card pale" style="gap:8px"><span style="font-size:12.5px;font-weight:700;color:var(--muted)">デモサイト</span><a class="url" href="https://t-suzuki2021.github.io/josei-concierge-demo/">t-suzuki2021.github.io/<br>josei-concierge-demo/</a><p>画面右上のアカウントボタンからログインします。</p></div>
+<table class="ids"><thead><tr><th>デモID（例）</th><th>役割</th><th>見える範囲</th></tr></thead><tbody>
+<tr><td><code>smc-admin</code></td><td>管理者</td><td>全担当の案件・工数</td></tr>
+<tr><td><code>smc-staff01</code></td><td>申請担当</td><td>担当のお客様だけ</td></tr>
+<tr><td><code>cl-midori</code></td><td>お客様</td><td>自社のマイページ</td></tr>
+<tr><td><code>sr-minato</code></td><td>社労士（資格者）</td><td>引き継がれた案件</td></tr>
+</tbody></table>
+<div class="tip"><b>パスワード</b>すべて <b class="num">demo</b> です。会社名・人名は架空の例で、入力した内容は保存されません。</div>
+</div>
+<div class="browser cut" style="--h:470px"><img src="img/overview.png" alt="デモサイトのトップ画面"></div>
+</div></div>
+<div class="pg-foot"><span class="ch">15 デモ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">お問い合わせ</span>
+<h1 style="font-size:44px"><small>人材開発支援助成金コンシェルジュ</small>まずは、デモと<br>お打ち合わせから。</h1>
+<p>使い方のご相談、御社の数字での試算、<br>お見積りのご依頼は、お気軽にどうぞ。</p>
+<div class="contact">
+<div><span class="k">会社</span><span class="v" style="font-size:22px">株式会社スマートコンテンツ</span></div>
+<div><span class="k">電話</span><span class="v">03-6908-9425</span></div>
+<div><span class="k">メール</span><span class="v">info@smartcontents.co.jp</span></div>
+</div></div>
+<div class="art"><svg viewBox="0 0 520 380" role="img" aria-label="打ち合わせのイラスト">
+<ellipse cx="260" cy="200" rx="240" ry="165" fill="#1D2D52"/>
+<rect x="120" y="110" width="280" height="180" rx="18" fill="#fff"/><rect x="120" y="110" width="280" height="30" rx="15" fill="#2E4C8C"/><rect x="120" y="125" width="280" height="15" fill="#2E4C8C"/>
+<circle cx="140" cy="125" r="5" fill="#F06B5D"/><circle cx="158" cy="125" r="5" fill="#F4BE4F"/><circle cx="176" cy="125" r="5" fill="#5FC26A"/>
+<rect x="144" y="160" width="232" height="16" rx="8" fill="#E5EBF7"/><rect x="144" y="190" width="150" height="10" rx="5" fill="#D6DBE3"/><rect x="144" y="210" width="190" height="10" rx="5" fill="#D6DBE3"/>
+<rect x="144" y="240" width="110" height="32" rx="16" fill="#E8743B"/><text x="199" y="261" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Noto Sans JP,sans-serif">デモを見る</text>
+<circle cx="420" cy="100" r="38" fill="#8FB0F2"/><path d="M404 92h32v20h-18l-8 7v-7h-6z" fill="#14213D"/>
+<circle cx="96" cy="300" r="28" fill="#E8743B"/><path d="M84 300l8 8 16-17" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div></div>
+<div class="pg-foot"><span class="ch">お問い合わせ</span><span class="dots"></span></div></section>
+
+</main></body></html>

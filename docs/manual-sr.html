@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>提携社労士向け操作マニュアル</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css"><link rel="icon" href="../favicon-app-32.png">
+<style>
+/* 画面写真の切り取り（.cv：aspect-ratio で高さ、margin-top で開始位置） */
+.cv{position:relative;overflow:hidden;border-radius:22px;background:#fff}
+.cv img{width:100%;max-width:none;border-radius:0!important}
+.cv .pin{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.shot .cv{border-radius:0}
+.phone.w340{width:340px}.phone.w280{width:280px}.phone.w260{width:260px}
+.ph-cap{margin-top:10px;text-align:center;font-size:13px;line-height:1.6;color:var(--muted)}
+.ph-cap b{display:block;color:var(--fg);font-size:14.5px}
+.pcol{display:flex;flex-direction:column;align-items:center;min-width:0}
+.idl{display:flex;flex-wrap:wrap;gap:6px}
+.idl code,.mono{font:600 12.5px/1.4 ui-monospace,Consolas,monospace;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+.promise .card{border-top:4px solid var(--accent)}
+.promise .n{font:700 13px/1 var(--num);color:var(--accent)}
+.tl{border:1px solid var(--line);border-radius:14px;padding:14px 18px 8px;background:#fff}
+.tl svg{width:100%;height:auto;display:block}
+.mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.who4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.who4 .card{padding:14px 16px}
+.who4 .card h3{font-size:15.5px}
+.shots2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.stk{display:flex;flex-direction:column;gap:12px;min-width:0}
+.rowlbl{margin:0;font-size:13px;font-weight:700;color:var(--muted)}
+.stages.sm .stage{padding:10px 12px}
+@media screen and (max-width:900px){.shots2{grid-template-columns:1fr}}
+.calls span b{display:inline;font-size:inherit;line-height:inherit}
+@media screen and (max-width:900px){
+ .phone.w340,.phone.w280,.phone.w260{width:240px}
+ .mini3,.who4{grid-template-columns:1fr}
+}
+</style>
+</head><body>
+<div class="topbar noprint"><b>人材開発支援助成金コンシェルジュ</b><span class="t">提携社労士向け 操作マニュアル</span><span class="sp"></span><a href="manual-sr.pdf" download>PDFで保存</a><a href="javascript:print()">印刷</a></div>
+<main class="doc">
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">提携社会保険労務士向け</span>
+<h1><small>人材開発支援助成金コンシェルジュ</small>操作マニュアル</h1>
+<p>引き継がれた書類の確認から、下書き・確認印・提出、<br>受理と支給決定の記録まで。画面の写真つきでご案内します。</p>
+<div class="ver">2026年11月版（試作）・画面の事務所名・会社名・氏名・登録番号はすべて架空の例です</div></div>
+<div class="art"><svg viewBox="0 0 520 400" role="img" aria-label="書類の確認と確認印のイラスト">
+<ellipse cx="260" cy="210" rx="240" ry="175" fill="#1D2D52"/>
+<rect x="96" y="70" width="230" height="290" rx="14" fill="#fff"/>
+<rect x="120" y="96" width="120" height="12" rx="6" fill="#2E4C8C"/>
+<g fill="#D6DBE3"><rect x="120" y="124" width="180" height="8" rx="4"/><rect x="120" y="140" width="160" height="8" rx="4"/></g>
+<g><rect x="120" y="170" width="18" height="18" rx="4" fill="#1B7448"/><path d="M124 179l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="148" y="174" width="130" height="9" rx="4.5" fill="#5F6878"/></g>
+<g><rect x="120" y="202" width="18" height="18" rx="4" fill="#1B7448"/><path d="M124 211l4 4 7-8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="148" y="206" width="110" height="9" rx="4.5" fill="#5F6878"/></g>
+<g><rect x="120" y="234" width="18" height="18" rx="4" fill="none" stroke="#B7C2D6" stroke-width="2.5"/><rect x="148" y="238" width="140" height="9" rx="4.5" fill="#B7C2D6"/></g>
+<rect x="120" y="270" width="180" height="62" rx="10" fill="#FCE9DE"/><rect x="134" y="284" width="90" height="9" rx="4.5" fill="#A44A1C"/><rect x="134" y="302" width="140" height="7" rx="3.5" fill="#E8B79B"/><rect x="134" y="315" width="110" height="7" rx="3.5" fill="#E8B79B"/>
+<circle cx="372" cy="150" r="58" fill="none" stroke="#8FB0F2" stroke-width="12"/><path d="M413 192l40 40" stroke="#8FB0F2" stroke-width="16" stroke-linecap="round"/>
+<path d="M372 118l6 15 15 6-15 6-6 15-6-15-15-6 15-6z" fill="#E8743B"/>
+<g transform="rotate(-12 390 300)"><circle cx="390" cy="300" r="52" fill="none" stroke="#E25B4A" stroke-width="7"/><circle cx="390" cy="300" r="40" fill="none" stroke="#E25B4A" stroke-width="3"/><path d="M390 276l18 7v14c0 12-8 20-18 24-10-4-18-12-18-24v-14z" fill="#E25B4A"/></g>
+</svg></div></div></section>
+
+<section class="pg" id="toc"><div class="pg-head"><div class="eyebrow">目次</div><h2>知りたいことから、<em>開けます</em></h2></div>
+<div class="pg-body"><nav class="toc">
+<a href="#s1"><span class="n">01</span><b>はじめに</b><small>できること・3つの約束・役割と流れ</small></a>
+<a href="#s2"><span class="n">02</span><b>ログイン</b><small>IDとパスワード（デモ用ID）</small></a>
+<a href="#s3"><span class="n">03</span><b>ホーム</b><small>対応が必要な案件と近い期限</small></a>
+<a href="#s4"><span class="n">04</span><b>確認待ちと案件</b><small>一覧の見かたと絞り込み</small></a>
+<a href="#s5"><span class="n">05</span><b>案件画面</b><small>受け取る・差し戻す・申請データ</small></a>
+<a href="#s6" class="hl"><span class="n">06</span><b>AI二重チェック</b><small>AI-1とAI-2、分かれたら人が判断</small></a>
+<a href="#s7"><span class="n">07</span><b>下書きと確認印</b><small>書類ごとの確認・登録番号つき確認印</small></a>
+<a href="#s8"><span class="n">08</span><b>提出と結果の記録</b><small>提出前の確認・受理・支給決定・問い合わせ</small></a>
+<a href="#s9"><span class="n">09</span><b>期限と事務所の設定</b><small>期限カレンダー・通知・メッセージ</small></a>
+<a href="#s10"><span class="n">10</span><b>困ったとき</b><small>よくある質問</small></a>
+</nav>
+<div class="tip"><b>まず読むところ</b>はじめての方は「05 案件画面」から「08 提出と結果の記録」までを順に読むと、1件の流れがつかめます。</div></div>
+<div class="pg-foot"><span class="ch">目次</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s1"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">はじめに</span></div><h2>集まった書類を、<em>資格者として確認</em>する画面です</h2></div>
+<div class="pg-body">
+<div class="cards c4">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6"/></svg></div><h3>書類一式をまとめて受け取る</h3><p>依頼元が集めた書類・申請データ・AIの結果が、1つの画面にそろいます。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><h3>AI二重チェックを参考に</h3><p>2つのAIの結果を見て、分かれた書類だけを重点的に確かめられます。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>下書きと確認印</h3><p>社労士の画面で下書きを作り、確認したら登録番号つきの確認印を押します。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>期限と結果の管理</h3><p>期限カレンダー、受理番号・支給決定額・労働局の問い合わせを記録できます。</p></div>
+</div>
+<div class="cards promise">
+<div class="card"><span class="n">約束 1</span><h3>ID・パスワードを預かりません</h3><p>GビズIDや電子申請のログイン情報は、入力も保存もしません。電子申請は事務所の環境から行います。</p></div>
+<div class="card"><span class="n">約束 2</span><h3>作成・提出は社労士の業務として</h3><p>提携社労士の案件では、依頼元は申請書類の下書きを作りません（社会保険労務士法27条）。</p></div>
+<div class="card"><span class="n">約束 3</span><h3>引き継がれた案件だけを表示</h3><p>ほかの事務所の案件は見えません。お客様との契約・報酬は、事務所とお客様が直接決めます。</p></div>
+</div>
+<div class="note"><b>このマニュアルで使う言葉</b><dl class="kv" style="margin-top:6px"><dt>依頼元</dt><dd>お客様から書類を集め、期限を管理する会社（研修会社など）。画面の例では「スマートコンテンツ」です。</dd><dt>引き継ぎ</dt><dd>依頼元が、そろった書類一式・申請データ・AIの結果を社労士に送ることです。</dd><dt>確認印</dt><dd>社労士が書類を確認したことを、氏名と登録番号つきで残す記録です。</dd></dl></div>
+</div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">役割と流れ</span></div><h2>書類集めは依頼元、<em>作成・確認・提出</em>は社労士</h2></div>
+<div class="pg-body">
+<div class="flow">
+<div class="fs"><span class="k">お客様</span><b>書類を出す</b><small>スマホで撮ってアップ。研修を受ける</small></div><div class="ar"></div>
+<div class="fs"><span class="k">依頼元（研修会社など）</span><b>集める・引き継ぐ</b><small>書類集めと期限の管理。下書きは作らない</small></div><div class="ar"></div>
+<div class="fs hl"><span class="k">社会保険労務士</span><b>作る・確かめる・出す</b><small>下書き作成・確認印・提出・結果の記録</small></div><div class="ar"></div>
+<div class="fs"><span class="k">労働局</span><b>審査・決定</b><small>受理と支給決定。最終の判断</small></div>
+</div>
+<p class="rowlbl">計画届の進み方</p>
+<div class="stages sm" style="--n:4">
+<div class="stage s1"><span class="sn">1</span><b>届いた</b><small>受け取るか差し戻す</small></div>
+<div class="stage s2"><span class="sn">2</span><b>作成</b><small>下書き・確認・確認印</small></div>
+<div class="stage s4"><span class="sn">3</span><b>提出</b><small>提出したことを記録</small></div>
+<div class="stage s5"><span class="sn">4</span><b>受理</b><small>受理番号を記録</small></div>
+</div>
+<p class="rowlbl">支給申請の進み方</p>
+<div class="stages sm" style="--n:5">
+<div class="stage s1"><span class="sn">1</span><b>届いた</b><small>受け取るか差し戻す</small></div>
+<div class="stage s2"><span class="sn">2</span><b>作成</b><small>下書き・確認・確認印</small></div>
+<div class="stage s4"><span class="sn">3</span><b>提出・審査</b><small>問い合わせにも対応</small></div>
+<div class="stage s6"><span class="sn">4</span><b>支給決定</b><small>支給決定額を記録</small></div>
+<div class="stage s5"><span class="sn">5</span><b>入金</b><small>手続きの完了</small></div>
+</div>
+<div class="warn"><b>社会保険労務士法27条</b>報酬を得て助成金の申請書類を作成・提出するのは、社労士の業務です。そのため下書きは<b>社労士の画面の「下書きを作る」</b>で作ります。</div>
+</div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s2"><div class="pg-head"><div class="eyebrow"><span class="no">02</span><span class="sep"></span><span class="sub">ログイン</span></div><h2>右上のボタンから、<em>IDとパスワード</em>で入ります</h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col">
+<p class="lead" style="margin:0">画面右上の<b>アカウントボタン</b>を押すと、ログイン画面が開きます。</p>
+<ol class="calls">
+<li><i>1</i><div><b>ログインID</b><span>事務所ごとのIDを入れます（例：<code class="mono">sr-minato</code>）。</span></div></li>
+<li><i>2</i><div><b>パスワード</b><span>ご本人だけが設定するパスワードです。運営側も見られません。</span></div></li>
+<li><i>3</i><div><b>ログイン</b><span>「社労士（資格者）の確認マイページ」が開きます。引き継がれた案件だけが表示されます。</span></div></li>
+<li><i>4</i><div><b>試作版の案内</b><span>このデモでは、パスワードはすべて <code class="mono">demo</code> です。</span></div></li>
+</ol>
+<div class="warn"><b>ご注意</b>GビズIDや電子申請のIDとパスワードを、このアプリで聞くことはありません。</div>
+</div>
+<div class="col">
+<figure class="shot"><div class="cv" style="aspect-ratio:585/327"><img src="img/xa-login.png" alt="ログイン画面" style="width:213.5%;margin-left:-109.4%;margin-top:-12.82%">
+<span class="pin" style="left:93.2%;top:30.9%">1</span><span class="pin" style="left:93.2%;top:55.7%">2</span><span class="pin" style="left:22.2%;top:71.9%">3</span><span class="pin" style="left:95.5%;top:88%">4</span></div><figcaption>ログイン画面（右側の入力欄）</figcaption></figure>
+<table class="tbl"><thead><tr><th>デモ用ID</th><th>事務所（例）</th><th>担当の社労士（例）</th></tr></thead><tbody>
+<tr><td><code class="mono">sr-minato</code></td><td>みなと社会保険労務士事務所</td><td>港 一郎</td></tr>
+<tr><td><code class="mono">sr-aoba</code></td><td>あおば社会保険労務士法人</td><td>青葉 恵子</td></tr>
+</tbody></table>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">02 ログイン</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s3"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">ホーム</span></div><h2>ホームで、<em>今日やること</em>が分かります</h2></div>
+<div class="pg-body"><div class="split" style="grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr)">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>4つのタイル</b><span>新しく届いた／作成中／提出済み・結果待ち／期限まで14日以内の件数。押すと絞り込めます。</span></div></li>
+<li><i>2</i><div><b>対応が必要な案件</b><span>やることが期限の近い順に並びます。「開く」で案件画面へ。</span></div></li>
+<li><i>3</i><div><b>近い期限</b><span>引き継ぎ前の案件も含めて、期限とあと何日かを表示します。</span></div></li>
+<li><i>4</i><div><b>依頼元からのメッセージ</b><span>書類一式を送った連絡などが届きます。</span></div></li>
+<li><i>5</i><div><b>IDとパスワードは預かりません</b><span>電子申請は事務所の環境から行います。</span></div></li>
+<li><i>6</i><div><b>メニュー</b><span>ホーム・確認待ち・案件・期限カレンダー・事務所の設定。</span></div></li>
+</ol>
+<div class="note"><b>画面の例</b>依頼元は「スマートコンテンツ」、事務所は「みなと社会保険労務士事務所（例）」です。</div></div>
+<figure class="shot"><img src="img/r-home.png" alt="社労士のホーム画面">
+<span class="pin" style="left:21.6%;top:17.9%">1</span><span class="pin" style="left:65%;top:34%">2</span><span class="pin" style="left:96.5%;top:30.7%">3</span><span class="pin" style="left:96.5%;top:70%">4</span><span class="pin" style="left:96.5%;top:88.7%">5</span><span class="pin" style="left:16%;top:21.9%">6</span></figure>
+</div></div>
+<div class="pg-foot"><span class="ch">03 ホーム</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s4"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">確認待ちと案件</span></div><h2>確認が要るものは<em>「確認待ち」</em>に集まります</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>確認待ち</b><span>資格者として確認が要る案件です。書類の確認数と、AIの判定が分かれた点数が出ます。</span></div></li>
+<li><i>2</i><div><b>確認印の記録</b><span>押した確認印の一覧です（会社・手続き・日付・立場）。</span></div></li>
+<li><i>3</i><div><b>絞り込み</b><span>すべて／新しく届いた／作成中／結果待ち／期限14日以内／完了。</span></div></li>
+<li><i>4</i><div><b>状況</b><span>引き継ぎ前・新しく届いた・労働局から問い合わせ・入金済み など。</span></div></li>
+<li><i>5</i><div><b>書類のAIチェック</b><span>未提出・要確認・差し替え・OKの数です。行を押すと案件画面が開きます。</span></div></li>
+</ol></div>
+<div class="stk">
+<figure class="shot"><div class="cv" style="aspect-ratio:970/305"><img src="img/r-conf.png" alt="確認待ちの画面" style="width:130.31%;margin-left:-26.29%;margin-top:-8.76%">
+<span class="pin" style="left:47.9%;top:40%">1</span><span class="pin" style="left:88.1%;top:84.6%">2</span></div></figure>
+<figure class="shot"><div class="cv" style="aspect-ratio:970/425"><img src="img/r-cases.png" alt="案件の一覧" style="width:130.31%;margin-left:-26.29%;margin-top:-8.76%">
+<span class="pin" style="left:54.6%;top:21.9%">3</span><span class="pin" style="left:45.9%;top:47.1%">4</span><span class="pin" style="left:94.8%;top:77.4%">5</span></div></figure>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">04 確認待ちと案件</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s5"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">案件画面 ① 受け取る・差し戻す</span></div><h2>届いた書類は、<em>受け取るか差し戻す</em></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>進み方</b><span>計画届は 届いた→作成→提出→受理。いまの位置に色が付きます。</span></div></li>
+<li><i>2</i><div><b>受け取って作成を始める</b><span>内容に問題がなければ押します。状況が「作成中」になります。</span></div></li>
+<li><i>3</i><div><b>差し戻す（不足・不備）</b><span>理由を付けて依頼元に戻します。</span></div></li>
+<li><i>4</i><div><b>依頼元に確認する</b><span>質問や追加の資料をお願いします。</span></div></li>
+<li><i>5</i><div><b>差し戻す理由</b><span>AIチェックと提出前チェックで見つかった点が、先に入っています。直してから送れます。</span></div></li>
+<li><i>6</i><div><b>差し戻す</b><span>依頼元が直して引き継ぎ直すと、「新しく届いた」に戻ります。</span></div></li>
+</ol></div>
+<div class="stk">
+<figure class="shot"><img src="img/xa-r-new.png" alt="新しく届いた案件の操作">
+<span class="pin" style="left:85.6%;top:43.5%">1</span><span class="pin" style="left:3.6%;top:80.7%">2</span><span class="pin" style="left:42.9%;top:80.7%">3</span><span class="pin" style="left:67.5%;top:80.7%">4</span></figure>
+<figure class="shot" style="width:440px;max-width:100%"><img src="img/xa-r-back.png" alt="書類を差し戻す画面">
+<span class="pin" style="left:93.1%;top:40.7%">5</span><span class="pin" style="left:94.8%;top:81.5%">6</span></figure>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 案件画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">案件画面 ② 申請データと書類</span></div><h2>申請データは、<em>コピーして貼るだけ</em></h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col">
+<figure class="shot" style="width:470px;max-width:100%;align-self:center"><div class="cv" style="aspect-ratio:652/460"><img src="img/xa-r-data.png" alt="申請データ">
+<span class="pin" style="left:67.5%;top:7%">1</span><span class="pin" style="left:78.2%;top:16.1%">2</span></div></figure>
+<ol class="calls">
+<li><i>1</i><div><b>電子申請に入力する順</b><span>事業主の名称・番号・コース・訓練の期間などが、入力する順に並びます。</span></div></li>
+<li><i>2</i><div><b>コピー</b><span>1項目ずつコピーして、雇用関係助成金ポータルに貼り付けられます。</span></div></li>
+</ol></div>
+<div class="col">
+<figure class="shot"><div class="cv" style="aspect-ratio:896/573"><img src="img/s-fview.png" alt="申請書類の下書きのプレビュー" style="margin-top:-2.46%">
+<span class="pin" style="left:12.3%;top:9.6%">3</span><span class="pin" style="left:83.7%;top:91.6%">4</span></div><figcaption>下書きのプレビュー（例：研修会社が記名する承諾書）</figcaption></figure>
+<ol class="calls">
+<li><i>3</i><div><b>書類のプレビュー</b><span>「引き継がれた書類」の「プレビュー」「まとめてプレビュー」で開きます。</span></div></li>
+<li><i>4</i><div><b>印刷</b><span>下書きは材料です。提出は厚生労働省の最新の様式で行います。</span></div></li>
+</ol></div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 案件画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s6"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">AI二重チェック</span></div><h2>2つのAIが確かめ、<em>分かれたら人が判断</em></h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>判定が分かれた</b><span>2つのAIの結果が違う書類です。担当者か社労士が見て判断します。</span></div></li>
+<li><i>2</i><div><b>AIが読み取った内容</b><span>読み取りが違うときは、ここで直してもう一度チェックします。</span></div></li>
+<li><i>3</i><div><b>AI-1 読み取りとルール</b><span>発行日・商号・代表者・中小企業の判定などをルールで確認します。</span></div></li>
+<li><i>4</i><div><b>AI-2 別の読み方で突き合わせ</b><span>申請データやほかの書類と一致するかを確かめます。</span></div></li>
+<li><i>5</i><div><b>人が決める</b><span>「確認済みにする」か「お客様に差し替えを依頼」。結果は全員の画面に同じく出ます。</span></div></li>
+</ol></div>
+<div class="stk">
+<div class="shots2">
+<figure class="shot"><div class="cv" style="aspect-ratio:652/610"><img src="img/xa-r-ai.png" alt="AIチェックの結果（AI-1）" style="margin-top:-19.94%">
+<span class="pin" style="left:46%;top:8.5%">1</span><span class="pin" style="left:26.4%;top:13.9%">2</span><span class="pin" style="left:72.5%;top:33.3%">3</span></div></figure>
+<figure class="shot"><div class="cv" style="aspect-ratio:652/500"><img src="img/xa-r-ai.png" alt="AIチェックの結果（AI-2と確認ボタン）" style="margin-top:-111.2%">
+<span class="pin" style="left:76.5%;top:7%">4</span><span class="pin" style="left:94%;top:93.4%">5</span></div></figure>
+</div>
+<div class="flow"><div class="fs"><span class="k">AI-1</span><b>ルールで確認</b><small>発行日・有効期限など</small></div><div class="ar"></div><div class="fs"><span class="k">AI-2</span><b>別の読み方</b><small>申請データと突き合わせ</small></div><div class="ar"></div><div class="fs"><span class="k">一致</span><b>OK</b><small>人が最終確認</small></div><div class="ar"></div><div class="fs hl"><span class="k">分かれた</span><b>人が判断</b><small>確認済み か 差し替え</small></div></div>
+<div class="warn"><b>確認印との関係</b>判定が分かれた書類が残っている間は、確認印を押せません。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 AI二重チェック</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s7"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">下書きと確認印</span></div><h2>下書きを作り、確かめて、<em>確認印</em>を押します</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>下書きを作る</b><span>集めた書類と申請データから、社労士が申請書類の下書きを作ります。</span></div></li>
+<li><i>2</i><div><b>AIの要確認のお知らせ</b><span>判定が分かれた書類があると出ます。確認済みにするか、差し戻します。</span></div></li>
+<li><i>3</i><div><b>書類ごとの確認</b><span>内容と添付を確かめてチェックします（必須・該当する場合の印つき）。</span></div></li>
+<li><i>4</i><div><b>様式の社労士欄</b><span>「提出代行者」か「事務代理者」のどちらとして記載するかを選びます。</span></div></li>
+<li><i>5</i><div><b>確認印を押す</b><span>氏名と登録番号つきの確認印です。依頼元とお客様の画面にも「社労士の確認済み」と出ます。</span></div></li>
+</ol>
+<div class="good"><b>確認印のあと</b>押すと、提出を記録できるようになります。確認印がないと、提出は記録できません。</div></div>
+<figure class="shot"><img src="img/r-confbox.png" alt="社会保険労務士の確認の欄">
+<span class="pin" style="left:82.1%;top:9.5%">1</span><span class="pin" style="left:97%;top:18.6%">2</span><span class="pin" style="left:49.4%;top:32.2%">3</span><span class="pin" style="left:92.3%;top:81.6%">4</span><span class="pin" style="left:19.8%;top:86.5%">5</span></figure>
+</div></div>
+<div class="pg-foot"><span class="ch">07 下書きと確認印</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s8"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">提出前の確認と提出</span></div><h2>5つの確認をしてから、<em>提出を記録</em>します</h2></div>
+<div class="pg-body">
+<div class="flow"><div class="fs"><span class="k">STEP1</span><b>提出前の確認</b><small>5項目にチェック</small></div><div class="ar"></div><div class="fs"><span class="k">STEP2</span><b>書類ごとの確認</b><small>内容と添付</small></div><div class="ar"></div><div class="fs hl"><span class="k">STEP3</span><b>確認印</b><small>登録番号つき</small></div><div class="ar"></div><div class="fs"><span class="k">STEP4</span><b>提出</b><small>事務所の環境から</small></div><div class="ar"></div><div class="fs"><span class="k">STEP5</span><b>提出を記録</b><small>「提出したことを記録する」</small></div></div>
+<div class="split even">
+<div class="col">
+<figure class="shot"><img src="img/xa-r-chk.png" alt="計画届の提出前の確認"><figcaption>計画届の提出前の確認（5項目）</figcaption></figure>
+<dl class="kv"><dt>提出のしかた</dt><dd>電子申請（雇用関係助成金ポータル）／労働局の窓口／郵送（届いた日が提出日）から選びます。</dd><dt>提出期間</dt><dd>計画届の確認項目には、提出できる期間（例：7/19〜12/19）が日付で出ます。</dd></dl>
+</div>
+<div class="col">
+<table class="tbl"><thead><tr><th>支給申請の提出前の確認（5項目）</th></tr></thead><tbody>
+<tr><td>最新の様式で、支給申請書と内訳を作成した</td></tr>
+<tr><td>出勤簿と受講記録に食い違いがない</td></tr>
+<tr><td>受講料の全額の支払いを確認した</td></tr>
+<tr><td>役員等一覧（支給要件確認申立書の別紙）を付けた</td></tr>
+<tr><td>申請期限までに労働局へ届く</td></tr>
+</tbody></table>
+<div class="warn"><b>ご注意</b>確認印がないと、「提出したことを記録する」は使えません。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 提出と結果の記録</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">結果の記録</span></div><h2>受理・支給決定・問い合わせを<em>記録</em>します</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>受理されたら</b><span>受理番号を入れて「受理されたことを記録」。4つのステップすべてに印が付きます。</span></div></li>
+<li><i>2</i><div><b>受理番号と日付</b><span>記録が残ります。訓練が終わると、支給申請の書類が届きます。</span></div></li>
+<li><i>3</i><div><b>労働局からの問い合わせ</b><span>「労働局から問い合わせがあった」で内容を記録すると、状況が切り替わります。</span></div></li>
+<li><i>4</i><div><b>回答したことを記録</b><span>回答の内容を残します。資料が要るときは「依頼元に資料を頼む」。</span></div></li>
+</ol>
+<div class="note"><b>支給申請のとき</b>通知が届いたら「支給決定額（円）」を入れて「支給決定を記録」。入金されると「入金済み」で完了です。</div></div>
+<div class="stk">
+<figure class="shot"><img src="img/r-stamp.png" alt="計画届が受理済みの表示">
+<span class="pin" style="left:86.5%;top:56%">1</span><span class="pin" style="left:70.5%;top:78%">2</span></figure>
+<figure class="shot"><img src="img/xa-r-ask.png" alt="労働局からの問い合わせの表示">
+<span class="pin" style="left:95.4%;top:37.4%">3</span><span class="pin" style="left:3.6%;top:88.9%">4</span></figure>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 提出と結果の記録</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s9"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">期限カレンダー</span></div><h2>期限は、<em>カレンダーで先回り</em>します</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>カレンダーに追加（.ics）</b><span>事務所のカレンダーに読み込むファイルを書き出します（試作では作られません）。</span></div></li>
+<li><i>2</i><div><b>月の切り替え</b><span>「前の月」「次の月」で移動します。下に、その月の予定の一覧が出ます。</span></div></li>
+<li><i>3</i><div><b>期限の印</b><span>会社名で表示します。引き継ぎ前の案件の期限も出ます。</span></div></li>
+<li><i>4</i><div><b>色の意味</b><span>赤＝提出・申請の期限、緑＝計画届の提出開始、青＝訓練の開始・終了。</span></div></li>
+</ol>
+<table class="tbl"><tbody>
+<tr><th>計画届</th><td>訓練開始日の<b>6か月前から1か月前まで</b></td></tr>
+<tr><th>支給申請</th><td>訓練終了日の<b>翌日から2か月以内</b></td></tr>
+<tr><th>土日祝・年末年始</th><td>期限の日が閉庁日なら、<b>次の開庁日</b>まで</td></tr>
+</tbody></table>
+<div class="warn"><b>ご注意</b>期限を過ぎると、お客様は助成を受けられません。</div></div>
+<figure class="shot"><div class="cv" style="aspect-ratio:970/675"><img src="img/r-cal.png" alt="期限カレンダー" style="width:128.76%;margin-left:-26.29%;margin-top:-8.76%">
+<span class="pin" style="left:78%;top:12.6%">1</span><span class="pin" style="left:87.1%;top:22.4%">2</span><span class="pin" style="left:28.4%;top:45.9%">3</span><span class="pin" style="left:46.5%;top:93.8%">4</span></div></figure>
+</div></div>
+<div class="pg-foot"><span class="ch">09 期限と事務所の設定</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">事務所の設定とメッセージ</span></div><h2>事務所の情報と、<em>通知の受け取り方</em>を決めます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>事務所の情報</b><span>事務所名・担当の社労士・社労士会・対応エリア・連絡方法。変えると依頼元の「提携社労士」の画面にも反映されます。</span></div></li>
+<li><i>2</i><div><b>登録番号</b><span>確認印と、様式の社労士欄に使われます。</span></div></li>
+<li><i>3</i><div><b>通知</b><span>新しい書類・期限の14日前と3日前・メッセージ・毎週月曜のまとめ。メールで届きます。</span></div></li>
+<li><i>4</i><div><b>提携の内容</b><span>共有されるもの（書類一式・申請データ・AIの結果・期限）とログインIDです。</span></div></li>
+<li><i>5</i><div><b>GビズIDは入力しません</b><span>委任契約・報酬は、事務所とお客様が直接結びます。</span></div></li>
+</ol>
+<div class="tip"><b>メッセージ</b>案件画面の下の「依頼元とのメッセージ」で、質問や資料のやりとりができます。</div></div>
+<figure class="shot"><div class="cv" style="aspect-ratio:970/630"><img src="img/r-office.png" alt="事務所の設定" style="width:130.31%;margin-left:-26.29%;margin-top:-8.76%">
+<span class="pin" style="left:45.9%;top:16.3%">1</span><span class="pin" style="left:45.9%;top:53.2%">2</span><span class="pin" style="left:87.1%;top:16.3%">3</span><span class="pin" style="left:96.9%;top:58.3%">4</span><span class="pin" style="left:96.9%;top:88%">5</span></div></figure>
+</div></div>
+<div class="pg-foot"><span class="ch">09 期限と事務所の設定</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg" id="s10"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">困ったとき</span></div><h2>よくある質問</h2></div>
+<div class="pg-body"><div class="qa">
+<div><b>依頼元が下書きを作らないのはなぜ？</b><p>報酬を得て申請書類を作成・提出するのは社労士の業務（社労士法27条）だからです。下書きは社労士の画面で作ります。</p></div>
+<div><b>確認印が押せません</b><p>書類ごとの確認と、AIの判定が分かれた書類の確認が済んでいるかを見てください。</p></div>
+<div><b>提出を記録できません</b><p>先に確認印が必要です。確認印を押すと「提出したことを記録する」が使えます。</p></div>
+<div><b>書類が足りません</b><p>「差し戻す」で理由を付けて戻すか、「依頼元に確認する」で資料をお願いしてください。</p></div>
+<div><b>AIの結果は正しいですか</b><p>AIは確認の手助けです。最終の確認は社労士が行い、支給の判断は労働局が行います。</p></div>
+<div><b>様式はこの下書きで出せますか</b><p>下書きの項目は要点をまとめたものです。提出は厚生労働省の最新の様式で行ってください。</p></div>
+<div><b>電子申請のIDを入れる場所は？</b><p>ありません。GビズIDなどのログイン情報は預からないため、電子申請は事務所の環境から行います。</p></div>
+<div><b>お客様との契約・報酬は？</b><p>このアプリは関わりません。委任契約と報酬は、事務所とお客様が直接決めます。</p></div>
+</div>
+<div class="tip"><b>それでも困ったときは</b>案件画面の「依頼元に確認する」か、依頼元とのメッセージでご連絡ください。</div></div>
+<div class="pg-foot"><span class="ch">10 困ったとき</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+</main></body></html>

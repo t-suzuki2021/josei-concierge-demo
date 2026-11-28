@@ -902,6 +902,37 @@ body.printing .hq,body.printing .hqpop{display:none!important}
 .cprog{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;display:flex;flex-direction:column;gap:6px}
 .cprog p{margin:0}
 .cpt{display:flex;justify-content:space-between;align-items:baseline;font-weight:700}.cpt b{font:700 24px/1 var(--num);color:var(--brand)}
+/* ナレッジ */
+.kntop{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+.knc{display:flex;gap:6px;flex-wrap:wrap}
+.chipb{all:unset;box-sizing:border-box;cursor:pointer;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:13px;font-weight:600;color:var(--body,var(--fg));min-height:34px;display:inline-flex;align-items:center;gap:6px}
+.chipb b{font-family:var(--num);color:var(--muted);font-weight:600}
+.chipb:hover{border-color:var(--brand)}.chipb:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.chipb[aria-pressed=true]{background:var(--brand);border-color:var(--brand);color:var(--on-brand,#fff)}.chipb[aria-pressed=true] b{color:inherit}
+.knq{min-width:260px;flex:0 1 340px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.kng{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.kng h2{font-size:15px;display:flex;align-items:baseline;gap:8px}.kng h2 span{font:500 12px/1 var(--num);color:var(--muted)}
+.knl{padding:0}
+.knr{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 16px;border-top:1px solid var(--line-2,var(--line))}
+.knr:first-child{border-top:0}
+.knb{display:grid;place-items:center;height:40px;border-radius:10px;font:700 11.5px/1 var(--num);letter-spacing:.04em;background:var(--brand-pale);color:var(--brand)}
+.knb.pdf{background:var(--warn-pale);color:var(--warn)}.knb.url{background:var(--ok-pale);color:var(--ok)}.knb.app{background:var(--amber-pale);color:var(--amber)}.knb.txt{background:var(--sunk);color:var(--muted)}
+.knm{display:flex;flex-direction:column;gap:2px;min-width:0}
+.knm b{font-size:14.5px}.knm span{font-size:13px;color:var(--body,var(--fg))}.knm small{font-size:12px;color:var(--muted)}
+.knm .knbody{background:var(--sunk);border-radius:8px;padding:6px 10px;margin-top:4px;white-space:pre-wrap}
+.kna{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.kna .btn{white-space:nowrap;text-decoration:none}
+.knw{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:10px}
+.knw>a,.knw>div{display:flex;flex-direction:column;gap:4px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:inherit;background:var(--surface)}
+.knw>a:hover{border-color:var(--brand)}
+.knw b{font-size:14px}.knw span:last-child{font-size:12.5px;color:var(--muted)}
+.knw>.off{opacity:.55}
+.knadd>summary{cursor:pointer;font-weight:700;font-size:14px}
+.knf{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:10px}
+.c-kn{display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit;background:var(--surface)}
+.c-kn .knb{width:44px;flex:none}.c-kn span{display:flex;flex-direction:column;font-size:12.5px;color:var(--muted)}.c-kn b{font-size:14px;color:var(--fg)}
+@media (max-width:760px){.knr{grid-template-columns:44px minmax(0,1fr);gap:10px}.kna{grid-column:1/-1;justify-content:flex-start}.knw{grid-template-columns:1fr 1fr}.knf{grid-template-columns:1fr}.knq{min-width:0;flex:1 1 100%}}
 @media (max-width:640px){.pgtlf{grid-template-columns:1fr 1fr}.pgtlf .fld:first-child{grid-column:1/-1}.pgtr{grid-template-columns:auto 1fr auto}.pgtr .chip{display:none}.pgkv{min-width:0;width:100%}}
 </style>
 </head>
@@ -1002,7 +1033,7 @@ const BRANDS=[
  {n:'ブラウン',l:'#7A4516',d:'#E0A870',pl:'#F6EADC',pd:'#3A2A16'}];
 const TENANTS={
  smacon:{name:'スマートコンテンツ',staff:'山田',sr:'提携先の社会保険労務士事務所',brand:0},
- other:{name:'サンプル社会保険労務士事務所',staff:'田中',sr:'自事務所',brand:1}};
+ other:{name:'サンプル社会保険労務士事務所',staff:'松本',sr:'自事務所',brand:1}};
 const S={view:'overview',staff:'today',acct:'s1',own:'all',caseId:null,tab:'flow',mode:'board',filter:'all',q:'',done:{},block:null,modal:null,
  t:Object.assign({},TENANTS.smacon),
  calc:{n:5,h:12,fee:200000,course:'reskill'},
@@ -1022,7 +1053,7 @@ S.filer='partner';
 S.partners=[
  {id:'p1',n:'みなと社会保険労務士事務所（例）',who:'港 一郎',area:'埼玉・東京',courses:'人材開発支援助成金（全コース）',contact:'Slackの共有チャンネル',share:true},
  {id:'p2',n:'あおば社会保険労務士法人（例）',who:'青葉 恵子',area:'全国（電子申請）',courses:'リスキリング支援・人材育成支援',contact:'メール',share:true}];
-S.selfSr='社会保険労務士 田中 ○○';
+S.selfSr='社会保険労務士 松本 ○○';
 S.partners[0].reg='第13990001号（例）';S.partners[0].kai='東京都社会保険労務士会（例）';S.partners[1].reg='第11990002号（例）';S.partners[1].kai='埼玉県社会保険労務士会（例）';
 const srOf=c=>S.partners.find(p=>p.id===c.sr)||S.partners[0];
 const srName=c=>S.filer==='self'?S.t.name+'（'+S.selfSr+'）':srOf(c).n;
@@ -1478,7 +1509,7 @@ function overview(){
 
 /* ================= STAFF ================= */
 // メニューの定義。操作マニュアルもこの定義から作るので、画面を足すときはここに足す
-const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['team','user','担当者',1],['cover','check','対応範囲'],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
+const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['team','user','担当者',1],['cover','check','対応範囲'],['know','doc','ナレッジ'],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
 const CTABS=[['flow','流れとチェック','7つの段階のどこにいるかと、いまの段階でやること・期限を確認します。段階を押すと、必要な情報と期限が開きます。'],
  ['proc','手続きと要件','コースと条件に合わせて、事前準備から支給決定のあとまでの手続き・満たす要件・書類（必須・該当する場合・任意）・期限を確かめます。変更届の期限・受講率・賃金要件の計算もここで行います。'],
  ['docs','書類とAIチェック','お客様から届いた書類と、書類どうしをAIで照合した結果を確認します。食い違いがあれば、直し方が出ます。'],
@@ -1493,7 +1524,7 @@ function staff(){
  if(S.staff==='team'&&!isAdmin())S.staff='today';
  if(S.caseId&&!canSee(S.caseId))S.caseId=null;
  const none=()=>`<div class="ph"><div><h1>カリキュラム作成</h1></div></div><div class="card empty"><p><b>担当するお客様が、まだありません。</b></p><p>管理アカウントの「担当者」の画面で、お客様を割り当ててください。</p></div>`;
- const body=S.caseId?caseDetail(byId(S.caseId)):S.staff==='cur'&&!VIS().length?none():({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,team:teamV,cover:coverV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
+ const body=S.caseId?caseDetail(byId(S.caseId)):S.staff==='cur'&&!VIS().length?none():({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,team:teamV,cover:coverV,know:knowV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
  return acctBar()+`<div class="wrap st"><aside class="side" aria-label="スタッフ画面のメニュー">
   <button class="new" data-act="newcase">${ic('plus')}新しい案件</button>
   ${nav.map(n=>`<button data-act="snav" data-s="${n[0]}" aria-current="${S.caseId?n[0]==='cases':S.staff===n[0]}">${ic(n[1])}${n[2]}${n[0]==='today'&&left?`<span class="cnt">${left}</span>`:''}</button>`).join('')}
@@ -1649,6 +1680,45 @@ function helpBody(client){
  ${client?'':glCard()}
  <div class="card"><div class="grp"><h3>公式サイト・資料</h3></div><div class="links">${links.map(l=>`<a href="${l[0]}" target="_blank" rel="noopener">${l[1]}<span>${l[2]} ${ic('ext','s')}</span></a>`).join('')}</div></div>`;}
 const helpV=()=>helpBody(false);
+
+/* ナレッジ（操作マニュアル・営業資料など） */
+const KNCATS=['マニュアル','営業資料','その他'];
+const KNOW=[
+ {id:'m-client',cat:'マニュアル',t:'お客様向け 操作マニュアル',note:'スマホでのログイン、書類の提出とAIチェック、進み具合・期限の見かた、メッセージまで。お客様にそのまま渡せます。',href:'docs/manual-client.html',pdf:'docs/manual-client.pdf',who:['staff','admin','super','client','sr'],tag:'お客様'},
+ {id:'m-staff',cat:'マニュアル',t:'担当スタッフ（申請担当）向け 操作マニュアル',note:'今日やること、案件の進め方、手続きと要件、書類とAIチェック、申請書類の下書き、社労士への引き継ぎ、作業時間の記録。',href:'docs/manual-staff.html',pdf:'docs/manual-staff.pdf',who:['staff','admin','super'],tag:'申請担当'},
+ {id:'m-admin',cat:'マニュアル',t:'スタッフ管理者向け 操作マニュアル',note:'全担当の進み具合と工数の見かた、担当替え・担当者の追加、対応範囲、設定、運営画面（アカウント停止・操作の記録）。',href:'docs/manual-admin.html',pdf:'docs/manual-admin.pdf',who:['admin','super'],tag:'管理者'},
+ {id:'m-sr',cat:'マニュアル',t:'提携社労士向け 操作マニュアル',note:'届いた書類の受け取り・差し戻し、AI二重チェックの結果確認、確認印、提出・受理・支給決定の記録、期限カレンダー。',href:'docs/manual-sr.html',pdf:'docs/manual-sr.pdf',who:['staff','admin','super','sr'],tag:'社労士'},
+ {id:'m-auto',cat:'マニュアル',t:'画面から自動で作る操作マニュアル（いつも最新）',note:'アプリの画面とボタンから自動で作るマニュアルです。画面が変わると、内容も自動で変わります。',act:'manual',who:['staff','admin','super','sr'],tag:'全員'},
+ {id:'s-deck',cat:'営業資料',t:'営業資料：人材開発支援助成金コンシェルジュのご紹介',note:'研修会社・社労士事務所向け。ありがちな悩み、締切も含めた進行管理、AIの二重チェック、使い方の2パターン、導入の流れ。',href:'docs/sales-deck.html',pdf:'docs/sales-deck.pdf',who:['admin','super'],tag:'研修会社・社労士事務所'},
+ {id:'s-lp',cat:'営業資料',t:'宣伝用LP（紹介ページ）',note:'お客様候補に送るWebページ。画面の写真・図・よくある悩みへの答えつき。営業資料のPDFもここからダウンロードできます。',href:'docs/lp-concierge.html',who:['admin','super'],tag:'Webページ'},
+ {id:'o-demo',cat:'その他',t:'操作できるデモ（一般公開版）',note:'デモ用アカウント（パスワードはすべて demo）で、役割ごとの画面を試せます。商談で画面を見せるときに使います。',url:'https://t-suzuki2021.github.io/josei-concierge-demo/',who:['admin','super'],tag:'URL'},
+ {id:'o-menu',cat:'その他',t:'業種・職種別 AI研修メニュー（LP）',note:'研修メニューと年間プラン作成ツール。カリキュラム作成の「年間プラン」とつながっています。',url:'https://t-suzuki2021.github.io/josei-concierge-demo/lp.html',who:['staff','admin','super'],tag:'URL'},
+ {id:'o-mhlw',cat:'その他',t:'厚生労働省 人材開発支援助成金（公式）',note:'最新の要領・様式・パンフレット。様式はかならずここから最新のものを使います。',url:'URL_TOP',who:['staff','admin','super','sr'],tag:'公式'}
+];
+S.kn={cat:'all',q:'',add:[]};
+const knKind=k=>k.act?'APP':k.url?'URL':k.href?'HTML':'TXT';
+const knUrl=k=>k.url==='URL_TOP'?URL_TOP:k.url;
+const knRole=()=>{const r=role();return r==='none'?(S.view==='sr'?'sr':S.view==='client'?'client':isAdmin()?'admin':'staff'):r;};
+function knItems(r){const q=S.kn.q.trim().toLowerCase();return KNOW.concat(S.kn.add).filter(k=>k.who.indexOf(r)>-1).filter(k=>S.kn.cat==='all'||k.cat===S.kn.cat).filter(k=>!q||(k.t+k.note+k.cat+(k.tag||'')).toLowerCase().indexOf(q)>-1);}
+function knRow(k){const kd=knKind(k),open=k.act?`<button class="btn o sm" data-act="view" data-v="${k.act}">${ic('arrow','s')}開く</button>`:k.href?`<a class="btn o sm" href="${k.href}" target="_blank" rel="noopener">${ic('ext','s')}開く</a>`:k.url?`<a class="btn o sm" href="${esc(knUrl(k))}" target="_blank" rel="noopener">${ic('ext','s')}開く</a>`:'';
+ return `<div class="knr"><span class="knb ${kd.toLowerCase()}">${kd}</span><div class="knm"><b>${esc(k.t)}</b><span>${esc(k.note)}</span>${k.body?`<span class="knbody">${esc(k.body)}</span>`:''}<small>${esc(k.cat)}${k.tag?'・'+esc(k.tag):''}${k.pdf?'・PDFあり':''}${k.mine?'・この画面で追加':'・2026/11/28 更新'}</small></div>
+ <div class="kna">${open}${k.pdf?`<a class="btn g sm" href="${k.pdf}" download>${ic('doc','s')}PDF</a>`:''}${k.mine?`<button class="btn g sm" data-act="kndel" data-id="${k.id}" aria-label="${esc(k.t)}を消す">消す</button>`:''}</div></div>`;}
+function knList(r){const its=knItems(r);return KNCATS.filter(c=>S.kn.cat==='all'||S.kn.cat===c).map(c=>{const L=its.filter(k=>k.cat===c);return L.length?`<section class="kng"><h2>${c}<span>${L.length}件</span></h2><div class="card knl">${L.map(knRow).join('')}</div></section>`:'';}).join('')||'<div class="card pad"><p class="tiny">当てはまる資料がありません。</p></div>';}
+function knBody(r){const all=KNOW.concat(S.kn.add).filter(k=>k.who.indexOf(r)>-1),its=knItems(r),cnt=c=>all.filter(k=>k.cat===c).length;
+ const canAdd=r==='admin'||r==='super';
+ return `<div class="ph"><div><h1>ナレッジ</h1><p class="sub">操作マニュアル・営業資料など、このツールを使うときの資料です。${r==='sr'?'社労士の方に関係する資料だけを出しています。':r==='staff'?'申請担当に関係する資料を出しています（営業資料は管理者に表示）。':''}</p></div></div>
+ <div class="kntop"><div class="knc" role="group" aria-label="分類でしぼり込む"><button class="chipb" data-act="knf" data-c="all" aria-pressed="${S.kn.cat==='all'}">すべて <b>${all.length}</b></button>${KNCATS.filter(c=>cnt(c)).map(c=>`<button class="chipb" data-act="knf" data-c="${c}" aria-pressed="${S.kn.cat===c}">${c} <b>${cnt(c)}</b></button>`).join('')}</div>
+ <div class="fld knq"><label for="knQ" class="vh">資料をさがす</label><input type="search" id="knQ" placeholder="資料をさがす（例：AIチェック、確認印）" value="${esc(S.kn.q)}"></div></div>
+ ${r==='client'?'':`<div class="card pad knmap"><h2 style="font-size:15px">どのマニュアルを読めばいい？</h2><div class="knw">${[['お客様','m-client','スマホで書類を出す・進み具合を見る'],['申請担当','m-staff','案件を進める・書類を確かめる'],['管理者','m-admin','全体の進み具合と工数を見る'],['社労士','m-sr','確認して、確認印を押して出す']].map(x=>{const k=KNOW.find(y=>y.id===x[1]);return k.who.indexOf(r)>-1?`<a href="${k.href}" target="_blank" rel="noopener"><span class="chip brand">${x[0]}</span><b>${x[0]}向け</b><span>${x[2]}</span></a>`:`<div class="off"><span class="chip mute">${x[0]}</span><b>${x[0]}向け</b><span>${x[2]}（この役割では表示しません）</span></div>`;}).join('')}</div></div>`}
+  <div id="knList">${knList(r)}</div>
+${canAdd?`<details class="card pad knadd"><summary>資料を追加する（URL・メモ）</summary><p class="tiny" style="margin:6px 0 10px">社内ルールや、よく使うリンクを追加できます。試作のため、ファイルのアップロードはできません（ページを再読み込みすると消えます）。</p>
+  <div class="knf"><div class="fld"><label for="knT">資料の名前</label><input type="text" id="knT" maxlength="120" placeholder="例：差し戻しが多い書類のメモ"></div>
+  <div class="fld"><label for="knC">分類</label><select id="knC">${KNCATS.map(c=>`<option>${c}</option>`).join('')}</select></div>
+  <div class="fld" style="grid-column:1/-1"><label for="knN">ひとこと説明</label><input type="text" id="knN" maxlength="200" placeholder="例：賃金台帳は訓練時間の賃金が分かるページも"></div>
+  <div class="fld"><label for="knU">URL（なくても可）</label><input type="url" id="knU" placeholder="https://"></div>
+  <div class="fld"><label for="knB">本文（なくても可）</label><input type="text" id="knB" maxlength="400" placeholder="短いメモ"></div></div>
+  <button class="btn p sm" data-act="knadd" style="margin-top:10px">${ic('plus','s')}追加する</button></details>`:''}`;}
+const knowV=()=>knBody(knRole());
 
 function linksV(){
  return `<div class="ph"><div><h1>連携</h1><p class="sub">普段使っているツールにつなぐと、毎月の書類集めや通知が自動になります。</p></div></div>
@@ -2857,7 +2927,7 @@ function opsAud(){return `<div class="ph"><div><h1>操作の記録</h1><p class=
 const SRST={later:['mute','引き継ぎ前'],new:['brand','新しく届いた'],back:['amber','差し戻し中'],work:['info','作成中'],sent:['info','提出済み・結果待ち'],ask:['warn','労働局から問い合わせ'],done:['ok','受理済み'],paid:['ok','入金済み']};
 const srStLbl=(ph,st)=>ph==='apply'&&st==='done'?'支給決定':ph==='apply'&&st==='sent'?'提出済み・審査中':SRST[st][1];
 const PHN={plan:'計画届',apply:'支給申請'};
-const SRNAV=[['home','today','ホーム'],['conf','check','確認待ち'],['cases','cases','案件'],['cal','cal','期限カレンダー'],['office','set','事務所の設定']];
+const SRNAV=[['home','today','ホーム'],['conf','check','確認待ち'],['cases','cases','案件'],['cal','cal','期限カレンダー'],['know','doc','ナレッジ'],['office','set','事務所の設定']];
 const SRCHK=(c,ph)=>{const d=dates(c);return ph==='plan'?['最新の様式で、計画届・対象労働者一覧・事前確認書を作成した','事業主の記名を確認した（事前確認書'+(fS(c).agent==='dairi'?'・委任状':'')+'）','コースと条件に合わせた要件・書類（「手続きと要件」）を確認した','カリキュラム・契約書と、計画届の日時・時間・受講料が合っている','提出期間内（'+fmt(d.pf)+'〜'+fmt(d.pt)+'）に労働局へ届く']:['最新の様式で、支給申請書と内訳を作成した','出勤簿と受講記録に食い違いがない','受講料の全額の支払いを確認した','役員等一覧（支給要件確認申立書の別紙）を付けた','申請期限（'+fmt(d.at)+'）までに労働局へ届く'];};
 S.srp='p1';S.srs='home';S.src=null;S.srph='plan';S.srf='all';S.srmon=null;S.srn={};S.dkx={};S.cview='c1';S.cm={};S.cn={};
 S.rk={toukiM:3,filed:true,payEq:true,empTerm:true};
@@ -2876,7 +2946,7 @@ function srNote(c,t){flog(c,'r',t);alog(c.co+'：'+t);}
 function srItems(cs){const R=[];cs.forEach(c=>{const w=sw(c),d=dates(c);['plan','apply'].forEach(ph=>{const x=w[ph],due=ph==='plan'?d.pt:d.at,dl=fmt(due)+'（あと'+diff(due)+'日）',P=PHN[ph],lb=ph==='plan'?'提出期限 ':'申請期限 ';
   if(x.st==='ask')R.push({o:0,c,ph,ic:['mail','warn'],k:'労働局から問い合わせ',t:P+'について、労働局から問い合わせがあります',d:esc(x.q),due});
   else if(x.st==='new')R.push({o:1,c,ph,ic:['doc','info'],k:'新しく届いた書類',t:P+'の書類一式が届きました',d:lb+dl+'。内容を確認して、受け取るか差し戻してください。',due});
-  else if(x.st==='work'){const n=SRCHK(c,ph).filter((_,i)=>x.chk[i]).length;R.push({o:2,c,ph,ic:['clock','amber'],k:'作成中',t:P+'を作成中（提出前の確認 '+n+'/4）',d:lb+dl,due});}
+  else if(x.st==='work'){const n=SRCHK(c,ph).filter((_,i)=>x.chk[i]).length;R.push({o:2,c,ph,ic:['clock','amber'],k:'作成中',t:P+'を作成中（提出前の確認 '+n+'/'+SRCHK(c,ph).length+'）',d:lb+dl,due});}
   else if(x.st==='back')R.push({o:3,c,ph,ic:['back','amber'],k:'差し戻し中',t:esc(S.t.name)+'が書類を直しています',d:'差し戻した理由：'+esc(x.why),due});
   else if(x.st==='sent')R.push({o:4,c,ph,ic:['check','ok'],k:'結果待ち',t:P+'の'+(ph==='plan'?'受理':'支給決定')+'を待っています',d:'提出日 '+esc(x.at)+'。結果が届いたら記録してください。',due});});});
  return R.sort((a,b)=>a.o-b.o||a.due-b.due);}
@@ -2884,7 +2954,7 @@ function srTop(p){const sup=isSuper();return `<div class="wrap"><div class="acct
 function srV(){let p=S.partners.find(x=>x.id===S.srp);if(role()==='sr'){p=S.partners.find(x=>x.id===me().ref)||p;}if(!p)p=S.partners[0];S.srp=p.id;
  const cs=CASES.filter(c=>srOf(c).id===p.id);if(S.src&&!cs.some(c=>c.id===S.src))S.src=null;
  const act=srItems(cs).filter(x=>x.o<=2).length;
- const body=S.src?srDetail(byId(S.src),p):({home:srHome,conf:srConfV,cases:srList,cal:srCal,office:srOffice})[S.srs](p,cs);
+ const body=S.src?srDetail(byId(S.src),p):({home:srHome,conf:srConfV,cases:srList,cal:srCal,know:()=>knBody('sr'),office:srOffice})[S.srs](p,cs);
  return srTop(p)+`<div class="wrap st"><aside class="side" aria-label="社労士の画面のメニュー">${SRNAV.map(n=>`<button data-act="srnav" data-s="${n[0]}" aria-current="${S.src?n[0]==='cases':S.srs===n[0]}">${ic(n[1])}${n[2]}${n[0]==='home'&&act?`<span class="cnt">${act}</span>`:''}</button>`).join('')}</aside><div class="main">${body}</div></div>`;}
 function srNear(cs){return cs.map(c=>{const w=sw(c),d=dates(c);return ['plan','apply'].filter(ph=>['later','new','work','back'].indexOf(w[ph].st)>-1&&(ph==='plan'?c.stage<=2:c.stage>=3&&c.stage<=4)).map(ph=>({c,ph,d:ph==='plan'?d.pt:d.at}));}).reduce((a,b)=>a.concat(b),[]).sort((a,b)=>a.d-b.d);}
 function srHome(p,cs){const it=srItems(cs),need=it.filter(x=>x.o<=2),W=cs.map(sw),cnt=st=>W.reduce((a,w)=>a+(w.plan.st===st?1:0)+(w.apply.st===st?1:0),0),near=srNear(cs).slice(0,5);
@@ -3302,6 +3372,7 @@ function cHelp(){const C=cc(),d=dates(C),co=COURSE(C.course),e=est(C);
   <div class="q"><span class="lb"><span>大事な期限は2回</span></span><div class="mini"><div><span>計画届（研修の1か月前まで）</span><b>${fmtS(d.pt)}</b></div><div><span>支給申請（研修後2か月以内）</span><b>${fmtS(d.at)}</b></div></div><p class="h">どちらも当社がお知らせします。過ぎると助成を受けられません。</p></div>
   <div class="q"><span class="lb"><span>研修中にお願いすること</span></span><p class="p-lead">研修の時間も、ふだんどおり給料を払ってください。出勤簿は毎日つけてください。受講料は、支給申請の前に全額お支払いください。</p></div>
   <div class="q"><span class="lb"><span>公式サイト</span></span><a href="${URL_TOP}" target="_blank" rel="noopener">厚生労働省 人材開発支援助成金のページ</a><a href="${URL_P_RESKILL}" target="_blank" rel="noopener">リスキリング支援コースのパンフレット（PDF）</a></div>
+  <div class="q"><span class="lb"><span>使いかたのマニュアル</span></span><a class="c-kn" href="docs/manual-client.html" target="_blank" rel="noopener"><span class="knb html">HTML</span><span><b>お客様向け 操作マニュアル</b>書類の出しかた・進み具合の見かたを、画面の写真つきで説明しています。</span></a><a href="docs/manual-client.pdf" download>PDFで保存する</a></div>
   <button class="btn p lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
 const CNOTE={home:['いまの段階と次の期限を、開いた瞬間に出す','全体の7段階を見せ、どこにいるかが分かるようにする','やることごとに想定の作業時間を出し、残りの合計も出す','このあとやることも先に見せて、心づもりをしてもらう'],
  docs:['写真でよい、と最初に伝える','アップした書類は、その場でAIがチェックする（発行日・有効期限・会社名・人数・金額）','担当者・社労士のチェック結果や、差し替えのお願いも同じ画面に出る','ファイルがなくても「サンプルで試す」で動きを確認できます'],
@@ -3330,6 +3401,9 @@ function client(){const c=cc(),mid=c===MIDORI,cr=role()==='client';if(!mid&&['qs
 const ACTDOC={view:0,go:0,snav:0,tab:0,close:0,creset:0,mopen:0,mjump:0,
  hq:['「？」を押す','その項目の説明（ひとことで・くわしく・オンにする目安・大事なポイント・例・関係する書類）を開きます。もう一度押すか、Escキーで閉じます'],
  hqx:[null,'説明を閉じます'],
+ knf:['分類（すべて・マニュアル・営業資料・その他）を押す','ナレッジの資料を分類でしぼり込みます'],
+ knadd:['「追加する」を押す','社内ルールやよく使うリンクを、ナレッジに追加します（試作では再読み込みで消えます）'],
+ kndel:[null,'この画面で追加した資料を消します'],
  pgtog:['項目の「○」を押す','その項目を済み（または未完了）にします。段階の進み具合に、その項目の比重（想定時間の割合）が積み上がります'],
  tladd:['「記録する」を押す','イレギュラーな対応などにかかった作業時間を、案件と申請担当の工数に加えます'],
  tldel:[null,'作業時間の記録を消します'],
@@ -3636,6 +3710,10 @@ const A={
   let id;if(r==='staff'){STAFFS.push({id:'s'+Date.now(),n});id=stAcctId(STAFFS.length-1);}else{id='smc-admin'+pad(S.xadm.length+2);S.xadm.push({id,n});}
   alog('アカウント「'+id+'」（'+ROLES[r].n+'・'+n+'）を作成');render();toast(n+'さんのアカウント（'+id+'）を追加しました');},
  srnav(d){S.srs=d.s;S.src=null;render();window.scrollTo(0,0);},
+ knf(d){S.kn.cat=d.c;render();},
+ knadd(){const v=id=>{const e=$('#'+id);return e?e.value.trim():'';};const t=v('knT');if(!t){toast('資料の名前を入れてください');return;}const u=v('knU');if(u&&!/^https?:\/\//.test(u)){toast('URLは https:// から入れてください');return;}
+  S.kn.add.push({id:'u'+Date.now(),mine:1,cat:v('knC')||'その他',t:t.slice(0,120),note:v('knN').slice(0,200),url:u||null,body:v('knB').slice(0,400)||null,who:['staff','admin','super'],tag:'追加した資料'});S.kn.cat='all';render();toast('「'+t.slice(0,30)+'」を追加しました');},
+ kndel(d){S.kn.add=S.kn.add.filter(k=>k.id!==d.id);render();toast('資料を消しました');},
  srf(d){S.srf=d.f;S.srs='cases';S.src=null;render();},
  srcase(d){S.src=d.id;S.srph=d.ph||srPh(byId(d.id));render();window.scrollTo(0,0);},
  srclose(){S.src=null;S.srs='cases';render();window.scrollTo(0,0);},
@@ -3708,6 +3786,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(
 document.addEventListener('input',e=>{const t=e.target;
  if(t.id==='caseQ'){S.q=t.value.trim();$('#caseList').innerHTML=caseList();return;}
  if(t.id==='glQ'){S.glq=t.value.trim();$('#glList').innerHTML=glList();return;}
+ if(t.id==='knQ'){S.kn.q=t.value;const l=$('#knList');if(l)l.innerHTML=S.view==='sr'?knList('sr'):knList(knRole());return;}
  if(t.id==='oQ'){S.oq=t.value.trim();$('#oList').innerHTML=opsAccList();return;}
  if(!t.dataset||!t.dataset.bind)return;const h=getHolder(t.dataset.bind);h[0][h[1]]=t.type==='checkbox'?t.checked:t.value;
  if(t.dataset.bind.indexOf('t.')===0){const p=$('#brandPrev');if(p)p.innerHTML=brandPrev();return;}

@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>担当スタッフ 操作マニュアル</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css"><link rel="icon" href="../favicon-app-32.png">
+<!--CHAPTERS:はじめに|ログイン|1日の流れ|今日やること|案件をさがす|案件の画面|手続きと要件|進み具合と工数|書類とAIチェック|試算と申請データ|申請書類と引き継ぎ|お客様への連絡|カリキュラム作成|顧客・提案と社労士|守ってほしいこと|困ったとき-->
+<style>
+.vp{position:relative;overflow:hidden;min-height:0}
+.vp img{max-width:none;display:block;height:auto}
+.vp .pin{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.vp .box{position:absolute;border:3px solid var(--accent);border-radius:8px;z-index:1;pointer-events:none}
+.chip{font-style:normal}
+.toc{gap:10px}.toc a{min-height:0;padding:11px 14px;gap:2px}.toc small{font-size:12px;line-height:1.45}
+.tbl-wrap{overflow-x:auto}
+.tbl.sm{font-size:12.5px}.tbl.sm th,.tbl.sm td{padding:6px 8px}
+.stages.n7{--n:7;gap:8px}.stages.n7 .stage{padding:12px 10px 10px}.stages.n7 b{font-size:14px}.stages.n7 small{font-size:11.5px}
+.who4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+.role{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;display:flex;flex-direction:column;gap:4px;position:relative}
+.role b{font-size:15px}.role small{font-size:12.5px;color:var(--muted);line-height:1.6}
+.role .k{font:700 11.5px/1 var(--num);color:var(--brand)}
+.role.me{background:var(--navy);color:#fff;border-color:var(--navy)}.role.me small{color:#C3CCE0}.role.me .k{color:#8FB0F2}
+.svgwrap svg{width:100%;height:auto;display:block}
+.day{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.day .st{border-radius:14px;padding:18px 20px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;border-top:6px solid var(--c)}
+.day .t{font:700 13px/1 var(--num);color:var(--c)}
+.day h3{margin:0;font-size:19px}
+.day ul{margin:0;padding-left:1.2em;font-size:13.5px;color:var(--muted);line-height:1.75}
+.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.lv div{border-radius:10px;padding:10px 12px;background:var(--sunk);font-size:12.5px;line-height:1.55;color:var(--muted)}
+.lv b{display:block;font-size:14px;color:var(--fg);margin-bottom:2px}
+.formula{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.formula .bx{border-radius:10px;padding:8px 14px;background:var(--brand-pale);color:var(--brand);font-weight:700}
+.formula .op{font:700 20px/1 var(--num);color:var(--muted)}
+.mini{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rules div{border-radius:12px;padding:12px 16px;border:1px solid var(--line);background:#fff;font-size:13px;color:var(--muted);line-height:1.65}
+.rules b{display:block;color:var(--fg);font-size:14.5px;margin-bottom:2px}
+.rules .ng{border-color:#F0C5BF;background:var(--warn-pale)}.rules .ng b{color:var(--warn)}
+@media screen and (max-width:900px){.who4,.day,.lv,.rules{grid-template-columns:1fr}.stages.n7{grid-template-columns:1fr 1fr}}
+</style>
+</head><body>
+<div class="topbar noprint"><b>人材開発支援助成金コンシェルジュ</b><span class="t">担当スタッフ（申請担当）向け 操作マニュアル</span><span class="sp"></span><a href="manual-staff.pdf" download>PDFで保存</a><a href="javascript:print()">印刷</a></div>
+<main class="doc">
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">担当スタッフ（申請担当）向け</span>
+<h1><small>人材開発支援助成金コンシェルジュ</small>操作マニュアル</h1>
+<p>お客様から書類を集めて、期限どおりに社労士へ引き継ぐまで。<br>毎日の操作を、画面の写真と番号つきで案内します。</p>
+<div class="ver">2026年11月版（試作）　画面の会社名・人名はすべて架空の例です</div></div>
+<div class="art"><svg viewBox="0 0 520 380" role="img" aria-label="書類の束と、2つの虫めがねで確かめるイラスト">
+<ellipse cx="260" cy="200" rx="245" ry="170" fill="#1D2D52"/>
+<rect x="80" y="70" width="230" height="250" rx="16" fill="#fff"/>
+<rect x="80" y="70" width="230" height="40" rx="16" fill="#2E4C8C"/><rect x="80" y="94" width="230" height="16" fill="#2E4C8C"/>
+<circle cx="104" cy="90" r="6" fill="#8FB0F2"/><rect x="118" y="85" width="90" height="10" rx="5" fill="#8FB0F2"/>
+<g fill="#E5EBF7"><rect x="100" y="128" width="190" height="34" rx="8"/><rect x="100" y="172" width="190" height="34" rx="8"/><rect x="100" y="216" width="190" height="34" rx="8"/><rect x="100" y="260" width="190" height="34" rx="8"/></g>
+<g fill="#1B7448"><circle cx="118" cy="145" r="9"/><circle cx="118" cy="189" r="9"/></g>
+<g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M113 145l4 4 7-8"/><path d="M113 189l4 4 7-8"/></g>
+<circle cx="118" cy="233" r="9" fill="#E8743B"/><circle cx="118" cy="277" r="9" fill="#D6DBE3"/>
+<g fill="#B7C2D6"><rect x="136" y="140" width="110" height="9" rx="4"/><rect x="136" y="184" width="90" height="9" rx="4"/><rect x="136" y="228" width="120" height="9" rx="4"/><rect x="136" y="272" width="80" height="9" rx="4"/></g>
+<rect x="330" y="96" width="120" height="112" rx="14" fill="#fff"/><rect x="330" y="96" width="120" height="30" rx="14" fill="#E8743B"/><rect x="330" y="112" width="120" height="14" fill="#E8743B"/>
+<text x="390" y="176" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="44" fill="#14213D">9</text>
+<text x="390" y="198" text-anchor="middle" font-family="Noto Sans JP,sans-serif" font-weight="700" font-size="13" fill="#5F6878">あと9日</text>
+<circle cx="350" cy="268" r="34" fill="none" stroke="#8FB0F2" stroke-width="9"/><path d="M374 292l26 26" stroke="#8FB0F2" stroke-width="11" stroke-linecap="round"/>
+<circle cx="420" cy="252" r="28" fill="none" stroke="#E8743B" stroke-width="8"/><path d="M440 272l22 22" stroke="#E8743B" stroke-width="10" stroke-linecap="round"/>
+<text x="350" y="275" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="18" fill="#fff">AI-1</text>
+<text x="420" y="258" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-weight="700" font-size="15" fill="#fff">AI-2</text>
+</svg></div></div></section>
+
+<section class="pg" id="toc"><div class="pg-head"><div class="eyebrow">目次</div><h2>知りたいことから、開けます</h2></div>
+<div class="pg-body"><nav class="toc">
+<a href="#s1"><span class="n">01</span><b>はじめに</b><small>できること・全体の流れ</small></a>
+<a href="#s2"><span class="n">02</span><b>ログイン</b><small>IDとパスワード・見える範囲</small></a>
+<a href="#s3" class="hl"><span class="n">03</span><b>1日の流れ</b><small>朝・日中・夕方の3ステップ</small></a>
+<a href="#s4"><span class="n">04</span><b>今日やること</b><small>上から片づければ抜けなし</small></a>
+<a href="#s5"><span class="n">05</span><b>案件をさがす</b><small>ボードと一覧</small></a>
+<a href="#s6"><span class="n">06</span><b>案件の画面</b><small>7つの段階と8つのタブ</small></a>
+<a href="#s7"><span class="n">07</span><b>手続きと要件</b><small>条件スイッチ・？・期限</small></a>
+<a href="#s8"><span class="n">08</span><b>進み具合と工数</b><small>％の数え方・作業時間の記録</small></a>
+<a href="#s9" class="hl"><span class="n">09</span><b>書類とAIチェック</b><small>2つのAIと、人の確認</small></a>
+<a href="#s10"><span class="n">10</span><b>試算と申請データ</b><small>助成額・電子申請の入力順</small></a>
+<a href="#s11"><span class="n">11</span><b>申請書類と引き継ぎ</b><small>提出前チェック・社労士へ</small></a>
+<a href="#s12"><span class="n">12</span><b>お客様への連絡</b><small>催促文・やりとりの記録</small></a>
+<a href="#s13"><span class="n">13</span><b>カリキュラム作成</b><small>10時間の研修案を作る</small></a>
+<a href="#s14"><span class="n">14</span><b>顧客・提案と社労士</b><small>次の提案・提携先の担当</small></a>
+<a href="#s15"><span class="n">15</span><b>守ってほしいこと</b><small>ID・社労士法・お助け情報</small></a>
+<a href="#s16"><span class="n">16</span><b>困ったとき</b><small>よくある質問</small></a>
+</nav></div>
+<div class="pg-foot"><span class="ch">目次</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s1"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">はじめに</span></div><h2>このツールは、<em>書類集めと進行管理</em>の道具です</h2></div>
+<div class="pg-body">
+<div class="cards c4">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div><h3>書類を集める</h3><p>お客様がスマホで撮ってアップ。足りない書類は自動で一覧になります。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>期限を守る</h3><p>訓練の日付から、計画届と支給申請の期限を自動で計算します。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg></div><h3>AIが二重チェック</h3><p>2つのAIが別々に読み、判定が分かれたら人が確かめます。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><h3>社労士へ引き継ぐ</h3><p>そろった書類とデータを、提携の社労士に渡します。</p></div>
+</div>
+<div class="who4">
+<div class="role"><span class="k">お客様</span><b>書類を出す</b><small>マイページで書類をアップし、質問に答えます。</small></div>
+<div class="role me"><span class="k">申請担当（あなた）</span><b>集めて、確かめて、進める</b><small>不足の催促・AIチェックの確認・期限の管理・引き継ぎ。</small></div>
+<div class="role"><span class="k">管理者（コンサルタント）</span><b>全体を見る</b><small>全担当の進み具合と工数を見て、担当を割り当てます。</small></div>
+<div class="role"><span class="k">社労士（資格者）</span><b>作って、確認して、出す</b><small>申請書類を作り、確認印を押して労働局へ提出します。</small></div>
+</div>
+<div class="flow">
+<div class="fs"><span class="k">1 お客様</span><b>書類をアップ</b><small>スマホの写真でもOK</small></div><div class="ar"></div>
+<div class="fs"><span class="k">2 AI</span><b>二重チェック</b><small>AI-1とAI-2が別々に読む</small></div><div class="ar"></div>
+<div class="fs hl"><span class="k">3 あなた</span><b>確認して引き継ぐ</b><small>確認済み・差し替え依頼</small></div><div class="ar"></div>
+<div class="fs"><span class="k">4 社労士</span><b>作成・確認印</b><small>書類を作り、確かめる</small></div><div class="ar"></div>
+<div class="fs"><span class="k">5 労働局</span><b>提出・審査</b><small>電子申請か窓口・郵送</small></div>
+</div>
+<div class="warn"><b>大事</b>報酬を得て申請書類を作ったり提出したりできるのは、社会保険労務士だけです（社会保険労務士法27条）。申請担当の仕事は「書類集めと進行管理」までです。</div>
+</div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">全体の流れ</span></div><h2>申請は<em>7つの段階</em>で進み、期限は2回あります</h2></div>
+<div class="pg-body">
+<div class="stages n7">
+<div class="stage s1"><span class="sn">1</span><b>検討</b><small>コースと研修を決める</small><span class="who">お客様・担当</span></div>
+<div class="stage s2"><span class="sn">2</span><b>事前準備</b><small>会社の書類と情報を集める</small><span class="who">担当</span></div>
+<div class="stage s3"><span class="sn">3</span><b>計画届の提出</b><small>訓練開始の1か月前まで</small><span class="who">社労士</span></div>
+<div class="stage s4"><span class="sn">4</span><b>訓練の実施</b><small>出勤簿・受講記録を毎月</small><span class="who">お客様・研修会社</span></div>
+<div class="stage s5"><span class="sn">5</span><b>支給申請</b><small>訓練終了の翌日から2か月以内</small><span class="who">担当・社労士</span></div>
+<div class="stage s6"><span class="sn">6</span><b>審査・支給決定</b><small>労働局の問い合わせに対応</small><span class="who">社労士</span></div>
+<div class="stage s7"><span class="sn">7</span><b>入金</b><small>入金を確かめて完了</small><span class="who">お客様</span></div>
+</div>
+<div class="svgwrap"><svg viewBox="0 0 1152 150" role="img" aria-label="計画届と支給申請の期限の図">
+<line x1="20" y1="92" x2="1130" y2="92" stroke="#B7C2D6" stroke-width="3"/>
+<rect x="60" y="52" width="300" height="30" rx="8" fill="#DDF2F0" stroke="#11807A"/><text x="210" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#11807A">計画届を出す期間（6か月前〜1か月前）</text>
+<rect x="362" y="52" width="116" height="30" rx="8" fill="#F1F3F7"/><text x="420" y="72" text-anchor="middle" font-size="12.5" fill="#5F6878">準備・届の確認</text>
+<rect x="480" y="52" width="220" height="30" rx="8" fill="#ECE6F8" stroke="#6A4BB5"/><text x="590" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#6A4BB5">訓練の期間</text>
+<rect x="702" y="52" width="340" height="30" rx="8" fill="#FCE9DE" stroke="#E8743B"/><text x="872" y="72" text-anchor="middle" font-size="14" font-weight="700" fill="#A44A1C">支給申請（終了の翌日から2か月以内）</text>
+<g fill="#14213D"><circle cx="60" cy="92" r="6"/><circle cx="360" cy="92" r="6"/><circle cx="480" cy="92" r="7" fill="#6A4BB5"/><circle cx="700" cy="92" r="7" fill="#6A4BB5"/><circle cx="1042" cy="92" r="6"/></g>
+<g font-size="13" fill="#181C25" text-anchor="middle" font-weight="700"><text x="60" y="120">開始の6か月前</text><text x="360" y="120">開始の1か月前</text><text x="480" y="120">訓練開始日</text><text x="700" y="120">訓練終了日</text><text x="1042" y="120">終了の2か月後</text></g>
+<g font-size="12" fill="#B3362B" text-anchor="middle"><text x="360" y="140">ここが1つ目の締切</text><text x="1042" y="140">ここが2つ目の締切</text></g>
+</svg></div>
+<div class="split even" style="flex:0 0 auto">
+<div class="tip"><b>自動で計算</b>期限は、案件に入れた訓練の日付から自動で出ます。締切が土日・祝日・年末年始に当たるときは、次の開庁日になります。</div>
+<div class="warn"><b>注意</b>計画届は、労働局に<span class="hw">届いた日</span>が提出日です（消印は無効）。1日でも遅れると、その研修は助成の対象になりません。</div>
+</div></div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s2"><div class="pg-head"><div class="eyebrow"><span class="no">02</span><span class="sep"></span><span class="sub">ログイン</span></div><h2>自分のIDでログインすると、<em>担当のお客様だけ</em>が見えます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>ログインID</b><span>自分のIDを入れます（例：smc-staff01）。</span></div></li>
+<li><i>2</i><div><b>パスワード</b><span>パスワードは本人だけが決め、運営も見られません。試作のデモはすべて demo です。</span></div></li>
+<li><i>3</i><div><b>ログイン</b><span>押すと「今日やること」が開きます。</span></div></li>
+<li><i>4</i><div><b>二段階認証</b><span>オンにすると、ログインのたびにSMSの確認コードが届きます。必ずオンにしてください。</span></div></li>
+<li><i>5</i><div><b>この人でログイン</b><span>試作だけにある、デモ用のボタンです。</span></div></li>
+</ol>
+<table class="tbl sm"><thead><tr><th>デモのID</th><th>名前</th><th>担当</th></tr></thead><tbody>
+<tr><td>smc-staff01</td><td>山田（申請担当）</td><td>4社</td></tr><tr><td>smc-staff02</td><td>佐藤（申請担当）</td><td>3社</td></tr><tr><td>smc-staff03</td><td>中村（申請担当）</td><td>2社</td></tr></tbody></table>
+</div>
+<div class="browser"><div class="vp" style="aspect-ratio:1249/950"><img src="img/login.png" style="width:100%;margin-left:0%;margin-top:0%" alt="ログインとアカウントの画面"><span class="pin" style="left:94.476%;top:18.632%">1</span><span class="pin" style="left:94.476%;top:27.158%">2</span><span class="pin" style="left:61.649%;top:32.632%">3</span><span class="pin" style="left:43.635%;top:34.211%">4</span><span class="pin" style="left:82.866%;top:83.368%">5</span><span class="box" style="left:3.523%;top:80.211%;width:94.155%;height:19.579%"></span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">02 ログイン</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s3"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">1日の流れ</span></div><h2>毎日は、<em>この3ステップ</em>だけ</h2></div>
+<div class="pg-body">
+<div class="day">
+<div class="st" style="--c:var(--brand)"><span class="t">STEP1　朝</span><h3>「今日やること」を開く</h3><ul><li>期限の近い順に並んだ用事を、上から確認</li><li>右側の「近い期限」で、14日以内の案件を確認</li><li>「あなたの工数」で、残りの作業量をつかむ</li></ul></div>
+<div class="st" style="--c:var(--accent)"><span class="t">STEP2　日中</span><h3>案件を開いて進める</h3><ul><li>「書類とAIチェック」で、届いた書類を確認済みに</li><li>足りない書類は「催促文をつくる」でLINEに</li><li>そろったら「申請書類」で社労士に引き継ぐ</li></ul></div>
+<div class="st" style="--c:var(--ok)"><span class="t">STEP3　夕方</span><h3>済みにして、記録する</h3><ul><li>終わった用事は ✓ で「済み」にする</li><li>電話・日程調整などは「作業時間の記録」に残す</li><li>お客様との話は「やりとり」にメモ</li></ul></div>
+</div>
+<div class="flow">
+<div class="fs"><span class="k">見る</span><b>今日やること</b><small>何を・どの順で</small></div><div class="ar"></div>
+<div class="fs"><span class="k">開く</span><b>案件の画面</b><small>タブを左から順に</small></div><div class="ar"></div>
+<div class="fs hl"><span class="k">渡す</span><b>社労士へ引き継ぎ</b><small>提出前チェックが通ったら</small></div><div class="ar"></div>
+<div class="fs"><span class="k">残す</span><b>済み・記録</b><small>工数と履歴に反映</small></div>
+</div>
+<div class="tip"><b>迷ったら</b>左のメニューの「今日やること」に戻れば大丈夫です。期限が近いものから順に出ているので、上から片づければ抜け漏れはありません。</div>
+</div>
+<div class="pg-foot"><span class="ch">03 1日の流れ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s4"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">今日やること</span></div><h2>朝はここから。<em>上から順に</em>片づけます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>見えている範囲</b><span>ログインしたアカウントで決まります。ほかの担当の案件は出ません。</span></div></li>
+<li><i>2</i><div><b>今日の用事</b><span>期限の近い順です。会社名・段階・理由が1行目に出ます。</span></div></li>
+<li><i>3</i><div><b>作業のボタン</b><span>押すと、その作業をする画面がそのまま開きます。</span></div></li>
+<li><i>4</i><div><b>済みにする</b><span>終わったら ✓ を押します。一覧から消えます。</span></div></li>
+<li><i>5</i><div><b>近い期限</b><span>14日以内は赤い「あと◯日」になります。</span></div></li>
+<li><i>6</i><div><b>あなたの工数</b><span>担当の案件の進み具合と、済んだ工数・残り・うちイレギュラーです。</span></div></li>
+</ol></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:980/560"><img src="img/s-today.png" style="width:127.449%;margin-left:-25.51%;margin-top:0%" alt="今日やることの画面"><span class="pin" style="left:41.837%;top:5.357%">1</span><span class="pin" style="left:5.51%;top:40.714%">2</span><span class="pin" style="left:54.898%;top:45.714%">3</span><span class="pin" style="left:63.367%;top:46.786%">4</span><span class="pin" style="left:79.592%;top:33.571%">5</span><span class="pin" style="left:89.796%;top:67.321%">6</span></div></div>
+<div class="tip"><b>ポイント</b>「今日、自動で済んだこと」には、期限の計算や書類の突き合わせなど、ツールが代わりにした作業が並びます。確かめるだけで大丈夫です。</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">04 今日やること</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s5"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">案件をさがす</span></div><h2>案件は、<em>段階ごとのボード</em>で見渡します</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>数字のカード</b><span>押すと「お客様待ち」「期限まで14日以内」などで絞り込めます。</span></div></li>
+<li><i>2</i><div><b>会社名でさがす</b><span>名前の一部だけでも出ます。</span></div></li>
+<li><i>3</i><div><b>ボード／一覧</b><span>一覧にすると、進み具合・不足・次の期限を表で比べられます。</span></div></li>
+<li><i>4</i><div><b>誰の番</b><span><em class="chip o">お客様待ち</em> <em class="chip b">自社の対応</em> など、次に動く人です。</span></div></li>
+<li><i>5</i><div><b>進み具合</b><span>いまの段階までの作業の積み上げ（08章）。</span></div></li>
+<li><i>6</i><div><b>期限と不足</b><span>赤い文字は足りない書類、色の札は期限まであと何日かです。</span></div></li>
+</ol></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:1004/470"><img src="img/s-board.png" style="width:125.896%;margin-left:-25.896%;margin-top:-8.964%" alt="案件のボード画面"><span class="pin" style="left:20.916%;top:21.277%">1</span><span class="pin" style="left:24.402%;top:40.213%">2</span><span class="pin" style="left:82.869%;top:40.213%">3</span><span class="pin" style="left:33.865%;top:67.021%">4</span><span class="pin" style="left:56.773%;top:73.191%">5</span><span class="pin" style="left:58.267%;top:83.83%">6</span></div></div>
+<div class="note"><b>カードを押すと</b>その案件の画面（06章）が開きます。新しいお客様は、左上の「＋ 新しい案件」から登録します。</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 案件をさがす</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s6"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">案件の画面</span></div><h2>上で<em>「いまどこか」</em>、下のタブで作業します</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>よく使うボタン</b><span>申請書類・催促文をつくる・次の段階へ。</span></div></li>
+<li><i>2</i><div><b>全体の流れ</b><span>7つの段階と「いまここ」。押すと説明が開きます。</span></div></li>
+<li><i>3</i><div><b>この段階の期限</b><span>必要な書類・やること・期限と残り日数。</span></div></li>
+<li><i>4</i><div><b>タブ</b><span>左から順に使うと、迷いません。</span></div></li>
+</ol>
+<table class="tbl sm"><thead><tr><th>タブ</th><th>すること</th></tr></thead><tbody>
+<tr><td>流れとチェック</td><td>段階ごとの済み・未</td></tr>
+<tr><td>手続きと要件</td><td>条件・書類の区分・期限（07章）</td></tr>
+<tr><td>書類とAIチェック</td><td>届いた書類の確認（09章）</td></tr>
+<tr><td>助成額の試算・申請データ</td><td>見込み額と入力データ（10章）</td></tr>
+<tr><td>申請書類</td><td>提出前チェックと引き継ぎ（11章）</td></tr>
+<tr><td>やりとり・提案</td><td>記録・メモ・次の提案（12・14章）</td></tr>
+</tbody></table></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:970/605"><img src="img/s-flow.png" style="width:128.763%;margin-left:-26.804%;margin-top:-11.34%" alt="案件の画面（流れとチェック）"><span class="pin" style="left:54.639%;top:21.488%">1</span><span class="pin" style="left:41.237%;top:51.901%">2</span><span class="pin" style="left:84.021%;top:76.529%">3</span><span class="pin" style="left:85.567%;top:96.529%">4</span><span class="box" style="left:1.031%;top:93.554%;width:98.144%;height:6.942%"></span></div></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 案件の画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s7"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">手続きと要件</span></div><h2>条件を選ぶと、<em>出す書類が自動で決まります</em></h2></div>
+<div class="pg-body"><div class="split" style="flex:0 1 auto">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>いまの条件</b><span>この案件の条件のまとめです。「条件を変える」で下の画面が開きます。</span></div></li>
+<li><i>2</i><div><b>訓練（制度）の種類と実施の形</b><span>コースと研修の種類・通学制かeラーニングか、などを選びます。</span></div></li>
+<li><i>3</i><div><b>提出する人</b><span>社労士（提出代行・事務代理）か、事業主本人かを選びます。</span></div></li>
+<li><i>4</i><div><b>条件スイッチ</b><span>当てはまるものだけオンにします。すべての段階の書類と期限、社労士の画面に反映されます。</span></div></li>
+<li><i>5</i><div><b>？</b><span>分からない言葉は押すと、意味とオンにする目安が出ます（次のページ）。</span></div></li>
+</ol></div>
+<div class="shot"><div class="vp" style="aspect-ratio:970/651"><img src="img/s-cond.png" style="width:100%;margin-left:0%;margin-top:0%" alt="この案件の条件（条件スイッチ）"><span class="pin" style="left:70.103%;top:16.129%">1</span><span class="pin" style="left:35.567%;top:34.101%">2</span><span class="pin" style="left:35.567%;top:46.083%">3</span><span class="pin" style="left:41.753%;top:54.378%">4</span><span class="pin" style="left:20.619%;top:54.378%">5</span></div></div>
+</div>
+<div class="lv">
+<div><em class="chip r">必須</em><b>必ず出す</b>この条件では、出さないと申請できません。</div>
+<div><em class="chip y">該当する場合</em><b>当てはまれば出す</b>理由が書類の下に出ます。お客様に確かめます。</div>
+<div><em class="chip b">任意</em><b>あると安心</b>出さなくても申請できます。進み具合には数えません。</div>
+<div><em class="chip">今回は不要</em><b>出さない</b>不要の理由（当てはまらない条件）が出ます。</div>
+</div></div>
+<div class="pg-foot"><span class="ch">07 手続きと要件</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">手続きと要件</span></div><h2>迷ったら<em>「？」</em>。期限は種類ごとに自動計算</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="shot" style="width:100%;max-width:300px;justify-self:center"><div class="vp" style="aspect-ratio:456/700"><img src="img/s-hq.png" style="width:100%;margin-left:0%;margin-top:0%" alt="？を押したときの説明"><span class="pin" style="left:93.202%;top:6.714%">1</span><span class="pin" style="left:93.202%;top:38.857%">2</span><span class="pin" style="left:93.202%;top:56%">3</span></div></div>
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>大事なポイント</b><span>赤い太字は、間違えると助成されなくなる点です。</span></div></li>
+<li><i>2</i><div><b>例</b><span>金額や日数の具体例で、意味をつかめます。</span></div></li>
+<li><i>3</i><div><b>この条件で変わる書類</b><span>いまの案件で、どの書類が必須・該当・不要になるかです。</span></div></li>
+</ol>
+<div class="tbl-wrap"><table class="tbl sm"><thead><tr><th>手続き</th><th>期限（自動で計算）</th></tr></thead><tbody>
+<tr><td><b>計画届</b></td><td>訓練開始日の6か月前から1か月前まで</td></tr>
+<tr><td><b>支給申請</b></td><td>訓練終了日の翌日から2か月以内</td></tr>
+<tr><td>変更届：受講者を追加</td><td>訓練開始日の前日まで</td></tr>
+<tr><td>変更届：日時・場所・方法</td><td>元の日と新しい日の、早いほうの前日まで</td></tr>
+<tr><td>変更届：開始日を後ろに</td><td>元の開始日の前日まで（1か月以上ずらすなら計画届を出し直し）</td></tr>
+<tr><td>変更届：やむを得ない理由</td><td>変更後の訓練日の翌日から7日以内</td></tr>
+</tbody></table></div>
+<div class="note"><b>変更届</b>「手続きと要件」の「変更届の期限を計算する」に日付を入れると、期限が出ます。記録すると工数に1件60分が加わります。</div>
+</div></div></div>
+<div class="pg-foot"><span class="ch">07 手続きと要件</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s8"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">進み具合と工数</span></div><h2>進み具合は、<em>済んだ作業の量</em>で決まります</h2></div>
+<div class="pg-body">
+<div class="formula"><span class="bx">項目の想定時間（分）</span><span class="op">÷</span><span class="bx">その段階の合計（分）</span><span class="op">＝</span><span class="bx">比重（％）</span><span class="op">→</span><span class="bx" style="background:var(--navy);color:#fff">済んだ項目の比重を足すと、段階の進み具合</span></div>
+<div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>この段階の進み具合</b><span>済んだ時間と、段階全体の時間・残りです。</span></div></li>
+<li><i>2</i><div><b>やること</b><span>段階ごとの作業に、想定の分数が決まっています。</span></div></li>
+<li><i>3</i><div><b>済みにする</b><span>丸を押すと済みになります。書類は下書きができたときや、社労士が確認したときに自動で済みになります。</span></div></li>
+<li><i>4</i><div><b>比重</b><span>この項目が済むと上がる％と、想定の分数です。</span></div></li>
+<li><i>5</i><div><b>集める・作る書類</b><span>必須と該当する場合の書類だけを数えます。任意は数えません。</span></div></li>
+</ol>
+<div class="good"><b>例</b>計画届の段階の合計が300分のとき、「計画届に使うデータの入力・確認」（30分）が済むと、10％進みます。</div></div>
+<div class="shot"><div class="vp" style="aspect-ratio:932/600"><img src="img/s-prog.png" style="width:100%;margin-left:0%;margin-top:0%" alt="段階の進み具合の項目"><span class="pin" style="left:45.064%;top:11.667%">1</span><span class="pin" style="left:34.335%;top:22.5%">2</span><span class="pin" style="left:4.506%;top:41.833%">3</span><span class="pin" style="left:90.129%;top:28.667%">4</span><span class="pin" style="left:50.429%;top:72.167%">5</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 進み具合と工数</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">進み具合と工数</span></div><h2>予定外の作業は、<em>作業時間の記録</em>に残します</h2></div>
+<div class="pg-body"><div class="split r">
+<div class="shot"><div class="vp" style="aspect-ratio:970/764"><img src="img/s-pgcard.png" style="width:100%;margin-left:0%;margin-top:0%" alt="この案件の進み具合と工数"><span class="pin" style="left:29.897%;top:9.686%">1</span><span class="pin" style="left:71.134%;top:4.843%">2</span><span class="pin" style="left:48.454%;top:54.712%">3</span><span class="pin" style="left:43.299%;top:72.382%">4</span><span class="pin" style="left:92.784%;top:86.911%">5</span></div></div>
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>案件全体の進み具合</b><span>各段階の比重を合わせた％と、いまの段階です。</span></div></li>
+<li><i>2</i><div><b>工数</b><span>想定工数の合計＝標準＋イレギュラー。済んだ分と残りも出ます。</span></div></li>
+<li><i>3</i><div><b>段階ごとの表</b><span>済み／想定の時間と、案件全体の中での比重です。</span></div></li>
+<li><i>4</i><div><b>作業時間の記録</b><span>電話での日程調整や、労働局からの問い合わせなどです。</span></div></li>
+<li><i>5</i><div><b>記録する</b><span>内容・時間（分）・段階を入れて押します。あなたの工数に集計されます。</span></div></li>
+</ol>
+<div class="cards c2">
+<div class="card pale"><span class="big">約24<small style="font-size:16px">時間</small></span><p>1社の標準の工数（例：約23〜25時間）。書類の数・訓練の月数・条件で変わります。</p></div>
+<div class="card pale"><span class="big">60<small style="font-size:16px">分</small></span><p>変更届1件ごとに、イレギュラーとして自動で加わる時間です。</p></div>
+</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 進み具合と工数</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s9"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">書類とAIチェック</span></div><h2>2つのAIが読み、<em>分かれたら人が決めます</em></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<div class="flow"><div class="fs"><span class="k">AI-1</span><b>読み取りとルール</b><small>発行日・会社名・金額など</small></div><div class="ar"></div><div class="fs"><span class="k">AI-2</span><b>別の読み方</b><small>申請データと突き合わせ</small></div><div class="ar"></div><div class="fs hl"><span class="k">人</span><b>あなたが判断</b><small>確認済み／差し替え</small></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>まとめてAIでチェック</b><span>届いた書類を一度にチェックします。</span></div></li>
+<li><i>2</i><div><b>AIが読み取った内容</b><span>読み違いはここで直し、もう一度チェックします。</span></div></li>
+<li><i>3</i><div><b>判定が分かれた</b><span>AI-1とAI-2の結果が違う書類です。内容を見て決めます。</span></div></li>
+<li><i>4</i><div><b>AI-1・AI-2の結果</b><span><em class="chip g">OK</em> <em class="chip g">一致</em> は問題なし、<em class="chip y">要確認</em> は直し方が出ます。</span></div></li>
+</ol>
+<div class="note"><b>最後に</b>下の「確認済みにする」か「お客様に差し替えを依頼」を押します。判定が分かれた書類が残っていると、社労士は確認印を押せません。</div>
+</div>
+<div class="browser"><div class="vp" style="aspect-ratio:954/660"><img src="img/s-docs.png" style="width:130.922%;margin-left:-28.092%;margin-top:-77.568%" alt="書類とAIチェックの画面"><span class="pin" style="left:77.254%;top:3.939%">1</span><span class="pin" style="left:38.994%;top:28.03%">2</span><span class="pin" style="left:65.199%;top:28.333%">3</span><span class="pin" style="left:63.103%;top:42.576%">4</span><span class="pin" style="left:63.103%;top:88.485%">4</span></div></div>
+</div>
+<div class="warn" style="flex:0 0 auto"><b>履歴事項全部証明書</b>発行日から3か月以内かを確かめます。3か月は<span class="hw">社内ルールの初期値</span>で、公的な期限ではありません（管理者が設定で変えられます）。</div>
+</div>
+<div class="pg-foot"><span class="ch">09 書類とAIチェック</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s10"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">試算と申請データ</span></div><h2>助成額の見込みと、<em>電子申請の入力データ</em></h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col"><p class="mini"><b style="color:var(--fg)">助成額の試算</b>タブ</p>
+<div class="browser"><div class="vp" style="aspect-ratio:954/292"><img src="img/s-calc.png" style="width:130.922%;margin-left:-28.092%;margin-top:-77.358%" alt="助成額の試算"><span class="pin" style="left:41.09%;top:20.205%">1</span><span class="pin" style="left:85.115%;top:63.014%">2</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>コース・人数・時間・受講料</b><span>入れると、すぐに計算し直します。</span></div></li>
+<li><i>2</i><div><b>合計の見込み</b><span>経費助成と賃金助成の合計です。実際の額は審査で決まります。</span></div></li>
+</ol></div>
+<div class="col"><p class="mini"><b style="color:var(--fg)">申請データ</b>タブ</p>
+<div class="browser"><div class="vp" style="aspect-ratio:954/425"><img src="img/s-apply.png" style="width:130.922%;margin-left:-28.092%;margin-top:-85.43%" alt="申請データ"><span class="pin" style="left:49.476%;top:21.412%">3</span><span class="pin" style="left:11.74%;top:58.118%">4</span><span class="pin" style="left:87.212%;top:69.882%">5</span></div></div>
+<ol class="calls">
+<li><i>3</i><div><b>担当の社労士事務所</b><span>この案件の書類を作り、提出する事務所です。</span></div></li>
+<li><i>4</i><div><b>入力する順のデータ</b><span>雇用関係助成金ポータル（電子申請）に入れる順に並んでいます。</span></div></li>
+<li><i>5</i><div><b>コピー</b><span>1項目ずつコピーして、社労士に渡せます。</span></div></li>
+</ol></div>
+</div></div>
+<div class="pg-foot"><span class="ch">10 試算と申請データ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s11"><div class="pg-head"><div class="eyebrow"><span class="no">11</span><span class="sep"></span><span class="sub">申請書類と引き継ぎ</span></div><h2>そろったら、<em>提出前チェック</em>を通して社労士へ</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>作るのは社労士</b><span>提携の社労士が書類を作り、出します。あなたは材料をそろえます。</span></div></li>
+<li><i>2</i><div><b>計画届／支給申請</b><span>どちらの書類かを切り替えます。</span></div></li>
+<li><i>3</i><div><b>4つのステップ</b><span>データ → 書類の突き合わせ → 自動チェック → 社労士に引き継ぐ。</span></div></li>
+<li><i>4</i><div><b>データの出どころ</b><span>名刺・公開情報・書類・ご回答など。直すと全書類に反映します。</span></div></li>
+<li><i>5</i><div><b>下書きのプレビュー</b><span>社労士の下書きは、ここで読むだけで表示・印刷できます。</span></div></li>
+</ol>
+<div class="shot" style="width:100%;max-width:330px"><div class="vp" style="aspect-ratio:896/595"><img src="img/s-fview.png" style="width:100%;margin-left:0%;margin-top:0%" alt="下書きのプレビュー"><span class="pin" style="left:13.393%;top:12.941%">5</span></div></div>
+</div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:954/445"><img src="img/s-forms.png" style="width:130.922%;margin-left:-28.092%;margin-top:-77.044%" alt="申請書類の画面"><span class="pin" style="left:63.103%;top:6.067%">1</span><span class="pin" style="left:24.843%;top:31.011%">2</span><span class="pin" style="left:91.405%;top:45.169%">3</span><span class="pin" style="left:88.26%;top:69.438%">4</span></div></div>
+<div class="warn"><b>社会保険労務士法27条</b>提携の社労士に引き継ぐ案件では、運営側（あなたの会社）は申請書類の下書きを作りません。下書きは社労士の画面で作られます。</div>
+<div class="tip"><b>お客様の記名</b>「お客様に確認を依頼」で、確認・記名が要るものだけを並べたLINE用の文が作れます。</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">11 申請書類と引き継ぎ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s12"><div class="pg-head"><div class="eyebrow"><span class="no">12</span><span class="sep"></span><span class="sub">お客様への連絡</span></div><h2>催促は<em>LINE用の文</em>をコピー。やりとりは記録に</h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col"><div class="shot" style="width:100%;max-width:440px"><div class="vp" style="aspect-ratio:596/410"><img src="img/s-nudge.png" style="width:100%;margin-left:0%;margin-top:0%" alt="催促文（LINE用）"><span class="pin" style="left:70.47%;top:55.61%">1</span><span class="pin" style="left:55.369%;top:71.463%">2</span><span class="pin" style="left:98.154%;top:82.439%">3</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>足りないものだけ</b><span>その案件の不足だけが並び、期限も自動で文に入ります。</span></div></li>
+<li><i>2</i><div><b>お客様専用のリンク</b><span>スマホで撮ってアップするだけのページが開きます。</span></div></li>
+<li><i>3</i><div><b>コピーする</b><span>あなたのLINEに貼って送ります。ツールが勝手に送ることはありません。</span></div></li>
+</ol></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:954/465"><img src="img/s-log.png" style="width:130.922%;margin-left:-28.092%;margin-top:-77.044%" alt="やりとりの記録"><span class="pin" style="left:52.621%;top:6.237%">4</span><span class="pin" style="left:87.212%;top:68.602%">5</span><span class="pin" style="left:30.608%;top:86.452%">6</span></div></div>
+<ol class="calls">
+<li><i>4</i><div><b>記録の一覧</b><span><em class="chip b">スタッフ</em> <em class="chip o">お客様</em> <em class="chip g">自動</em> の誰がしたことかが分かります。</span></div></li>
+<li><i>5</i><div><b>メモを残す</b><span>電話の内容などを書いて「記録する」。担当が替わっても引き継げます。</span></div></li>
+<li><i>6</i><div><b>お客様とのメッセージ</b><span>マイページに書かれた質問に、ここから返事をします。</span></div></li>
+</ol></div>
+</div></div>
+<div class="pg-foot"><span class="ch">12 お客様への連絡</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s13"><div class="pg-head"><div class="eyebrow"><span class="no">13</span><span class="sep"></span><span class="sub">カリキュラム作成</span></div><h2>お客様の要望から、<em>10時間の研修案</em>を作ります</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>3つの作り方</b><span>要望から作る／業種・職種の3セット／年間プラン（研修メニューと連動）。</span></div></li>
+<li><i>2</i><div><b>困っている業務・要望</b><span>チップを選ぶか、お客様の言葉をそのまま貼り付けます。</span></div></li>
+<li><i>3</i><div><b>これまでの研修</b><span>チェックした研修と<span class="mk" style="display:inline">重ならない</span>科目を選びます。</span></div></li>
+<li><i>4</i><div><b>カリキュラム案</b><span>実訓練10時間を、1日の受講時間（2〜8時間）に合わせて時間割にします。</span></div></li>
+<li><i>5</i><div><b>職務との関連</b><span>助成の対象になる理由です。</span></div></li>
+<li><i>6</i><div><b>別の科目に入れ替える</b><span>押すと、条件に合う別の科目に替わります。</span></div></li>
+</ol>
+<div class="warn"><b>対象外</b>令和8年8月3日以降の計画では、ビジネスマナーなどの共通スキルは対象外です。要望に入っていても自動で外します。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:954/655"><img src="img/s-curres.png" style="width:130.922%;margin-left:-28.092%;margin-top:-21.488%" alt="カリキュラム作成と結果"><span class="pin" style="left:3.354%;top:3.206%">1</span><span class="pin" style="left:26.415%;top:43.817%">2</span><span class="pin" style="left:34.277%;top:96.031%">3</span><span class="pin" style="left:69.916%;top:12.214%">4</span><span class="pin" style="left:87.212%;top:71.603%">5</span><span class="pin" style="left:68.344%;top:54.962%">6</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">13 カリキュラム作成</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s14"><div class="pg-head"><div class="eyebrow"><span class="no">14</span><span class="sep"></span><span class="sub">顧客・提案と社労士</span></div><h2>次の提案のきっかけと、<em>提携社労士の担当</em></h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col"><p class="mini"><b style="color:var(--fg)">顧客・提案</b>メニュー</p>
+<div class="browser"><div class="vp" style="aspect-ratio:954/390"><img src="img/s-crm.png" style="width:130.922%;margin-left:-28.092%;margin-top:-18.868%" alt="顧客・提案の画面"><span class="pin" style="left:69.916%;top:8.205%">1</span><span class="pin" style="left:19.602%;top:91.538%">2</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>時限措置のお知らせ</b><span>リスキリング支援・人への投資促進は令和8年度末まで。早めの声かけを。</span></div></li>
+<li><i>2</i><div><b>提案メモをつくる</b><span>研修の実績から、次に提案できる内容のメモを作ります。</span></div></li>
+</ol></div>
+<div class="col"><p class="mini"><b style="color:var(--fg)">提携社労士</b>メニュー</p>
+<div class="browser"><div class="vp" style="aspect-ratio:954/475"><img src="img/s-partner.png" style="width:130.922%;margin-left:-28.092%;margin-top:-18.868%" alt="提携社労士の画面"><span class="pin" style="left:58.91%;top:40.632%">3</span><span class="pin" style="left:42.662%;top:95.368%">4</span></div></div>
+<ol class="calls">
+<li><i>3</i><div><b>作成・提出をする人</b><span>ふだんは「提携先の社労士事務所」です。</span></div></li>
+<li><i>4</i><div><b>共有のスイッチ</b><span>書類・申請データ・AIチェックの結果を、その事務所と共有します。</span></div></li>
+</ol>
+<div class="note"><b>担当の事務所</b>この画面の下の「案件ごとの担当」で、会社ごとに選べます。</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">14 顧客・提案と社労士</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="know"><div class="pg-head"><div class="eyebrow"><span class="no">14</span><span class="sep"></span><span class="sub">ナレッジ</span></div><h2>マニュアルや資料は、<em>ナレッジ</em>にまとまっています</h2></div>
+<div class="pg-body"><div class="split r">
+<div class="browser cut" style="--h:440px"><div style="position:relative"><img src="img/s-know.png" alt="ナレッジの画面"><span class="pin" style="left:3.6%;top:50.3%">1</span><span class="pin" style="left:21.4%;top:20.7%">2</span><span class="pin" style="left:70%;top:20.7%">3</span><span class="pin" style="left:21.4%;top:27.5%">4</span><span class="pin" style="left:82.6%;top:54.9%">5</span></div></div>
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>左のメニュー「ナレッジ」</b><span>操作マニュアル・よく使うリンクが一か所にあります。</span></div></li>
+<li><i>2</i><div><b>分類でしぼり込む</b><span>すべて／マニュアル／その他。数字は件数です。</span></div></li>
+<li><i>3</i><div><b>ことばで探す</b><span>「AIチェック」「確認印」などで、資料の名前と説明から探せます。</span></div></li>
+<li><i>4</i><div><b>どのマニュアルを読めばいい？</b><span>お客様・申請担当・管理者・社労士の役割ごとに案内します。</span></div></li>
+<li><i>5</i><div><b>開く・PDF</b><span>「開く」でブラウザ表示、「PDF」で保存。お客様にはお客様向けを渡します。</span></div></li>
+</ol>
+<div class="note"><b>見える資料は役割で変わります</b>営業資料は管理者だけに表示されます。社労士の画面には、社労士向けとお客様向けのマニュアルが出ます。</div>
+</div></div></div>
+<div class="pg-foot"><span class="ch">14 ナレッジ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s15"><div class="pg-head"><div class="eyebrow"><span class="no">15</span><span class="sep"></span><span class="sub">守ってほしいこと</span></div><h2>預からない・作らない。<em>分からない言葉は調べられます</em></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col">
+<div class="rules">
+<div class="ng"><b>IDとパスワードは預からない</b>お客様のGビズIDやパスワードは、聞かない・メモしない。ツールにも保存しません。</div>
+<div class="ng"><b>申請書類は作らない・出さない</b>作成と提出は社労士の仕事です（社会保険労務士法27条）。</div>
+<div class="ng"><b>口座の情報は預からない</b>振込先は、お客様が届に直接書きます。</div>
+<div><b>自分のアカウントを守る</b>パスワードは人に教えず、二段階認証をオンに。忘れたら管理者に相談します。</div>
+</div>
+<p class="mini"><b style="color:var(--fg)">ツールの外で行うこと</b></p>
+<table class="tbl sm"><tbody>
+<tr><td>GビズIDの取得とポータルへのログイン</td><td>お客様</td></tr>
+<tr><td>ポータルでの代理先（社労士）の設定・電子申請の送信</td><td>お客様・社労士</td></tr>
+<tr><td>原本が要る書類の郵送・窓口への提出</td><td>社労士</td></tr>
+<tr><td>労働局からの問い合わせへの回答</td><td>社労士（記録だけツールに残す）</td></tr>
+</tbody></table></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:970/420"><img src="img/s-help.png" style="width:100%;margin-left:0%;margin-top:0%" alt="お助け情報（用語の説明）"><span class="pin" style="left:92.784%;top:29.048%">1</span><span class="pin" style="left:85.567%;top:54.286%">2</span><span class="pin" style="left:18.351%;top:41.667%">3</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>ことばで探す</b><span>左のメニュー「お助け情報」の「用語の説明」です。</span></div></li>
+<li><i>2</i><div><b>くわしく</b><span>画面の「？」と同じ説明が開きます。</span></div></li>
+<li><i>3</i><div><b>分類</b><span>はじめての人は「制度の用語」と「手続きの段階」から読むと流れがつかめます。</span></div></li>
+</ol></div>
+</div></div>
+<div class="pg-foot"><span class="ch">15 守ってほしいこと</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg" id="s16"><div class="pg-head"><div class="eyebrow"><span class="no">16</span><span class="sep"></span><span class="sub">困ったとき</span></div><h2>よくある質問</h2></div>
+<div class="pg-body"><div class="qa">
+<div><b>担当のはずのお客様が出てきません</b><p>申請担当のアカウントでは、自分が担当するお客様だけが出ます。担当の割り当ては、管理者が「担当者」の画面で行います。</p></div>
+<div><b>AIの判定が分かれました</b><p>「書類とAIチェック」で両方の結果と読み取った内容を見て、「確認済みにする」か「お客様に差し替えを依頼」を押します。</p></div>
+<div><b>期限が土日や年末年始に当たります</b><p>自動で次の開庁日にずれます。祝日は暦で計算しているので、表示の日付が開庁日かを念のため確かめてください。</p></div>
+<div><b>研修の日程が変わりました</b><p>「手続きと要件」で変更届の期限を計算し、社労士に伝えます。変更届を出さずに変えた部分は、助成の対象外です。</p></div>
+<div><b>お客様が書類をアップできないようです</b><p>「催促文をつくる」でリンクを送り直します。スマホで撮った写真でも、PDFでも受け付けます。</p></div>
+<div><b>研修案に対象外の科目があると出ました</b><p>「今日やること」の「研修案を作り直す」から、カリキュラム作成で別の科目に入れ替えます。</p></div>
+<div><b>「書類を作る」ボタンが見当たりません</b><p>提携の社労士に引き継ぐ案件では、運営側は下書きを作りません（27条）。下書きは社労士の画面で作られ、ここでは読むだけです。</p></div>
+<div><b>進み具合が上がりません</b><p>「手続きと要件」で、済んだ項目の丸を押したか確かめます。任意の書類は数えません。</p></div>
+</div>
+<div class="tip"><b>それでも困ったら</b>管理者（コンサルタント）に、会社名とタブの名前を添えて相談してください。</div></div>
+<div class="pg-foot"><span class="ch">16 困ったとき</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+</main></body></html>

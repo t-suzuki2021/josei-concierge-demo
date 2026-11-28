@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>管理者 操作マニュアル</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css"><link rel="icon" href="../favicon-app-32.png">
+<!--CHAPTERS:管理者の役割|ログインとアカウント|管理者の1日|全担当の今日やること|案件（全担当）|担当者|対応範囲と工数|設定|社労士法27条|運営の画面|困ったとき-->
+<style>
+.vp{position:relative;overflow:hidden;min-height:0}
+.vp img{max-width:none;display:block;height:auto}
+.vp .pin{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.vp .box{position:absolute;border:3px solid var(--accent);border-radius:8px;z-index:1;pointer-events:none}
+.chip{font-style:normal}
+.toc{gap:10px}.toc a{min-height:0;padding:11px 14px;gap:2px}.toc small{font-size:12px;line-height:1.45}
+.tbl-wrap{overflow-x:auto}
+.tbl.sm{font-size:12.5px}.tbl.sm th,.tbl.sm td{padding:6px 8px}
+.stages.n7{--n:7;gap:8px}.stages.n7 .stage{padding:12px 10px 10px}.stages.n7 b{font-size:14px}.stages.n7 small{font-size:11.5px}
+.who4{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+.role{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;display:flex;flex-direction:column;gap:4px;position:relative}
+.role b{font-size:15px}.role small{font-size:12.5px;color:var(--muted);line-height:1.6}
+.role .k{font:700 11.5px/1 var(--num);color:var(--brand)}
+.role.me{background:var(--navy);color:#fff;border-color:var(--navy)}.role.me small{color:#C3CCE0}.role.me .k{color:#8FB0F2}
+.svgwrap svg{width:100%;height:auto;display:block}
+.day{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.day .st{border-radius:14px;padding:18px 20px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;border-top:6px solid var(--c)}
+.day .t{font:700 13px/1 var(--num);color:var(--c)}
+.day h3{margin:0;font-size:19px}
+.day ul{margin:0;padding-left:1.2em;font-size:13.5px;color:var(--muted);line-height:1.75}
+.lv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.lv div{border-radius:10px;padding:10px 12px;background:var(--sunk);font-size:12.5px;line-height:1.55;color:var(--muted)}
+.lv b{display:block;font-size:14px;color:var(--fg);margin-bottom:2px}
+.formula{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:14px}
+.formula .bx{border-radius:10px;padding:8px 14px;background:var(--brand-pale);color:var(--brand);font-weight:700}
+.formula .op{font:700 20px/1 var(--num);color:var(--muted)}
+.mini{font-size:12.5px;color:var(--muted);line-height:1.6;margin:0}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rules div{border-radius:12px;padding:12px 16px;border:1px solid var(--line);background:#fff;font-size:13px;color:var(--muted);line-height:1.65}
+.rules b{display:block;color:var(--fg);font-size:14.5px;margin-bottom:2px}
+.rules .ng{border-color:#F0C5BF;background:var(--warn-pale)}.rules .ng b{color:var(--warn)}
+@media screen and (max-width:900px){.who4,.day,.lv,.rules{grid-template-columns:1fr}.stages.n7{grid-template-columns:1fr 1fr}}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:16px}.cmp>div{border:1px solid var(--line);border-radius:14px;padding:16px 18px;background:#fff;display:flex;flex-direction:column;gap:8px}.cmp h3{margin:0;font-size:17px}.cmp ul{margin:0;padding-left:1.2em;font-size:13.5px;color:var(--muted);line-height:1.75}.cmp .on{border:2px solid var(--brand);background:var(--brand-pale)}
+@media screen and (max-width:900px){.cmp{grid-template-columns:1fr}}
+</style>
+</head><body>
+<div class="topbar noprint"><b>人材開発支援助成金コンシェルジュ</b><span class="t">管理者（コンサルタント）・スーパー管理者向け 操作マニュアル</span><span class="sp"></span><a href="manual-admin.pdf" download>PDFで保存</a><a href="javascript:print()">印刷</a></div>
+<main class="doc">
+
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">管理者（コンサルタント）・スーパー管理者向け</span>
+<h1><small>人材開発支援助成金コンシェルジュ</small>管理者マニュアル</h1>
+<p>全担当の進み具合と工数を見て、担当を割り当てる。<br>アカウントと操作の記録を守る。管理者の仕事をまとめました。</p>
+<div class="ver">2026年11月版（試作）　画面の会社名・人名はすべて架空の例です</div></div>
+<div class="art"><svg viewBox="0 0 520 380" role="img" aria-label="担当者ごとの進み具合のグラフと、鍵のついた盾のイラスト">
+<ellipse cx="260" cy="200" rx="245" ry="170" fill="#1D2D52"/>
+<rect x="70" y="80" width="270" height="220" rx="16" fill="#fff"/>
+<rect x="92" y="102" width="120" height="12" rx="6" fill="#2E4C8C"/>
+<g font-family="Noto Sans JP,sans-serif" font-size="14" font-weight="700" fill="#14213D"><text x="92" y="152">山田</text><text x="92" y="196">佐藤</text><text x="92" y="240">中村</text></g>
+<g fill="#E5EBF7"><rect x="140" y="140" width="170" height="16" rx="8"/><rect x="140" y="184" width="170" height="16" rx="8"/><rect x="140" y="228" width="170" height="16" rx="8"/></g>
+<rect x="140" y="140" width="40" height="16" rx="8" fill="#2E4C8C"/><rect x="140" y="184" width="85" height="16" rx="8" fill="#2E4C8C"/><rect x="140" y="228" width="150" height="16" rx="8" fill="#1B7448"/>
+<rect x="92" y="264" width="90" height="12" rx="6" fill="#D6DBE3"/>
+<circle cx="140" cy="300" r="0"/>
+<g transform="translate(360 120)"><path d="M60 0l60 24v46c0 44-26 74-60 86-34-12-60-42-60-86V24z" fill="#8FB0F2"/><rect x="34" y="66" width="52" height="42" rx="8" fill="#14213D"/><path d="M44 66V54a16 16 0 0132 0v12" stroke="#14213D" stroke-width="8" fill="none"/><circle cx="60" cy="86" r="6" fill="#E8743B"/></g>
+<g transform="translate(300 270)"><circle cx="30" cy="30" r="30" fill="#E8743B"/><path d="M16 30l10 10 18-20" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+</svg></div></div></section>
+
+<section class="pg" id="toc"><div class="pg-head"><div class="eyebrow">目次</div><h2>知りたいことから、開けます</h2></div>
+<div class="pg-body"><nav class="toc">
+<a href="#s1"><span class="n">01</span><b>管理者の役割</b><small>管理者とスーパー管理者のちがい</small></a>
+<a href="#s2"><span class="n">02</span><b>ログインとアカウント</b><small>デモID・パスワードの決まり</small></a>
+<a href="#s3" class="hl"><span class="n">03</span><b>管理者の1日</b><small>朝・日中・週の3ステップ</small></a>
+<a href="#s4"><span class="n">04</span><b>全担当の今日やること</b><small>表示の切り替え・全体の工数</small></a>
+<a href="#s5"><span class="n">05</span><b>案件（全担当）</b><small>担当で絞り込む一覧</small></a>
+<a href="#s6" class="hl"><span class="n">06</span><b>担当者</b><small>進み具合・工数・担当替え・追加</small></a>
+<a href="#s7"><span class="n">07</span><b>対応範囲と工数</b><small>標準の作業時間の表</small></a>
+<a href="#s8"><span class="n">08</span><b>設定</b><small>ブランド・質問・AIチェックのルール</small></a>
+<a href="#s9"><span class="n">09</span><b>社労士法27条</b><small>下書きを作らない決まり</small></a>
+<a href="#s10"><span class="n">10</span><b>運営の画面</b><small>スーパー管理者：アカウント・記録</small></a>
+<a href="#s11"><span class="n">11</span><b>困ったとき</b><small>よくある質問</small></a>
+</nav>
+<div class="note"><b>あわせて読む</b>案件の中の操作（書類とAIチェック・申請書類など）は「担当スタッフ向け 操作マニュアル」に、くわしく載っています。</div></div>
+<div class="pg-foot"><span class="ch">目次</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s1"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">管理者の役割</span></div><h2>管理者は<em>チーム全体</em>、スーパー管理者は<em>運営全体</em>を見ます</h2></div>
+<div class="pg-body">
+<div class="cmp">
+<div class="on"><span class="chip b" style="align-self:flex-start">管理者（コンサルタント）</span><h3>自社の全担当者の案件を見る</h3><ul><li>全担当の「今日やること」と工数を見る</li><li>メニューに「担当者」が出る：進み具合・工数の比較</li><li>お客様の担当替えと、担当者の追加</li><li>設定：ブランド・お客様に聞く質問・AIチェックのルール</li><li>申請書類は作らず、書類集めと社労士への引き継ぎまで</li></ul></div>
+<div><span class="chip r" style="align-self:flex-start">スーパー管理者</span><h3>すべてのテナントと運営を見る</h3><ul><li>「運営」の画面：ダッシュボード・テナント・お客様</li><li>アカウントの追加・停止・再開、パスワード再設定のリンク送付</li><li>各画面の代理表示（その人と同じ画面で確かめる）</li><li>操作の記録（ログイン・代理表示・担当替えなど。消せない）</li><li>管理者ができることは、すべてできます</li></ul></div>
+</div>
+<div class="tbl-wrap"><table class="tbl sm"><thead><tr><th>役割</th><th>見られる範囲</th><th>デモのID</th></tr></thead><tbody>
+<tr><td><em class="chip r">スーパー管理者</em></td><td>すべてのテナントの管理者・担当者・お客様・提携社労士</td><td>super-admin</td></tr>
+<tr><td><em class="chip b">管理者（コンサルタント）</em></td><td>自社の全担当者の案件と進み具合（例：小林 真理）</td><td>smc-admin</td></tr>
+<tr><td><em class="chip">申請担当</em></td><td>自分が担当するお客様の案件だけ（山田・佐藤・中村）</td><td>smc-staff01〜03</td></tr>
+<tr><td><em class="chip">お客様／社労士</em></td><td>自社のマイページだけ／引き継がれた案件だけ</td><td>cl-… ／ sr-minato・sr-aoba</td></tr>
+</tbody></table></div>
+</div>
+<div class="pg-foot"><span class="ch">01 管理者の役割</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s2"><div class="pg-head"><div class="eyebrow"><span class="no">02</span><span class="sep"></span><span class="sub">ログインとアカウント</span></div><h2>パスワードは<em>本人だけ</em>。運営も見られません</h2></div>
+<div class="pg-body"><div class="split r">
+<div class="browser"><div class="vp" style="aspect-ratio:1249/700"><img src="img/login.png" style="width:100%;margin-left:0%;margin-top:0%" alt="ログインとアカウントの画面"><span class="pin" style="left:26.821%;top:18%">1</span><span class="pin" style="left:43.635%;top:46.429%">2</span><span class="pin" style="left:18.014%;top:53.143%">3</span><span class="pin" style="left:82.866%;top:93.286%">4</span></div></div>
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>ログイン中の役割</b><span>名前・役割・見られる範囲・最終ログインが出ます。</span></div></li>
+<li><i>2</i><div><b>二段階認証</b><span>ログインのたびにSMSの確認コード。全員オンにします。</span></div></li>
+<li><i>3</i><div><b>パスワードを変える</b><span>自分のパスワードは、自分で変えます。</span></div></li>
+<li><i>4</i><div><b>この人でログイン</b><span>試作だけのデモ用ボタンです（パスワードはすべて demo）。</span></div></li>
+</ol>
+<div class="rules" style="grid-template-columns:1fr">
+<div class="ng"><b>預からないもの</b>お客様のGビズID・パスワード、振込先の口座の情報。ツールにも保存しません。</div>
+<div><b>パスワードの決まり</b>本人だけが設定し、運営も見られません。忘れたときは、再設定のリンクを本人に送ります（10章）。</div>
+</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">02 ログインとアカウント</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s3"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">管理者の1日</span></div><h2>見るのは<em>3つ</em>：期限・偏り・実績</h2></div>
+<div class="pg-body">
+<div class="day">
+<div class="st" style="--c:var(--brand)"><span class="t">STEP1　朝</span><h3>全担当の「今日やること」</h3><ul><li>期限まで14日以内の案件はないか</li><li>AIチェックで判定が分かれた書類はないか</li><li>社労士からの差し戻し・労働局からの連絡</li></ul></div>
+<div class="st" style="--c:var(--accent)"><span class="t">STEP2　日中</span><h3>「担当者」で偏りを見る</h3><ul><li>担当ごとの件数・進み具合・残りの工数</li><li>残りが多い担当から、担当替えをする</li><li>新しい人は「担当者を追加する」</li></ul></div>
+<div class="st" style="--c:var(--ok)"><span class="t">STEP3　週に1回</span><h3>実績と標準を比べる</h3><ul><li>イレギュラーの工数が増えていないか</li><li>「対応範囲」の標準の作業時間を見直す</li><li>設定の質問・AIチェックのルールを見直す</li></ul></div>
+</div>
+<div class="flow">
+<div class="fs"><span class="k">見る</span><b>今日やること</b><small>全担当の用事を期限順に</small></div><div class="ar"></div>
+<div class="fs"><span class="k">比べる</span><b>担当者</b><small>件数・進み具合・工数</small></div><div class="ar"></div>
+<div class="fs hl"><span class="k">動かす</span><b>担当替え・追加</b><small>お客様ごとに選ぶだけ</small></div><div class="ar"></div>
+<div class="fs"><span class="k">見直す</span><b>対応範囲・設定</b><small>標準の時間とルール</small></div>
+</div>
+<div class="tip"><b>ポイント</b>管理者は案件の中の作業もできますが、まずは「全体を見て、担当に任せる」が基本です。案件の操作は担当スタッフ向けマニュアルを見てください。</div>
+</div>
+<div class="pg-foot"><span class="ch">03 管理者の1日</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s4"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">全担当の今日やること</span></div><h2>全担当の用事を、<em>期限の近い順</em>に見ます</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>表示するアカウント</b><span>「管理者（全担当を表示）」と、各担当の見え方を切り替えて確かめられます。</span></div></li>
+<li><i>2</i><div><b>担当の名前</b><span>どの担当の用事かが、1行目に出ます。</span></div></li>
+<li><i>3</i><div><b>近い期限</b><span>全担当の中で、期限の近い案件です。</span></div></li>
+<li><i>4</i><div><b>全担当の工数</b><span>全体の進み具合・済んだ工数・残り・うちイレギュラーです。</span></div></li>
+</ol>
+<div class="note"><b>申請担当の画面では</b>同じ場所が「あなたの工数」になり、その人の担当分だけが出ます。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:1249/700"><img src="img/a-today.png" style="width:100%;margin-left:0%;margin-top:0%" alt="全担当の今日やること"><span class="pin" style="left:20.016%;top:4.143%">1</span><span class="pin" style="left:53.243%;top:29.857%">2</span><span class="pin" style="left:82.466%;top:30.143%">3</span><span class="pin" style="left:86.469%;top:73.286%">4</span><span class="box" style="left:73.819%;top:69.714%;width:24.019%;height:28.571%"></span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">04 全担当の今日やること</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s5"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">案件（全担当）</span></div><h2>一覧にすると、<em>担当ごとの遅れ</em>が見えます</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>担当で絞り込む</b><span>「すべての担当」から1人を選ぶと、その人の案件だけになります。</span></div></li>
+<li><i>2</i><div><b>申請担当</b><span>管理者の一覧にだけ出る列です。</span></div></li>
+<li><i>3</i><div><b>進み具合</b><span>段階ごとの作業の積み上げです。止まっている案件に気づけます。</span></div></li>
+<li><i>4</i><div><b>誰の番</b><span>お客様待ちが長い案件は、担当に催促を頼みます。</span></div></li>
+<li><i>5</i><div><b>不足</b><span>赤い文字は、まだ届いていない書類です。</span></div></li>
+</ol>
+<div class="tip"><b>ボードでも</b>右上で「ボード」に切り替えると、段階ごとのカードで見られます。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:989/675"><img src="img/s-list.png" style="width:126.289%;margin-left:-26.289%;margin-top:-11.122%" alt="案件の一覧（全担当）"><span class="pin" style="left:89.99%;top:36.444%">1</span><span class="pin" style="left:9.808%;top:56%">2</span><span class="pin" style="left:42.467%;top:62.963%">3</span><span class="pin" style="left:61.678%;top:62.963%">4</span><span class="pin" style="left:81.699%;top:60.741%">5</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 案件（全担当）</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s6"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">担当者</span></div><h2>担当ごとの<em>進み具合と工数</em>を比べます</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>担当者ごとの表</b><span>担当の件数・進み具合・済んだ工数・残り・イレギュラーです。</span></div></li>
+<li><i>2</i><div><b>進み具合</b><span>担当の案件の想定工数を、済んだ項目の分だけ積み上げた％です。</span></div></li>
+<li><i>3</i><div><b>済んだ工数</b><span>緑の棒が長いほど、作業が済んでいます。</span></div></li>
+<li><i>4</i><div><b>イレギュラー</b><span>変更届や問い合わせなど、予定外の作業の時間です。</span></div></li>
+<li><i>5</i><div><b>この担当の画面を見る</b><span>その担当と同じ見え方で、今日やることや案件を確かめます。</span></div></li>
+</ol>
+<div class="note"><b>この画面は</b>管理アカウント（管理者・スーパー管理者）だけに出ます。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:954/535"><img src="img/a-team.png" style="width:130.922%;margin-left:-28.092%;margin-top:-19.392%" alt="担当者の画面（進み具合と工数）"><span class="pin" style="left:29.036%;top:5.234%">1</span><span class="pin" style="left:43.187%;top:22.43%">2</span><span class="pin" style="left:67.296%;top:22.43%">3</span><span class="pin" style="left:93.501%;top:14.766%">4</span><span class="pin" style="left:30.608%;top:51.776%">5</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 担当者</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">担当者</span></div><h2>担当替えは、<em>選び直すだけ</em>です</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>担当者名</b><span>新しく入った人の名前を入れます。</span></div></li>
+<li><i>2</i><div><b>追加する</b><span>申請担当のアカウントが1つ増えます。</span></div></li>
+<li><i>3</i><div><b>お客様ごとの申請担当</b><span>段階・進み具合・工数・次の期限・誰の番を見て決めます。</span></div></li>
+<li><i>4</i><div><b>担当を選ぶ</b><span>選び直すとすぐに替わります。替えた記録は「操作の記録」に残ります。</span></div></li>
+<li><i>5</i><div><b>工数（済み／想定）</b><span>残りの多い案件を、手の空いた担当へ。</span></div></li>
+</ol>
+<div class="warn"><b>担当替えのあと</b>新しい担当に、「やりとり」のメモと、お客様待ちの書類を伝えてください。お客様への連絡も忘れずに。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:954/505"><img src="img/a-team.png" style="width:130.922%;margin-left:-28.092%;margin-top:-104.298%" alt="担当者の追加と、お客様ごとの申請担当"><span class="pin" style="left:32.704%;top:19.406%">1</span><span class="pin" style="left:50%;top:20.594%">2</span><span class="pin" style="left:19.078%;top:40%">3</span><span class="pin" style="left:89.308%;top:59.802%">4</span><span class="pin" style="left:62.055%;top:54.851%">5</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 担当者</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s7"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">対応範囲と工数</span></div><h2>できることの範囲と、<em>標準の作業時間</em></h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:954/505"><img src="img/a-cover.png" style="width:130.922%;margin-left:-28.092%;margin-top:-19.392%" alt="対応範囲：コースと手続き"><span class="pin" style="left:28.512%;top:5.545%">1</span><span class="pin" style="left:75.681%;top:47.129%">2</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>コースと手続き</b><span>○は書類の一覧・期限の計算・要件の確認に対応しています。</span></div></li>
+<li><i>2</i><div><b>△と—</b><span>△は一部のメニューだけ、—はその手続きがないコースです。</span></div></li>
+</ol></div>
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:954/340"><img src="img/a-cover.png" style="width:130.922%;margin-left:-28.092%;margin-top:-121.593%" alt="標準の作業時間の表"><span class="pin" style="left:41.09%;top:5.882%">3</span><span class="pin" style="left:69.392%;top:39.118%">4</span></div></div>
+<ol class="calls">
+<li><i>3</i><div><b>標準の作業時間</b><span>進み具合の比重と工数の計算に使う時間です。1社の標準は約23〜25時間（例）。</span></div></li>
+<li><i>4</i><div><b>やること（分）</b><span>段階ごとの作業の分数。変更届は1件60分のイレギュラーです。</span></div></li>
+</ol>
+<div class="note"><b>分数は仮の標準値</b>実績と比べて見直します（本番では設定で変えられる予定）。</div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">07 対応範囲と工数</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s8"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">設定</span></div><h2>自社の名前と色、<em>集める項目とチェックのルール</em></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>ブランド</b><span>会社名と担当者名。お客様の画面にすぐ反映されます。</span></div></li>
+<li><i>2</i><div><b>色</b><span>お客様の画面の色を選べます。右で見え方を確認できます。</span></div></li>
+<li><i>3</i><div><b>アカウントと権限</b><span>申請担当と管理アカウントのちがい。担当者の画面へ進めます。</span></div></li>
+<li><i>4</i><div><b>コースのテンプレート</b><span>コースごとに、集める書類と質問のセットを切り替えます。</span></div></li>
+</ol>
+<p class="mini"><b style="color:var(--fg)">書類のAIチェックのルール</b>（設定の下のほう）</p>
+<table class="tbl sm"><tbody>
+<tr><td>履歴事項全部証明書の有効期間（発行日から）</td><td><b>3か月以内</b>（1・2・3・6か月から選ぶ）</td></tr>
+<tr><td>10人以上の会社は、届け出た就業規則か確認</td><td>オン／オフ</td></tr>
+<tr><td>受講料の振込額が、受講料の合計と同じか確認</td><td>オン／オフ</td></tr>
+<tr><td>有期契約の人が、訓練中に契約が切れないか確認</td><td>オン／オフ</td></tr>
+</tbody></table>
+<div class="warn"><b>3か月は社内ルール</b>公式資料に有効期間の定めは見つかっていません。提出先の労働局に確認してください。ルールを変えると、チェック済みの書類は「再チェックが必要」になります。</div>
+</div>
+<div class="browser"><div class="vp" style="aspect-ratio:954/785"><img src="img/s-settings.png" style="width:130.922%;margin-left:-28.092%;margin-top:-19.392%" alt="設定の画面"><span class="pin" style="left:45.283%;top:12.357%">1</span><span class="pin" style="left:25.367%;top:39.873%">2</span><span class="pin" style="left:18.029%;top:50.064%">3</span><span class="pin" style="left:21.174%;top:79.236%">4</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">08 設定</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s9"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">社労士法27条</span></div><h2>提携の社労士に引き継ぐなら、<em>下書きは作りません</em></h2></div>
+<div class="pg-body">
+<div class="svgwrap"><svg viewBox="0 0 1152 150" role="img" aria-label="運営と社労士の役割の分かれ目の図">
+<rect x="6" y="20" width="640" height="122" rx="16" fill="#E5EBF7"/><text x="22" y="44" font-size="14" font-weight="700" fill="#2E4C8C">運営（あなたの会社）がする</text>
+<rect x="670" y="20" width="476" height="122" rx="16" fill="#FCE9DE" stroke="#E8743B" stroke-dasharray="6 5" stroke-width="2"/><text x="686" y="44" font-size="14" font-weight="700" fill="#A44A1C">社労士だけができる（社労士の画面）</text>
+<g font-size="14" font-weight="700" fill="#14213D" text-anchor="middle">
+<rect x="22" y="60" width="140" height="62" rx="10" fill="#fff"/><text x="92" y="88">書類を集める</text><text x="92" y="108" font-size="11.5" font-weight="400" fill="#5F6878">お客様のマイページ</text>
+<rect x="182" y="60" width="140" height="62" rx="10" fill="#fff"/><text x="252" y="88">AI二重チェック</text><text x="252" y="108" font-size="11.5" font-weight="400" fill="#5F6878">人が確認済みに</text>
+<rect x="342" y="60" width="140" height="62" rx="10" fill="#fff"/><text x="412" y="88">期限・進行管理</text><text x="412" y="108" font-size="11.5" font-weight="400" fill="#5F6878">変更届の期限も</text>
+<rect x="502" y="60" width="130" height="62" rx="10" fill="#14213D"/><text x="567" y="88" fill="#fff">引き継ぐ</text><text x="567" y="108" font-size="11.5" font-weight="400" fill="#C3CCE0">データ・写し・結果</text>
+<rect x="686" y="60" width="140" height="62" rx="10" fill="#fff"/><text x="756" y="88">下書きを作る</text><text x="756" y="108" font-size="11.5" font-weight="400" fill="#5F6878">申請書類の作成</text>
+<rect x="840" y="60" width="140" height="62" rx="10" fill="#fff"/><text x="910" y="88">確認・確認印</text><text x="910" y="108" font-size="11.5" font-weight="400" fill="#5F6878">登録番号つき</text>
+<rect x="994" y="60" width="138" height="62" rx="10" fill="#fff"/><text x="1063" y="88">提出・記録</text><text x="1063" y="108" font-size="11.5" font-weight="400" fill="#5F6878">電子申請・窓口・郵送</text>
+</g>
+<path d="M636 91h40" stroke="#E8743B" stroke-width="3"/><path d="M670 91l-10-7v14z" fill="#E8743B"/>
+</svg></div>
+<div class="cmp">
+<div class="on"><span class="chip b" style="align-self:flex-start">提携先の社労士事務所（ふつうの使い方）</span><h3>運営は「書類集めと進行管理」まで</h3><ul><li>案件の「申請書類」には「書類を作る」が出ません</li><li>社労士の画面の「下書きを作る」で作り、運営側は読むだけ</li><li>確認印がないと、提出を記録できません</li><li>お客様と社労士事務所の契約は、両者が直接結びます</li></ul></div>
+<div><span class="chip" style="align-self:flex-start">自社（社労士事務所の場合）</span><h3>自社で作成・提出まで</h3><ul><li>「提携社労士」の画面で「自社」を選んだときだけ</li><li>下書きを確認し、最新の様式で作って提出します</li><li>提出したら「提出済みにする」を押します</li><li>社労士の電子申請は共通要領様式第2号＋証票の写し。委任状は社労士以外の代理人だけです</li></ul></div>
+</div>
+<div class="warn"><b>なぜ</b>社会保険労務士でない人が、報酬を得て申請書類を作ったり提出を代わりにしたりすることはできません（社会保険労務士法27条）。実際に公開する前に、社労士・弁護士の確認を受けてください。</div>
+</div>
+<div class="pg-foot"><span class="ch">09 社労士法27条</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+
+<section class="pg" id="s10"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">運営の画面（スーパー管理者）</span></div><h2>ダッシュボードで、<em>注意が必要なこと</em>だけを見ます</h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>数字のタイル</b><span>アカウント数・進行中の案件・社労士が対応中の件数です。</span></div></li>
+<li><i>2</i><div><b>AIチェックで要対応</b><span>差し替え・要確認の書類の数。赤は要対応です。</span></div></li>
+<li><i>3</i><div><b>注意の一覧</b><span>書類・期限・差し戻しを、ボタン1つで開けます。</span></div></li>
+<li><i>4</i><div><b>セキュリティ</b><span>二段階認証が未設定のアカウントが出ます。</span></div></li>
+<li><i>5</i><div><b>役割・担当ごとの数</b><span>アカウントと、申請担当ごとの案件数です。</span></div></li>
+<li><i>6</i><div><b>最近の操作</b><span>ログインや担当替えなど。「すべて見る」で操作の記録へ。</span></div></li>
+</ol></div>
+<div class="browser"><div class="vp" style="aspect-ratio:989/640"><img src="img/o-dash.png" style="width:126.289%;margin-left:-26.289%;margin-top:0%" alt="運営のダッシュボード"><span class="pin" style="left:20.222%;top:19.688%">1</span><span class="pin" style="left:84.934%;top:19.688%">2</span><span class="pin" style="left:44.489%;top:37.188%">3</span><span class="pin" style="left:44.489%;top:72.344%">4</span><span class="pin" style="left:85.945%;top:34.063%">5</span><span class="pin" style="left:80.89%;top:97.344%">6</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">10 運営の画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">運営の画面（スーパー管理者）</span></div><h2>アカウントの<em>停止・代理表示・再設定</em></h2></div>
+<div class="pg-body"><div class="split wide">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>さがす</b><span>役割・ID・名前・会社名で絞り込みます。</span></div></li>
+<li><i>2</i><div><b>二段階認証</b><span><em class="chip">未設定</em> の人には、設定を頼みます。</span></div></li>
+<li><i>3</i><div><b>利用（停止）</b><span>オフにすると、その人はすぐログインできなくなります。オンで再開。</span></div></li>
+<li><i>4</i><div><b>この人の画面を見る</b><span>代理表示です。始めと終わりが操作の記録に残ります。</span></div></li>
+<li><i>5</i><div><b>パスワード再設定</b><span>本人に再設定のリンクを送ります。パスワードは運営も見られません。</span></div></li>
+</ol>
+<div class="note"><b>追加は</b>画面の下の「アカウントを追加する」で申請担当・管理者を。お客様は案件を作ると、社労士は提携先を追加すると自動でできます。</div></div>
+<div class="browser"><div class="vp" style="aspect-ratio:989/620"><img src="img/o-accts.png" style="width:126.289%;margin-left:-26.289%;margin-top:0%" alt="アカウントの一覧"><span class="pin" style="left:51.769%;top:15.806%">1</span><span class="pin" style="left:47.826%;top:78.548%">2</span><span class="pin" style="left:64.712%;top:63.548%">3</span><span class="pin" style="left:89.788%;top:46.774%">4</span><span class="pin" style="left:88.17%;top:67.097%">5</span></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">10 運営の画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">運営の画面（スーパー管理者）</span></div><h2>操作の記録は、<em>だれも消せません</em></h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><div class="browser"><div class="vp" style="aspect-ratio:1004/466"><img src="img/o-audit.png" style="width:125.896%;margin-left:-25.896%;margin-top:0%" alt="操作の記録"><span class="pin" style="left:58.765%;top:10.086%">1</span><span class="pin" style="left:15.936%;top:21.03%">2</span><span class="pin" style="left:61.753%;top:48.069%">3</span></div></div>
+<ol class="calls">
+<li><i>1</i><div><b>記録は消せません</b><span>ログイン・代理表示・アカウントの変更・案件の引き継ぎなどです。</span></div></li>
+<li><i>2</i><div><b>日時と、誰が</b><span>管理者・担当・社労士、誰の操作かが分かります。</span></div></li>
+<li><i>3</i><div><b>操作</b><span>例：担当の割り当てを変更（会社名 → 新しい担当）。</span></div></li>
+</ol></div>
+<div class="col">
+<div class="cards c2">
+<div class="card"><h3>二段階認証</h3><p>ログインのたびにSMSの確認コード。未設定の人はダッシュボードに出ます。</p></div>
+<div class="card"><h3>停止</h3><p>退職・異動などで使わなくなったアカウントは、利用をオフにします。</p></div>
+<div class="card"><h3>代理表示</h3><p>問い合わせの確認に使います。必要なときだけ、終わったらすぐ戻ります。</p></div>
+<div class="card"><h3>IDとパスワード</h3><p>お客様のGビズID・パスワードは預かりません。本人のパスワードは本人だけ。</p></div>
+</div>
+<div class="warn"><b>試作の注意</b>本番の運用には、二段階の認証・データベース・暗号化した保存・監査ログ・実際のAIとOCRの準備が必要です。</div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">10 運営の画面</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg" id="know"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">ナレッジ</span></div><h2>マニュアルや資料は、<em>ナレッジ</em>にまとまっています</h2></div>
+<div class="pg-body"><div class="split r">
+<div class="browser cut" style="--h:440px"><div style="position:relative"><img src="img/s-know.png" alt="ナレッジの画面"><span class="pin" style="left:3.6%;top:50.3%">1</span><span class="pin" style="left:21.4%;top:20.7%">2</span><span class="pin" style="left:70%;top:20.7%">3</span><span class="pin" style="left:21.4%;top:27.5%">4</span><span class="pin" style="left:82.6%;top:54.9%">5</span></div></div>
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>左のメニュー「ナレッジ」</b><span>操作マニュアル・営業資料・よく使うリンクが一か所にあります。</span></div></li>
+<li><i>2</i><div><b>分類でしぼり込む</b><span>すべて／マニュアル／営業資料／その他。数字は件数です。</span></div></li>
+<li><i>3</i><div><b>ことばで探す</b><span>「AIチェック」「確認印」などで、資料の名前と説明から探せます。</span></div></li>
+<li><i>4</i><div><b>どのマニュアルを読めばいい？</b><span>お客様・申請担当・管理者・社労士の役割ごとに案内します。</span></div></li>
+<li><i>5</i><div><b>開く・PDF</b><span>「開く」でブラウザ表示、「PDF」で保存。お客様にはお客様向けを渡します。</span></div></li>
+</ol>
+<div class="tip"><b>管理者だけ</b>営業資料と宣伝用LPが見えます。下の「資料を追加する」で社内ルールやリンクも足せます（試作では再読み込みで消えます）。</div>
+</div></div></div>
+<div class="pg-foot"><span class="ch">10 ナレッジ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg" id="s11"><div class="pg-head"><div class="eyebrow"><span class="no">11</span><span class="sep"></span><span class="sub">困ったとき</span></div><h2>よくある質問</h2></div>
+<div class="pg-body"><div class="qa">
+<div><b>担当者が休む・辞めることになりました</b><p>「担当者」の「お客様ごとの申請担当」で担当を替えます。辞める人のアカウントは、スーパー管理者が利用をオフにします。</p></div>
+<div><b>新しい担当者を入れたい</b><p>管理者は「担当者を追加する」、スーパー管理者は「アカウントを追加する」から。本人にはパスワード設定のリンクが届きます。</p></div>
+<div><b>パスワードを忘れたと言われました</b><p>スーパー管理者が「パスワード再設定」でリンクを送ります。パスワードを聞いたり、教えたりはしません。</p></div>
+<div><b>工数が実際の感覚と合いません</b><p>分数は仮の標準値です。予定外の作業は「作業時間の記録」で足し、実績と比べて標準を見直します。</p></div>
+<div><b>履歴事項全部証明書の「3か月」は決まりですか</b><p>社内ルールの初期値です。労働局に確認し、設定で1・2・3・6か月から選べます。</p></div>
+<div><b>お客様からGビズIDのパスワードを渡されました</b><p>受け取らず、保存もしません。ポータルへのログインはお客様本人が行い、代理先（社労士）を設定してもらいます。</p></div>
+<div><b>「書類を作る」ボタンが出ません</b><p>提携の社労士に引き継ぐ案件では、運営側は下書きを作りません（27条）。下書きは社労士の画面で作られます。</p></div>
+<div><b>代理表示したことは残りますか</b><p>はい。始めと終わりが「操作の記録」に残り、誰も消せません。</p></div>
+</div></div>
+<div class="pg-foot"><span class="ch">11 困ったとき</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+</main></body></html>

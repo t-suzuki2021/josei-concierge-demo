@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>お客様向け操作マニュアル</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css"><link rel="icon" href="../favicon-app-32.png">
+<style>
+/* 画面写真の切り取り（.cv：aspect-ratio で高さ、margin-top で開始位置） */
+.cv{position:relative;overflow:hidden;border-radius:22px;background:#fff}
+.cv img{width:100%;max-width:none;border-radius:0!important}
+.cv .pin{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.shot .cv{border-radius:0}
+.phone.w340{width:340px}.phone.w280{width:280px}.phone.w260{width:260px}
+.ph-cap{margin-top:10px;text-align:center;font-size:13px;line-height:1.6;color:var(--muted)}
+.ph-cap b{display:block;color:var(--fg);font-size:14.5px}
+.pcol{display:flex;flex-direction:column;align-items:center;min-width:0}
+.idl{display:flex;flex-wrap:wrap;gap:6px}
+.idl code,.mono{font:600 12.5px/1.4 ui-monospace,Consolas,monospace;background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:2px 7px}
+.promise .card{border-top:4px solid var(--accent)}
+.promise .n{font:700 13px/1 var(--num);color:var(--accent)}
+.tl{border:1px solid var(--line);border-radius:14px;padding:14px 18px 8px;background:#fff}
+.tl svg{width:100%;height:auto;display:block}
+.mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.who4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.who4 .card{padding:14px 16px}
+.who4 .card h3{font-size:15.5px}
+.calls span b{display:inline;font-size:inherit;line-height:inherit}
+@media screen and (max-width:900px){
+ .phone.w340,.phone.w280,.phone.w260{width:240px}
+ .mini3,.who4{grid-template-columns:1fr}
+}
+</style>
+</head><body>
+<div class="topbar noprint"><b>人材開発支援助成金コンシェルジュ</b><span class="t">お客様向け 操作マニュアル</span><span class="sp"></span><a href="manual-client.pdf" download>PDFで保存</a><a href="javascript:print()">印刷</a></div>
+<main class="doc">
+
+<section class="pg dark"><div class="cover"><div>
+<span class="tag">お客様（ご担当者さま）向け</span>
+<h1><small>人材開発支援助成金コンシェルジュ</small>操作マニュアル</h1>
+<p>スマホで書類を出して、進み具合と期限を見るまで。<br>毎日の操作を、画面の写真つきでご案内します。</p>
+<div class="ver">2026年11月版（試作）・画面の会社名と氏名はすべて架空の例です</div></div>
+<div class="art"><svg viewBox="0 0 520 400" role="img" aria-label="スマホで書類を撮り、AIと担当者が確認するイラスト">
+<ellipse cx="260" cy="210" rx="240" ry="175" fill="#1D2D52"/>
+<rect x="70" y="120" width="130" height="170" rx="10" fill="#E5EBF7" transform="rotate(-8 135 205)"/>
+<g transform="rotate(-8 135 205)"><rect x="88" y="142" width="70" height="10" rx="5" fill="#2E4C8C"/><rect x="88" y="166" width="94" height="7" rx="3.5" fill="#B7C2D6"/><rect x="88" y="182" width="84" height="7" rx="3.5" fill="#B7C2D6"/><rect x="88" y="198" width="94" height="7" rx="3.5" fill="#B7C2D6"/><circle cx="160" cy="255" r="18" fill="none" stroke="#B3362B" stroke-width="4"/></g>
+<rect x="200" y="58" width="150" height="290" rx="24" fill="#0E1830"/><rect x="210" y="70" width="130" height="266" rx="16" fill="#fff"/>
+<rect x="222" y="86" width="106" height="40" rx="10" fill="#2E4C8C"/><rect x="232" y="96" width="60" height="7" rx="3.5" fill="#8FB0F2"/><rect x="232" y="109" width="80" height="8" rx="4" fill="#fff"/>
+<g fill="none" stroke-width="3"><circle cx="236" cy="148" r="8" stroke="#2E4C8C" fill="#2E4C8C"/><circle cx="236" cy="174" r="8" stroke="#2E4C8C"/><circle cx="236" cy="200" r="8" stroke="#D6DBE3"/><circle cx="236" cy="226" r="8" stroke="#D6DBE3"/></g>
+<path d="M232 148l3 3 6-6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+<rect x="252" y="144" width="62" height="8" rx="4" fill="#5F6878"/><rect x="252" y="170" width="70" height="8" rx="4" fill="#181C25"/><rect x="252" y="196" width="56" height="8" rx="4" fill="#B7C2D6"/><rect x="252" y="222" width="66" height="8" rx="4" fill="#B7C2D6"/>
+<rect x="222" y="252" width="106" height="44" rx="10" fill="#FCE9DE"/><circle cx="242" cy="274" r="10" fill="#E8743B"/><rect x="258" y="266" width="58" height="7" rx="3.5" fill="#A44A1C"/><rect x="258" y="279" width="40" height="6" rx="3" fill="#E8B79B"/>
+<rect x="222" y="306" width="106" height="20" rx="10" fill="#2E4C8C"/>
+<circle cx="398" cy="118" r="42" fill="#E8743B"/><path d="M398 92l7 18 18 7-18 7-7 18-7-18-18-7 18-7z" fill="#fff"/>
+<rect x="362" y="210" width="110" height="96" rx="12" fill="#fff"/><rect x="362" y="210" width="110" height="26" rx="12" fill="#B3362B"/><rect x="362" y="224" width="110" height="12" fill="#B3362B"/>
+<g fill="#D6DBE3"><rect x="374" y="246" width="16" height="12" rx="3"/><rect x="396" y="246" width="16" height="12" rx="3"/><rect x="418" y="246" width="16" height="12" rx="3"/><rect x="440" y="246" width="16" height="12" rx="3"/><rect x="374" y="266" width="16" height="12" rx="3"/><rect x="396" y="266" width="16" height="12" rx="3"/><rect x="440" y="266" width="16" height="12" rx="3"/><rect x="374" y="286" width="16" height="12" rx="3"/><rect x="396" y="286" width="16" height="12" rx="3"/></g>
+<rect x="418" y="266" width="16" height="12" rx="3" fill="#E8743B"/>
+<circle cx="118" cy="320" r="30" fill="#1B7448"/><path d="M104 320l10 10 18-20" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div></div></section>
+
+<section class="pg" id="toc"><div class="pg-head"><div class="eyebrow">目次</div><h2>知りたいことから、<em>開けます</em></h2></div>
+<div class="pg-body"><nav class="toc">
+<a href="#s1"><span class="n">01</span><b>はじめに</b><small>できること・3つの約束・全体の流れ</small></a>
+<a href="#s2"><span class="n">02</span><b>ログイン</b><small>IDとパスワード（デモ用ID）</small></a>
+<a href="#s3"><span class="n">03</span><b>ホーム</b><small>いまの段階・次の期限・やること</small></a>
+<a href="#s4" class="hl"><span class="n">04</span><b>書類を出す</b><small>撮って送るだけ。AIがその場で確認</small></a>
+<a href="#s5"><span class="n">05</span><b>質問とご要望</b><small>5つの質問・研修のご要望</small></a>
+<a href="#s6"><span class="n">06</span><b>計画の確認と送信</b><small>社内の育成計画・内容の確認</small></a>
+<a href="#s7"><span class="n">07</span><b>期限と研修中のお願い</b><small>2回の期限・給料・出勤簿・受講料</small></a>
+<a href="#s8"><span class="n">08</span><b>マイページ</b><small>メッセージ・助成金の見込み・会社の情報</small></a>
+<a href="#s9"><span class="n">09</span><b>お助け情報</b><small>制度の説明・用語の「？」</small></a>
+<a href="#s10"><span class="n">10</span><b>困ったとき</b><small>よくある質問</small></a>
+</nav>
+<div class="tip"><b>まず読むところ</b>はじめての方は「03 ホーム」と「04 書類を出す」だけ読めば、すぐに使い始められます。</div></div>
+<div class="pg-foot"><span class="ch">目次</span><span class="dots"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s1"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">はじめに</span></div><h2>スマホひとつで、<em>助成金の準備</em>が進みます</h2></div>
+<div class="pg-body">
+<div class="cards c4">
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></div><h3>書類を撮って出す</h3><p>紙の書類はスマホで撮るだけ。PDFでも大丈夫です。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg></div><h3>AIがその場で確認</h3><p>発行日・会社名・人数などを読み取り、気になる点をすぐ表示します。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>期限と進み具合が見える</h3><p>次の期限まであと何日か、いまの段階が何％かが一目で分かります。</p></div>
+<div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div><h3>担当者とやりとり</h3><p>分からないことは、メッセージでいつでも聞けます。</p></div>
+</div>
+<div class="cards promise">
+<div class="card"><span class="n">約束 1</span><h3>IDやパスワードを預かりません</h3><p>GビズIDのIDやパスワード、口座の情報を、このアプリで入力していただくことはありません。</p></div>
+<div class="card"><span class="n">約束 2</span><h3>AIと人の二重チェック</h3><p>AIの確認のあと、担当者と<b>社会保険労務士</b>が人の目で確かめます。最後の判断は労働局です。</p></div>
+<div class="card"><span class="n">約束 3</span><h3>期限の前にお知らせします</h3><p>期限の14日前と3日前に、LINEやメールでお知らせします。</p></div>
+</div>
+<div class="flow"><div class="fs"><span class="k">お客様</span><b>書類を撮って出す</b><small>スマホで撮るだけ</small></div><div class="ar"></div><div class="fs"><span class="k">AI</span><b>その場で確認</b><small>2つの読み方で確かめる</small></div><div class="ar"></div><div class="fs"><span class="k">担当者</span><b>確認してまとめる</b><small>不足があればお知らせ</small></div><div class="ar"></div><div class="fs hl"><span class="k">社会保険労務士</span><b>書類を作って提出</b><small>確認印を押して労働局へ</small></div><div class="ar"></div><div class="fs"><span class="k">労働局</span><b>審査・支給決定</b><small>最後の判断</small></div></div>
+</div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">01</span><span class="sep"></span><span class="sub">全体の流れ</span></div><h2>手続きは<em>7つの段階</em>で進みます</h2></div>
+<div class="pg-body">
+<div class="stages" style="--n:7">
+<div class="stage s1"><span class="sn">1</span><b>検討</b><small>研修とコースを決める</small><span class="who">お客様・担当者</span></div>
+<div class="stage s2"><span class="sn">2</span><b>事前準備</b><small>書類を出す・質問に答える</small><span class="who">お客様</span></div>
+<div class="stage s3"><span class="sn">3</span><b>計画届の提出</b><small>訓練開始の1か月前までに</small><span class="who">社労士</span></div>
+<div class="stage s4"><span class="sn">4</span><b>訓練の実施</b><small>研修を受ける・出勤簿をつける</small><span class="who">お客様</span></div>
+<div class="stage s5"><span class="sn">5</span><b>支給申請</b><small>訓練終了の翌日から2か月以内</small><span class="who">社労士</span></div>
+<div class="stage s6"><span class="sn">6</span><b>審査・支給決定</b><small>労働局が審査する</small><span class="who">労働局</span></div>
+<div class="stage s7"><span class="sn">7</span><b>入金</b><small>助成金が振り込まれる</small><span class="who">お客様</span></div>
+</div>
+<div class="who4">
+<div class="card pale"><h3>お客様</h3><p>書類を出す、質問に答える、研修を受ける、出勤簿をつける。</p></div>
+<div class="card"><h3>担当者（申請の窓口）</h3><p>書類集めと期限の管理。そろった書類を社労士に引き継ぎます。</p></div>
+<div class="card"><h3>社会保険労務士</h3><p>申請書類を作り、内容を確かめて確認印を押し、労働局へ出します。</p></div>
+<div class="card"><h3>労働局</h3><p>申請を審査し、助成金を支給するかどうかと額を決めます。</p></div>
+</div>
+<div class="note"><b>お客様の作業</b>は、主に「事前準備」と「訓練の実施」の2つです。ホームの「いまやること」に、その時にやることだけが出ます。</div>
+</div>
+<div class="pg-foot"><span class="ch">01 はじめに</span><span class="dots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s2"><div class="pg-head"><div class="eyebrow"><span class="no">02</span><span class="sep"></span><span class="sub">ログイン</span></div><h2>右上のボタンから、<em>IDとパスワード</em>で入ります</h2></div>
+<div class="pg-body"><div class="split even">
+<div class="col">
+<p class="lead" style="margin:0">画面右上の<b>アカウントボタン</b>を押すと、ログイン画面が開きます。</p>
+<ol class="calls">
+<li><i>1</i><div><b>ログインID</b><span>担当者からお知らせするIDを入れます（例：<code class="mono">cl-midori</code>）。</span></div></li>
+<li><i>2</i><div><b>パスワード</b><span>ご自身で決めたパスワードです。運営側も見ることはできません。</span></div></li>
+<li><i>3</i><div><b>ログイン</b><span>押すと、自社のマイページ（ホーム）が開きます。ほかの会社の情報は表示されません。</span></div></li>
+<li><i>4</i><div><b>試作版の案内</b><span>このデモでは、パスワードはすべて <code class="mono">demo</code> です。</span></div></li>
+</ol>
+<div class="warn"><b>ご注意</b>GビズIDのIDやパスワードを、このアプリで聞くことはありません。入力を求められても入れないでください。</div>
+</div>
+<div class="col">
+<figure class="shot"><div class="cv" style="aspect-ratio:585/327"><img src="img/xa-login.png" alt="ログイン画面" style="width:213.5%;margin-left:-109.4%;margin-top:-12.82%">
+<span class="pin" style="left:93.2%;top:30.9%">1</span><span class="pin" style="left:93.2%;top:55.7%">2</span><span class="pin" style="left:22.2%;top:71.9%">3</span><span class="pin" style="left:95.5%;top:88%">4</span></div><figcaption>ログイン画面（右側の入力欄）</figcaption></figure>
+<div class="note"><b>デモ用のID（お客様・9社）</b>パスワードはすべて demo。それぞれ自社のマイページだけが開きます。
+<div class="idl" style="margin-top:6px"><code>cl-midori</code><code>cl-hikari</code><code>cl-soleil</code><code>cl-yamato</code><code>cl-sakura</code><code>cl-aozora</code><code>cl-tachibana</code><code>cl-kaede</code><code>cl-harukaze</code></div></div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">02 ログイン</span><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s3"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">ホーム ①</span></div><h2>開いたら、<em>いまの段階と期限</em>が出ます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>いまの段階</b><span>「いまは『事前準備』の段階です」のように表示します。会社名とコースも確認できます。</span></div></li>
+<li><i>2</i><div><b>次の期限</b><span>次の期限まで<b>あと何日</b>かと、その日付です。この例は計画届の提出期限まであと31日です。</span></div></li>
+<li><i>3</i><div><b>全体の流れ（7段階）</b><span>「いまここ」が今の段階です。済んだ段階にはチェックが付き、右側に各段階の期限が出ます。</span></div></li>
+<li><i>4</i><div><b>お助け情報</b><span>制度のしくみや大事な期限の説明は、ここから開きます（09章）。</span></div></li>
+</ol>
+<div class="tip"><b>ポイント</b>期限が近づくと、LINEやメールでもお知らせします。アプリを毎日開かなくても大丈夫です。</div></div>
+<div class="phones"><div class="phone w340"><div class="cv" style="aspect-ratio:832/1079"><img src="img/c-home.png" alt="お客様のホーム画面の上の部分">
+<span class="pin" style="left:6%;top:11.7%">1</span><span class="pin" style="left:95%;top:24.7%">2</span><span class="pin" style="left:54.7%;top:51.9%">3</span><span class="pin" style="left:72.7%;top:36.3%">4</span></div></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">03 ホーム</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">03</span><span class="sep"></span><span class="sub">ホーム ②</span></div><h2>「いまやること」を、<em>上から順に</em>押すだけ</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>残りの時間</b><span>やることの想定時間の合計です（例：残り約46分）。</span></div></li>
+<li><i>2</i><div><b>やることのカード</b><span>押すと、その画面が開きます。終わると「完了」になります。</span></div></li>
+<li><i>3</i><div><b>想定時間と件数</b><span>「約18分」「0/4」は、目安の時間と、済んだ数／全体の数です。</span></div></li>
+<li><i>4</i><div><b>入力済みの項目</b><span>名刺や公開情報から、先に入れてある項目です。</span></div></li>
+<li><i>5</i><div><b>お知らせ</b><span>社労士が計画届を作成中、担当者が書類を確認した、などの状況です。</span></div></li>
+<li><i>6</i><div><b>申請の進み具合</b><span>手続き全体の％と、いまの段階の％です。作業の量に合わせて数えます。</span></div></li>
+</ol></div>
+<div class="phones">
+<div class="pcol"><div class="phone w280"><div class="cv" style="aspect-ratio:832/1183"><img src="img/c-home.png" alt="いまやることの一覧" style="margin-top:-120.31%">
+<span class="pin" style="left:75%;top:4.8%">1</span><span class="pin" style="left:9.4%;top:12.1%">2</span><span class="pin" style="left:87.5%;top:22.5%">3</span><span class="pin" style="left:92%;top:94.1%">4</span></div></div><p class="ph-cap">事前準備の段階の例</p></div>
+<div class="pcol"><div class="phone w280"><div class="cv" style="aspect-ratio:832/949"><img src="img/c-home2.png" alt="お知らせと申請の進み具合" style="margin-top:-156.25%">
+<span class="pin" style="left:93.8%;top:13.7%">5</span><span class="pin" style="left:73.4%;top:79.7%">6</span></div></div><p class="ph-cap">計画届の段階の例（別の会社）</p></div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">03 ホーム</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s4"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">書類を出す</span></div><h2>書類は、<em>撮って送るだけ</em>です</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>書類の名前と状態</b><span>まだの書類は「未提出」。下に取り方の説明（例：法務局で取得）が出ます。</span></div></li>
+<li><i>2</i><div><b>撮影・ファイルを選ぶ</b><span>スマホのカメラで撮るか、写真・PDFを選びます。</span></div></li>
+<li><i>3</i><div><b>サンプルで試す</b><span>試作版だけのボタンです。見本の書類で動きを確かめられます。</span></div></li>
+<li><i>4</i><div><b>どこにある？／まだ手元にない</b><span>書類の探し方を表示します。手元にないときは「後日アップ」にできます。</span></div></li>
+</ol>
+<div class="flow"><div class="fs"><span class="k">STEP1</span><b>撮る</b><small>4隅が入るように</small></div><div class="ar"></div><div class="fs hl"><span class="k">STEP2</span><b>AIがすぐ確認</b><small>結果がその場で出る</small></div><div class="ar"></div><div class="fs"><span class="k">STEP3</span><b>人が確認</b><small>担当者・社労士</small></div></div>
+<div class="tip"><b>撮るコツ</b>明るい場所で、影が入らないように真上から撮ると、読み取りがうまくいきます。</div></div>
+<div class="phones"><div class="phone"><div class="cv" style="aspect-ratio:832/1220"><img src="img/c-docs.png" alt="書類とAIチェックの画面">
+<span class="pin" style="left:94.9%;top:28.6%">1</span><span class="pin" style="left:12.4%;top:37.5%">2</span><span class="pin" style="left:85%;top:37.5%">3</span><span class="pin" style="left:62%;top:45.7%">4</span></div></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">04 書類を出す</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg"><div class="pg-head"><div class="eyebrow"><span class="no">04</span><span class="sep"></span><span class="sub">AIチェックの結果</span></div><h2>AIの結果は、<em>その場で</em>表示されます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>判定</b><span>「確認済み」「要確認」など。<b>判定が分かれた</b>は、AIの2つの読み方で結果が違ったという意味で、人が確認します。</span></div></li>
+<li><i>2</i><div><b>AIが読み取った内容</b><span>発行日・商号・本店・代表者などです。</span></div></li>
+<li><i>3</i><div><b>要確認の理由</b><span>例：発行日から3か月が、計画届の提出期限より前に過ぎます。間に合わないときは取り直します。</span></div></li>
+<li><i>4</i><div><b>次の操作</b><span>もう一度AIでチェック／担当者に確認してもらう／撮り直す、から選べます。</span></div></li>
+<li><i>5</i><div><b>確認済み</b><span>担当者が人の目で確かめると、緑の「確認済み」になります。</span></div></li>
+</ol>
+<div class="warn"><b>差し替えのお願い</b>担当者や社労士から依頼があると、ホームの「いまやること」に<b>「○○」を差し替える</b>と理由が出ます。撮り直してアップしてください。</div></div>
+<div class="phones"><div class="phone w340"><div class="cv" style="aspect-ratio:832/1105"><img src="img/c-docs-ai.png" alt="AIチェックの結果" style="margin-top:-51.56%">
+<span class="pin" style="left:65.6%;top:4.9%">1</span><span class="pin" style="left:7.8%;top:17.6%">2</span><span class="pin" style="left:7.8%;top:40%">3</span><span class="pin" style="left:59.4%;top:70.6%">4</span><span class="pin" style="left:68.8%;top:92%">5</span></div></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">04 書類を出す</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s5"><div class="pg-head"><div class="eyebrow"><span class="no">05</span><span class="sep"></span><span class="sub">質問とご要望</span></div><h2>質問もご要望も、<em>選ぶだけ</em>で答えられます</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>5つの質問（約5分）</b><span>書類からは分からないことだけを聞きます。入力は自動で保存されます。</span></div></li>
+<li><i>2</i><div><b>GビズIDプライム</b><span>「取得済み・申請中・これから」を選ぶだけです。<b>IDやパスワードは不要</b>です。</span></div></li>
+<li><i>3</i><div><b>時間がかかっている業務</b><span>困っている業務を選びます（いくつでも）。研修の中身は、助成金の要項に沿って担当者側で組み立てます。</span></div></li>
+<li><i>4</i><div><b>これまでに受けた研修</b><span>同じ内容にならないよう、記録を表示します。ほかにあれば書き足してください。</span></div></li>
+</ol>
+<div class="tip"><b>ひとこと</b>「研修のあと、受講した方の賃金を5%以上上げる」と、コースによって助成率が上がります。</div></div>
+<div class="phones">
+<div class="pcol"><div class="phone" style="width:250px"><div class="cv" style="aspect-ratio:832/1640"><img src="img/c-qs.png" alt="5つの質問の画面">
+<span class="pin" style="left:92%;top:20.6%">1</span><span class="pin" style="left:92%;top:85.2%">2</span></div></div><p class="ph-cap">5つの質問</p></div>
+<div class="pcol"><div class="phone" style="width:250px"><div class="cv" style="aspect-ratio:832/1500"><img src="img/c-wish.png" alt="研修のご要望の画面">
+<span class="pin" style="left:92%;top:22.5%">3</span><span class="pin" style="left:92%;top:73.8%">4</span></div></div><p class="ph-cap">研修のご要望</p></div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">05 質問とご要望</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s6"><div class="pg-head"><div class="eyebrow"><span class="no">06</span><span class="sep"></span><span class="sub">計画の確認と送信</span></div><h2>ひな形を確かめて、<em>まとめて送信</em>します</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>社内の育成計画のひな形</b><span>助成金に必要な「事業内職業能力開発計画」のひな形です。内容を確認します（約15分）。</span></div></li>
+<li><i>2</i><div><b>社内に知らせたらチェック</b><span>掲示板・全員へのメール・朝礼のどれかで知らせたら、チェックして保存します。</span></div></li>
+<li><i>3</i><div><b>修正</b><span>「内容の確認」では、自動で入った内容のうち、違うところだけ直します。</span></div></li>
+<li><i>4</i><div><b>出どころの印</b><span>公開情報・名刺・研修会社・ご回答など、どこから入れたかを行ごとに表示します。</span></div></li>
+</ol>
+<div class="good"><b>最後に</b>「上の内容で間違いありません」にチェックし、<b>「この内容で送信する」</b>を押します。そろっていない書類があっても送信でき、あとから追加できます。</div></div>
+<div class="phones">
+<div class="pcol"><div class="phone w260"><div class="cv" style="aspect-ratio:832/1340"><img src="img/c-plan.png" alt="社内の育成計画の画面">
+<span class="pin" style="left:92%;top:28.4%">1</span><span class="pin" style="left:92%;top:86%">2</span></div></div><p class="ph-cap">社内の育成計画</p></div>
+<div class="pcol"><div class="phone w260"><div class="cv" style="aspect-ratio:832/1456"><img src="img/c-confirm.png" alt="内容の確認の画面">
+<span class="pin" style="left:76.6%;top:29%">3</span><span class="pin" style="left:73.4%;top:51.2%">4</span></div></div><p class="ph-cap">内容の確認</p></div>
+</div>
+</div></div>
+<div class="pg-foot"><span class="ch">06 計画の確認と送信</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s7"><div class="pg-head"><div class="eyebrow"><span class="no">07</span><span class="sep"></span><span class="sub">期限と研修中のお願い</span></div><h2>大事な期限は<em>2回</em>。過ぎると助成を受けられません</h2></div>
+<div class="pg-body">
+<div class="tl"><svg viewBox="0 0 1100 190" role="img" aria-label="計画届と支給申請の期限の図">
+<line x1="30" y1="96" x2="1080" y2="96" stroke="#D6DBE3" stroke-width="4"/>
+<rect x="70" y="80" width="300" height="32" rx="8" fill="#DDF2F0" stroke="#11807A" stroke-width="2"/>
+<text x="220" y="101" text-anchor="middle" font-size="15" font-weight="700" fill="#11807A">計画届の提出期間</text>
+<text x="62" y="62" text-anchor="start" font-size="13" fill="#5F6878">訓練開始の6か月前</text>
+<text x="370" y="62" text-anchor="middle" font-size="13" font-weight="700" fill="#B3362B">1か月前（締切）</text>
+<circle cx="370" cy="96" r="8" fill="#B3362B"/>
+<rect x="450" y="80" width="190" height="32" rx="8" fill="#ECE6F8" stroke="#6A4BB5" stroke-width="2"/>
+<text x="545" y="101" text-anchor="middle" font-size="15" font-weight="700" fill="#6A4BB5">訓練の実施</text>
+<text x="450" y="62" text-anchor="middle" font-size="13" fill="#5F6878">開始</text><text x="640" y="62" text-anchor="middle" font-size="13" fill="#5F6878">終了</text>
+<rect x="650" y="80" width="250" height="32" rx="8" fill="#FCE9DE" stroke="#E8743B" stroke-width="2"/>
+<text x="775" y="101" text-anchor="middle" font-size="15" font-weight="700" fill="#A44A1C">支給申請の期間</text>
+<text x="775" y="62" text-anchor="middle" font-size="13" fill="#5F6878">終了の翌日から2か月以内</text>
+<circle cx="900" cy="96" r="8" fill="#B3362B"/>
+<rect x="930" y="80" width="140" height="32" rx="8" fill="#DDF1E5" stroke="#1B7448" stroke-width="2"/>
+<text x="1000" y="101" text-anchor="middle" font-size="15" font-weight="700" fill="#1B7448">審査・入金</text>
+<text x="30" y="150" font-size="13.5" fill="#181C25" font-weight="700">例（みどり設備）</text>
+<text x="370" y="150" text-anchor="middle" font-size="13.5" fill="#B3362B" font-weight="700">計画届 12/29まで</text>
+<text x="545" y="150" text-anchor="middle" font-size="13.5" fill="#5F6878">訓練 1/29〜2/28</text>
+<text x="900" y="150" text-anchor="middle" font-size="13.5" fill="#B3362B" font-weight="700">支給申請 4/28まで</text>
+<text x="1000" y="150" text-anchor="middle" font-size="13.5" fill="#5F6878">申請のあと</text>
+</svg></div>
+<div class="warn"><b>ご注意</b>期限を<b>1日でも過ぎると、助成を受けられません</b>。期限の日が土日祝・年末年始のときは、次の開庁日（労働局が開いている日）までになります。</div>
+<div class="mini3">
+<div class="card"><h3>① 研修中も、ふだんどおり給料を</h3><p>研修を受けた時間も、通常の賃金を払ってください。賃金助成の対象になります。</p></div>
+<div class="card"><h3>② 出勤簿を毎日つける</h3><p>受講の記録と出勤簿が合っている必要があります。毎月の出勤簿・賃金台帳をアップします。</p></div>
+<div class="card"><h3>③ 受講料は全額を先に</h3><p>支給申請の前に、受講料を全額お支払いください。振込の記録をアップします。</p></div>
+</div>
+</div>
+<div class="pg-foot"><span class="ch">07 期限と研修中のお願い</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s8"><div class="pg-head"><div class="eyebrow"><span class="no">08</span><span class="sep"></span><span class="sub">マイページ</span></div><h2>ホームの下の<em>「マイページ」</em>から開きます</h2></div>
+<div class="pg-body"><div class="phones" style="gap:40px">
+<div class="pcol" style="max-width:300px"><div class="phone sm"><div class="cv" style="aspect-ratio:832/920"><img src="img/c-msg.png" alt="メッセージの画面"></div></div>
+<p class="ph-cap"><b>メッセージ</b>担当者とのやりとりです。書類のことでも、助成金のことでも聞けます。</p></div>
+<div class="pcol" style="max-width:300px"><div class="phone sm"><div class="cv" style="aspect-ratio:832/1320"><img src="img/c-money.png" alt="助成金の見込みの画面"></div></div>
+<p class="ph-cap"><b>助成金の見込み</b>経費助成と賃金助成の内訳です。実際の額は労働局の審査で決まります。</p></div>
+<div class="pcol" style="max-width:300px"><div class="phone sm"><div class="cv" style="aspect-ratio:832/871"><img src="img/c-co.png" alt="会社の情報・通知の画面（通知とログイン）" style="margin-top:-201.56%"></div></div>
+<p class="ph-cap"><b>会社の情報・通知</b>LINE・メールのお知らせ、期限の14日前と3日前の通知、パスワードの変更。</p></div>
+</div>
+<div class="note"><b>口座の情報</b>このアプリでは預かりません。振込先は、支給申請の書類にお客様が記入します。</div></div>
+<div class="pg-foot"><span class="ch">08 マイページ</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span></div></section>
+
+<section class="pg" id="s9"><div class="pg-head"><div class="eyebrow"><span class="no">09</span><span class="sep"></span><span class="sub">お助け情報</span></div><h2>制度のことは、<em>御社の数字で</em>説明します</h2></div>
+<div class="pg-body"><div class="split">
+<div class="col"><ol class="calls">
+<li><i>1</i><div><b>どんな制度？</b><span>研修の費用と、研修時間の賃金の一部が国から戻る制度です。</span></div></li>
+<li><i>2</i><div><b>御社の場合の目安</b><span>コース・助成の割合・見込みの額を、御社の人数で出します。</span></div></li>
+<li><i>3</i><div><b>大事な期限は2回</b><span>計画届と支給申請の期限を、御社の日付で表示します。</span></div></li>
+<li><i>4</i><div><b>研修中にお願いすること</b><span>給料・出勤簿・受講料の3つです（07章）。</span></div></li>
+</ol>
+<div class="card pale"><h3>用語の横の「？」</h3><p>「事前確認書」などの専門用語の横にある<b>「？」</b>を押すと、ひとことの説明が出ます。</p></div>
+<div class="note"><b>このほか</b>厚生労働省の公式ページと、このマニュアルへのリンクも置いてあります。</div></div>
+<div class="phones"><div class="phone w260"><div class="cv" style="aspect-ratio:832/1635"><img src="img/c-help.png" alt="お助け情報の画面">
+<span class="pin" style="left:92%;top:13.4%">1</span><span class="pin" style="left:92%;top:30.4%">2</span><span class="pin" style="left:92%;top:62.5%">3</span><span class="pin" style="left:92%;top:86.9%">4</span></div></div></div>
+</div></div>
+<div class="pg-foot"><span class="ch">09 お助け情報</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div></section>
+
+<section class="pg" id="s10"><div class="pg-head"><div class="eyebrow"><span class="no">10</span><span class="sep"></span><span class="sub">困ったとき</span></div><h2>よくある質問</h2></div>
+<div class="pg-body"><div class="qa">
+<div><b>パスワードを忘れました</b><p>担当者にご連絡ください。再設定の手続きをご案内します。パスワードは運営側も見られません。</p></div>
+<div><b>GビズIDのパスワードを聞かれました</b><p>このアプリで聞くことはありません。入力せずに、担当者へお知らせください。</p></div>
+<div><b>書類がどこにあるか分かりません</b><p>書類の下の「どこにある？」を押してください。それでも分からないときは、メッセージで聞けます。</p></div>
+<div><b>書類がまだ手元にありません</b><p>「まだ手元にない」を押すと、後日アップにできます。期限に間に合うよう、担当者からも声をかけます。</p></div>
+<div><b>AIの結果が「要確認」でした</b><p>理由を読んで撮り直すか、「担当者に確認してもらう」を押してください。最後は人が確かめます。</p></div>
+<div><b>期限に間に合わないかもしれません</b><p>すぐにメッセージで担当者へ。期限を過ぎると助成を受けられないため、早めのご相談が大切です。</p></div>
+<div><b>見込みの額のとおりにもらえますか</b><p>見込みは目安です。実際の額は、労働局の審査で決まります。</p></div>
+<div><b>助成金はいつ振り込まれますか</b><p>支給申請のあと、労働局の審査を経て支給が決まり、入金されます。時期は審査によって変わります。</p></div>
+</div>
+<div class="tip"><b>それでも困ったときは</b>ホームの「マイページ」→「メッセージ」から、担当者に送ってください。期限に関わることは、特に早めにご相談ください。</div></div>
+<div class="pg-foot"><span class="ch">10 困ったとき</span><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div></section>
+
+</main></body></html>
