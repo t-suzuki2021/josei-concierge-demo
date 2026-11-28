@@ -743,6 +743,83 @@ input[type=password]{font:inherit;color:var(--fg);background:var(--surface);bord
   .thr-in{flex-direction:column;align-items:stretch}
   .asbar{margin-top:-6px}
 }
+/* 手続きと要件 */
+.chip.lv{min-width:84px;justify-content:center}
+.chip.lv.info{background:var(--info-pale);color:var(--info)}
+.chip.lv.mute,.chip.mute{background:var(--sunk);color:var(--muted)}
+.pcond{display:flex;flex-direction:column;gap:10px}
+.pchips{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.tg3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 14px}
+.pflags{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 18px}
+.plg{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:center;justify-content:space-between}
+.plgc{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:6px 10px;align-items:center}
+.plist{display:flex;flex-direction:column;gap:10px}
+.pc{padding:0;overflow:hidden}
+.pch{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:14px 18px;cursor:pointer;flex-wrap:wrap}
+.pch:hover{background:var(--sunk)}
+.pch:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.pci{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--sunk);color:var(--muted);flex:none}
+.pci.ok{background:var(--ok-pale);color:var(--ok)}.pci.brand{background:var(--brand-pale);color:var(--brand)}.pci.amber{background:var(--amber-pale);color:var(--amber)}
+.pct{display:flex;flex-direction:column;gap:2px;flex:1 1 240px;min-width:0}
+.pct b{font-size:15px}
+.pcn{display:flex;flex-wrap:wrap;gap:4px}
+.pcn .chip.lv{min-width:0}
+.pc.open{border-color:var(--brand)}
+.pcb{border-top:1px solid var(--line);padding:14px 18px 16px;display:flex;flex-direction:column;gap:14px}
+.pdue{display:flex;gap:10px;align-items:flex-start;background:var(--sunk);border-radius:10px;padding:10px 12px}
+.pdue p{margin:2px 0 0;font-size:13px;color:var(--body)}
+.psec{display:flex;flex-direction:column;gap:6px}
+.psec>.lbl{margin:0}
+.rq{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.rq:last-child{border-bottom:0}
+.rq b{font-weight:600;font-size:13.5px}.rq p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.rq .chip{min-width:72px;justify-content:center}
+.kbr{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:9px 0;border-bottom:1px solid var(--line)}
+.kbr:last-child{border-bottom:0}
+.kbm b{font-size:13.5px}.kbm p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.kbc{display:block;color:var(--amber);font-weight:600}
+.kbr.na .kbc{color:var(--muted);font-weight:400}
+.kbn{color:var(--body)!important}
+.kbs{max-width:140px;text-align:right}
+.kbr.na{opacity:.75}
+details.na>summary{cursor:pointer;font-size:13px;color:var(--muted);padding:4px 0}
+.tool{background:var(--sunk);border-radius:12px;padding:12px 14px}
+.chgr{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.chgr p{margin:2px 0 0;font-size:12.5px;color:var(--muted)}
+.chgr.re b{color:var(--warn)}
+.nin{width:130px;text-align:right}
+.pit ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.cov td.n{text-align:center;font-weight:700}.cov td.ok{color:var(--ok)}.cov td.am{color:var(--amber)}.cov td.na{color:var(--muted)}
+.cvl{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13.5px}
+.cvl li{display:flex;gap:8px;align-items:flex-start}.cvl li svg{flex:none;margin-top:3px;color:var(--ok)}.cvl.out li svg{color:var(--muted)}
+.cneed{display:flex;flex-direction:column;gap:6px;margin-bottom:10px}
+.cnr{display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.cnr>span:last-child{display:flex;flex-direction:column;gap:2px}
+/* AIの二重チェック */
+.dkv{display:flex;gap:10px;align-items:center;border-radius:12px;padding:10px 12px;background:var(--ok-pale);margin-bottom:10px}
+.dkv.warn,.dkv.split{background:var(--amber-pale)}.dkv.bad{background:var(--warn-pale)}
+.dkv p{margin:2px 0 0;font-size:12.5px}
+.dkv-ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--surface);flex:none}
+.dkv-n{margin-left:auto;display:flex;gap:4px}
+.dkv-n i{font-style:normal;font-size:11px;font-weight:700;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--ok);color:#fff}
+.dkv-n i.warn{background:var(--amber)}.dkv-n i.bad{background:var(--warn)}
+.dk2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.cmpv{display:flex;flex-direction:column;gap:1px}
+/* 社労士の確認 */
+.srconf{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;margin:10px 0}
+.srmk{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--sunk);border-radius:10px;padding:10px 12px}
+.srmk p{margin:2px 0 0}
+.srai{display:flex;gap:8px;align-items:flex-start;background:var(--amber-pale);color:var(--fg);border-radius:10px;padding:10px 12px}
+.srai p{margin:0;font-size:13px}
+.srdc{display:flex;flex-direction:column;gap:2px}
+.srdc label{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.srdc label>span{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.srdc b{font-weight:600;font-size:13px}
+.srconf .acts{flex-wrap:wrap}.srconf .btn{white-space:normal}
+.stamp{display:flex;gap:10px;align-items:center;border:2px solid var(--ok);border-radius:12px;padding:10px 12px;background:var(--ok-pale)}
+.stamp b{color:var(--ok)}.stamp p{margin:2px 0 0;font-size:12.5px}
+.st-ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ok);color:#fff;flex:none}
+@media (max-width:640px){.plgc{grid-template-columns:auto 1fr}.kbr,.rq{grid-template-columns:1fr}.kbs{text-align:left;max-width:none}.chgr{grid-template-columns:1fr auto}.pflags{grid-template-columns:1fr}.nin{width:100%}}
 </style>
 </head>
 <body>
@@ -862,6 +939,7 @@ S.partners=[
  {id:'p1',n:'みなと社会保険労務士事務所（例）',who:'港 一郎',area:'埼玉・東京',courses:'人材開発支援助成金（全コース）',contact:'Slackの共有チャンネル',share:true},
  {id:'p2',n:'あおば社会保険労務士法人（例）',who:'青葉 恵子',area:'全国（電子申請）',courses:'リスキリング支援・人材育成支援',contact:'メール',share:true}];
 S.selfSr='社会保険労務士 田中 ○○';
+S.partners[0].reg='第13990001号（例）';S.partners[0].kai='東京都社会保険労務士会（例）';S.partners[1].reg='第11990002号（例）';S.partners[1].kai='埼玉県社会保険労務士会（例）';
 const srOf=c=>S.partners.find(p=>p.id===c.sr)||S.partners[0];
 const srName=c=>S.filer==='self'?S.t.name+'（'+S.selfSr+'）':srOf(c).n;
 /* ---------- curriculum builder ----------
@@ -1316,8 +1394,9 @@ function overview(){
 
 /* ================= STAFF ================= */
 // メニューの定義。操作マニュアルもこの定義から作るので、画面を足すときはここに足す
-const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['team','user','担当者',1],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
+const SNAV=[['today','today','今日やること'],['cur','grad','カリキュラム作成'],['cases','cases','案件'],['crm','crm','顧客・提案'],['partner','shield','提携社労士'],['team','user','担当者',1],['cover','check','対応範囲'],['help','help','お助け情報'],['links','link','連携'],['settings','set','設定']];
 const CTABS=[['flow','流れとチェック','7つの段階のどこにいるかと、いまの段階でやること・期限を確認します。段階を押すと、必要な情報と期限が開きます。'],
+ ['proc','手続きと要件','コースと条件に合わせて、事前準備から支給決定のあとまでの手続き・満たす要件・書類（必須・該当する場合・任意）・期限を確かめます。変更届の期限・受講率・賃金要件の計算もここで行います。'],
  ['docs','書類とAIチェック','お客様から届いた書類と、書類どうしをAIで照合した結果を確認します。食い違いがあれば、直し方が出ます。'],
  ['calc','助成額の試算','受講者数・訓練時間・研修費用から、助成額の見込みを計算します。'],
  ['apply','申請データ','計画届と支給申請に使う情報をまとめています。担当の社労士事務所もここで変えられます。'],
@@ -1330,7 +1409,7 @@ function staff(){
  if(S.staff==='team'&&!isAdmin())S.staff='today';
  if(S.caseId&&!canSee(S.caseId))S.caseId=null;
  const none=()=>`<div class="ph"><div><h1>カリキュラム作成</h1></div></div><div class="card empty"><p><b>担当するお客様が、まだありません。</b></p><p>管理アカウントの「担当者」の画面で、お客様を割り当ててください。</p></div>`;
- const body=S.caseId?caseDetail(byId(S.caseId)):S.staff==='cur'&&!VIS().length?none():({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,team:teamV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
+ const body=S.caseId?caseDetail(byId(S.caseId)):S.staff==='cur'&&!VIS().length?none():({today:todayV,cur:curV,cases:casesV,crm:crmV,partner:partnerV,team:teamV,cover:coverV,help:helpV,links:linksV,settings:settingsV})[S.staff]();
  return acctBar()+`<div class="wrap st"><aside class="side" aria-label="スタッフ画面のメニュー">
   <button class="new" data-act="newcase">${ic('plus')}新しい案件</button>
   ${nav.map(n=>`<button data-act="snav" data-s="${n[0]}" aria-current="${S.caseId?n[0]==='cases':S.staff===n[0]}">${ic(n[1])}${n[2]}${n[0]==='today'&&left?`<span class="cnt">${left}</span>`:''}</button>`).join('')}
@@ -1386,10 +1465,10 @@ function stageCard(c){const s=STG(c)[c.stage];const n=nextDue(c);
   <div class="sdet"><div><h4>この段階で必要なこと</h4><p>${s.need}</p></div><div><h4>必要な情報・書類</h4><ul class="dots">${s.info.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h4>やること</h4><ul class="dots">${s.todo.map(x=>`<li>${x}</li>`).join('')}</ul></div><div><h4>期限</h4><p class="due">${s.due}</p>${n&&c.stage>0&&c.stage!==3?`<p><span class="chip ${diff(n.d)<=14?'warn':'mute'}">あと${diff(n.d)}日</span></p>`:''}</div></div></div>`;}
 function caseDetail(c){
  const tabs=CTABS;
- const body=({flow:tabFlow,docs:tabDocs,calc:tabCalc,apply:tabApply,forms:tabForms,log:tabLog,offer:tabOffer})[S.tab](c);
+ const body=({flow:tabFlow,proc:tabProc,docs:tabDocs,calc:tabCalc,apply:tabApply,forms:tabForms,log:tabLog,offer:tabOffer})[S.tab](c);
  return `<button class="lnk back" data-act="closecase">${ic('back','s')}案件にもどる</button>
  <div class="ph"><div><h1>${esc(c.co)}</h1><p class="sub">${esc(c.ind)}・従業員${total(c)}名・${COURSE(c.course).short}・${esc(c.train)}（${c.hours}時間×${c.people}名）・申請担当：${esc(ownerNm(c))}　${waitChip(c)}</p></div>
-  <div class="r">${isAdmin()?`<label class="own">申請担当 ${ownSel(c)}</label>`:''}<button class="btn o sm" data-act="fopen">${ic('doc','s')}申請書類を作る</button><button class="btn o sm" data-act="nudge" data-id="${c.id}">${ic('chat','s')}催促文をつくる</button>${c.stage<6?`<button class="btn p sm" data-act="advance" data-id="${c.id}">次の段階へ：${SNAME[c.stage+1]}</button>`:''}</div></div>
+  <div class="r">${isAdmin()?`<label class="own">申請担当 ${ownSel(c)}</label>`:''}<button class="btn o sm" data-act="fopen">${ic('doc','s')}${S.filer==='self'?'申請書類を作る':'申請書類'}</button><button class="btn o sm" data-act="nudge" data-id="${c.id}">${ic('chat','s')}催促文をつくる</button>${c.stage<6?`<button class="btn p sm" data-act="advance" data-id="${c.id}">次の段階へ：${SNAME[c.stage+1]}</button>`:''}</div></div>
  ${stageCard(c)}
  ${S.block===c.id?`<div class="card blocked">まだ進められません。残っているもの：${esc(c.miss.join('・'))}</div>`:''}
  <div class="tabs" role="tablist">${tabs.map(t=>`<button role="tab" data-act="tab" data-t="${t[0]}" aria-selected="${S.tab===t[0]}">${t[1]}</button>`).join('')}</div>
@@ -1688,36 +1767,208 @@ const FPREF=[['埼玉',11,'埼玉県戸田市新曽0-0-0','048'],['東京',13,'�
 const FNAMES=['青木 一郎','石井 花子','上野 翔','江口 美咲','大野 健太','加藤 彩','木下 誠','久保 陽菜','小池 拓海','斉藤 結衣','清水 大輔','杉山 葵','関 直人','曽我 舞'];
 const FSUI=['総務部長 森田 由紀','総務課長 岡本 拓也','管理部長 佐々木 健'];
 const FKIND={auto:'このツールで下書き',cust:'下書きを作り、お客様が確認して記名',att:'集めた書類の写し',vend:'研修会社が記入'};
-const FDOCS={
- plan:[
-  {id:'p1',n:'職業訓練実施計画届',no:'様式第1-1号',m:1,k:'auto'},
-  {id:'p2',n:'事業展開等実施計画',no:'様式第1-3号',m:1,k:'auto',if:c=>c.course==='reskill',note:'リスキリング支援コースで出します'},
-  {id:'p3',n:'対象労働者一覧',no:'様式第3-1号',m:1,k:'auto'},
-  {id:'p4',n:'事前確認書',no:'様式第11号',m:1,k:'cust'},
-  {id:'p5',n:'訓練カリキュラム・受講案内',no:'任意の様式',m:1,k:'auto',note:'目的・日ごとの内容と場所・実訓練時間・受講料'},
-  {id:'p6',n:'OFF-JT講師要件確認書',no:'様式第10号',m:0,k:'auto',if:(c,f)=>f.how==='in',note:'事業内訓練で講師を招く場合'},
-  {id:'p7',n:'教育訓練機関との契約書、または受講案内・申込書の写し',no:'写し',m:0,k:'att',if:(c,f)=>f.how==='out',note:'事業外訓練の場合。研修会社から受け取ります'},
-  {id:'p8',n:'委任状',no:'任意の様式',m:0,k:'cust',if:(c,f)=>f.agent==='sr',note:'代理人が提出する場合'}],
- apply:[
-  {id:'a1',n:'支給要件確認申立書',no:'共通要領様式第1号',m:1,k:'cust'},
-  {id:'a2',n:'支払方法・受取人住所届',no:'届出書',m:0,k:'cust',note:'はじめて申請するとき・口座を変えるとき'},
-  {id:'a3',n:'支給申請書',no:'様式第4-2号',m:1,k:'auto'},
-  {id:'a4',n:'事業所確認票',no:'様式第13号',m:0,k:'auto',note:'必要な場合'},
-  {id:'a5',n:'賃金助成及びOJT実施助成の内訳',no:'様式第5号',m:0,k:'auto',note:'賃金助成を申請する場合'},
-  {id:'a6',n:'経費助成の内訳',no:'様式第6-2号',m:1,k:'auto'},
-  {id:'a7',n:'OFF-JT実施状況報告書',no:'様式第8-1号',m:0,k:'auto',note:'受講記録から作ります'},
-  {id:'a8',n:'雇用契約書・労働条件通知書の写し',no:'写し',m:1,k:'att'},
-  {id:'a9',n:'賃金台帳（または給与明細）の写し',no:'写し',m:0,k:'att',note:'訓練期間の分'},
-  {id:'a10',n:'出勤簿・タイムカードの写し',no:'写し',m:0,k:'att',note:'訓練期間の分'},
-  {id:'a11',n:'受講料等の価格設定に関する疎明書',no:'様式第28号',m:0,k:'auto'},
-  {id:'a12',n:'受講料の請求書・領収書・振込通知書の写し',no:'写し',m:0,k:'att',if:(c,f)=>f.how==='out',note:'事業外訓練の場合'},
-  {id:'a13',n:'支給申請承諾書（訓練実施者）',no:'様式第12号',m:0,k:'vend',if:(c,f)=>f.how==='out',note:'事業外訓練の場合'},
-  {id:'a14',n:'訓練の内容がわかる説明資料一式',no:'写し',m:0,k:'att',if:(c,f)=>f.how==='out',note:'事業外訓練の場合。パンフレット・受講案内など'}]};
-const fDocs=(c,f,ph)=>FDOCS[ph].filter(d=>!d.if||d.if(c,f));
-const fDoc=id=>FDOCS.plan.concat(FDOCS.apply).find(d=>d.id===id);
+/* ================= 手続き・要件・書類（コースごとの知識ベース） =================
+   出典：厚生労働省 人材開発支援助成金の詳細版パンフレット（令和8年8月3日以降に提出する計画届が対象）と、
+   人材育成支援コースの支給要領（R8.8.3）。根拠ページは src に書く（P＝パンフのページ、要領＝支給要領の項番）。
+   lv：m＝必須（●）／c＝該当する場合（▲。cond に条件、on でこの案件が当てはまるか）／o＝任意（出す義務はないが、
+   労働局の確認や実地調査に備えて用意しておくと安心なもの）。w はそのコース・訓練の種類で出てくる書類かどうか。 */
+const KINDS={
+ reskill:[['jigyo','事業展開'],['dx','DX化'],['gx','GX化'],['jinji','人事・人材育成計画']],
+ ikusei:[['ikusei','人材育成訓練'],['nintei','認定実習併用職業訓練'],['yuki','有期実習型訓練'],['chukou','中高年齢者実習型訓練']],
+ toushi:[['kodo','高度デジタル人材訓練'],['seicho','成長分野等人材訓練'],['itj','情報技術分野認定実習併用職業訓練'],['teigaku','定額制訓練'],['jihatsu','自発的職業能力開発訓練'],['choki','長期教育訓練休暇等制度'],['tanji','教育訓練短時間勤務等制度']],
+ kyuka:[['kyuka','教育訓練休暇制度']]};
+const MODES=[['tsugaku','通学制'],['sohoko','同時双方向型の通信訓練'],['el','eラーニング'],['tsushin','通信制'],['teigaku','定額制サービス']];
+const kindNm=c=>{const x=cf(c),k=(KINDS[c.course]||[]).find(v=>v[0]===x.kind);return k?k[1]:'';};
+const modeNm=m=>(MODES.find(v=>v[0]===m)||['',''])[1];
+/* 制度を作る型（休暇・短時間勤務・自発的訓練の制度）か、訓練を受けさせる型か */
+const isSys=c=>c.course==='kyuka'||c.course==='toushi'&&['choki','tanji'].indexOf(cf(c).kind)>-1;
+const OJTK=['nintei','yuki','chukou','itj'];
+const hasOJT=c=>OJTK.indexOf(cf(c).kind)>-1;
+/* 案件の条件。初期値は案件のデータから決める（試作のため例） */
+const CFX={c1:{kind:'dx'},c2:{kind:'dx'},c3:{kind:'jigyo',honsha:false},c4:{kind:'dx',same:true},c5:{kind:'ikusei',wage:true,emp:'mix'},c6:{kind:'dx',acct:false},c7:{kind:'dx',setsubi:true,acct:true},c8:{kind:'teigaku',mode:'teigaku'},c9:{kind:'gx',keigen:true}};
+function cf(c){S.cf=S.cf||{};if(S.cf[c.id])return S.cf[c.id];
+ const k0=c.course==='reskill'?'dx':c.course==='ikusei'?'ikusei':c.course==='toushi'?'teigaku':'kyuka';
+ return S.cf[c.id]=Object.assign({kind:k0,mode:c.course==='toushi'?'teigaku':c.curRes&&/オンライン/.test(c.curRes.mode)?'sohoko':'tsugaku',lect:'gai',emp:'sei',keihi:true,acct:c.stage>=6,
+  setsubi:false,shiken:false,cc:false,ikukyu:false,honsha:false,keika:false,keigen:false,wage:false,allow:false,same:false,late:false,multi:false,split:c.len>183,haken:false,dantai:false,jisha:false,univ:false,ten:false,
+  kaigai:false,direct:false,dai:'none',yukyu:true,shift:false,small:total(c)<10,kidonyu:false,efile:true,first:c.stage<5},CFX[c.id]||{});}
+const chgL=c=>(S.chg&&S.chg[c.id])||[];
+const inHouse=c=>fS(c).how==='in';
+const live=c=>['tsugaku','sohoko'].indexOf(cf(c).mode)>-1;
+function smeInfo(c){const sm=SME(c),cap=CAP[c.id]!==undefined?CAP[c.id]:10000000,e=total(c),byCap=cap!=null&&cap<=sm.cap,byEmp=e<=sm.emp;return {sm,cap,e,byCap,byEmp,ok:byCap||byEmp};}
+const isSme=c=>smeInfo(c).ok;
+/* 書類の作り手（このツールで何をするか） */
+Object.assign(FKIND,{ext:'外部の機関が発行・記入',emp:'受講する従業員が記入・署名',bur:'労働局から届く',sr:'社労士が用意'});
+/* コースの絞り込み */
+const W={all:c=>!isSys(c),R:c=>c.course==='reskill',I:c=>c.course==='ikusei',T:c=>c.course==='toushi'&&!isSys(c),K:c=>isSys(c),
+ Ik:(...k)=>c=>c.course==='ikusei'&&k.indexOf(cf(c).kind)>-1,Tk:(...k)=>c=>c.course==='toushi'&&k.indexOf(cf(c).kind)>-1,Kk:(...k)=>c=>isSys(c)&&k.indexOf(cf(c).kind)>-1,
+ RI:c=>c.course==='reskill'||c.course==='ikusei',RT:c=>c.course==='reskill'||W.T(c),ALL:()=>true};
+const SHEETNO={plan:c=>isSys(c)?'訓練休暇様式第1号':'様式第1-1号',apply:c=>isSys(c)?'訓練休暇様式第4-1号':c.course==='ikusei'?'様式第4-1号':'様式第4-2号',
+ keihi:c=>c.course==='ikusei'?'様式第6-1号':cf(c).mode==='teigaku'?'様式第6-3号':'様式第6-2号',
+ kettei:c=>c.course==='reskill'?'様式第23-3号':c.course==='ikusei'?'様式第23-1号':'支給決定通知書',wsheet:c=>isSys(c)?'訓練休暇様式第12号':'様式第17号'};
+const KB=[];
+/* id, 段階, 書類名, 様式, lv, w, on, 条件, k（作り手）, 原本/写し, 根拠, 補足 */
+const kb=(id,ph,n,no,lv,w,on,cond,k,cp,src,note,o)=>KB.push(Object.assign({id,ph,n,no,lv,w,on:on||(()=>true),cond:cond||'',k,cp:cp||'',src:src||'',note:note||''},o||{}));
+const X=c=>cf(c);
+/* ---- 事前準備（計画届より前） ---- */
+kb('e1','pre','認定経営革新等支援機関に確認を受ける資料（計画届・事業展開等実施計画・人事及び人材育成に関する計画・カリキュラムの案）','様式第1-1号・第1-3号・参考様式第3号','c',W.R,c=>X(c).kind==='jinji'&&isSme(c),'「人事・人材育成計画」の訓練で、中小企業の場合','ext','','P16・P42','支援機関が様式第1-3号の6の欄に確認を記入してから、事業主が証明欄を書きます。');
+kb('e2','pre','実施計画認定申請書（大臣認定）','様式第7号（認定申請用）','m',c=>W.Ik('nintei')(c)||W.Tk('itj')(c),null,'','auto','','人材育成P46','訓練開始日の30日前までに、労働局かハローワークへ。支給申請で使う様式第7号（自発的職業能力開発に関する申立書）とは別の書類です。');
+kb('e3','pre','実践型人材養成システム実施計画・教育訓練カリキュラム・ジョブ・カード様式3-3-1-1・提出書類の確認シート','—','m',c=>W.Ik('nintei')(c)||W.Tk('itj')(c),null,'','auto','','人材育成P46','大臣認定の申請に添えます。');
+kb('e4','pre','キャリアコンサルティングの記録とジョブ・カード','ジョブ・カード','m',W.Ik('yuki'),null,'','ext','写し','人材育成P20・P45','キャリアコンサルタント等による個別面談で、参加が必要と認められたことが分かるもの。電話・メールや集団形式は不可。');
+kb('e5','pre','職業能力開発推進者を選任した記録（辞令・社内通知など）','任意','o',c=>!W.Ik('yuki')(c),null,'','cust','','P3〜P5','提出は不要ですが、選任したことと時期を説明できるようにしておくと安心です。');
+kb('e6','pre','事業内職業能力開発計画と、従業員に周知した記録（掲示・メール・回覧など）','任意','o',c=>!W.Ik('yuki')(c),null,'','cust','','P4〜P6・P8','労働局が、計画の策定と周知を確認することがあります。');
+kb('e7','pre','定期的なキャリアコンサルティングを定めた規定（就業規則・労働協約・事業内計画のどれか）','—','m',W.Ik('ikusei','nintei','chukou'),null,'','cust','','人材育成P6・P29','「入社から3年ごと」など対象の時期を明記し、費用は会社が全額負担と定めます。');
+kb('e8','pre','履歴事項全部証明書（登記事項証明書）','写し可','o',W.all,null,'','att','写し','P12（中小企業の範囲）','資本金で中小企業かを確かめるのに使います。提出を求められることがあります。発行日の扱いは社内ルール（設定で変更）'+'。');
+kb('e9','pre','研修会社が要件を満たすことが分かる資料（定款・登記の目的、eラーニングなどの募集ページの画面）','任意','o',W.all,c=>fS(c).how==='out','事業外訓練の場合','vend','','P20・人材育成P33・人への投資P34','民間の機関は、計画を出す日までに定款などで教育訓練事業が目的になっていること。eラーニング・通信制は自社のホームページで広く募集していることが必要です。');
+/* ---- 計画届 ---- */
+kb('p1','plan','職業訓練実施計画届','様式第1-1号','m',c=>W.all(c)&&!X(c).dantai,null,'','auto','様式','P42・人材育成P48','第3面・第4面（書き方と注意事項）も印刷して出します。法人番号は13桁。');
+kb('p1b','plan','訓練実施計画届（事業主団体等）','様式第1-2号','m',c=>W.Ik('ikusei')(c)&&X(c).dantai,null,'','auto','様式','人材育成P49','申請者が事業主団体・共同事業主の場合に、様式第1-1号の代わりに出します。');
+kb('p2','plan','事業展開等実施計画','様式第1-3号','m',W.R,null,'','auto','様式','P42・P52','「人事・人材育成計画」で中小企業の場合は、認定経営革新等支援機関の確認（6の欄）の後に、事業主が証明欄を書きます。');
+kb('p3','plan','対象労働者一覧','様式第3-1号','m',c=>W.all(c)&&!X(c).dantai,null,'','auto','様式','P42・人材育成P48','この一覧に載っていない人は、助成の対象になりません。',{noF:c=>X(c).mode==='teigaku'?'様式第3-2号':'様式第3-1号'});
+kb('p4','plan','事前確認書','様式第11号','m',W.all,null,'','cust','様式','P42・要領06031','申請事業主が自分で内容を確認し、氏名を書きます（代理人の記入では足りません）。');
+kb('p5','plan','訓練カリキュラム・受講案内など','任意の様式','m',W.all,null,'','auto','','P42・人材育成P48','',{noteF:c=>({tsugaku:'実施目的・実施日時・訓練日ごとの内容と場所'+(inHouse(c)?'（講師名を含む）':'')+'・実訓練時間数・受講料が分かるもの',sohoko:'実施目的・実施日時・訓練日ごとの内容と場所・実訓練時間数・受講料が分かるもの',el:'実施目的・内容・受講できる期間・標準学習時間（または期間）・LMSで進み具合を管理できること・受講料が分かるもの',tsushin:'実施目的・内容・受講できる期間・標準学習時間（または期間）・添削指導や質疑応答ができること・受講料が分かるもの',teigaku:'実施目的・内容・契約期間・講座の一覧・講座ごとの標準学習時間・LMSで進み具合を管理できること・受講料が分かるもの'})[X(c).mode]});
+kb('p6','plan','OFF-JT講師要件確認書','様式第10号','c',c=>W.all(c)&&!W.Ik('nintei')(c)&&!W.Tk('itj','jihatsu','teigaku','seicho')(c),c=>inHouse(c)&&!X(c).jisha,'事業内訓練の場合（自ら運営する認定職業訓練を除く）','auto','様式','P42・人材育成P48','任意の様式は使えません。');
+kb('p7','plan','教育訓練機関との契約書、または受講案内と申込書の写し','写し','c',W.all,c=>!inHouse(c),'事業外訓練の場合','att','写し','P42・人材育成P48','機関の名称・所在地・連絡先、契約の内容、契約期間（受講できる期間）、受講料が分かるもの。');
+kb('p9','plan','研修会社などから受け取った、訓練費用の負担軽減に関する説明資料','写し','c',W.all,c=>!inHouse(c)&&X(c).keigen,'事業外訓練で、負担軽減の説明資料（受講案内を除く）を受け取った場合','att','','P42・人材育成P48','計画届の第2面にも、受け取ったかどうかのチェック欄があります。');
+kb('p10','plan','事業所・営業所の見取図・レイアウト図の写し','写し','c',W.I,c=>live(c)&&X(c).same&&!X(c).jisha,'通学制・同時双方向型で、実施場所が自社の事業所と同じ所在地の場合（認定職業訓練を除く）','cust','写し','人材育成P48・要領06031','通常の仕事の場所と区切られた場所で行うことが分かるもの。');
+kb('p8','plan','委任状','原本','c',W.ALL,c=>fS(c).agent==='dairi','社会保険労務士ではない代理人が申請する場合','cust','原本','P42・人材育成P48・共通要領0303','社会保険労務士が提出代行・事務代理をする場合は、委任状ではなく、様式の社労士欄への記載（電子申請では提出代行等に関する証明書）で足ります。');
+kb('p8b','plan','提出代行等に関する証明書と、社会保険労務士証票の写し','共通要領様式第2号','c',W.ALL,c=>fS(c).agent==='sr'&&X(c).efile,'社会保険労務士が、事業主に代わって電子申請する場合','sr','写し','共通要領0303・ポータル利用規約','計画届・変更届・支給申請のたびに添付します。事業主は、ポータルで代理先（社労士）と委任するコース・期間を設定しておきます。');
+kb('p11','plan','定額制サービスによる訓練に関する事業所確認票','様式第14-1号','c',W.RT,c=>X(c).mode==='teigaku'&&X(c).multi,'定額制で、主たる事業所がほかの事業所の分もまとめて出す場合','auto','様式','P42・P24','ほかの事業所で、同じ契約の申請をしないことを申し出ます。');
+kb('p12','plan','本社一括申請に関する事業所確認票','様式第14-2号','c',W.R,c=>X(c).honsha&&X(c).mode!=='teigaku'&&!X(c).setsubi,'本社が支社の分もまとめて出す場合（定額制以外で、同じ訓練を同じ時期に行うときだけ）','auto','様式','P40・P42','設備投資加算の計画を出す場合は、一括できません。');
+kb('p13','plan','設備投資加算に係る設備投資実施計画','様式第21号','c',W.R,c=>X(c).setsubi,'設備投資加算を申請する場合（あとから追加はできません）','auto','様式','P34・P42','機器の仕様・数量・経費・労働者数・活用方法など。');
+kb('p14','plan','導入予定の機器の見積書（2社分）','—','c',W.R,c=>X(c).setsubi,'設備投資加算を申請する場合','att','','P42','');
+kb('p15','plan','導入予定の機器と、実技の訓練で使う機器の概要が分かる資料（パンフレット・受講案内など）','—','c',W.R,c=>X(c).setsubi,'設備投資加算を申請する場合','att','','P42','訓練で実際に使った機器と同じ種類であることが必要です。');
+kb('p17','plan','企業内の人事及び人材育成に関する計画','参考様式第3号','c',W.R,c=>X(c).kind==='jinji','「人事・人材育成計画」の訓練の場合','auto','','P16・P42','受講者の今の職務と、訓練のあとに就く予定の職務（職業分類の小分類が違うこと）を書きます。');
+kb('p18','plan','訓練受講承諾書','様式第19号','c',W.R,c=>X(c).kind==='jinji','「人事・人材育成計画」の訓練の場合','emp','','P16・P42','中小企業は、支援機関の確認を受けたあとに、対象者から受け取ります。');
+kb('p19','plan','経過措置の判定に使う契約書・申込書・発注書の写し','写し','c',W.R,c=>X(c).keika,'令和8年8月2日以前に契約・申込みをしていて、経過措置を受ける場合','att','写し','P39','契約日・申込日、相手方の名称・所在地・連絡先、役務の内容が分かるもの。');
+kb('p20','plan','やむを得ない理由を書いた書面','任意の様式','c',W.all,c=>X(c).late,'新しく雇った人だけが対象で雇入れから1か月以内の訓練、または天災などで、訓練開始日の前日までに出す場合','cust','','P41・要領06032','');
+kb('p21','plan','OJTのカリキュラム（大臣認定で添付したもの）','—','m',c=>W.Ik('nintei')(c)||W.Tk('itj')(c),null,'','att','','人材育成P48','');
+kb('p22','plan','有期実習型訓練に係る訓練カリキュラム','様式第15号','m',W.Ik('yuki'),null,'','auto','様式','人材育成P48・P60','計画届を出す日までに雇っている人は、キャリアコンサルティングを実施済みのもの。');
+kb('p23','plan','中高年齢者実習型訓練に係る訓練カリキュラム','様式第16号','m',W.Ik('chukou'),null,'','auto','様式','人材育成P48','');
+kb('p24','plan','中高年齢者実習型訓練に係る事前確認書','参考様式第2号','m',W.Ik('chukou'),null,'','cust','','人材育成P48','');
+kb('p25','plan','ジョブ・カード様式3-3-1-1（企業実習・OJT用）','写し','m',W.Ik('yuki','chukou'),null,'','auto','写し','人材育成P48','');
+kb('p26','plan','ジョブ・カード様式1-1・2・3-1・3-2','写し','m',W.Ik('yuki'),null,'','emp','写し','人材育成P48','職歴が少ない人は様式1-2で代用できます。新規学校卒業予定者は省略できます。任意の様式は使えません。');
+kb('p27','plan','有期実習型訓練に係る事前確認書','参考様式第1号','m',W.Ik('yuki'),null,'','cust','','人材育成P48・P49','キャリアコンサルティングのあと、実施済みのものを出し直します。');
+kb('p28','plan','紹介予定派遣に係る労働者派遣契約書','—','c',W.Ik('yuki'),c=>X(c).haken,'派遣活用型の場合','att','','人材育成P49','派遣元と派遣先が共同で作り、派遣先が提出します。');
+kb('p29','plan','定款・規約・会員名簿の写し／事業主間の協定書','写し','c',W.Ik('ikusei'),c=>X(c).dantai,'申請者が事業主団体（定款など）・共同事業主（協定書）の場合','att','写し','人材育成P49','');
+kb('po1','plan','計画届の控え（受付印・受付番号の分かるもの）','任意','o',W.ALL,null,'','bur','','要領06034','変更届と支給申請で、最初に受け付けられた計画届の受付番号を使います。');
+/* ---- 変更届（変更が出たとき） ---- */
+kb('g1','chg','職業訓練実施計画変更届','様式第2-1号','m',W.all,null,'','auto','様式','P43・人材育成P50','事業主団体等は様式第2-2号。',{noF:c=>X(c).dantai?'様式第2-2号':'様式第2-1号'});
+kb('g2','chg','変更の内容が分かる書類（変更後の対象労働者一覧・カリキュラムなど）','—','m',W.all,null,'','auto','','P43・要領0604','計画届の書類のうち、変更に関係するもの。');
+kb('g3','chg','やむを得ない理由を書いた書類','任意の様式','c',W.all,c=>chgL(c).some(x=>x.t==='fuka'),'病気・けが・天災など、やむを得ない理由で変える場合','cust','','P43','対象者や事業主の責任による変更は当たりません。');
+kb('g4','chg','転勤があったことが分かる書面','—','c',W.I,c=>X(c).ten,'対象者が訓練期間中にほかの事業所へ転勤した場合','cust','','要領0604ハ','支給申請は転勤後の事業所を管轄する労働局に出します。');
+/* ---- 訓練の実施中に集める記録 ---- */
+kb('r1','run','出勤簿・タイムカード（日ごとの始業・終業・休憩が分かるもの）','写し','c',W.all,c=>live(c)&&!X(c).ikukyu,'通学制・同時双方向型の場合','att','写し','P45・人材育成P53','出勤が確認できない日の受講時間は、受講時間に数えられません。');
+kb('r2','run','賃金台帳・給与明細','写し','c',W.all,c=>live(c)&&!X(c).ikukyu,'通学制・同時双方向型の場合','att','写し','P45','訓練中も通常どおり賃金を払い、時間外・休日の受講は割増賃金も払います。');
+kb('r3','run','訓練日ごとの受講時間の記録（OFF-JT実施状況報告書の元になるもの）','—','c',W.all,c=>live(c),'通学制・同時双方向型の場合','vend','','P45・人材育成P58','研修会社（講師）・事業主・受講者本人の三者で証明し、本人は直筆で署名します。');
+kb('r4','run','LMS（学習管理システム）の記録','写し','c',W.all,c=>X(c).mode==='el','eラーニングの場合','vend','写し','P45','修了日・受講の開始と終了の日時・受講時間・進み具合が分かるもの。');
+kb('r5','run','添削課題の写し','写し','c',W.all,c=>X(c).mode==='tsushin','通信制の場合','emp','写し','P45','');
+kb('r6','run','受講時間が10時間以上の人の一覧表（研修会社が発行）','—','c',W.RT,c=>X(c).mode==='teigaku','定額制の場合','vend','','P45','雇用保険の事業所ごとに作るので、事前に事業所ごとの受講者を研修会社に伝えます。');
+kb('r7','run','部内講師の出勤簿・タイムカード','写し','c',W.all,c=>inHouse(c)&&X(c).lect==='nai','事業内訓練で、社内の人が講師をする場合','att','写し','P46・人材育成P53','');
+kb('r8','run','OJT実施状況報告書（OJT訓練日誌）','様式第9号','m',c=>hasOJT(c),null,'','emp','様式','人材育成P52・P59','受講者本人が毎日書きます。「訓練の具体的な内容」「身についたこと」の欄が空欄の日は数えられません。');
+kb('r9','run','OJT訓練指導者の出勤簿・タイムカード','写し','m',c=>hasOJT(c),null,'','att','写し','人材育成P52','指導者の出退勤が確認できない日のOJTは認められません。');
+kb('r10','run','受講料などの請求書・領収書・振込の記録','写し','c',W.all,c=>X(c).keihi,'経費助成を申請する場合','att','写し','P46','支給申請までに、事業主が全額を払います。受講者に一部でも負担させると、賃金助成も含めて対象外です。');
+kb('ro1','run','研修の様子が分かる写真・配布資料','任意','o',W.all,null,'','cust','','P8（実地調査）','労働局は予告なしに訓練の現場を訪れることがあります。');
+/* ---- 支給申請 ---- */
+kb('a1','apply','支給要件確認申立書','共通要領様式第1号','m',W.ALL,null,'','cust','様式','P45・人材育成P52・共通要領0302','不正が見つかったときの公表・返還の承諾も兼ねます。電子申請では、ポータルの画面のチェック欄で申し立てるため、様式の添付は要りません。');
+kb('a1b','apply','役員等一覧（支給要件確認申立書の別紙）','共通要領様式第1号別紙','m',W.ALL,null,'','cust','様式','共通要領0302・人への投資P32⑫','出さないと支給されません（不支給要件リ）。役員の氏名・カナ・生年月日・性別を書きます。電子申請でも添付します。');
+kb('a1c','apply','提出代行等に関する証明書と、社会保険労務士証票の写し','共通要領様式第2号','c',W.ALL,c=>fS(c).agent==='sr'&&X(c).efile,'社会保険労務士が、事業主に代わって電子申請する場合','sr','写し','共通要領0303','計画届のときと同じく、申請のたびに添付します。');
+kb('a2','apply','支払方法・受取人住所届','—','c',W.ALL,c=>!X(c).acct||X(c).efile&&X(c).first,'口座をまだ登録していない場合（電子申請をはじめて使う場合も）','cust','','P45・人材育成P52','口座番号が分かる資料（通帳の写しなど）を添えます。口座の情報はこのツールでは預かりません。');
+kb('a3','apply','支給申請書','様式第4-2号','m',W.all,null,'','auto','様式','P45・人材育成P52','計画届を出した日の時点の様式を使います。',{noF:c=>SHEETNO.apply(c)});
+kb('a4','apply','事業所確認票','様式第13号','c',W.all,c=>smeInfo(c).byEmp,'企業全体の常時雇用する労働者の数で、中小企業に当てはまる場合','auto','様式','P45・人材育成P52','');
+kb('a5','apply','賃金助成及びOJT実施助成の内訳','様式第5号','c',W.all,c=>live(c)&&!X(c).ikukyu&&!X(c).kaigai&&X(c).kind!=='jihatsu'||hasOJT(c),'通学制・同時双方向型の場合（OJTのある訓練は必須。自発的訓練・海外の大学院は不要）','auto','様式','P45・人材育成P52','');
+kb('a6','apply','経費助成の内訳','様式第6-2号','m',W.all,null,'','auto','様式','P45・人材育成P52','',{noF:c=>SHEETNO.keihi(c)});
+kb('a7','apply','対象労働者のOFF-JT実施状況報告書','様式第8-1号','c',W.all,c=>live(c)&&!X(c).kaigai,'通学制・同時双方向型の場合','auto','様式','P45・人材育成P52','研修会社（講師）・事業主・本人の三者で証明し、本人は直筆で署名します。特定の訓練機関の修了証の写しで代えた場合は、賃金助成を申請できません。');
+kb('a15','apply','eラーニング訓練実施結果報告書・修了証の写し・LMSの記録の写し','様式第8-3号ほか','c',c=>W.all(c)&&X(c).kind!=='jihatsu',c=>X(c).mode==='el','eラーニングの場合','auto','写し','P45','事業主と本人の二者で証明し、本人は直筆で署名します。');
+kb('a18','apply','通信制訓練実施結果報告書・修了証の写し・添削課題の写し','様式第8-4号ほか','c',c=>W.all(c)&&X(c).kind!=='jihatsu',c=>X(c).mode==='tsushin','通信制の場合','auto','写し','P45','');
+kb('a21','apply','定額制サービスによる訓練実施結果報告書・受講時間10時間以上の人の一覧表','様式第8-5号ほか','c',c=>W.RT(c)&&X(c).kind!=='jihatsu',c=>X(c).mode==='teigaku','定額制の場合','auto','','P45','報告書は、対象者が10人以上なら任意の10人分、10人未満なら全員分。一覧表は研修会社が発行します。');
+kb('a23','apply','OJT実施状況報告書（OJT訓練日誌）・OJT訓練指導者の出勤簿の写し・ジョブ・カード様式3-3-1-1の写し','様式第9号ほか','m',c=>hasOJT(c),null,'','emp','写し','人材育成P52','日誌は本人が作り、事業主・訓練責任者・本人が直筆で署名します。');
+kb('a8','apply','対象労働者の雇用契約書・労働条件通知書の写し','写し','m',W.ALL,null,'','att','写し','P45・人材育成P53','氏名、締結日、契約期間、職務内容、所定労働時間（始業・終業・休憩）、休日、賃金が分かるもの。');
+kb('a9','apply','対象労働者の賃金台帳・給与明細の写し','写し','c',W.all,c=>live(c)&&!X(c).ikukyu||hasOJT(c),'通学制・同時双方向型の場合（受講日を含む賃金計算期間の分）','att','写し','P45・人材育成P53','eラーニング・通信制・定額制・育児休業中の訓練は、原則不要です。');
+kb('a10','apply','対象労働者の出勤簿・タイムカードの写し','写し','c',W.all,c=>live(c)&&!X(c).ikukyu||hasOJT(c),'通学制・同時双方向型の場合（受講日を含む賃金計算期間の分）','att','写し','P45・人材育成P53','日ごとの始業・終業・休憩が分かるもの。');
+kb('a11','apply','受講料等の価格設定に関する疎明書','様式第28号','c',W.all,c=>X(c).keihi,'経費助成を申請する場合','auto','様式','P46・人材育成P53','計画届を出した日にかかわらず出します（支給・不支給が決まっているものを除く）。人材育成支援コースの支給要領では条件なしで挙がっているため、出しておくのが確実です。');
+kb('a26','apply','部内講師の出勤簿・タイムカードの写し','写し','c',W.all,c=>inHouse(c)&&X(c).lect==='nai','事業内訓練で、社内の人が講師の場合','att','写し','P46・人材育成P53','');
+kb('a27','apply','自ら運営する認定職業訓練であることが分かる書類（補助金の交付決定通知書の写しなど）','写し','c',W.all,c=>inHouse(c)&&X(c).jisha,'自ら運営する認定職業訓練の場合','att','写し','P46','');
+kb('a28','apply','大学等との契約書の写し','写し','c',c=>W.all(c)&&!W.Ik('nintei')(c),c=>inHouse(c)&&X(c).univ,'大学などに訓練コースの開発を任せた費用を申請する場合','att','写し','P46','契約日・内容・金額が分かるもの。');
+kb('a29','apply','訓練の運営経費の請求書・領収書・振込通知書の写し','写し','c',W.all,c=>inHouse(c)&&X(c).keihi,'事業内訓練で、講師謝金・旅費・会場費・教材費などを申請する場合','att','写し','P46・人材育成P53','講師謝金は源泉徴収額を含む金額、教材は品名・単価・数量が分かるもの。請求書と領収書の組み合わせなら、振込通知書・総勘定元帳・現金出納帳の写しも付けます。');
+kb('a12','apply','受講料・入学料・教科書代の請求書・領収書・振込通知書の写し','写し','c',W.all,c=>!inHouse(c),'事業外訓練の場合','att','写し','P46・人材育成P53','受け取った人・払った人・支払日・名目・金額が分かるもの。');
+kb('a13','apply','支給申請承諾書（訓練実施者）','様式第12号','c',W.all,c=>!inHouse(c)&&!X(c).kaigai,'事業外訓練の場合（事業外訓練なら実質的に必ず出します。海外の大学院は不要）','vend','様式','P7・P21・P46','研修会社に記入を頼みます。承諾しない研修会社の訓練は、助成の対象になりません。');
+kb('a14','apply','研修会社などから説明を受けた資料一式の写し','写し','c',c=>W.all(c)&&X(c).kind!=='jihatsu',c=>!inHouse(c),'事業外訓練の場合','att','写し','P46・人材育成P53','条件の書き方がコース・資料で分かれています'+'（要確認）。負担軽減の説明を受けた場合は必ず出します。');
+kb('a30','apply','自発的職業能力開発に関する申立書','様式第7号','c',c=>W.R(c)||W.Ik('ikusei')(c)||W.T(c),c=>X(c).ikukyu,'育児休業中の訓練の場合（自発的職業能力開発訓練は必ず）','cust','様式','P47・人材育成P54・人への投資P53','',{lvF:c=>X(c).kind==='jihatsu'?'m':'c'});
+kb('a31','apply','受験案内・受験票の写し・受験料の領収書の写し','写し','c',W.all,c=>X(c).shiken,'資格試験・特定職業能力検定の受験料を申請する場合','att','写し','P47・人材育成P54','受験は訓練終了日の翌日から6か月以内。受験料を含める場合の申請期限は、受験日の翌日から2か月以内です。');
+kb('a32','apply','キャリアコンサルティングの案内・実施者の資格証の写し・ジョブ・カードの写し・領収書の写し','写し','c',W.all,c=>X(c).cc,'キャリアコンサルティングの費用を申請する場合','att','写し','P47・人材育成P54','ジョブ・カードはキャリアコンサルタントの署名があるもの。');
+kb('a33','apply','転換後の雇用契約書（と、転換日に雇用していた正規雇用労働者の雇用契約書）','写し','m',W.Ik('yuki'),null,'','att','写し','人材育成P54','支給申請日の時点で、正規雇用（または無期雇用）に転換している必要があります。');
+kb('a34','apply','訓練実施結果報告書（事業主団体・共同事業主用）と経費の証拠書類（講師略歴書・旅費計算書・委託契約書など）','様式第8-2号ほか','c',W.Ik('ikusei'),c=>X(c).dantai,'申請者が事業主団体・共同事業主の場合','auto','','人材育成P55','');
+kb('ao1','apply','時間あたりの賃金の計算根拠（給与計算の設定の写しなど）','任意','o',W.all,c=>live(c),'','att','','要領06062','賃金台帳から読み取れないとき、労働局から求められることがあります。');
+kb('ao2','apply','修了証の写し','任意','o',W.all,null,'','vend','写し','P47','追加で求められることがあります。');
+/* ---- 追加の支給申請（設備投資加算／賃金要件・資格等手当） ---- */
+const plusOn=c=>W.R(c)?X(c).setsubi&&isSme(c):(X(c).wage||X(c).allow)&&!X(c).dantai;
+kb('x0','plus','支給要件確認申立書','共通要領様式第1号','m',c=>W.I(c)||W.T(c),null,'','cust','様式','人材育成P26','通常分の訓練の計画届を出した時点の様式を使います。');
+kb('x1','plus','支給申請書','様式第4-2号','m',W.ALL,null,'','auto','様式','P48・人材育成P26','',{noF:c=>SHEETNO.apply(c)});
+kb('x2','plus','設備投資実施状況報告','様式第22号','m',W.R,null,'','auto','様式','P48','');
+kb('x3','plus','賃金助成及びOJT実施助成の内訳・経費助成の内訳','様式第5号・第6-1号','m',c=>W.I(c)||W.T(c),null,'','auto','様式','人材育成P26','');
+kb('x4','plus','通常分の支給決定通知書の写し','様式第23-3号','m',W.ALL,null,'','bur','写し','P48・人材育成P26','',{noF:c=>SHEETNO.kettei(c)});
+kb('x5','plus','賃金要件等確認シート','様式第17号','m',W.ALL,null,'','auto','様式','P48・人材育成P26・休暇等P32','',{noF:c=>SHEETNO.wsheet(c)});
+kb('x6','plus','賃金を上げる前と後の雇用契約書など','—','c',W.ALL,c=>X(c).wage||W.R(c)&&!X(c).allow,'賃金要件（5%以上）で申請する場合','att','','P48・人材育成P26','');
+kb('x7','plus','改定（手当の支払い）の前3か月と後3か月の賃金台帳','写し','m',W.ALL,null,'','att','写し','P48・人材育成P26','3か月の総額どうしを比べます。時間外手当（固定残業代を含む）・通勤手当・家族手当などは含めません。');
+kb('x8','plus','資格等手当を定めた労働協約・就業規則・労働契約','—','c',W.ALL,c=>X(c).allow,'資格等手当要件（3%以上）で申請する場合','att','','P48・人材育成P26','手当を払う前に定めておく必要があります。');
+kb('x9','plus','機器の導入が分かる書類（契約書・納品書・請求書と領収書・仕様・事業所内で1台ずつ撮った写真）','写し','m',W.R,null,'','att','写し','P48','写真は1台ずつ、全体と製造番号が分かるように撮ります。リースは導入日から申請日までに払った額が分かるもの。');
+/* ---- 実施状況報告（人事・人材育成計画の訓練だけ） ---- */
+kb('z1','rep','企業内の人事及び人材育成に関する計画の実施状況報告書','様式第20号','m',c=>W.R(c)&&X(c).kind==='jinji',null,'','auto','様式','P49（P16では様式第23号と表記）','様式番号が資料のページで違います'+'（要確認）。計画届を出した日の時点の様式を使います。');
+kb('z2','rep','予定の職務に就いたこと・就いた日が分かる雇用契約書・労働条件通知書の写し','写し','m',c=>W.R(c)&&X(c).kind==='jinji',null,'','att','写し','P49','');
+/* ---- 審査・支給決定のあと ---- */
+kb('q1','post','支給決定通知書（または不支給決定通知書）','様式第23号・第24号','m',W.ALL,null,'','bur','','P40・要領06071','支給・不支給の決定は、行政不服審査法の不服申立ての対象外です。');
+kb('q2','post','申請した書類一式と、訓練・経費・賃金・離職の状況が分かる書類の保存','—','m',W.ALL,null,'','cust','','P7・P8','支給決定のあと5年間保存します。会計検査の対象になることもあります。');
+kb('q3','post','事業展開促進機器等の処分に係る報告書・承認申請書','様式第27-1号・第27-2号','c',W.R,c=>X(c).setsubi,'設備投資加算の機器を、導入から1年以内に処分する場合','auto','様式','P37','');
+/* ---- 人への投資促進コース（訓練型）だけの書類 ---- */
+kb('p30','plan','個人訓練計画及び要件確認書','様式第18号','c',W.Tk('seicho','jihatsu'),c=>X(c).kaigai,'海外の大学院で学ぶ場合','auto','様式','人への投資P9・P48','');
+kb('p31','plan','自発的職業能力開発経費負担制度を定めた就業規則・労働協約の写し','写し','m',W.Tk('jihatsu'),null,'','att','写し','人への投資P24・P48','従業員が自分で受ける訓練の費用を、会社が2分の1以上負担する制度です。施行日を書き、施行日までに監督署へ届け出て（常時10人未満は申立書でも可）、従業員に知らせます。');
+kb('r11','run','修了した講座の標準学習時間の記録（職務に関係する講座だけ）','—','c',W.T,c=>X(c).mode==='teigaku','定額制の場合','vend','','人への投資P19・P33','趣味・教養の講座や、本人が自分で受けた分は数えません。10時間に達した人から、支給申請ができます。');
+kb('a40','apply','自発的職業能力開発訓練に係るeラーニング・通信制・定額制サービスによる訓練実施結果報告書','様式第8-6号','c',W.Tk('jihatsu'),c=>['el','tsushin','teigaku'].indexOf(X(c).mode)>-1,'eラーニング・通信制・定額制の場合（様式第8-3号・8-4号・8-5号の代わり）','auto','様式','人への投資P53','修了証・LMSの記録・添削課題・受講時間の一覧表（定額制）の写しも付けます。');
+kb('a41','apply','海外訓練実施結果報告書・修了証の写し（日本語訳を付ける）・パスポートの写し','様式第8-7号ほか','c',W.Tk('seicho','jihatsu'),c=>X(c).kaigai,'海外の大学院で学んだ場合','auto','写し','人への投資P52','海外の大学院は、賃金助成の対象になりません。');
+kb('a42','apply','訓練費用を本人に支給したことが分かる給与明細・振込通知書の写し','写し','c',W.Tk('jihatsu'),c=>!X(c).direct,'会社が本人に訓練費用を支給した場合（研修会社に直接払った場合は、受講料の請求書・領収書）','att','写し','人への投資P53','支払いを受けた人・払った人・支払日・名目・金額が分かるもの。通貨で本人に直接払うのが原則です。');
+kb('a43','apply','受講時間が10時間以上である人の一覧表（研修会社が発行）','—','m',W.Tk('teigaku'),null,'','vend','','人への投資P51','雇用保険の事業所ごとに、事業所名・コース名・氏名・10時間以上の訓練を修了した日と、研修会社が証明する旨が書かれたもの。');
+/* ---- 制度を作るコース（教育訓練休暇制度・長期教育訓練休暇制度・教育訓練短時間勤務等制度） ---- */
+kb('ke1','pre','制度の案（就業規則・労働協約に書く規定の案。施行日を明記）','—','m',W.K,null,'','cust','','休暇等P11・P21・P24・P29','この段階では案だけを作ります。計画届を出す前に制度を施行すると、助成の対象になりません。',{noteF:c=>({kyuka:'有給で、3年間に5日以上、日単位で取れる教育訓練休暇。',choki:'30日以上（所定労働日）取れる長期教育訓練休暇。日単位で取れること。',tanji:'所定労働時間の短縮（1時間単位・1日1時間以上）と所定外労働時間の免除の両方を、30回以上使える制度。'})[X(c).kind]+'計画届を出す前に制度を施行すると、助成の対象になりません。'});
+kb('ke2','pre','雇用保険の被保険者数の確認（企業全体）','—','m',W.Kk('kyuka'),null,'','cust','','休暇等P20','計画届を出す時点の人数で、最低限休暇を与える人数が決まります（100人以上は5人、100人未満は1人）。');
+kb('kp1','plan','制度導入・適用計画届','訓練休暇様式第1号','m',W.K,null,'','auto','様式','休暇等P19','計画期間の初日（制度の施行日）の6か月前から1か月前までに、主たる事業所を管轄する労働局へ出します。');
+kb('kp2','plan','事前確認書','訓練休暇様式第7号','m',W.K,null,'','cust','様式','休暇等P19','訓練系の事前確認書（様式第11号）とは番号が違います。');
+kb('kr1','run','制度を規定した就業規則を監督署に届け出た控え（または、締結した労働協約）','写し','m',W.K,null,'','att','写し','休暇等P11・P13','施行日までに届け出ます。施行日より後の届出は、助成の対象外です（不支給の理由で多いもの）。労働協約は、施行日までに双方が署名か記名押印します。');
+kb('kr2','run','事業主と労働者の代表者の申立書','—','c',W.K,c=>X(c).small,'常時10人未満の事業主で、監督署に届け出ない場合','cust','','休暇等P11','施行日までに作ります。');
+kb('kr3','run','就業規則（または労働協約）と事業内職業能力開発計画を従業員に周知した記録','任意','o',W.K,null,'','cust','','休暇等P11','施行日までに周知します。');
+kb('kr4','run','休暇を取った日が分かる出勤簿・休暇簿','写し','m',W.Kk('kyuka','choki'),null,'','att','写し','休暇等P22・P27','年次有給休暇を使って受けた日は数えません。');
+kb('kr5','run','所定労働時間を短くした・所定外労働を免除したことが分かる記録（労働条件変更通知書・出勤簿）','写し','m',W.Kk('tanji'),null,'','att','写し','休暇等P30','');
+kb('kr6','run','受講した訓練・検定・キャリアコンサルティングの申込書・領収書','写し','m',W.K,null,'','att','写し','休暇等P18','会社以外が行うものであること。休暇を取った日に、実際に受けている必要があります。');
+kb('kr7','run','代わりの人を雇った契約書・派遣契約書（新規雇用助成）／代わりに働く人への手当の規定と面談の記録（職務代行助成）','写し','c',W.Kk('choki'),c=>X(c).dai!=='none','中小企業が有給の長期教育訓練休暇を与え、代替要員の助成を申請する場合','att','写し','休暇等P26','代替要員の契約の始まりは、最初に休暇を与える日の1か月前より後。手当の規定は、代わりに働き始める日までに作ります。');
+kb('kg1','chg','制度導入・適用計画変更届と、変更に関する書類','訓練休暇様式第2号','m',W.K,null,'','auto','様式','休暇等P13','導入予定日を変える場合は、元の日と新しい日の早い方の前日まで。1か月以上後ろにずらす場合は、計画届を出し直します。そのほかの変更は、支給申請書を出すまでに。');
+kb('ka2','apply','制度導入支給申請書','訓練休暇様式第4-1号','m',W.K,null,'','auto','様式','休暇等P22・P27・P30','',{noteF:c=>({kyuka:'計画期間（制度の導入日から3年）が終わった翌日から2か月以内。要件を満たしていれば、導入日から6か月を過ぎた日の翌日から早めに申請できます。',choki:'休暇の最終取得日の翌日から2か月以内。',tanji:'制度を最初に使った日の翌日から2か月以内（計画期間内）。'})[X(c).kind]});
+kb('ka3','apply','新規雇用助成支給申請書','訓練休暇様式第4-2号','c',W.Kk('choki'),c=>X(c).dai==='hire','代わりの人を雇った場合（中小企業・有給の休暇）','auto','様式','休暇等P27','');
+kb('ka4','apply','職務代行助成支給申請書','訓練休暇様式第4-3号','c',W.Kk('choki'),c=>X(c).dai==='daikou','ほかの従業員が職務を代行し、手当を払った場合（中小企業・有給の休暇）','auto','様式','休暇等P27','');
+kb('ka5','apply','事業所確認票','訓練休暇様式第3号','m',W.K,null,'','auto','様式','休暇等P22・P27・P30','訓練系の事業所確認票（様式第13号）とは別のものです。');
+kb('ka6','apply','制度を規定する前の就業規則・労働協約の写し','写し','m',W.K,null,'','att','写し','休暇等P22・P27・P30','監督署へ届け出たもの（または申立書を付けたもの）。');
+kb('ka7','apply','制度を規定した就業規則・労働協約の写し','写し','m',W.K,null,'','att','写し','休暇等P22・P27・P30','施行日までに届け出た（締結した）ことが分かるもの。');
+kb('ka8','apply','賃金助成の内訳','訓練休暇様式第6号','c',W.Kk('choki'),c=>X(c).yukyu,'有給の長期教育訓練休暇で、賃金助成を申請する場合','auto','様式','休暇等P27','通常の賃金の額以上を払った場合だけ、賃金助成の対象です。');
+kb('ka9','apply','対象労働者の実施状況報告書','訓練休暇様式第5-1号','m',W.K,null,'','auto','様式','休暇等P22・P27・P30','',{noF:c=>({kyuka:'訓練休暇様式第5-1号',choki:'訓練休暇様式第5-2号',tanji:'訓練休暇様式第5-3号'})[X(c).kind]});
+kb('ka10','apply','勤務予定表・シフト表の写し','写し','c',W.K,c=>X(c).shift,'所定労働日や労働時間が、一定の期間ごとに決まる場合','att','写し','休暇等P22・P27・P30','休暇を取った日を含む賃金計算期間の分。');
+kb('ka11','apply','対象労働者の出勤簿・休暇簿の写し','写し','m',W.Kk('kyuka','choki'),null,'','att','写し','休暇等P22・P27','いつ休暇を取ったかが分かるもの。');
+kb('ka12','apply','所定労働時間の短縮・所定外労働の免除が分かる労働条件変更通知書・出勤簿の写し','写し','m',W.Kk('tanji'),null,'','att','写し','休暇等P30','');
+kb('ka13','apply','対象労働者の賃金台帳・給与明細の写し','写し','c',W.Kk('kyuka','choki'),c=>X(c).kind==='kyuka'||X(c).yukyu,'教育訓練休暇制度は必ず。長期教育訓練休暇は賃金助成を申請する場合','att','写し','休暇等P22・P27','休暇を取った日を含む賃金計算期間の分。',{lvF:c=>X(c).kind==='kyuka'?'m':'c'});
+kb('ka14','apply','受講した訓練のカリキュラム・受講案内','—','m',W.K,null,'','att','','休暇等P22・P27・P30','会社以外が行う訓練であることが分かるもの。');
+kb('ka15','apply','対象労働者の修了証（受講申込書や受講料の領収書の写しでも可）','写し','m',W.K,null,'','att','写し','休暇等P22・P27・P30','休暇を取って訓練を受けたことが分かるもの。');
+
+const kbOf=(c,ph)=>KB.filter(d=>d.ph===ph&&d.w(c));
+/* 書類の区分と、この案件で必要か */
+function kbSt(c,d){const lv=d.lvF?d.lvF(c):d.lv;if(lv==='m')return 'm';if(lv==='o')return 'o';return d.on(c)?'c':'na';}
+const LVC={m:['warn','必須'],c:['amber','該当する場合'],o:['info','任意'],na:['mute','今回は不要']};
+const lvChip=(c,d)=>{const s=kbSt(c,d);return `<span class="chip lv ${LVC[s][0]}" title="${s==='c'||s==='na'?esc(d.cond):s==='m'?'必ず出す書類':'出す義務はないが、用意しておくと安心'}">${LVC[s][1]}</span>`;};
+const kbNo=(c,d)=>d.noF?d.noF(c):d.no;
+const kbNote=(c,d)=>d.noteF?d.noteF(c):d.note;
+/* 申請書類のタブ・社労士の画面で使う一覧（必須と、この案件で該当するもの） */
+const fDocs=(c,f,ph)=>kbOf(c,ph).filter(d=>{const s=kbSt(c,d);return s==='m'||s==='c';}).map(d=>Object.assign({},d,{m:kbSt(c,d)==='m'?1:0,no:kbNo(c,d),note:kbNote(c,d)||d.cond}));
+const fDoc=id=>KB.find(d=>d.id===id);
+
 function fS(c){S.forms=S.forms||{};if(S.forms[c.id])return S.forms[c.id];
  const f=S.forms[c.id]={ph:c.stage>=3?'apply':'plan',how:'out',agent:'sr',sui:c===MIDORI?'':c.stage>=2?FSUI[c.no%3]:'',place:c.curRes&&/オンライン/.test(c.curRes.mode)?'各自の職場（同時双方向型のオンライン）':'本社 会議室',work:8,made:{},sent:{plan:c.stage>=3,apply:c.stage>=5},gen:null,ask:{}};
- ['plan','apply'].forEach(ph=>{if(f.sent[ph])fDocs(c,f,ph).forEach(d=>{f.made[d.id]=true;});});return f;}
+ ['plan','apply'].forEach(ph=>{if(f.sent[ph]&&(S.filer==='self'||(ph==='plan'?c.stage>=3:c.stage>=5)))fDocs(c,f,ph).forEach(d=>{f.made[d.id]=true;});});return f;}
 function fData(c){const f=fS(c),d=dates(c),co=COURSE(c.course)||COURSES[0],mid=c===MIDORI,pf=FPREF[Math.max(0,CASES.indexOf(c))%FPREF.length],cr=c.curRes;
  const n6=v=>String(v).padStart(6,'0'),pc=pf[1],H=cr?cr.H:c.check==='attend'?3:5;let dayH;
  if(cr){dayH=[];cr.sched.forEach(x=>{if(x.day)dayH.push({h:0,it:[]});else if(!x.lunch&&dayH.length){const t=dayH[dayH.length-1];t.h=Math.round((t.h+x.h)*100)/100;t.it.push(x);}});}
@@ -1744,7 +1995,7 @@ function fAtt(c,id){const st=c.stage;
  if(id==='a14')return st>=2?['ok','受領']:['mute','研修会社から受け取る'];
  return ['mute','—'];}
 function fDocSt(c,f,d,ph){if(f.sent[ph])return ['ok',S.filer==='self'?'提出済み':'引き継ぎ済み'];
- if(d.k==='att')return fAtt(c,d.id);
+ if(d.k==='att')return fAtt(c,d.id);if(d.k==='sr')return ['mute','社労士が用意'];if(d.k==='bur')return ['mute','労働局から届く'];if(d.k==='ext'||d.k==='emp')return ['mute',FKIND[d.k]];
  if(d.k==='vend')return f.ask[d.id]?['brand','研修会社に依頼済み']:['mute','研修会社に依頼する'];
  if(d.k==='cust'&&f.ask[d.id])return ['brand','お客様に依頼済み'];
  return f.made[d.id]?['ok','下書きあり']:['mute','未作成'];}
@@ -1758,7 +2009,7 @@ function fRows(c,f,D,ph){const sel=(id,k,opts)=>`<select id="${id}" data-bind="f
   ['実施場所',`<input type="text" id="fPlace" data-bind="forms.${c.id}.place" value="${esc(f.place)}">`,'staff','fPlace'],
   ['所定労働時間',sel('fWork','work',[[6,'1日6時間'],[7,'1日7時間'],[7.5,'1日7.5時間'],[8,'1日8時間']]),'doc','fWork'],
   ['受講する人',c.people+'名（氏名・被保険者番号は雇用契約書などから）','doc'],['受講料（1人）',yen(c.fee),'vendor'],
-  ['提出する人',sel('fAgent','agent',[['sr',srName(c)+'が代理で提出'],['self','事業主が自分で提出']]),'staff','fAgent'],
+  ['提出する人',sel('fAgent','agent',[['sr',srName(c)+'が代理で提出'],['self','事業主が自分で提出'],['dairi','社労士以外の代理人が提出']]),'staff','fAgent'],
   ['提出先',D.bureau+'（所在地から）','calc']];
  if(ph==='apply')R.push(['賃金助成の対象時間',D.wageH+'時間（'+c.people+'名分）',c.stage>=3?'lms':'calc'],['経費助成の額',yen(D.keihiSum),'calc'],['支給申請の期限',fmt(D.d.at),'calc'],['振込先の口座','お客様が届に記入します（このツールでは預かりません）','na']);
  return R;}
@@ -1778,7 +2029,8 @@ function fChecks(c,f,D,ph){const L=[],d=D.d;
   L.push(D.H<=+f.work?{lv:'ok',t:'所定労働時間内での受講',p:'1日'+D.H+'時間の受講は、所定労働時間（1日'+f.work+'時間）に収まります。'}:{lv:'bad',t:'所定労働時間内での受講',p:'1日'+D.H+'時間の受講は、所定労働時間（1日'+f.work+'時間）に収まりません。所定の時間の外の受講は、賃金助成の対象外です。',a:`<button class="btn o sm" data-act="fcur" data-id="${c.id}">1日の時間を見直す</button>`});
   L.push({lv:'info',t:'受講回数（1人あたり年度3回まで）',p:c.plan?'年間の研修プランで'+c.plan.n+'回を予定しています（'+c.plan.titles.map(esc).join('、')+'）。':'この訓練で1回分を使います。ほかの研修と合わせて、年度3回までです。'});
   L.push({lv:'info',t:'経費助成の上限',p:D.cap?'受講料 '+yen(c.fee)+'×'+Math.round(D.rate*100)+'%＝'+yen(c.fee*D.rate)+'。1人あたりの上限は'+man(D.cap)+'なので、1人 '+yen(D.keihi)+'です。':'このコースの上限は、訓練の種類ごとに異なります。'});
-  if(f.agent==='sr')L.push({lv:f.ask.p8?'ok':'info',t:'委任状',p:'代理人が提出するため、お客様の記名が入った委任状を添付します。'+(f.ask.p8?'お客様に依頼済みです。':''),a:f.ask.p8?'':`<button class="btn o sm" data-act="fask" data-d="cust">お客様に依頼する</button>`});}
+  if(f.agent==='sr')L.push({lv:'info',t:'社会保険労務士の記載',p:'社労士が提出代行・事務代理をするため、委任状は要りません。様式の社労士欄に記載し、電子申請では提出代行等に関する証明書（共通要領様式第2号）と社労士証票の写しを付けます。事業主は、ポータルで代理先（社労士・コース・期間）を設定します。'});
+  if(f.agent==='dairi')L.push({lv:f.ask.p8?'ok':'info',t:'委任状（原本）',p:'社労士以外の代理人が提出するため、お客様の記名が入った委任状の原本を添付します。'+(f.ask.p8?'お客様に依頼済みです。':''),a:f.ask.p8?'':`<button class="btn o sm" data-act="fask" data-d="cust">お客様に依頼する</button>`});}
  else{
   if(c.stage>=5)L.push({lv:'ok',t:'支給申請',p:'提出済みです。'});
   else if(c.stage<4)L.push({lv:'info',t:'支給申請の期間',p:'訓練終了日（'+fmt(d.en)+'）の翌日から2か月以内：'+fmt(d.af)+' 〜 '+fmt(d.at)+'。'});
@@ -1792,23 +2044,224 @@ function fChecks(c,f,D,ph){const L=[],d=D.d;
   L.push({lv:'info',t:'添付する写し',p:'写しは、原本をコピーしたものにしてください。書き写したものや、作り直したものは認められません。'});}
  return L;}
 function tabForms(c){const f=fS(c),D=fData(c),ph=f.ph,ds=fDocs(c,f,ph),mk=ds.filter(d=>d.k==='auto'||d.k==='cust'),made=mk.filter(d=>f.made[d.id]).length,chk=fChecks(c,f,D,ph),bad=chk.filter(x=>x.lv==='bad').length,sent=!!f.sent[ph],self=S.filer==='self';
- const done=[!!D.sui||ph==='apply',made===mk.length,made===mk.length&&!bad,sent],now=done.indexOf(false);
- const steps=['書類に使うデータ','書類の下書き','自動チェック',self?'提出':'社労士に引き継ぐ'].map((t,i)=>`<li class="${done[i]?'done':i===now?'now':''}">${t}</li>`).join('');
+ const done=[!!D.sui||ph==='apply',self?made===mk.length:fCrossOk(c),(self?made===mk.length:true)&&!bad,sent],now=done.indexOf(false);
+ const steps=['書類に使うデータ',self?'書類の下書き':'書類の突き合わせ','自動チェック',self?'提出':'社労士に引き継ぐ'].map((t,i)=>`<li class="${done[i]?'done':i===now?'now':''}">${t}</li>`).join('');
  const lv={ok:'<span class="chip ok">'+ic('check','s')+'OK</span>',warn:'<span class="chip warn">期限が近い</span>',bad:'<span class="chip warn">要対応</span>',info:'<span class="chip info">確認</span>'};
- const row=d=>{const st=fDocSt(c,f,d,ph),can=d.k!=='att'&&(d.k==='vend'||f.made[d.id]);
-  return `<div class="fdoc"><span class="mk ${d.m?'':'opt'}" title="${d.m?'必ず出す書類':'該当する場合に出す書類'}">${d.m?'●':'▲'}</span><div><b>${esc(d.n)}</b><p>${esc(d.no)}・${FKIND[d.k]}${d.note?'・'+esc(d.note):''}</p></div><div class="r"><span class="chip ${st[0]}">${st[1]}</span>${can?`<button class="btn g sm" data-act="fview" data-d="${d.id}">プレビュー</button>`:''}${d.k==='vend'&&!f.ask[d.id]&&!sent?`<button class="btn o sm" data-act="fask" data-d="${d.id}">研修会社に依頼</button>`:''}${d.k==='att'&&st[0]==='warn'?`<button class="btn o sm" data-act="nudge" data-id="${c.id}">催促文</button>`:''}</div></div>`;};
- return `<div class="card note am">${ic('shield','l')}<div><h3>申請書類の作成・提出は、${esc(srName(c))}が行います</h3><p>${self?'案件のデータから下書きを作ります。内容を確認して、厚生労働省の最新の様式で提出してください。':'このツールは、集めた書類と案件のデータを整理して、社労士が書類を作るための下書きを用意します。お客様の記名が要る書類は、お客様に確認を依頼します。'}</p></div></div>
+ const row=d=>{const st=fDocSt(c,f,d,ph),can=d.k!=='att'&&(d.k==='vend'||f.made[d.id]&&(self||d.k!=='sr'));
+  return `<div class="fdoc">${lvChip(c,d)}<div><b>${esc(d.n)}</b><p>${esc(d.no)}・${FKIND[d.k]||''}${d.note?'・'+esc(d.note):''}</p></div><div class="r"><span class="chip ${st[0]}">${st[1]}</span>${can?`<button class="btn g sm" data-act="fview" data-d="${d.id}">プレビュー</button>`:''}${d.k==='vend'&&!f.ask[d.id]&&!sent?`<button class="btn o sm" data-act="fask" data-d="${d.id}">研修会社に依頼</button>`:''}${d.k==='att'&&st[0]==='warn'?`<button class="btn o sm" data-act="nudge" data-id="${c.id}">催促文</button>`:''}</div></div>`;};
+ return `<div class="card note am">${ic('shield','l')}<div><h3>申請書類の作成・提出は、${esc(srName(c))}が行います</h3><p>${self?'案件のデータから下書きを作ります。内容を確認して、厚生労働省の最新の様式で提出してください。':'このツールは、お客様から書類を集めて、AIで二重にチェックし、社労士に引き継ぎます。申請書類の下書き・作成と提出は、社労士が行います（社会保険労務士法27条）。社労士の下書きができると、ここで読むだけの表示ができます。'}</p></div></div>
  <div class="fhead"><div class="seg2"><button data-act="fph" data-v="plan" aria-pressed="${ph==='plan'}">計画届の書類</button><button data-act="fph" data-v="apply" aria-pressed="${ph==='apply'}">支給申請の書類</button></div><span class="tiny">${ph==='plan'?'訓練開始日の6か月前から1か月前までに提出（'+fmt(D.d.pf)+' 〜 '+fmt(D.d.pt)+'）':'訓練終了日の翌日から2か月以内に提出（'+fmt(D.d.af)+' 〜 '+fmt(D.d.at)+'）'}</span></div>
  <div class="card"><ol class="fstep">${steps}</ol></div>
  <div class="card"><div class="fsec"><h3>1. 書類に使うデータ</h3><span class="tiny">集めた書類・お客様の回答・カリキュラムから自動で入ります。直すと、すべての書類に反映します</span></div>${fRows(c,f,D,ph).map(r=>`<div class="fd">${r[3]?`<label class="k" for="${r[3]}">${r[0]}</label>`:`<span class="k">${r[0]}</span>`}<span class="v">${r[1]}</span><span class="s">${FSRC(r[2])}</span></div>`).join('')}</div>
- <div class="card"><div class="fsec"><h3>2. 出す書類（${ds.length}点）</h3><button class="btn p sm" data-act="fmake" ${f.gen||sent?'disabled':''}>${ic('spark','s')}${made?'書類を作り直す':'書類を作る'}</button></div>
-  ${f.gen===ph?`<div class="read" style="padding:4px 18px 10px"><span class="spin"></span>案件のデータから、書類の下書きを作っています</div>`:`<p class="tiny" style="padding:0 18px 10px">● 必ず出す書類　▲ 該当する場合に出す書類。${made?mk.length+'点のうち'+made+'点の下書きがあります。':'「書類を作る」を押すと、'+mk.length+'点の下書きを作ります。'}</p>`}
+ <div class="card"><div class="fsec"><h3>2. 出す書類（${ds.length}点）</h3>${self?`<button class="btn p sm" data-act="fmake" ${f.gen||sent?'disabled':''}>${ic('spark','s')}${made?'書類を作り直す':'書類を作る'}</button>`:'<span class="tiny">下書きは社労士が作ります（社会保険労務士法27条）</span>'}</div>
+  ${f.gen===ph?`<div class="read" style="padding:4px 18px 10px"><span class="spin"></span>案件のデータから、書類の下書きを作っています</div>`:`<p class="tiny" style="padding:0 18px 10px">「必須」は必ず出す書類、「該当する場合」はこの案件の条件で必要になった書類です（任意と今回は不要の書類は「手続きと要件」のタブ）。${self?(made?mk.length+'点のうち'+made+'点の下書きがあります。':'「書類を作る」を押すと、'+mk.length+'点の下書きを作ります。'):(made?'社労士が'+mk.length+'点のうち'+made+'点の下書きを作りました。':'社労士に引き継ぐと、社労士が下書きを作ります。')}</p>`}
   ${ds.map(row).join('')}</div>
  <div class="card"><div class="fsec"><h3>3. 提出前の自動チェック${bad?'（要対応 '+bad+'件）':''}</h3></div>${chk.map(x=>`<div class="chk">${lv[x.lv]}<div><b>${x.t}</b><p>${x.p}</p></div>${x.a?`<div class="acts">${x.a}</div>`:''}</div>`).join('')}</div>
- <div class="card fhand"><h3 style="font-size:15px">4. ${self?'提出':'社労士に引き継ぐ'}</h3><p class="tiny">${self?'下書きを確認し、最新の様式で書類を作って、雇用関係助成金ポータル（電子申請）か窓口・郵送で提出します。提出したら「提出済みにする」を押してください。':'下書き・集めた書類の写し・チェック結果をまとめて、'+esc(srName(c))+'に渡します。申請書類の作成・提出は社労士が行います。'}</p>
+ ${fCrossCard(c)}
+ <div class="card fhand"><h3 style="font-size:15px">4. ${self?'提出':'社労士に引き継ぐ'}</h3><p class="tiny">${self?'下書きを確認し、最新の様式で書類を作って、雇用関係助成金ポータル（電子申請）か窓口・郵送で提出します。提出したら「提出済みにする」を押してください。':'集めた書類の写し・申請データ・AIの二重チェックの結果をまとめて、'+esc(srName(c))+'に渡します。申請書類の作成・確認・提出は社労士が行います。'}</p>
   <div class="acts"><button class="btn p" data-act="fsend" ${sent?'disabled':''}>${sent?(self?'提出済み':'引き継ぎ済み'):self?'提出済みにする':'社労士に引き継ぐ'}</button><button class="btn o" data-act="fask" data-d="cust">${ic('chat','s')}お客様に確認を依頼</button><button class="btn o" data-act="fall">${ic('doc','s')}まとめてプレビュー・印刷</button><button class="btn g" data-act="msg" data-m="電子申請に入力する順に並べたデータを書き出しました（試作のためファイルは作られません）">電子申請用のデータ（CSV）</button></div></div>
  ${self?'':srVend(c,ph)}
- <p class="tiny">${c.course!=='reskill'?'このコースの書類・様式番号は、リスキリング支援コースと異なる場合があります。画面の様式番号は、リスキリング支援コース（通学制）の例です。':'書類の一覧は、リスキリング支援コースのパンフレット（通学制・同時双方向型）の提出書類に沿っています。'}氏名・番号などは試作用の架空の例です。</p>`;}
+ <p class="tiny">書類の一覧は、${esc(COURSE(c.course).short)}（${esc(kindNm(c))}）の詳細版パンフレット・支給要領に沿っています。条件は「手続きと要件」のタブで変えられます。氏名・番号などは試作用の架空の例です。</p>`;}
+/* ================= 手続きと要件（案件のコース・条件から、全段階の手続き・要件・書類・期限を出す） ================= */
+const PHL={pre:'事前準備',plan:'計画届',chg:'変更届',run:'訓練の実施中',apply:'支給申請',plus:'追加の支給申請',rep:'実施状況報告',post:'支給決定のあと'};
+const phLbl=(c,ph)=>isSys(c)&&ph==='run'?'制度の導入と適用':isSys(c)&&ph==='plan'?'計画届（制度導入・適用計画届）':ph==='plus'?(W.R(c)?'追加の支給申請（設備投資加算・賃金要件）':'追加の支給申請（賃金要件・資格等手当要件）'):PHL[ph];
+function procPhs(c){const L=['pre','plan','chg','run','apply'];if(!W.Tk('kodo','seicho')(c))L.push('plus');if(W.R(c)&&X(c).kind==='jinji')L.push('rep');L.push('post');return L;}
+const curPh=c=>c.stage<=1?'pre':c.stage===2?'plan':c.stage===3?'run':c.stage<=5?'apply':'post';
+/* 土日祝・年末年始（12/29〜1/3）は、翌開庁日に。祝日は2026〜2027年の暦（要確認） */
+const HOL='2026-01-01,2026-01-12,2026-02-11,2026-02-23,2026-03-20,2026-04-29,2026-05-04,2026-05-05,2026-05-06,2026-07-20,2026-08-11,2026-09-21,2026-09-22,2026-09-23,2026-10-12,2026-11-03,2026-11-23,2027-01-11,2027-02-11,2027-02-23,2027-03-22,2027-04-29,2027-05-03,2027-05-04,2027-05-05,2027-07-19,2027-08-11,2027-09-20,2027-09-23,2027-10-11,2027-11-03,2027-11-23'.split(',');
+const closed=d=>{const w=d.getDay(),m=d.getMonth()+1,dd=d.getDate();return w===0||w===6||HOL.indexOf(iso(d))>-1||m===12&&dd>=29||m===1&&dd<=3;};
+function nextOpen(d){let x=d,n=0;while(closed(x)&&n<20){x=addD(x,1);n++;}return x;}
+const dueTxt=d=>{const x=nextOpen(d);return fmt(d)+(+x!==+d?'<span class="tiny">（'+(d.getDay()===0||d.getDay()===6?'土日':'祝日・年末年始')+'のため、翌開庁日の'+fmt(x)+'まで'+TBC+'）</span>':'');};
+/* 計画期間（制度型は施行日から3年） */
+function kDates(c){const d=dates(c),st=d.st,end3=addD(addM(st,36),-1);return {st,end3,pf:d.pf,pt:d.pt,en:d.en};}
+function procDue(c,ph){const d=dates(c),sys=isSys(c),k=X(c).kind;
+ if(ph==='pre')return {to:d.pt,t:'計画届を出す日まで（遅くとも '+fmt(d.pt)+'）',n:'職業能力開発推進者の選任と、事業内職業能力開発計画の策定・周知は、計画届を出す日までに必要です。'};
+ if(ph==='plan')return sys?{to:d.pt,t:fmt(d.pf)+' 〜 '+dueTxt(d.pt),n:'制度の施行日（計画期間の初日）の6か月前から1か月前まで。'+(k==='choki'&&X(c).kidonyu?'既に長期教育訓練休暇制度がある場合は、計画届を出した日の1か月後が計画期間の初日です。':'')}
+  :{to:d.pt,t:fmt(d.pf)+' 〜 '+dueTxt(d.pt),n:X(c).mode==='teigaku'?'定額制は、訓練開始日ではなく「契約期間の初日」の6か月前から1か月前まで。遅れても出せますが、出した日の1か月後が初日とみなされ、助成はその日からの日割りになります。':'訓練開始日の6か月前から1か月前まで。労働局に届いた日が提出日です（消印は無効）。'};
+ if(ph==='chg')return {to:null,t:'変更の種類ごとに違います（下の計算で確かめます）',n:'変更届を出さずに変えた部分は、助成の対象外です。電子申請では、計画届が受け付けられるまで変更届を出せません。'};
+ if(ph==='run')return sys?{to:null,t:'施行日 '+fmt(d.st)+' から3年間（計画期間：〜'+fmt(kDates(c).end3)+'）',n:'施行日までに就業規則を監督署に届け出て、従業員に周知します。'}:{to:d.en,t:fmt(d.st)+' 〜 '+fmt(d.en),n:'計画どおりに行い、記録を残します。'};
+ if(ph==='apply'){if(sys){const K=kDates(c);
+   if(k==='kyuka'){const f=addD(K.end3,1),t=addD(addM(f,2),-1);return {to:t,t:fmt(f)+' 〜 '+dueTxt(t),n:'計画期間（3年）が終わった翌日から2か月以内。要件を満たしていれば、導入日から6か月を過ぎた日の翌日（'+fmt(addD(addM(K.st,6),1))+'）から早めに申請できます。'};}
+   if(k==='tanji'){const t=addM(K.st,2);return {to:t,t:fmt(addD(K.st,1))+' 〜 '+dueTxt(t),n:'制度を最初に使った日（例として施行日）の翌日から2か月以内。計画期間内であることが必要です。'};}
+   return {to:d.at,t:fmt(d.af)+' 〜 '+dueTxt(d.at),n:'休暇の最終取得日（例として '+fmt(d.en)+'）の翌日から2か月以内。最終取得日が計画期間を過ぎる場合は、計画期間の最終日で数えます。'};}
+  return {to:d.at,t:fmt(d.af)+' 〜 '+dueTxt(d.at),n:(X(c).split?'訓練期間が6か月を超えるため、6か月ごとに区切って申請できます（区切った期間ごとに受講率80%以上）。':'')+(X(c).mode==='teigaku'?'定額制は、10時間以上の訓練を修了した人から、修了日の翌日に申請できます（期限は同じ）。':'訓練終了日の翌日から2か月以内。1日でも過ぎると受けられません。')};}
+ if(ph==='plus'){const u=wuS(c),p3=u.p3?new Date(u.p3+'T00:00:00'):null,t=p3&&!isNaN(p3)?addM(p3,5):null;
+  return {to:t,t:t?fmt(addD(p3,1))+' 〜 '+dueTxt(t):'賃金を上げて3か月続けて払った日の翌日から5か月以内',n:(W.R(c)?'設備投資加算は、機器の代金を払い終えた（リースは3か月続けて払った）日の翌日から5か月以内（パンフP48の図の日付が崩れているため'+TBC+'）。':'')+'賃金は、'+(sys?'制度ごとの起算日':'訓練終了日の翌日')+'から1年以内に上げます。労働局から個別の連絡はありません（申請しないと受けられません）。'};}
+ if(ph==='rep'){const f=addD(addM(d.st,36),1),t=addD(addM(f,2),-1);return {to:t,t:fmt(f)+' 〜 '+dueTxt(t),n:'訓練開始日から3年を経過する日の翌日から2か月以内。全員が予定の職務に就いたら、その翌日から出せます。'};}
+ return {to:null,t:'支給決定の翌日から5年間、書類を保存',n:'不正受給が分かると、返還（延滞金 年3%・違約金 20%）と、5年間の不支給、事業主名などの公表があります。'};}
+/* 段階の状態 */
+function procSt(c,ph){const s=c.stage,cur=curPh(c);
+ if(ph==='chg')return chgL(c).length?['amber','変更 '+chgL(c).length+'件']:['mute','変更が出たとき'];
+ if(ph==='plus')return plusOn(c)?(s>=6?['brand','申請できます']:['mute','支給決定のあと']):['mute','今回は申請しない'];
+ if(ph==='rep')return s>=6?['brand','これから']:['mute','3年後'];
+ const ord=['pre','plan','run','apply','post'],i=ord.indexOf(ph),ci=ord.indexOf(cur);
+ return i<ci?['ok','完了']:i===ci?['brand','いまここ']:['mute','これから'];}
+/* 要件（〇＝自動で確かめた／△＝申立て・確認） */
+function reqs(c,ph){const D=fData(c),f=fS(c),d=D.d,sys=isSys(c),k=X(c).kind,L=[],R=(id,t,a,src,n)=>L.push({id,t,a,src,n:n||''});
+ if(ph==='pre'){R('sui','職業能力開発推進者を選んでいる',!!D.sui,'P3〜P5');R('pln','事業内職業能力開発計画を作り、従業員に周知している（労働組合等の意見を聴く）',!!D.planOk,'P4〜P6');
+  R('koyo','雇用保険の適用事業所である',null,'P12');R('fu','不支給要件に当たらない（過去5年の不正受給・労働保険料の滞納・労働関係法令の違反・性風俗関連営業・暴力団との関わり・倒産・不受理中の社労士への依頼など）',null,'共通要領0302');
+  R('sme','中小企業かどうか（資本金か常時雇用する労働者の数）：'+(isSme(c)?'中小企業':'大企業'),true,'P12',smeInfo(c).sm.n);
+  if(W.I(c)||sys)R('kai','基準期間に、会社都合の解雇などをしていない（特定受給資格者が一定の割合を超えない）',null,W.I(c)?'人材育成P6':'休暇等P14');
+  if(W.Ik('ikusei','nintei','chukou')(c))R('cc','定期的なキャリアコンサルティングを、就業規則などに定めている',null,'人材育成P6・P29');
+  if(sys){R('new',k==='choki'?'長期教育訓練休暇制度を新しく作る（既にある場合は、適用者が少ないなどの条件で対象）':'同じ種類の制度が、まだない（過去に受給していない）',null,'休暇等P9・P24');R('draft','制度は「案」の段階で、まだ施行していない',null,'休暇等P13');}
+  else if(!inHouse(c))R('ven','研修機関が要件を満たす（民間は定款・登記の目的に教育訓練事業。eラーニング・通信制は自社のホームページで広く募集）',null,'P20');}
+ else if(ph==='plan'){R('win','提出期間内に、労働局に届く（'+fmt(d.pf)+' 〜 '+fmt(d.pt)+'）',c.stage>=3||diff(d.pt)>=0,sys?'休暇等P19':'P41');
+  if(sys){R('sh','制度の施行日は、計画届を出した日より後',null,'休暇等P13');if(k==='kyuka')R('min','最低限休暇を与える人数を決めた（被保険者100人以上は5人、100人未満は1人）',null,'休暇等P20','いまは '+total(c)+'名のため '+(total(c)>=100?5:1)+'名');}
+  else{R('10h','実訓練時間が10時間以上',c.hours>=10&&c.check!=='manner','P19');R('job','職務に直接関係する内容で、対象外の科目（マナー・意識改革など）がない',c.check!=='manner','P21');
+   R('emp','受講する人は全員、雇用保険の被保険者',c.people<=total(c),'P18');if(live(c))R('time','所定労働時間の中で受講する',D.H<=+f.work,'P22');
+   R('cnt','受講回数が、1人あたり年度'+(W.Tk('itj')(c)?'1':'3')+'回まで',null,'P7');}
+  if(X(c).efile)R('ef','電子申請で出す（計画届を紙で出すと、変更届・支給申請も電子申請できません）',null,'共通要領・ポータル');}
+ else if(ph==='chg'){R('chg','変更は、種類ごとの期限までに届け出る',null,'P43・休暇等P13');R('re','開始日（導入予定日）を1か月以上後ろにずらすなら、計画届を出し直す',null,'P43');}
+ else if(ph==='run'){if(sys){R('kis','施行日までに、制度を定めた就業規則を監督署に届け出た（常時10人未満は申立書でも可）・労働協約は締結した',null,'休暇等P13');R('sh2','施行日までに、就業規則と事業内計画を従業員に周知した',null,'休暇等P11');
+   R('use',{kyuka:'計画期間内に、最低限の人数に、それぞれ5日以上の有給の休暇を与える',choki:'1人が合計30日以上（1日単位で10日以上続けて1回以上）取り、受講した日が取得日数の半分以上',tanji:'制度を30回以上使える内容で、同じ機関の一連の15日以上の訓練を受けるために使う'}[k],null,'休暇等P20・P23・P28');
+   R('nk','年次有給休暇を使って受けた日は数えない',null,'休暇等P18');}
+  else{if(X(c).kind==='jihatsu')R('jh','労働時間の外に、本人の申し出で受ける（労働時間中は対象外）',null,'人への投資P23');
+   else if(!X(c).ikukyu)R('wg','訓練中も通常どおり賃金を払う（時間外・休日の受講は割増賃金）',c.stage>=3?!D.gap:null,'P31');
+   if(live(c))R('80','受講率が80%以上（下の表）',attRows(c).every(r=>r.p>=80),'P22');
+   R('fee','受講料は事業主が全額を払い、受講者に負担させない',c.stage>=4?!D.payMiss:null,'P46');
+   if(live(c))R('rec','受講した日すべてに出勤の記録がある',c.stage>=3?!D.gap:null,'P45');
+   if(hasOJT(c))R('ojt','OJT日誌を毎日書き、OJT指導者の出退勤が分かる',null,'人材育成P52');}}
+ else if(ph==='apply'){const t=procDue(c,'apply').to;R('w2','申請期間内に、労働局に届く'+(t?'（'+fmt(t)+'まで）':''),t?c.stage>=5||diff(t)>=0:null,'P44');
+  R('yk','役員等一覧を付ける（付けないと支給されません）',null,'共通要領0302');R('x','書類どうしの数字（人数・時間・金額・日付）が合っている（AIの二重チェック）',dkList(c).every(k=>{const r=dkS(c,k);return dkSt(c,k)!=='got'||dkVerdict(r)==='ok'||r.hum&&r.hum.lv==='ok'&&r.hum.v===r.v;}),'—');
+  R('ck','写しは原本をコピーしたもの（書き写し・作り直しは不可）',null,'共通要領');}
+ else if(ph==='plus'){const u=wuS(c),rs=wuRows(c);R('5p','対象者の全員が、賃金'+(u.m==='allow'?'3':'5')+'%以上の増加（下の計算）',rs.length?rs.every(r=>r.ok):null,'P48・人材育成P26');
+  R('3m','上げた賃金（手当）を3か月続けて払った',null,'P48');R('dn','上げた後に、理由なく賃金を下げたり、ほかの手当を減らしたりしていない',null,'P48');}
+ else if(ph==='rep'){R('job2','受講者が、予定した職務に就いた（職業分類の小分類が違う職務）',null,'P16・P49');}
+ else{R('keep','支給決定のあと5年間、書類を保存する',null,'P7');R('chk','労働局の実地調査や、会計検査に協力する',null,'P8');}
+ return L;}
+const PIT={pre:c=>isSys(c)?['計画届を出す前に制度を施行すると、助成の対象外です（不支給の理由で多いもの）。','複数の事業所がある場合は、全事業所に導入します。']:['推進者と事業内計画は「計画届を出す日まで」。後から作っても認められません。','研修会社との契約・申込みは、計画届の前でも構いませんが、受講料の額と内容は計画届と合わせます。'],
+ plan:c=>isSys(c)?['事前確認書の番号は「訓練休暇様式第7号」です（訓練系の第11号ではありません）。','計画届を電子申請していないと、変更届・支給申請も電子申請できません。']:['様式第1-1号は、第3面・第4面（書き方と注意事項）も印刷して出します。法人番号は13桁です。','対象労働者一覧に載っていない人は、あとから受講しても対象外です（追加は変更届）。','提出の期限が土日祝・年末年始に当たるときは、翌開庁日までに届けば間に合います。'],
+ chg:c=>['対象者の追加は、訓練開始日の前日まで。','訓練日を変えるときは、元の日と新しい日の早いほうの前日まで（例：4/5を4/10に変える → 4/4まで）。','病気・天災などやむを得ない理由は、変更後の訓練日の翌日から7日以内。'],
+ run:c=>isSys(c)?['就業規則の監督署への届出が、施行日より後になると対象外です。','時間単位で取った休暇は、1日の所定労働時間で割って日数にします（小数第3位を切り捨て）。']:['計画と違う日時に受けた分は、受講率に数えられません。','受講者に受講料の一部でも負担させると、賃金助成も含めて対象外です。','出勤簿に記録のない日の受講は、受講時間に数えられません。'],
+ apply:c=>['郵送は「届いた日」が提出日です。期限ぎりぎりは窓口か電子申請にします。','計画届を出した時点の様式で作ります。','取り下げるときは、労働局の承認が必要です。'],
+ plus:c=>['時間外手当（固定残業代を含む）・通勤手当・家族手当などは、比べる賃金に含めません。','「全員」が5%（3%）以上であることが必要です。1人でも届かないと受けられません。'],
+ rep:c=>['期限を過ぎると、受けた助成の返還を求められることがあります'+TBC+'。'],
+ post:c=>['社労士が提出した場合も、事業主は書類の控えを受け取り、保存します。','支給額が100万円以上の不正は、事業主名などが公表されます。令和8年8月3日以降は、支給前でも自分から申し出ない限り公表の対象です。']};
+/* 受講率（80%以上・小数点以下切り捨て） */
+const attRows=c=>{const D=fData(c);return D.tr.map(t=>({nm:t.nm,a:t.wh,p:Math.floor(t.wh/c.hours*100)}));};
+/* 賃金要件の計算 */
+function wuS(c){S.wu=S.wu||{};if(S.wu[c.id])return S.wu[c.id];const D=fData(c);return S.wu[c.id]={m:X(c).allow&&!X(c).wage?'allow':'wage',p3:'',rows:D.tr.map((t,j)=>({b:870000+j*15000,a:Math.round((870000+j*15000)*(j===D.tr.length-1&&c.id==='c5'?1.04:1.053))}))};}
+const wuRows=c=>{const u=wuS(c),th=u.m==='allow'?3:5;return u.rows.map((r,j)=>{const b=+r.b||0,a=+r.a||0,p=b?Math.floor((a-b)/b*1000)/10:0;return {j,b,a,p,ok:b>0&&p>=th};});};
+/* 変更届の期限の計算 */
+const CHGT=[['add','対象労働者を追加する（定額制は減らす場合も）'],['date','訓練の日時・場所・実施方法・時間を変える'],['start','訓練開始日を後ろにずらす'],['fuka','病気・けが・天災など、やむを得ない理由で変える'],['kiki','導入する機器の種類・数量を変える（設備投資加算）'],['other','そのほかの変更']];
+const CHGK=[['kdate','制度の導入予定日を変える'],['kother','そのほかの変更']];
+function chgDue(c,x){const a=x.a?new Date(x.a+'T00:00:00'):dates(c).st,b=x.b?new Date(x.b+'T00:00:00'):a,mn=a<b?a:b;
+ if(x.t==='add')return {d:addD(X(c).mode==='teigaku'?b:dates(c).st,-1),t:X(c).mode==='teigaku'?'変更契約の適用日の前日まで':'訓練開始日の前日まで'};
+ if(x.t==='date'||x.t==='kdate'){if(x.t==='kdate'&&b>=addM(a,1))return {d:addD(addM(b,-1),0),t:'1か月以上後ろにずらすため、変更届ではなく計画届を出し直します（新しい初日の1か月前まで）',re:1};return {d:addD(mn,-1),t:'元の日と新しい日の、早いほうの前日まで'};}
+ if(x.t==='start')return b>=addM(a,1)?{d:addM(b,-1),t:'1か月以上後ろにずらすため、変更届ではなく計画届を出し直します（新しい開始日の1か月前まで）',re:1}:{d:addD(a,-1),t:'元の開始日の前日まで'};
+ if(x.t==='fuka')return {d:addD(b,7),t:'変更後の訓練日の翌日から7日以内（変更届に、理由を書いた書類を付けます）'};
+ if(x.t==='kiki')return {d:addD(b,-1),t:'変更・追加する機器の導入予定日の前日まで（最初の計画届で設備投資の計画を出していないと、追加できません）'};
+ return {d:procDue(c,'apply').to,t:'支給申請書を出すまで（自分で判断せず、労働局に相談します）'};}
+/* 書類の行 */
+function kbRow(c,d){const s=kbSt(c,d);return `<div class="kbr ${s}">${lvChip(c,d)}<div class="kbm"><b>${esc(d.n)}</b><p>${esc(kbNo(c,d))}・${FKIND[d.k]||''}${d.cp&&d.cp!==kbNo(c,d)?'・'+esc(d.cp):''}${s==='c'||s==='na'?`<span class="kbc">${s==='c'?'この案件で必要：':'不要の理由：当てはまらない（'}${esc(d.cond)}${s==='na'?'）':''}</span>`:''}</p>${kbNote(c,d)?`<p class="kbn">${esc(kbNote(c,d))}</p>`:''}</div><span class="kbs tiny">${esc(d.src)}</span></div>`;}
+function procCard(c,ph){const key=c.id+ph,open=S.pox[key]!=null?S.pox[key]:ph===curPh(c),st=procSt(c,ph),due=procDue(c,ph),ds=kbOf(c,ph),g={m:[],c:[],o:[],na:[]};ds.forEach(d=>g[kbSt(c,d)].push(d));
+ const rq=reqs(c,ph),Q=S.rq[c.id]=S.rq[c.id]||{},rqOk=rq.filter(r=>r.a===true||r.a==null&&Q[r.id]).length;
+ const cnt=`<span class="pcn">${g.m.length?`<span class="chip lv warn">必須 ${g.m.length}</span>`:''}${g.c.length?`<span class="chip lv amber">該当 ${g.c.length}</span>`:''}${g.o.length?`<span class="chip lv info">任意 ${g.o.length}</span>`:''}${rq.length?`<span class="chip mute">要件 ${rqOk}/${rq.length}</span>`:''}</span>`;
+ const head=`<button class="pch" data-act="proctog" data-k="${key}" data-o="${open?1:0}" aria-expanded="${open}"><span class="pci ${st[0]}">${st[0]==='ok'?ic('check','s'):ic(ph==='post'?'shield':ph==='chg'?'bulb':'doc','s')}</span><span class="pct"><b>${phLbl(c,ph)}</b><span class="tiny">${due.t.replace(/<[^>]+>/g,'')}</span></span>${cnt}<span class="chip ${st[0]}">${st[1]}</span></button>`;
+ if(!open)return `<div class="card pc">${head}</div>`;
+ const rqH=rq.length?`<div class="psec"><p class="lbl">満たす要件</p>${rq.map(r=>{const done=r.a===true||r.a==null&&Q[r.id],bad=r.a===false;return `<div class="rq ${bad?'bad':done?'ok':''}"><span class="chip ${bad?'warn':done?'ok':'mute'}">${r.a===true?'自動で確認':r.a===false?'要対応':Q[r.id]?'確認済み':'未確認'}</span><div><b>${esc(r.t)}</b>${r.n?`<p>${esc(r.n)}</p>`:''}<span class="tiny">${esc(r.src)}</span></div>${r.a==null?`<button class="btn ${Q[r.id]?'g':'o'} sm" data-act="rqok" data-id="${c.id}" data-r="${r.id}">${Q[r.id]?'取り消す':'確認した'}</button>`:''}</div>`;}).join('')}</div>`:'';
+ const grp=(k,t)=>g[k].length?`<div class="psec"><p class="lbl">${t}（${g[k].length}）</p>${g[k].map(d=>kbRow(c,d)).join('')}</div>`:'';
+ const tool=ph==='chg'?procChg(c):ph==='run'&&live(c)&&!isSys(c)?procAtt(c):ph==='plus'&&plusOn(c)?procWage(c):ph==='post'?procPost(c):'';
+ return `<div class="card pc open">${head}<div class="pcb"><div class="pdue">${ic('cal','s')}<div><b>${due.t}</b><p>${due.n}</p></div></div>
+  ${ph==='plus'&&!plusOn(c)?`<p class="tiny">この案件では、追加の支給申請をしない設定です。上の「条件」で「賃金を上げて追加で申請する」などをオンにすると、書類と計算が出ます。</p>`:''}
+  ${rqH}${grp('m','必ず出す書類')}${grp('c','この案件の条件で必要になる書類')}${grp('o','任意（出す義務はないが、用意しておくと安心）')}
+  ${g.na.length?`<details class="psec na"><summary>今回は不要の書類（${g.na.length}）　条件が変わると必要になります</summary>${g.na.map(d=>kbRow(c,d)).join('')}</details>`:''}
+  ${tool}
+  <div class="psec pit"><p class="lbl">${ic('bulb','s')}間違えやすい点</p><ul>${PIT[ph](c).map(t=>`<li>${t}</li>`).join('')}</ul></div></div></div>`;}
+function procChg(c){const L=chgL(c),T=isSys(c)?CHGK:CHGT.filter(t=>t[0]!=='kiki'||X(c).setsubi);
+ return `<div class="psec tool"><p class="lbl">変更届の期限を計算する</p>
+  <div class="tg3"><div class="fld"><label for="chgT">変更の種類</label><select id="chgT">${T.map(t=>`<option value="${t[0]}">${t[1]}</option>`).join('')}</select></div>
+  <div class="fld"><label for="chgA">元の日（訓練日・導入予定日）</label><input type="date" id="chgA" value="${iso(dates(c).st)}"></div>
+  <div class="fld"><label for="chgB">新しい日（変更後の日・適用日）</label><input type="date" id="chgB" value="${iso(addD(dates(c).st,7))}"></div></div>
+  <div class="acts"><button class="btn o sm" data-act="chgadd" data-id="${c.id}">${ic('plus','s')}この変更を記録して期限を出す</button></div>
+  ${L.length?L.map((x,i)=>{const r=chgDue(c,x),left=r.d?diff(r.d):null;return `<div class="chgr ${r.re?'re':''}"><div><b>${esc(((isSys(c)?CHGK:CHGT).find(t=>t[0]===x.t)||['',''])[1])}</b><p>${x.a?fmt(new Date(x.a+'T00:00:00')):''} → ${x.b?fmt(new Date(x.b+'T00:00:00')):''}。${esc(r.t)}</p></div><span class="chip ${r.re?'warn':left!=null&&left<0?'warn':left!=null&&left<=7?'amber':'info'}">${r.d?fmt(r.d)+(left!=null?(left<0?'（過ぎています）':'（あと'+left+'日）'):''):'—'}</span><button class="btn g sm" data-act="chgdel" data-id="${c.id}" data-i="${i}" aria-label="この変更を消す">${ic('x','s')}</button></div>`;}).join(''):'<p class="tiny">まだ変更は記録されていません。変更が分かったら、すぐに記録して期限を確かめてください。</p>'}</div>`;}
+function procAtt(c){const R=attRows(c);return `<div class="psec tool"><p class="lbl">受講率（80%以上が必要・小数点以下は切り捨て）</p>${GT(['受講者','受講時間','計画の時間','受講率'],R.map(r=>[esc(r.nm),[r.a+'h','n'],[c.hours+'h','n'],[r.p+'%'+(r.p<80?'（不足）':''),r.p<80?'n x':'n']]))}<p class="tiny">${c.stage>=3?'受講記録と出勤簿から計算しています。':'訓練の前のため、計画どおりの時間で計算しています。'}本人の都合で途中でやめた人は対象外です。計画と違う日時に受けた分は数えません。</p></div>`;}
+function procWage(c){const u=wuS(c),R=wuRows(c),th=u.m==='allow'?3:5,all=R.every(r=>r.ok);
+ return `<div class="psec tool"><p class="lbl">賃金要件の計算（全員が${th}%以上）</p>
+  <div class="tg3"><div class="fld"><label for="wuM">使う要件</label><select id="wuM" data-bind="wu.${c.id}.m" data-re="1"><option value="wage" ${u.m==='wage'?'selected':''}>賃金要件（5%以上）</option><option value="allow" ${u.m==='allow'?'selected':''}>資格等手当要件（3%以上）</option></select></div>
+  <div class="fld"><label for="wuP">上げた賃金を3か月続けて払った日</label><input type="date" id="wuP" data-bind="wu.${c.id}.p3" data-re="1" value="${esc(u.p3)}"></div></div>
+  ${GT(['受講者','上げる前の3か月の合計（円）','上げた後の3か月の合計（円）','増えた割合'],R.map(r=>[esc(fData(c).tr[r.j].nm),`<input type="number" class="nin" aria-label="上げる前の3か月の合計" data-bind="wu.${c.id}.rows.${r.j}.b" data-re="1" value="${r.b}">`,`<input type="number" class="nin" aria-label="上げた後の3か月の合計" data-bind="wu.${c.id}.rows.${r.j}.a" data-re="1" value="${r.a}">`,[r.p+'%'+(r.ok?'':'（不足）'),r.ok?'n':'n x']]))}
+  <p class="tiny">${all?'全員が'+th+'%以上です。':'<b style="color:var(--warn)">'+th+'%に届かない人がいます。全員が届かないと、追加の支給は受けられません。</b>'}比べるのは「毎月決まって払う賃金」（基本給と、役職・資格手当など）です。</p></div>`;}
+function procPost(c){S.rp=S.rp||{};const r=S.rp[c.id]=S.rp[c.id]||{amt:Math.round((fData(c).keihiSum||0)+(fData(c).wageSum||0))||300000,y:1},a=+r.amt||0,y=+r.y||0;
+ return `<div class="psec tool"><p class="lbl">万一、返還になったときの金額の目安</p><div class="tg3"><div class="fld"><label for="rpA">返還する助成金の額（円）</label><input type="number" id="rpA" data-bind="rp.${c.id}.amt" data-re="1" value="${a}"></div><div class="fld"><label for="rpY">支給から返還までの年数</label><input type="number" id="rpY" min="0" step="0.5" data-bind="rp.${c.id}.y" data-re="1" value="${y}"></div></div>
+  <dl class="kv"><dt>返還額</dt><dd>${yen(a)}</dd><dt>延滞金（年3%）</dt><dd>${yen(Math.round(a*0.03*y))}</dd><dt>違約金（20%）</dt><dd>${yen(Math.round(a*0.2))}</dd><dt>合計</dt><dd><b>${yen(a+Math.round(a*0.03*y)+Math.round(a*0.2))}</b></dd></dl><p class="tiny">不正受給の場合の目安です。延滞金の計算期間・端数の扱いは、労働局の通知に従います${TBC}。</p></div>`;}
+/* 条件（コース・訓練の種類・実施方法・申請する人など） */
+function procCond(c){const x=X(c),f=fS(c),sys=isSys(c),ed=!!S.proced,k=x.kind;
+ const sum=[COURSE(c.course).short,kindNm(c),sys?'':modeNm(x.mode),sys?'':(inHouse(c)?'事業内訓練':'事業外訓練'),f.agent==='sr'?'社労士が提出代行・事務代理':f.agent==='dairi'?'社労士以外の代理人':'事業主が自分で提出',x.efile?'電子申請':'窓口・郵送',isSme(c)?'中小企業':'大企業'].filter(Boolean);
+ const sel=(id,lb,path,cur,opts)=>`<div class="fld"><label for="${id}">${lb}</label><select id="${id}" data-bind="${path}" data-re="1">${opts.map(o=>`<option value="${o[0]}" ${String(cur)===String(o[0])?'selected':''}>${esc(o[1])}</option>`).join('')}</select></div>`;
+ const sw1=(key,lb)=>`<div class="qrow"><span>${lb}</span><button class="sw" role="switch" aria-checked="${!!x[key]}" aria-label="${esc(lb)}" data-act="tog" data-k="cf.${c.id}.${key}"><i></i></button></div>`;
+ const F=[];if(!sys)F.push(['keihi','経費助成を申請する'],['acct','助成金の口座を登録済み'],['shiken','資格試験・検定の受験料も申請する'],['cc','キャリアコンサルティングの費用も申請する'],['keigen','研修会社から、費用の負担軽減の説明資料を受け取った'],['late','やむを得ない理由で、開始の直前に計画届を出す'],['ikukyu','育児休業中の訓練がある']);
+ if(!W.Tk('kodo','seicho')(c))F.push(['wage','訓練（制度）のあとに賃金を5%上げて、追加で申請する'],['allow','資格等手当を払って、追加で申請する']);
+ if(W.R(c))F.push(['setsubi','設備投資加算を申請する'],['honsha','本社がまとめて申請する'],['keika','令和8年8月2日以前の契約で、経過措置を受ける']);
+ if(W.I(c))F.push(['same','実施場所が自社の事業所と同じ所在地'],['dantai','申請者が事業主団体・共同事業主'],['jisha','自ら運営する認定職業訓練'],['ten','訓練期間中に転勤した人がいる']);if(W.Ik('yuki')(c))F.push(['haken','紹介予定派遣を使う']);
+ if(inHouse(c)&&!sys)F.push(['univ','大学などに訓練コースの開発を任せた']);
+ if(W.Tk('seicho','jihatsu')(c))F.push(['kaigai','海外の大学院で学ぶ']);if(W.Tk('jihatsu')(c))F.push(['direct','規定に基づき、研修会社に直接払った']);if(x.mode==='teigaku')F.push(['multi','複数の事業所の分をまとめて出す']);
+ if(sys)F.push(['shift','シフト制など、所定労働日が期間ごとに決まる'],['small','常時雇用する労働者が10人未満']);if(sys&&k==='choki')F.push(['yukyu','有給の休暇にする（賃金助成）'],['kidonyu','長期教育訓練休暇制度が、もうある']);
+ F.push(['efile','電子申請（雇用関係助成金ポータル）で出す']);if(x.efile)F.push(['first','電子申請を、はじめて使う']);
+ return `<div class="card pad pcond"><div class="fsec" style="padding:0"><h3>この案件の条件</h3><button class="btn ${ed?'p':'o'} sm" data-act="proced">${ed?'閉じる':'条件を変える'}</button></div>
+  <p class="pchips">${sum.map(t=>`<span class="chip mute">${esc(t)}</span>`).join('')}</p>
+  <p class="tiny">条件に合わせて、出す書類が「必須」「該当する場合」「任意」「今回は不要」に分かれます。条件を変えると、すべての段階の書類と期限、申請書類のタブ、社労士の画面に反映します。</p>
+  ${ed?`<div class="tg3">${sel('pcK','訓練（制度）の種類','cf.'+c.id+'.kind',k,KINDS[c.course]||[])}${sys?'':sel('pcM','実施方法','cf.'+c.id+'.mode',x.mode,MODES.filter(m=>m[0]!=='teigaku'||c.course!=='ikusei'))}${sys?'':sel('pcH','実施の形','forms.'+c.id+'.how',f.how,[['out','事業外訓練（研修会社の研修）'],['in','事業内訓練（自社が主催）']])}${inHouse(c)&&!sys?sel('pcL','講師','cf.'+c.id+'.lect',x.lect,[['gai','外部の講師を招く'],['nai','社内の人が講師']]):''}${sel('pcA','提出する人','forms.'+c.id+'.agent',f.agent,[['sr','社会保険労務士（提出代行・事務代理）'],['self','事業主が自分で'],['dairi','社労士以外の代理人']])}${sys&&k==='choki'?sel('pcD','代わりの人の助成','cf.'+c.id+'.dai',x.dai,[['none','申請しない'],['hire','代わりの人を雇った（新規雇用助成）'],['daikou','ほかの従業員が代行した（職務代行助成）']]):''}</div>
+  <div class="pflags">${F.map(z=>sw1(z[0],z[1])).join('')}</div>`:''}</div>`;}
+function tabProc(c){cf(c);S.pox=S.pox||{};S.rq=S.rq||{};const P=procPhs(c),all=P.map(ph=>kbOf(c,ph)).reduce((a,b)=>a.concat(b),[]),n={m:0,c:0,o:0,na:0};all.forEach(d=>n[kbSt(c,d)]++);
+ return `${procCond(c)}
+ <div class="card pad plg"><div><b>書類の区分</b><p class="tiny">全${all.length}点のうち、この案件では「必須」${n.m}点・「該当する場合」${n.c}点・「任意」${n.o}点。「今回は不要」は${n.na}点です。</p></div>
+  <div class="plgc"><span class="chip lv warn">必須</span><span class="tiny">必ず出す</span><span class="chip lv amber">該当する場合</span><span class="tiny">この案件の条件で必要</span><span class="chip lv info">任意</span><span class="tiny">出す義務はないが用意しておくと安心</span><span class="chip lv mute">今回は不要</span><span class="tiny">条件に当てはまらない</span></div></div>
+ <div class="plist">${P.map(ph=>procCard(c,ph)).join('')}</div>
+ <p class="tiny">厚生労働省の詳細版パンフレット（令和8年8月3日以降に出す計画届が対象）・支給要領・共通要領から作っています。「${TBC.replace(/<[^>]+>/g,'')}」の付いた項目と、労働局ごとの運用は、提出先に確認してください。</p>`;}
+/* 対応範囲（このツールでできること・できないこと） */
+const COVP=['事前準備','計画届','変更届','実施中の記録','支給申請','追加の申請','実施状況報告','支給決定のあと'];
+const COVR=[['事業展開等リスキリング支援コース','○○○○○○○○'],['人材育成支援コース（人材育成訓練・認定実習併用・有期実習型・中高年齢者実習型）','○○○○○○—○'],['人への投資促進コース（高度デジタル・成長分野・情報技術・定額制・自発的）','○○○○○△—○'],['人への投資促進コース（長期教育訓練休暇等・短時間勤務等）','○○○○○○—○'],['教育訓練休暇等付与コース','○○○○○○—○'],['建設労働者認定訓練コース・建設労働者技能実習コース','————————']];
+function coverV(){return `<div class="ph"><div><h1>対応範囲</h1><p class="sub">人材開発支援助成金の手続きのうち、このツールでできることと、ツールの外で行うことの一覧です。</p></div></div>
+ <div class="card pad"><h2 style="font-size:16px">コースと手続き</h2><div class="tscroll"><table class="gt cov"><thead><tr><th>コース</th>${COVP.map(p=>`<th>${p}</th>`).join('')}</tr></thead><tbody>${COVR.map(r=>`<tr><td>${esc(r[0])}</td>${r[1].split('').map(s=>`<td class="n ${s==='○'?'ok':s==='△'?'am':'na'}">${s}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+  <p class="tiny">○ 書類の一覧（必須・該当・任意）・期限の計算・要件の確認に対応。△ 一部のメニューだけ（高度デジタル・成長分野は賃金要件がないため、追加の申請はありません）。— その手続きがないコース。障害者職業能力開発コースは令和5年度末で廃止されたため、対象外です。建設労働者のコースは、建設事業主向けの別の要件があるため、今後の対応です。</p></div>
+ <div class="cols"><div class="card pad"><h2 style="font-size:16px">このツールでできること</h2><ul class="cvl">${['コースと条件に合わせた、全段階の書類一覧（必須・該当する場合・任意・今回は不要）','提出期限の計算（土日祝・年末年始は翌開庁日）と、変更届の種類ごとの期限','お客様から書類を集め、AIの二重チェック（読み取りとルール・別のAIでの突き合わせ）','受講率・賃金要件・返還額の目安の計算','社労士への引き継ぎと、社労士の確認・提出の記録、労働局からの問い合わせの記録','お客様のマイページ（いまやること・書類のアップ・メッセージ）'].map(t=>`<li>${ic('check','s')}${t}</li>`).join('')}</ul></div>
+  <div class="card pad"><h2 style="font-size:16px">ツールの外で行うこと</h2><ul class="cvl out">${['GビズID（プライム・メンバー）の取得と、雇用関係助成金ポータルへのログイン（IDとパスワードは預かりません）','ポータルでの代理先（社労士）の設定と、電子申請の送信','原本が必要な書類（OFF-JT実施状況報告書など）の郵送・窓口への提出','申請書類の作成（社会保険労務士が行います。社会保険労務士法27条）','振込先の口座の情報（お客様が届に直接書きます）','労働局からの問い合わせへの回答（社労士が対応し、記録だけツールに残します）'].map(t=>`<li>${ic('arrow','s')}${t}</li>`).join('')}</ul></div></div>
+ <div class="card note am">${ic('shield','l')}<div><h3>社会保険労務士法との関係</h3><p>社会保険労務士ではない者が、報酬を得て申請書類を作ったり、提出を代わりに行ったりすることはできません（社会保険労務士法27条）。そのため、提携先の社労士に引き継ぐ使い方では、このツールの運営側は下書きを作らず、書類の作成・確認・提出は社労士の画面で行います。実際に公開する前に、社労士・弁護士の確認を受けてください。</p></div></div>`;}
+/* お客様のマイページ：ご用意いただく書類 */
+function cNeed(c){cf(c);const ph=c.stage<=1?'pre':c.stage===2?'plan':c.stage===3?'run':c.stage<=5?'apply':'plus',L=(ph==='pre'?kbOf(c,'pre').concat(kbOf(c,'plan')):kbOf(c,ph)).filter(d=>['cust','att','emp'].indexOf(d.k)>-1&&kbSt(c,d)!=='na').sort((a,b)=>'mco'.indexOf(kbSt(c,a))-'mco'.indexOf(kbSt(c,b)));
+ if(!L.length)return '';const lbl=s=>({m:['warn','必須'],c:['amber','該当'],o:['info','任意']})[s];
+ return `<h3 class="sec"><span>ご用意いただく書類（${ph==='pre'?'事前準備と計画届':phLbl(c,ph)}）</span><span>${L.length}点</span></h3><div class="cneed">${L.map(d=>{const s=kbSt(c,d),z=lbl(s);return `<div class="cnr"><span class="chip ${z[0]}">${z[1]}</span><span><b>${esc(d.n)}</b><span class="tiny">${d.k==='cust'&&s==='o'?'社内の記録があれば用意しておいてください（提出は不要です）':d.k==='cust'?'下書きができたら、内容を確認して記名してください':d.k==='emp'?'受講する方に書いてもらいます':'お手元の書類の写しをアップしてください'}${s==='c'?'・'+esc(d.cond):''}</span></span></div>`;}).join('')}</div>`;}
+/* ================= 社会保険労務士（資格者）の確認 ================= */
+const SRKIND={teishutsu:'提出代行者',dairi:'事務代理者'};
+const srStamp=(c,at,kind)=>{const p=srOf(c);return {n:p.who,reg:p.reg||'—',kai:p.kai||'',at,kind:kind||'teishutsu'};};
+const stampHtml=s=>`<div class="stamp"><span class="st-ic">${ic('shield','s')}</span><div><b>社会保険労務士 確認済み</b><p>${esc(s.n)}（登録番号 ${esc(s.reg)}${s.kai?'・'+esc(s.kai):''}）</p><p class="tiny">${esc(s.at)}・${SRKIND[s.kind]||''}として確認</p></div></div>`;
+/* AIの判定が分かれた・要確認で、人がまだ確認していない書類 */
+const srOpenAI=c=>dkList(c).filter(k=>{if(dkSt(c,k)!=='got')return false;const r=dkS(c,k),v=dkVerdict(r);return v&&v!=='ok'&&!(r.hum&&r.hum.lv==='ok'&&r.hum.v===r.v);});
+function srConfBox(c,ph,x){const p=srOf(c),f=fS(c),ds=fDocs(c,f,ph),mk=ds.filter(d=>d.k==='auto'||d.k==='cust'),made=mk.filter(d=>f.made[d.id]).length,n=ds.filter(d=>x.dc[d.id]).length,op=srOpenAI(c);
+ return `<div class="srconf"><p class="lbl">社会保険労務士の確認（資格者）</p>
+  ${S.filer!=='self'?`<div class="srmk"><div><b>申請書類の下書き ${made}/${mk.length}点</b><p class="tiny">集めた書類と申請データから、社労士が下書きを作ります。</p></div><button class="btn ${made<mk.length?'p':'g'} sm" data-act="srmake" data-id="${c.id}" data-ph="${ph}">${ic('spark','s')}${made?'下書きを作り直す':'下書きを作る'}</button></div>`:''}
+  ${op.length?`<div class="srai">${ic('bulb','s')}<p>AIの判定が分かれた・要確認の書類が${op.length}点あります（${op.map(k=>esc(DKT[k].n.replace(/（.*?）/,''))).join('、')}）。下の「書類のAIチェック」で内容を見て、確認済みにするか差し戻してください。</p></div>`:''}
+  <p class="tiny">書類ごとに、内容と添付を確認してチェックを付けます（${n}/${ds.length}）。</p>
+  <div class="srdc">${ds.map(d=>`<label><input type="checkbox" data-srdc="${c.id}|${ph}|${d.id}" ${x.dc[d.id]?'checked':''}><span>${lvChip(c,d)}<b>${esc(d.n)}</b><span class="tiny">${esc(d.no)}</span></span></label>`).join('')}</div>
+  <div class="acts"><button class="btn g sm" data-act="srdcall" data-id="${c.id}" data-ph="${ph}">すべてにチェック</button></div>
+  <div class="fld"><label for="srKind">様式の社労士欄</label><select id="srKind" data-bind="sw.${c.id}.${ph}.kind" data-re="1">${Object.keys(SRKIND).map(k=>`<option value="${k}" ${x.kind===k?'selected':''}>${SRKIND[k]}として記載</option>`).join('')}</select></div>
+  ${x.conf?stampHtml(x.conf)+`<div class="acts"><button class="btn g sm" data-act="srunconf" data-id="${c.id}" data-ph="${ph}">確認印を取り消す</button></div>`:`<div class="acts"><button class="btn p" data-act="srconf" data-id="${c.id}" data-ph="${ph}">${ic('shield','s')}確認印を押す</button></div><p class="tiny">${esc(p.who)}（登録番号 ${esc(p.reg||'—')}）の確認印です。押すと、提出を記録できるようになります。${esc(S.t.name)}とお客様の画面にも「社労士の確認済み」と出ます。</p>`}</div>`;}
+/* 確認待ち（社労士の画面） */
+function srConfV(p,cs){const L=[];cs.forEach(c=>['plan','apply'].forEach(ph=>{const x=sw(c)[ph];if(['new','work'].indexOf(x.st)<0)return;const ds=fDocs(c,fS(c),ph),n=ds.filter(d=>x.dc[d.id]).length,op=srOpenAI(c);L.push({c,ph,x,n,t:ds.length,op});}));
+ const done=[];cs.forEach(c=>['plan','apply'].forEach(ph=>{const x=sw(c)[ph];if(x.conf)done.push({c,ph,x});}));
+ return `<div class="ph"><div><h1>確認待ち</h1><p class="sub">資格者として確認が必要な書類と案件です。AIの判定が分かれた書類は、人が見て判断します。</p></div></div>
+ <div class="card">${L.length?L.map(i=>`<div class="td"><span class="td-ic ${i.op.length?'warn':'brand'}">${ic(i.op.length?'bulb':'check','l')}</span><div><p class="td-k"><span>${PHN[i.ph]}</span><span>${esc(i.c.co)}</span><span>${srStLbl(i.ph,i.x.st)}</span></p><p class="td-t">${i.x.conf?'確認印あり。提出を記録してください':'書類の確認 '+i.n+'/'+i.t+(i.op.length?'・AIの判定が分かれた・要確認 '+i.op.length+'点':'')}</p><p class="td-d">${PHN[i.ph]==='計画届'?'提出期限 '+fmt(dates(i.c).pt):'申請期限 '+fmt(dates(i.c).at)}</p></div><div class="td-a"><button class="btn ${i.x.conf?'o':'p'} sm" data-act="srcase" data-id="${i.c.id}" data-ph="${i.ph}">開く</button></div></div>`).join(''):'<div class="empty"><p><b>確認待ちの書類はありません。</b></p><p>書類が引き継がれると、ここに出ます。</p></div>'}</div>
+ <div class="card pad sidecard"><h3>確認印の記録</h3>${done.length?`<ul class="dl">${done.map(i=>`<li><span><b>${esc(i.c.co)}</b><span class="tiny">${PHN[i.ph]}・${esc(i.x.conf.at)}・${SRKIND[i.x.conf.kind]}</span></span><span class="chip ok">確認済み</span></li>`).join('')}</ul>`:'<p class="tiny">まだありません。</p>'}</div>`;}
+/* 様式第1-1号などの社労士欄 */
+const srBlk=(c,D)=>{const x=sw(c).plan;if(D.f.agent==='sr')return '<h4>社会保険労務士の記載欄</h4>'+KVT([['区分',x.kind==='dairi'?'□ 提出代行者　■ 事務代理者':'■ 提出代行者　□ 事務代理者'],['氏名',esc(S.filer==='self'?S.selfSr:srOf(c).who)],['事務所',esc(srName(c))],['登録番号',esc(S.filer==='self'?BL('登録番号'):srOf(c).reg||'—')],['添付',X(c).efile?'提出代行等に関する証明書（共通要領様式第2号）と、社会保険労務士証票の写し':'—（紙の提出は、様式の社労士欄への記載で足ります）']])+(x.conf?'<p class="tiny">社労士の確認：'+esc(x.conf.at)+'</p>':'');
+ if(D.f.agent==='dairi')return '<h4>代理人</h4>'+KVT([['氏名・名称',BL('代理人の氏名')],['添付する書類','委任状（原本）']]);return '';};
+/* 個別の下書きがまだない書類（共通の項目だけ入れる） */
+const fGen=(c,D,d)=>'<p>'+esc(kbNote(c,d)||d.cond||'')+'</p>'+KVT([['事業主の名称',esc(D.name)],['所在地',esc(D.addr)],['代表者',esc(D.rep)],['コース',esc(D.course.n)+(kindNm(c)?'（'+esc(kindNm(c))+'）':'')],['訓練・制度',esc(c.train)],['期間',fmt(D.d.st)+' 〜 '+fmt(D.d.en)],['対象者',c.people+'名']])+'<p class="tiny">共通の項目だけを入れた下書きです。様式の全項目は、厚生労働省の最新の様式で作ります（根拠：'+esc(d.src||'')+'）。</p>'+FSIGN('事業主',D);
+/* 書類どうしの突き合わせ（AIの二重チェックの結果を、項目ごとに並べる） */
+function fCrossRows(c){const D=fData(c),gt=k=>dkSt(c,k)==='got',t=gt('touki')?dkEx(c,'touki'):null,v=dkS(c,'touki').v||0,addr=String(D.addr).replace(/^\d{3}-\d{4}\s*/,''),py=gt('pay')?dkEx(c,'pay'):null;
+ return [['事業主の名称',c.co,['登記事項証明書',t?t.f[1][1]:null],['研修会社との契約書',gt('cont')?c.co:null]],
+  ['所在地',addr,['登記の本店',t?t.f[2][1]:null],['雇用保険の適用事業所',c.id==='c3'&&v===0?'東京都世田谷区三軒茶屋0-0-0（2号店）':addr]],
+  ['代表者',c.rep,['登記事項証明書',t?t.f[3][1]:null],['支給要件確認申立書',c.rep]],
+  ['訓練コース名',c.train,['研修会社との契約書',gt('cont')?c.train:null],['カリキュラム',c.train]],
+  ['受講料の合計',yen(c.fee*c.people),['研修会社との契約書',gt('cont')?yen(c.fee*c.people):null],['受講料の振込記録',py?yen(py.amt):null]],
+  ['受講する人数',c.people+'名',['雇用契約書',gt('emp')?c.people+'名':null],['出勤簿・賃金台帳',gt('attw')?c.people+'名':null]]].map(r=>{const eq=(a,b)=>b==null||a===b||String(b).indexOf(a)>-1||String(a).indexOf(b)>-1,ok=eq(r[1],r[2][1])&&eq(r[1],r[3][1]),none=r[2][1]==null&&r[3][1]==null;return {r,ok,none};});}
+const fCrossOk=c=>fCrossRows(c).every(x=>x.ok);
+function fCrossCard(c){const R=fCrossRows(c),bad=R.filter(x=>!x.ok).length,cell=v=>v==null?'<span class="tiny">未提出</span>':esc(v);
+ return `<div class="card"><div class="fsec"><h3>書類どうしの突き合わせ${bad?'（食い違い '+bad+'件）':''}</h3><span class="tiny">AI-2が、申請データと2つの書類の値を並べて比べた結果です</span></div>
+  <div style="padding:0 18px 14px">${GT(['項目','申請データ','照合先1','照合先2','結果'],R.map(x=>[esc(x.r[0]),esc(x.r[1]),'<span class="tiny">'+esc(x.r[2][0])+'</span><br>'+cell(x.r[2][1]),'<span class="tiny">'+esc(x.r[3][0])+'</span><br>'+cell(x.r[3][1]),x.none?'<span class="chip mute">未提出</span>':x.ok?'<span class="chip ok">一致</span>':'<span class="chip warn">食い違い</span>']))}</div></div>`;}
+/* AIの二重チェック：2つの結果を並べる */
+const dkTwo=r=>`<div class="dk2"><div><p class="lbl">${AIN[1]}</p>${dkItems(r.res,false)}</div>${r.res2?`<div><p class="lbl">${AIN[2]}</p>${dkItems2(r.res2,false)}</div>`:''}</div>`;
 /* ---------- 書類の下書き（様式に近い形の表示） ---------- */
 const KVT=r=>'<table class="kvt"><tbody>'+r.map(x=>'<tr><th>'+x[0]+'</th><td>'+x[1]+'</td></tr>').join('')+'</tbody></table>';
 const GT=(h,r,ft)=>{const td=z=>Array.isArray(z)?'<td class="'+(z[1]||'')+'"'+(z[2]?' colspan="'+z[2]+'"':'')+'>'+z[0]+'</td>':'<td>'+z+'</td>';
@@ -1822,7 +2275,7 @@ const FREQ=['過去5年以内に、雇用関係助成金の不正受給をして
 const FBODY={
  p1:(c,D)=>FTO(D)+'<h4>事業主</h4>'+FWHO(D)+'<h4>訓練の内容</h4>'+KVT([['コース',esc(D.course.n)],['訓練の種類','OFF-JT（'+(D.f.how==='out'?'事業外訓練':'事業内訓練')+'）'],['訓練コース名',esc(c.train)],['訓練の実施期間',fmt(D.d.st)+' 〜 '+fmt(D.d.en)],['実訓練時間','1人あたり '+c.hours+'時間'],['実施方法',esc(D.mode)],['実施場所',D.f.place?esc(D.f.place):BL('未入力')],['対象労働者数',c.people+'名（対象労働者一覧のとおり）'],['訓練を行う機関',esc(D.vendor)]])
   +'<h4>事前の準備</h4>'+KVT([['職業能力開発推進者',D.sui?esc(D.sui):BL('未選任')],['事業内職業能力開発計画',D.planOk?'作成し、従業員に周知済み':BL('未作成')]])
-  +(D.f.agent==='sr'?'<h4>代理人</h4>'+KVT([['氏名・名称',esc(srName(c))],['添付する書類','委任状']]):'')+FSIGN('事業主',D),
+  +srBlk(c,D)+FSIGN('事業主',D),
  p2:(c,D)=>FTO(D)+KVT([['事業主の名称',esc(D.name)],['事業展開等の区分','事業展開等に伴う訓練のうち、デジタル化・DXに関するもの'],['事業展開等の内容',esc(D.dx)],['実施（予定）の時期',D.d.st.getFullYear()+'年'+(D.d.st.getMonth()+1)+'月から'],['訓練との関係',esc(D.jb)+'を担当する従業員が、本訓練で次のことを習得し、事業展開等を進める：'+esc(D.purpose)]])+FSIGN('事業主',D),
  p3:(c,D)=>FTO(D)+'<p>訓練コース名：'+esc(c.train)+'（'+fmt(D.d.st)+' 〜 '+fmt(D.d.en)+'）</p>'+GT(['No','氏名','雇用保険被保険者番号','雇用形態','職務','所定労働時間'],D.tr.map((t,j)=>[[j+1,'n'],esc(t.nm),t.ins,'正社員',esc(D.jb),'1日'+D.f.work+'時間']))+'<p class="tiny">氏名と番号は試作用の架空の例です。実際は、雇用契約書と雇用保険の書類から入ります。</p>',
  p4:(c,D)=>FTO(D)+'<p>人材開発支援助成金（'+esc(D.course.n)+'）の計画届を出すにあたり、次のことを確認しました。</p><ul class="ck">'+FCONF.map(t=>'<li>'+t+'</li>').join('')+'</ul><p class="tiny">確認する内容の要点です。お客様に様式の全項目を読んでもらい、記名してもらいます。</p>'+FSIGN('事業主（お客様が確認して記名）',D),
@@ -1843,7 +2296,7 @@ const FBODY={
   +(D.gap?'<p class="tiny">※ 受講の記録はありますが、出勤簿に出勤の記録がない日です。</p>':'')+(c.stage<3?'<p class="tiny">訓練の前のため、計画どおりの時間を入れています。訓練が始まると、受講記録（LMS）の時間に置き換えます。</p>':'<p class="tiny">受講記録（LMS）から自動で入れています。</p>'),
  a11:(c,D)=>'<p>本訓練の受講料等は、助成金の支給の有無によって異なる価格を設定していないことを申し立てます。</p>'+KVT([['訓練コース名',esc(c.train)],['訓練を行う機関',esc(D.vendor)],['受講料（1人）',yen(c.fee)],['一般向けの価格','受講案内に書かれた価格と同じ']])+'<p class="tiny">記入する人と書き方は、研修会社と社労士に確認してください。</p>'+FSIGN('事業主',D),
  a13:(c,D)=>'<p>訓練を行う機関として、下記の事業主が本訓練について人材開発支援助成金の支給申請を行うことを承諾します。</p>'+KVT([['事業主の名称',esc(D.name)],['訓練コース名',esc(c.train)],['訓練の実施期間',fmt(D.d.st)+' 〜 '+fmt(D.d.en)],['受講した人数',c.people+'名'],['受講料（1人）',yen(c.fee)]])+'<div class="sign"><span>訓練を行う機関（研修会社が記名）</span><span>'+esc(D.vendor)+'</span></div>'};
-function fSheet(c,D,d){return `<section class="sheet"><div class="sh-top"><span class="fno">${esc(d.no)}${c.course!=='reskill'&&/様式第/.test(d.no)?'（リスキリング支援コースの例）':''}</span><span class="draft">下書き</span></div><h3>${esc(d.n)}</h3>${FBODY[d.id](c,D)}<p class="sh-foot">人材開発支援助成金（${esc(D.course.short)}）・${esc(c.co)}・${fmt(TODAY0)} 作成の下書き。提出には厚生労働省の最新の様式を使ってください。氏名・番号などは試作用の架空の例です。</p></section>`;}
+function fSheet(c,D,d){return `<section class="sheet"><div class="sh-top"><span class="fno">${esc(kbNo(c,d))}</span><span class="draft">下書き</span></div><h3>${esc(d.n)}</h3>${(FBODY[d.id]||fGen)(c,D,d)}<p class="sh-foot">人材開発支援助成金（${esc(D.course.short)}）・${esc(c.co)}・${fmt(TODAY0)} 作成の下書き。提出には厚生労働省の最新の様式を使ってください。氏名・番号などは試作用の架空の例です。</p></section>`;}
 function fModal(m){const c=byId(m.cid),f=fS(c),D=fData(c),ds=fDocs(c,f,m.ph).filter(d=>d.k!=='att'&&(m.d==='all'?f.made[d.id]||d.k==='vend':d.id===m.d));
  return `<h2>${m.d==='all'?(m.ph==='plan'?'計画届':'支給申請')+'の書類（'+ds.length+'点）':esc(ds[0]?ds[0].n:'')}</h2>
  <p class="f-lead"><span class="chip amber">下書き</span>${esc(c.co)}の案件のデータから作りました。${S.filer==='self'?'内容を確認し、最新の様式に写して提出してください。':'内容は'+esc(srName(c))+'が確認し、最新の様式で作成・提出します。'}</p>
@@ -1862,10 +2315,10 @@ function fAskModal(m){const c=byId(m.cid),f=fS(c),D=fData(c),ph=f.ph,L=[];
 const PW='demo';
 const ROLES={
  super:{n:'スーパー管理者',c:'warn',d:'すべてのテナントの管理者・担当者・お客様・提携社労士。アカウントの停止と、各画面の代理表示'},
- admin:{n:'管理者',c:'brand',d:'自社の全担当者の案件と進み具合。担当の割り当てと担当者の追加'},
+ admin:{n:'管理者（コンサルタント）',c:'brand',d:'自社の全担当者の案件と進み具合。担当の割り当てと担当者の追加。申請書類は作らず、書類集めと社労士への引き継ぎまで'},
  staff:{n:'申請担当',c:'info',d:'自分が担当するお客様の案件だけ'},
  client:{n:'お客様',c:'amber',d:'自社の案件のマイページだけ（書類とAIチェック・期限・メッセージ）'},
- sr:{n:'提携社労士',c:'ok',d:'引き継がれた案件の書類・申請データ・期限だけ'}};
+ sr:{n:'社労士（資格者）',c:'ok',d:'引き継がれた案件の書類・申請データ・期限。資格者として書類の作成・確認・確認印・提出の記録'}};
 const ROLEORD=['super','admin','staff','client','sr'];
 const CSLUG={c1:'midori',c2:'hikari',c3:'soleil',c4:'yamato',c5:'sakura',c6:'aozora',c7:'tachibana',c8:'kaede',c9:'harukaze'};
 const PSLUG={p1:'minato',p2:'aoba'};
@@ -1969,16 +2422,16 @@ function opsAud(){return `<div class="ph"><div><h1>操作の記録</h1><p class=
 const SRST={later:['mute','引き継ぎ前'],new:['brand','新しく届いた'],back:['amber','差し戻し中'],work:['info','作成中'],sent:['info','提出済み・結果待ち'],ask:['warn','労働局から問い合わせ'],done:['ok','受理済み'],paid:['ok','入金済み']};
 const srStLbl=(ph,st)=>ph==='apply'&&st==='done'?'支給決定':ph==='apply'&&st==='sent'?'提出済み・審査中':SRST[st][1];
 const PHN={plan:'計画届',apply:'支給申請'};
-const SRNAV=[['home','today','ホーム'],['cases','cases','案件'],['cal','cal','期限カレンダー'],['office','set','事務所の設定']];
-const SRCHK=(c,ph)=>{const d=dates(c);return ph==='plan'?['最新の様式で、計画届・対象労働者一覧・事前確認書を作成した','事業主の記名を確認した（事前確認書・委任状）','カリキュラム・契約書と、計画届の日時・時間・受講料が合っている','提出期間内（'+fmt(d.pf)+'〜'+fmt(d.pt)+'）に労働局へ届く']:['最新の様式で、支給申請書と内訳を作成した','出勤簿と受講記録に食い違いがない','受講料の全額の支払いを確認した','申請期限（'+fmt(d.at)+'）までに労働局へ届く'];};
+const SRNAV=[['home','today','ホーム'],['conf','check','確認待ち'],['cases','cases','案件'],['cal','cal','期限カレンダー'],['office','set','事務所の設定']];
+const SRCHK=(c,ph)=>{const d=dates(c);return ph==='plan'?['最新の様式で、計画届・対象労働者一覧・事前確認書を作成した','事業主の記名を確認した（事前確認書'+(fS(c).agent==='dairi'?'・委任状':'')+'）','コースと条件に合わせた要件・書類（「手続きと要件」）を確認した','カリキュラム・契約書と、計画届の日時・時間・受講料が合っている','提出期間内（'+fmt(d.pf)+'〜'+fmt(d.pt)+'）に労働局へ届く']:['最新の様式で、支給申請書と内訳を作成した','出勤簿と受講記録に食い違いがない','受講料の全額の支払いを確認した','役員等一覧（支給要件確認申立書の別紙）を付けた','申請期限（'+fmt(d.at)+'）までに労働局へ届く'];};
 S.srp='p1';S.srs='home';S.src=null;S.srph='plan';S.srf='all';S.srmon=null;S.srn={};S.dkx={};S.cview='c1';S.cm={};S.cn={};
 S.rk={toukiM:3,filed:true,payEq:true,empTerm:true};
 function setStage(c,n){if(c===MIDORI)c.manual=n;else c.stage=n;}
-function sw(c){S.sw=S.sw||{};if(S.sw[c.id])return S.sw[c.id];const f=fS(c),st=c.stage,d=dates(c),P=()=>({st:'later',chk:{},how:'e',no:'',amt:'',q:'',why:'',at:''});
+function sw(c){S.sw=S.sw||{};if(S.sw[c.id])return S.sw[c.id];const f=fS(c),st=c.stage,d=dates(c),P=()=>({st:'later',chk:{},how:'e',no:'',amt:'',q:'',why:'',at:'',dc:{},conf:null,kind:'teishutsu'});
  const w=S.sw[c.id]={plan:P(),apply:P(),msg:[]};
- if(st>=3){w.plan.st='done';w.plan.no='受理番号 '+(c.no*1371+40213);w.plan.at=fmt(addD(d.pt,-6));}else if(f.sent.plan)w.plan.st='new';
- if(st>=6){w.apply.st='paid';const e=est(c);w.apply.amt=e?Math.round(e.all):0;w.apply.at=fmt(addD(d.at,-20));}
- else if(st===5){w.apply.st=c.mail?'ask':'sent';w.apply.at=fmt(addD(d.at,-30));if(c.mail)w.apply.q='受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を確認したい。';}
+ if(st>=3){w.plan.st='done';w.plan.no='受理番号 '+(c.no*1371+40213);w.plan.at=fmt(addD(d.pt,-6));w.plan.conf=srStamp(c,fmt(addD(d.pt,-7)));}else if(f.sent.plan)w.plan.st='new';
+ if(st>=6){w.apply.conf=srStamp(c,fmt(addD(d.at,-21)));w.apply.st='paid';const e=est(c);w.apply.amt=e?Math.round(e.all):0;w.apply.at=fmt(addD(d.at,-20));}
+ else if(st===5){w.apply.conf=srStamp(c,fmt(addD(d.at,-31)));w.apply.st=c.mail?'ask':'sent';w.apply.at=fmt(addD(d.at,-30));if(c.mail)w.apply.q='受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を確認したい。';}
  else if(f.sent.apply)w.apply.st='new';
  return w;}
 const srPh=c=>{const w=sw(c);return w.apply.st!=='later'||w.plan.st==='done'?'apply':'plan';};
@@ -1992,11 +2445,11 @@ function srItems(cs){const R=[];cs.forEach(c=>{const w=sw(c),d=dates(c);['plan',
   else if(x.st==='back')R.push({o:3,c,ph,ic:['back','amber'],k:'差し戻し中',t:esc(S.t.name)+'が書類を直しています',d:'差し戻した理由：'+esc(x.why),due});
   else if(x.st==='sent')R.push({o:4,c,ph,ic:['check','ok'],k:'結果待ち',t:P+'の'+(ph==='plan'?'受理':'支給決定')+'を待っています',d:'提出日 '+esc(x.at)+'。結果が届いたら記録してください。',due});});});
  return R.sort((a,b)=>a.o-b.o||a.due-b.due);}
-function srTop(p){const sup=isSuper();return `<div class="wrap"><div class="acct"><span class="av">${ic('shield')}</span>${sup?`<div class="fld"><label for="srpSel">表示する社労士事務所</label><select id="srpSel" data-srp="1">${S.partners.map(x=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>`:''}<p><span class="chip ok">提携社労士のマイページ</span> <b>${esc(p.n)}</b>（${esc(p.who)}）<span class="tiny">${esc(S.t.name)}から引き継がれた案件だけが表示されます。お客様との契約・報酬は、事務所とお客様が直接決めます。</span></p></div></div>`;}
+function srTop(p){const sup=isSuper();return `<div class="wrap"><div class="acct"><span class="av">${ic('shield')}</span>${sup?`<div class="fld"><label for="srpSel">表示する社労士事務所</label><select id="srpSel" data-srp="1">${S.partners.map(x=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>`:''}<p><span class="chip ok">社労士（資格者）の確認マイページ</span> <b>${esc(p.n)}</b>（${esc(p.who)}・登録番号 ${esc(p.reg||'—')}）<span class="tiny">${esc(S.t.name)}から引き継がれた案件だけが表示されます。お客様との契約・報酬は、事務所とお客様が直接決めます。</span></p></div></div>`;}
 function srV(){let p=S.partners.find(x=>x.id===S.srp);if(role()==='sr'){p=S.partners.find(x=>x.id===me().ref)||p;}if(!p)p=S.partners[0];S.srp=p.id;
  const cs=CASES.filter(c=>srOf(c).id===p.id);if(S.src&&!cs.some(c=>c.id===S.src))S.src=null;
  const act=srItems(cs).filter(x=>x.o<=2).length;
- const body=S.src?srDetail(byId(S.src),p):({home:srHome,cases:srList,cal:srCal,office:srOffice})[S.srs](p,cs);
+ const body=S.src?srDetail(byId(S.src),p):({home:srHome,conf:srConfV,cases:srList,cal:srCal,office:srOffice})[S.srs](p,cs);
  return srTop(p)+`<div class="wrap st"><aside class="side" aria-label="社労士の画面のメニュー">${SRNAV.map(n=>`<button data-act="srnav" data-s="${n[0]}" aria-current="${S.src?n[0]==='cases':S.srs===n[0]}">${ic(n[1])}${n[2]}${n[0]==='home'&&act?`<span class="cnt">${act}</span>`:''}</button>`).join('')}</aside><div class="main">${body}</div></div>`;}
 function srNear(cs){return cs.map(c=>{const w=sw(c),d=dates(c);return ['plan','apply'].filter(ph=>['later','new','work','back'].indexOf(w[ph].st)>-1&&(ph==='plan'?c.stage<=2:c.stage>=3&&c.stage<=4)).map(ph=>({c,ph,d:ph==='plan'?d.pt:d.at}));}).reduce((a,b)=>a.concat(b),[]).sort((a,b)=>a.d-b.d);}
 function srHome(p,cs){const it=srItems(cs),need=it.filter(x=>x.o<=2),W=cs.map(sw),cnt=st=>W.reduce((a,w)=>a+(w.plan.st===st?1:0)+(w.apply.st===st?1:0),0),near=srNear(cs).slice(0,5);
@@ -2036,6 +2489,8 @@ function srOffice(p){const i=S.partners.indexOf(p),n=S.srn[p.id]=S.srn[p.id]||{n
  <div class="set"><div class="card pad" style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:16px">事務所の情報</h2>
   <div class="fld"><label for="soN">事務所名</label><input type="text" id="soN" data-bind="partners.${i}.n" value="${esc(p.n)}"></div>
   <div class="fld"><label for="soW">担当の社会保険労務士</label><input type="text" id="soW" data-bind="partners.${i}.who" value="${esc(p.who)}"></div>
+  <div class="fld"><label for="soR">社会保険労務士の登録番号</label><input type="text" id="soR" data-bind="partners.${i}.reg" value="${esc(p.reg||'')}"></div>
+  <div class="fld"><label for="soK">所属する社会保険労務士会</label><input type="text" id="soK" data-bind="partners.${i}.kai" value="${esc(p.kai||'')}"></div>
   <div class="fld"><label for="soA">対応エリア</label><input type="text" id="soA" data-bind="partners.${i}.area" value="${esc(p.area)}"></div>
   <div class="fld"><label for="soC">連絡方法</label><input type="text" id="soC" data-bind="partners.${i}.contact" value="${esc(p.contact)}"></div></div>
  <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
@@ -2051,7 +2506,7 @@ function srDetail(c,p){const w=sw(c),ph=w[S.srph]?S.srph:'plan',x=w[ph],f=fS(c),
  else if(x.st==='new')act=`<p>${nm}（担当：${esc(ownerNm(c))}）から、${PHN[ph]}の書類一式が届きました。下の書類・申請データ・AIチェックの結果を確認してください。</p><div class="sract"><button class="btn p" data-act="sracc" data-id="${c.id}" data-ph="${ph}">受け取って作成を始める</button><button class="btn o" data-act="srback" data-id="${c.id}" data-ph="${ph}">差し戻す（不足・不備）</button><button class="btn g" data-act="srask" data-id="${c.id}" data-ph="${ph}">${nm}に確認する</button></div>`;
  else if(x.st==='back')act=`<p>差し戻しました。理由：<b>${esc(x.why)}</b></p><p class="tiny">${nm}が直して、もう一度引き継ぐと「新しく届いた」にもどります。</p>`;
  else if(x.st==='work'){const L=SRCHK(c,ph),n=L.filter((_,i)=>x.chk[i]).length;act=`<p class="lbl">提出前の確認（${n}/${L.length}）</p><div class="srchk">${L.map((t,i)=>`<label><input type="checkbox" data-srchk="${c.id}|${ph}|${i}" ${x.chk[i]?'checked':''}><span>${t}</span></label>`).join('')}</div>
-  <div class="srsub"><div class="fld"><label for="srHow">提出のしかた</label><select id="srHow" data-bind="sw.${c.id}.${ph}.how"><option value="e" ${x.how==='e'?'selected':''}>電子申請（雇用関係助成金ポータル）</option><option value="w" ${x.how==='w'?'selected':''}>労働局の窓口</option><option value="m" ${x.how==='m'?'selected':''}>郵送（届いた日が提出日）</option></select></div>
+  ${srConfBox(c,ph,x)}<div class="srsub"><div class="fld"><label for="srHow">提出のしかた</label><select id="srHow" data-bind="sw.${c.id}.${ph}.how"><option value="e" ${x.how==='e'?'selected':''}>電子申請（雇用関係助成金ポータル）</option><option value="w" ${x.how==='w'?'selected':''}>労働局の窓口</option><option value="m" ${x.how==='m'?'selected':''}>郵送（届いた日が提出日）</option></select></div>
   <div class="sract"><button class="btn p" data-act="srsub" data-id="${c.id}" data-ph="${ph}">提出したことを記録する</button><button class="btn g" data-act="srask" data-id="${c.id}" data-ph="${ph}">${nm}に確認する</button></div></div>`;}
  else if(x.st==='sent')act=`<p>${esc(x.at)}に提出しました。${ph==='plan'?'受理の連絡':'支給決定の通知'}が届いたら記録してください。</p>
   <div class="srsub">${ph==='plan'?`<div class="fld"><label for="srNo">受理番号</label><input type="text" id="srNo" placeholder="例）受理番号 12345"></div>`:`<div class="fld"><label for="srAmt">支給決定額（円）</label><input type="number" id="srAmt" value="${Math.round(D.keihiSum+D.wageSum)}"></div>`}
@@ -2060,8 +2515,8 @@ function srDetail(c,p){const w=sw(c),ph=w[S.srph]?S.srph:'plan',x=w[ph],f=fS(c),
  else if(x.st==='done')act=ph==='plan'?`<p>${esc(x.no)}で受理されました（${esc(x.at)}）。訓練が終わると、支給申請の書類が届きます。</p>`:`<p>支給決定：<b>${yen(+x.amt||0)}</b>。お客様の口座に振り込まれます。</p>`;
  else if(x.st==='paid')act=`<p>入金済み：<b>${yen(+x.amt||0)}</b>。この案件の手続きは完了です。</p>`;
  const ds=fDocs(c,f,ph);
- const docs=`<div class="card"><div class="fsec"><h3>引き継がれた書類（${ds.length}点）</h3>${later?'':`<button class="btn o sm" data-act="srall" data-id="${c.id}" data-ph="${ph}">${ic('doc','s')}まとめてプレビュー</button>`}</div>${ds.map(dd=>{const st=later?['mute','引き継ぎ前']:dd.k==='att'?fAtt(c,dd.id):dd.k==='vend'?(f.ask[dd.id]?['brand','研修会社に依頼済み']:['mute','研修会社が記入']):f.made[dd.id]?['ok','下書きあり']:['mute','未作成'],can=!later&&dd.k!=='att'&&(dd.k==='vend'||f.made[dd.id]);
-  return `<div class="fdoc"><span class="mk ${dd.m?'':'opt'}">${dd.m?'●':'▲'}</span><div><b>${esc(dd.n)}</b><p>${esc(dd.no)}・${FKIND[dd.k]}</p></div><div class="r"><span class="chip ${st[0]}">${st[1]}</span>${can?`<button class="btn g sm" data-act="srview" data-id="${c.id}" data-ph="${ph}" data-d="${dd.id}">プレビュー</button>`:''}</div></div>`;}).join('')}</div>`;
+ const docs=`<div class="card"><div class="fsec"><h3>引き継がれた書類（${ds.length}点）</h3>${later?'':`<button class="btn o sm" data-act="srall" data-id="${c.id}" data-ph="${ph}">${ic('doc','s')}まとめてプレビュー</button>`}</div>${ds.map(dd=>{const st=later?['mute','引き継ぎ前']:dd.k==='att'?fAtt(c,dd.id):dd.k==='vend'?(f.ask[dd.id]?['brand','研修会社に依頼済み']:['mute','研修会社が記入']):dd.k==='sr'?['mute','社労士が用意']:dd.k==='bur'||dd.k==='ext'||dd.k==='emp'?['mute',FKIND[dd.k]]:f.made[dd.id]?['ok','下書きあり']:['mute','未作成'],can=!later&&dd.k!=='att'&&(dd.k==='vend'||f.made[dd.id]);
+  return `<div class="fdoc">${lvChip(c,dd)}<div><b>${esc(dd.n)}</b><p>${esc(dd.no)}・${FKIND[dd.k]||''}</p></div><div class="r"><span class="chip ${st[0]}">${st[1]}</span>${can?`<button class="btn g sm" data-act="srview" data-id="${c.id}" data-ph="${ph}" data-d="${dd.id}">プレビュー</button>`:''}</div></div>`;}).join('')}</div>`;
  const rows=[['事業主の名称',c.co],['代表者',c.rep],['所在地',D.addr],['法人番号',D.num],['雇用保険適用事業所番号',D.eno],['労働保険番号',D.lno],['コース',D.course.n],['訓練コース名',c.train],['訓練の期間',fmt(d.st)+' 〜 '+fmt(d.en)],['実訓練時間',c.hours+'時間'],['受講する人',c.people+'名'],['受講料（1人）',yen(c.fee)],['職業能力開発推進者',D.sui||'未選任'],['提出先',D.bureau]];
  const data=`<div class="card"><div class="fsec"><h3>申請データ</h3><span class="tiny">電子申請に入力する順です</span></div>${rows.map(r=>`<div class="ap"><span class="k">${r[0]}</span><span class="v">${esc(r[1])}</span><button class="btn g sm" data-act="copy" data-text="${esc(r[1])}">${ic('copy','s')}コピー</button></div>`).join('')}</div>`;
  const lv={ok:'<span class="chip ok">'+ic('check','s')+'OK</span>',warn:'<span class="chip warn">期限が近い</span>',bad:'<span class="chip warn">要対応</span>',info:'<span class="chip info">確認</span>'};
@@ -2080,9 +2535,9 @@ function srVend(c,ph){const w=sw(c),x=w[ph];if(x.st==='later'&&!w.msg.length)ret
  return `<div class="card pad srv"><div class="srh"><div><p class="eyebrow">${esc(srOf(c).n)}の対応状況</p><h2>${PHN[ph]}：${srStLbl(ph,x.st)}</h2></div>${isSuper()?`<button class="btn o sm" data-act="as" data-id="${esc(srAcctId(srOf(c)))}" data-cid="${c.id}" data-ph="${ph}">社労士の画面で見る</button>`:''}</div>
   ${x.st==='back'?`<div class="card blocked">差し戻されました：${esc(x.why)}<br><span style="font-weight:400">直してから、上の「社労士に引き継ぐ」をもう一度押してください。</span></div>`:''}
   ${x.st==='ask'?`<div class="banner" style="border-radius:10px"><span><b>労働局からの問い合わせ（社労士が対応中）</b><br>${esc(x.q)}</span></div>`:''}
-  ${x.no?`<p class="tiny">${esc(x.no)}（${esc(x.at)}）</p>`:''}</div>
+  ${x.conf?stampHtml(x.conf):x.st==='work'?'<p class="tiny">社労士が書類を作成・確認しています。確認が済むと、ここに確認印が出ます。</p>':''}${x.no?`<p class="tiny">${esc(x.no)}（${esc(x.at)}）</p>`:''}</div>
  ${thr(w.msg,'s','thTs','vsend',c.id,'例）契約書の写しを追加しました','社労士とのメッセージ')}`;}
-function srBackText(c,ph){const L=[];dkList(c).forEach(k=>{const r=dkS(c,k);if(dkSt(c,k)!=='got'&&k!=='cont'){L.push('・'+DKT[k].n+'：まだ届いていません');return;}if(r.res&&!dkStale(c,k))r.res.items.filter(i=>i.lv!=='ok').forEach(i=>L.push('・'+DKT[k].n.replace(/（.*?）/,'')+'（'+i.t+'）：'+i.p));});
+function srBackText(c,ph){const L=[];dkList(c).forEach(k=>{const r=dkS(c,k);if(dkSt(c,k)!=='got'&&k!=='cont'){L.push('・'+DKT[k].n+'：まだ届いていません');return;}if(r.res&&!dkStale(c,k))r.res.items.filter(i=>i.lv!=='ok').forEach(i=>L.push('・'+DKT[k].n.replace(/（.*?）/,'')+'（'+i.t+'）：'+i.p));if(r.res2&&!dkStale(c,k))r.res2.items.filter(i=>i.lv!=='ok').forEach(i=>L.push('・'+DKT[k].n.replace(/（.*?）/,'')+'（突き合わせ：'+i.t+'）：'+i.p));});
  fChecks(c,fS(c),fData(c),ph).filter(x=>x.lv==='bad').forEach(x=>L.push('・'+x.t+'：'+x.p.replace(/<[^>]+>/g,'')));
  return L.join('\n');}
 function srmModal(m){const c=byId(m.cid),T={back:['書類を差し戻す','差し戻す理由（'+S.t.name+'に伝わります）',srBackText(c,m.ph)],ask:['確認する',S.t.name+'への質問・資料の依頼',''],q:['労働局からの問い合わせを記録','問い合わせの内容','']}[m.k];
@@ -2121,7 +2576,7 @@ const dkDesc=(k,c)=>k==='touki'?'法務局で取得。発行から'+(+S.rk.touki
 const dkList=c=>['touki','rules','emp','attw'].concat(c.stage>=2?['cont']:[]).concat(c.stage>=3?['att','wage']:[]).concat(c.stage>=4?['pay']:[]);
 function dkS(c,k){S.dk=S.dk||{};const D=S.dk[c.id]=S.dk[c.id]||{};if(D[k])return D[k];
  const miss=c===MIDORI||(DKMISS[c.id]||[]).indexOf(k)>-1,r=D[k]={st:miss?'none':'got',n:miss?0:1,v:0,res:null,hum:null,ed:{},busy:false,up:'c'};
- if(!miss){r.res=dkRun(c,k,'a');r.res.at=c.stage>=3?'先月':'3日前';if(r.res.lv==='ok'&&c.stage>=2)r.hum={lv:'ok',by:'s',n:ownerNm(c),t:'',at:r.res.at,v:0};}
+ if(!miss){r.res=dkRun(c,k,'a');r.res.at=c.stage>=3?'先月':'3日前';r.res2=dkRun2(c,k,'a');r.res2.at=r.res.at;if(dkVerdict(r)==='ok'&&c.stage>=2)r.hum={lv:'ok',by:'s',n:ownerNm(c),t:'',at:r.res.at,v:0};}
  return r;}
 const dkSt=(c,k)=>c===MIDORI&&MAPI[k]!=null?cl.docs[MAPI[k]]:dkS(c,k).st;
 function dkSet(c,k,v){if(c===MIDORI&&MAPI[k]!=null)cl.docs[MAPI[k]]=v;else dkS(c,k).st=v;}
@@ -2168,13 +2623,47 @@ function dkRun(c,k,by){const x=dkEx(c,k),d=dates(c),I=[],M=+S.rk.toukiM||3,ok=(t
   else wa('振込額','振込額 '+yen(x.amt)+'が、受講料の合計 '+yen(x.need)+'と違います。');
   ok('振込元','振込元が事業主（'+c.co+'）です。');ok('振込日','支給申請より前に払っています。');}
  return {lv:I.some(i=>i.lv==='bad')?'bad':I.some(i=>i.lv==='warn')?'warn':'ok',items:I,by:by||'a',n:'',at:'今日 '+hm(),sig:dkSig(c,k)};}
+/* ================= AIの二重チェック =================
+   AI-1：書類を読み取り、要件のルール（発行日・人数・金額など）に照らす（dkRun）
+   AI-2：1つめとは別に読み直し、案件のデータ・申請書類・ほかの書類と値を突き合わせる（dkRun2）
+   2つの判定が一致すれば「AI二重チェックOK」。分かれたら人（担当者・社労士）が確認する */
+const AIN={1:'AI-1　読み取りとルール',2:'AI-2　別のAIで突き合わせ'};
+function dkRun2(c,k,by){const x=dkEx(c,k),D=fData(c),d=dates(c),r=dkS(c,k),v=r.v||0,I=[];
+ const cmp=(t,a,b,ok,ng,lv)=>I.push({t,a:String(a),b:String(b),lv:ok?'ok':(lv||'warn'),p:ok?'一致しています。':ng});
+ const gotK=kk=>dkSt(c,kk)==='got',addr=String(D.addr).replace(/^\d{3}-\d{4}\s*/,'');
+ if(k==='touki'){cmp('商号',x.f[1][1],'申請データ「事業主の名称」：'+c.co,true);
+  const same=!(c.id==='c3'&&v===0);
+  cmp('本店と、申請する事業所の所在地',x.f[2][1],'雇用保険の適用事業所：'+(same?addr:'東京都世田谷区三軒茶屋0-0-0（2号店）'),same,'登記の本店と、雇用保険の適用事業所の所在地が違います。申請書には適用事業所の所在地を書き、登記の本店とは別の場所であることを、提出先に説明できるようにしてください。');
+  cmp('代表者',x.f[3][1],'支給要件確認申立書の代表者：'+c.rep,true);
+  cmp('資本金','資本金 '+(x.cap?man(x.cap):'記載なし'),'中小企業の判定に使う値：'+(x.cap?man(x.cap):'—'),true);}
+ else if(k==='rules'){const H=D.H;cmp('所定労働時間','8時間／日','計画届の1日の訓練時間：'+H+'時間',H<=8,'1日の訓練時間が所定労働時間を超えています。超えた時間は賃金助成の対象になりません。');
+  cmp('労働基準監督署の受付印',x.filed,'従業員数：'+total(c)+'名',!(total(c)>=10&&x.filed==='なし'),'従業員10人以上ですが、届出の控え（受付印）が確認できません。');}
+ else if(k==='emp'){cmp('人数',c.people+'名分','対象労働者一覧：'+c.people+'名',true);
+  const late=c.id==='c8'&&v===0;cmp('雇用保険の加入日',late?'1名：'+fmt(addD(d.st,9))+' 加入':'全員：訓練開始日より前に加入','訓練開始日：'+fmt(d.st),!late,'受講者のうち1名（'+D.tr[D.tr.length-1].nm+'）は、雇用保険の加入日が訓練開始日より後です。訓練開始日の時点で被保険者でない人は、助成の対象になりません。対象労働者一覧から外すか、加入日を確認してください。','bad');
+  cmp('雇用形態','正社員','対象労働者一覧の区分：正規雇用',true);}
+ else if(k==='attw'){cmp('人数',c.people+'名分','対象労働者一覧：'+c.people+'名',true);cmp('対象月',x.f[0][1],'計画届を出す月の前月',true);}
+ else if(k==='cont'){cmp('研修名',c.train,'計画届の訓練コース名：'+c.train,true);cmp('研修期間',fmt(d.st)+' 〜 '+fmt(d.en),'計画届の訓練期間：'+fmt(d.st)+' 〜 '+fmt(d.en),true);
+  cmp('受講料',yen(c.fee)+'×'+c.people+'名','経費助成の内訳：'+yen(c.fee*c.people),true);}
+ else if(k==='att'){const gap=c.check==='attend'&&!c.fixed&&v===0;cmp('受講日の出勤',gap?'10/14：記録なし':'受講日はすべて出勤','受講記録（研修会社）：受講日 '+(D.days||'—')+'日',!gap,'受講記録では受講した日に、出勤簿の記録がありません。','bad');}
+ else if(k==='wage'){const nc=c.id==='c6'&&v===0;cmp('訓練中の賃金','通常どおり支払い','賃金助成の内訳：所定労働時間内の受講 '+D.wageH+'時間',true);cmp('時間あたりの賃金の根拠',nc?'記載なし':'時間給の計算あり','労働局が確認する項目',!nc,'時間あたりの賃金の計算根拠が台帳から読み取れません。給与計算の設定の写しを添えると確実です。');}
+ else if(k==='pay'){cmp('振込額',yen(x.amt),'契約書の受講料の合計：'+yen(x.need),x.amt===x.need,'振込額と、契約書の受講料の合計が違います（差額 '+yen(Math.abs(x.need-x.amt))+'）。');
+  cmp('振込元',c.co,'事業主の名称：'+c.co,true);cmp('振込日',x.f[1][1],'支給申請の予定日より前',true);}
+ if(!I.length)cmp('内容',DKT[k].n,'案件のデータ',true);
+ return {lv:I.some(i=>i.lv==='bad')?'bad':I.some(i=>i.lv==='warn')?'warn':'ok',items:I,by:by||'a',n:'',at:'今日 '+hm(),sig:dkSig(c,k)};}
+/* 2つの判定のまとめ。ok：両方OK／split：分かれた（人が確認）／warn・bad：両方とも指摘あり */
+function dkVerdict(r){if(!r.res)return null;const a=r.res.lv,b=r.res2?r.res2.lv:a;
+ if(a==='ok'&&b==='ok')return 'ok';if(a!=='ok'&&b!=='ok')return a==='bad'||b==='bad'?'bad':'warn';return 'split';}
+const DKV={ok:['ok','AI二重チェックOK','2つのAIの判定が一致し、問題は見つかりませんでした'],warn:['amber','要確認','2つのAIとも、確認が必要な点を見つけました'],bad:['warn','差し替えが必要','2つのAIとも、差し替えが必要と判定しました'],split:['amber','判定が分かれた','2つのAIの判定が分かれました。担当者か社労士が、下の内容を見て判断してください']};
+function dkItems2(res,compact){const L=compact?res.items.filter(i=>i.lv!=='ok'):res.items;
+ return `<div class="dki">${L.map(i=>`<div class="dkit ${i.lv}"><span class="chip ${DKLV[i.lv][0]}">${i.lv==='ok'?'一致':DKLV[i.lv][1]}</span><div><b>${esc(i.t)}</b><p class="cmpv"><span>書類：${esc(i.a)}</span><span>照合先：${esc(i.b)}</span></p>${i.lv==='ok'?'':`<p>${esc(i.p)}</p>`}</div></div>`).join('')}</div>`;}
+const dkVBox=(r,c,k)=>{const v=dkVerdict(r);if(!v)return '';const V=DKV[v];return `<div class="dkv ${v}"><span class="dkv-ic">${ic(v==='ok'?'check':v==='split'?'bulb':'x','s')}</span><div><b>${V[1]}</b><p>${V[2]}</p></div><span class="dkv-n"><i class="${r.res.lv}">1</i><i class="${(r.res2||r.res).lv}">2</i></span></div>`;};
 function dkSum(c,k){const st=dkSt(c,k),r=dkS(c,k);
  if(st==='none')return k==='cont'?['mute','研修会社から届く']:['mute','未提出'];
  if(st==='reading')return ['info','読み取り中'];if(st==='later')return ['amber','後日アップ'];
  if(r.busy)return ['info','チェック中'];
  if(r.hum&&r.hum.v===r.v)return r.hum.lv==='ok'?['ok','確認済み']:['warn','差し替えを依頼中'];
  if(!r.res)return ['mute','未チェック'];if(dkStale(c,k))return ['amber','再チェックが必要'];
- return r.res.lv==='bad'?['warn','差し替えが必要']:r.res.lv==='warn'?['amber','要確認']:['ok','AIチェックOK'];}
+ const v=dkVerdict(r)||r.res.lv;return v==='bad'?['warn','差し替えが必要']:v==='warn'?['amber','要確認']:v==='split'?['amber','判定が分かれた']:['ok','AI二重チェックOK'];}
 function dkCount(c){const n={got:0,ok:0,warn:0,bad:0,wait:0,un:0};dkList(c).forEach(k=>{const st=dkSt(c,k),s=dkSum(c,k);if(st==='got')n.got++;
  if(st==='none'||st==='later'){if(k!=='cont')n.wait++;}else if(s[0]==='ok')n.ok++;else if(s[0]==='warn')n.bad++;else if(s[0]==='amber')n.warn++;else n.un++;});return n;}
 const dkCountChips=n=>[n.bad?`<span class="chip warn">差し替え ${n.bad}</span>`:'',n.warn?`<span class="chip amber">要確認 ${n.warn}</span>`:'',n.wait?`<span class="chip mute">未提出 ${n.wait}</span>`:'',n.ok?`<span class="chip ok">OK ${n.ok}</span>`:''].filter(Boolean).join(' ')||'<span class="tiny">—</span>';
@@ -2196,12 +2685,12 @@ function dkRow(c,k,who){const r=dkS(c,k),st=dkSt(c,k),s=dkSum(c,k),got=st==='got
   ${open?dkDet(c,k,who):''}</div>`;}
 function dkDet(c,k,who){const r=dkS(c,k),x=dkEx(c,k),res=r.res,h=r.hum&&r.hum.v===r.v?r.hum:null;
  return `<div class="dkd"><div class="dkex"><p class="lbl">AIが読み取った内容</p>${x.f.map(f=>`<div class="exr"><span>${f[0]}</span>${f[2]?`<b><input class="dkin" type="${f[2]==='issued'?'date':'number'}" data-dked="${c.id}|${k}|${f[2]}" value="${f[2]==='issued'?iso(x.issued):x.amt}" aria-label="${f[0]}を直す"></b>`:`<b>${esc(f[1])}</b>`}</div>`).join('')}${x.f.some(f=>f[2])?'<p class="tiny">読み取りが違うときは、ここで直せます。直したら、もう一度チェックしてください。</p>':''}</div>
- <div class="dkres">${r.busy?'<div class="read"><span class="spin"></span>AIがチェックしています</div>':res?(dkStale(c,k)?'<p class="tiny" style="color:var(--amber);font-weight:700">書類・読み取り・ルールが変わりました。もう一度チェックしてください。</p>':'')+dkItems(res,false):'<p class="tiny">まだAIでチェックしていません。「AIでチェック」を押してください。</p>'}
+ <div class="dkres">${r.busy?'<div class="read"><span class="spin"></span>'+(r.step===2?'AI-2が、別の読み方で申請データ・ほかの書類と突き合わせています':'AI-1が読み取り、要件のルールに照らしています')+'</div>':res?(dkStale(c,k)?'<p class="tiny" style="color:var(--amber);font-weight:700">書類・読み取り・ルールが変わりました。もう一度チェックしてください。</p>':'')+dkVBox(r,c,k)+dkTwo(r):'<p class="tiny">まだAIでチェックしていません。「AIでチェック」を押してください。</p>'}
   ${h?dkHumBox(h):''}
   ${who!=='c'&&!r.busy?`<div class="acts">${h?`<button class="btn g sm" data-act="dkhundo" data-id="${c.id}" data-k="${k}">${h.lv==='ok'?'確認を取り消す':'依頼を取り消す'}</button>`:`<button class="btn o sm" data-act="dkok" data-id="${c.id}" data-k="${k}">${ic('check','s')}確認済みにする</button><button class="btn o sm" data-act="dkreq" data-id="${c.id}" data-k="${k}">お客様に差し替えを依頼</button>`}</div>`:''}</div></div>`;}
 function dkReqModal(m){const c=byId(m.cid),r=dkS(c,m.k),it=r.res?r.res.items.filter(i=>i.lv!=='ok'):[],t=it.length?it.map(i=>i.p).join('\n'):'内容を確認したところ、差し替えが必要です。';
  return `<h2>お客様に差し替えを依頼</h2><p class="tiny">${esc(c.co)}・${esc(DKT[m.k].n)}。お客様のマイページの「いまやること」とお知らせに出て、LINEでも知らせます。</p><div class="fld"><label for="dkT">お客様に伝える理由</label><textarea id="dkT" style="min-height:140px">${esc(t)}</textarea></div><div class="m-acts"><button class="btn g" data-act="close">やめる</button><button class="btn p" data-act="dkreqsend">依頼する</button></div>`;}
-function dkUp(c,k){const r=dkS(c,k);r.n=(r.n||0)+1;r.v=r.n-1;r.res=null;r.ed={};r.up=actor();dkSet(c,k,'reading');cl.help=null;render();
+function dkUp(c,k){const r=dkS(c,k);r.n=(r.n||0)+1;r.v=r.n-1;r.res=null;r.res2=null;r.ed={};r.up=actor();dkSet(c,k,'reading');cl.help=null;render();
  setTimeout(()=>{if(dkSt(c,k)==='reading'){dkSet(c,k,'got');dkAfterUp(c,k);render();}},1200);}
 function dkAfterUp(c,k){const r=dkS(c,k),nm=DKT[k].n.replace(/（.*?）/,''),who=r.up==='c'?'c':r.up==='r'?'r':'s';
  if(r.hum&&r.hum.lv==='req'){r.hum=null;flog(c,who,'差し替えの「'+nm+'」が届きました');}else flog(c,who,'「'+nm+'」をアップロード');
@@ -2253,7 +2742,7 @@ function cHomeG(c){const n=nextDue(c),stg=STG(c),T=cTasksG(c),leftMin=T.reduce((
   <h3 class="sec"><span>いまやること</span><span>${T.length?'残り約'+leftMin+'分':'ありません'}</span></h3>
   ${T.length?T.map(t=>`<button class="task" data-act="cnav" data-s="${t.s}"><span class="ti">${ic(t.i,'l')}</span><span><b>${esc(t.t)}</b><span>${esc(t.d)}</span></span><span class="r"><span class="mins">${ic('clock','s')}約${t.min}分</span></span></button>`).join(''):`<div class="task done" aria-disabled="true"><span class="ti">${ic('check','l')}</span><span><b>いまお願いすることはありません</b><span>${c.stage>=5?'労働局の審査を待っています。結果はここでお知らせします。':'次にお願いすることが出たら、LINEでお知らせします。'}</span></span></div>`}
   <h3 class="sec"><span>お知らせ</span></h3>${cNews(c)}
-  ${cMenu(c)}
+  ${cNeed(c)}${cMenu(c)}
   <div class="p-help"><span>分からないことは、担当の${esc(ownerNm(c))}まで。</span><button class="btn g sm" data-act="cnav" data-s="msg">${ic('chat','s')}メッセージ</button></div></div>`;}
 const cAutoDoc=()=>`<div class="doc got"><div class="t"><div><h3>研修のカリキュラムと見積</h3><p class="s">研修会社から届くもの</p></div><span class="chip ok">研修会社から届きました</span></div><div class="exr"><span>研修</span><b>AI活用研修（AI Office）</b></div><div class="exr"><span>実訓練時間</span><b>12時間</b></div><div class="exr"><span>受講料</span><b>200,000円／1人</b></div></div>`;
 function cDoc(c,k){const r=dkS(c,k),st=dkSt(c,k),t=DKT[k],s=dkSum(c,k),i=MAPI[k],mi=c===MIDORI&&i!=null,dd=`data-id="${c.id}" data-k="${k}"${mi?` data-i="${i}"`:''}`;
@@ -2334,7 +2823,7 @@ function cHome(){if(cc()!==MIDORI)return cHomeG(cc());const s=cStat(),c=MIDORI,d
   <details class="pre"><summary>${ic('check')}${pf.length}項目は、すでに入力してあります</summary><div class="rows">${pf.map(r=>`<div class="ir"><span class="k">${r[0]}</span><span class="v">${esc(r[1])}</span><span class="s">${SRC[r[2]]}</span></div>`).join('')}</div></details>
   <h3 class="sec"><span>このあとやること</span></h3>
   ${later.map(l=>`<div class="task later" aria-disabled="true"><span class="ti">${ic('cal','l')}</span><span><b>${l[1]}</b><span>${l[0]}・${l[3]}</span></span><span class="r"><span class="mins">${ic('clock','s')}約${l[2]}分</span></span></div>`).join('')}
-  ${cMenu(MIDORI)}
+  ${cNeed(MIDORI)}${cMenu(MIDORI)}
   <div class="p-help"><span>分からないことは、担当の${esc(ownerNm(MIDORI))}まで。</span><button class="btn g sm" data-act="msg" data-m="実際の画面では、LINEのトークが開きます">${ic('chat','s')}LINEで質問</button></div></div>`;}
 const EXT=()=>[[['所定労働時間','8時間／日'],['休日','土日祝'],['資格等手当','規定なし']],[['対象者','5名'],['雇用形態','正社員'],['雇用保険','加入']],[['対象月','先月'],['出勤簿','5名分・日ごとの始業終業あり'],['賃金台帳','5名分']]];
 function cQs(){const s=cStat(),a=cl.ans;
@@ -2489,6 +2978,15 @@ const ACTDOC={view:0,go:0,snav:0,tab:0,close:0,creset:0,mopen:0,mjump:0,
  vsend:['送る','担当の社労士事務所にメッセージを送ります'],
  cmsg:['送る','担当者にメッセージを送ります'],
  smsg:['送る','お客様のマイページにメッセージを送ります。LINEでも知らせます'],
+ proctog:[null,'手続きの段階を開いて、要件・書類・期限・間違えやすい点を表示します'],
+ proced:[null,'訓練の種類・実施方法・提出する人などの条件を変えます。書類の区分と期限が変わります'],
+ rqok:[null,'自動で確かめられない要件を、確認した印を付けます'],
+ chgadd:[null,'計画の変更を記録して、変更届（または計画届の出し直し）の期限を計算します'],
+ chgdel:[null,'記録した変更を消します'],
+ srmake:[null,'社労士が、集めた書類と申請データから申請書類の下書きを作ります'],
+ srdcall:[null,'引き継がれた書類のすべてに、確認したチェックを付けます'],
+ srconf:[null,'資格者として確認したことを記録します（登録番号つきの確認印）。押すと提出を記録できます'],
+ srunconf:[null,'確認印を取り消します'],
  dkrun:['AIでチェック','アップした書類を、発行日・有効期限・会社名・人数・金額などについてAIがチェックします'],
  dkall:[null,'アップ済みの書類を、まとめてAIでチェックします'],
  dkopen:['詳しく','AIが読み取った内容とチェックの結果を開きます。読み取りが違うときは、その場で直せます'],
@@ -2663,12 +3161,12 @@ const A={
   setTimeout(()=>{const ds=fDocs(c,f,ph).filter(d=>d.k==='auto'||d.k==='cust');ds.forEach(d=>{f.made[d.id]=true;});f.gen=null;
    flog(c,'a',(ph==='plan'?'計画届':'支給申請')+'の書類 '+ds.length+'点の下書きを作成');if(S.view==='staff'&&S.caseId===c.id&&S.tab==='forms')render();toast(ds.length+'点の下書きを作りました。「プレビュー」で確認できます');},1100);},
  fview(d){const c=byId(S.caseId);S.modal={type:'form',cid:c.id,ph:fS(c).ph,d:d.d};renderModal();},
- fall(){const c=byId(S.caseId),f=fS(c);if(!fDocs(c,f,f.ph).some(d=>f.made[d.id])){toast('先に「書類を作る」で下書きを作ってください');return;}S.modal={type:'form',cid:c.id,ph:f.ph,d:'all'};renderModal();},
+ fall(){const c=byId(S.caseId),f=fS(c);if(!fDocs(c,f,f.ph).some(d=>f.made[d.id])){toast(S.filer==='self'?'先に「書類を作る」で下書きを作ってください':'社労士の下書きがまだありません。引き継ぐと、社労士が作ります');return;}S.modal={type:'form',cid:c.id,ph:f.ph,d:'all'};renderModal();},
  fprint(){document.body.classList.add('printing');try{window.print();}catch(e){}},
  fsend(){const c=byId(S.caseId),f=fS(c),ph=f.ph,ds=fDocs(c,f,ph),mk=ds.filter(d=>d.k==='auto'||d.k==='cust'),bad=fChecks(c,f,fData(c),ph).filter(x=>x.lv==='bad').length,nm=ph==='plan'?'計画届':'支給申請';
-  if(mk.some(d=>!f.made[d.id])){toast('先に「書類を作る」で下書きを作ってください');return;}
+  if(S.filer==='self'&&mk.some(d=>!f.made[d.id])){toast('先に「書類を作る」で下書きを作ってください');return;}
   if(S.filer==='self'&&bad){toast('要対応のチェックが'+bad+'件あります。直してから提出してください');return;}
-  f.sent[ph]=true;if(S.filer!=='self'){const x=sw(c)[ph];x.st='new';x.why='';x.chk={};if(c!==MIDORI)c.wait='sr';alog(c.co+'の'+nm+'の書類を'+srName(c)+'に引き継ぎ');}flog(c,'s',S.filer==='self'?nm+'の書類を提出済みにした':nm+'の書類（下書き'+mk.length+'点・写し・チェック結果）を'+srName(c)+'に引き継ぎ');render();
+  f.sent[ph]=true;if(S.filer!=='self'){const x=sw(c)[ph];x.st='new';x.why='';x.chk={};if(c!==MIDORI)c.wait='sr';alog(c.co+'の'+nm+'の書類を'+srName(c)+'に引き継ぎ');}flog(c,'s',S.filer==='self'?nm+'の書類を提出済みにした':nm+'の書類（写し・申請データ・AIの二重チェックの結果）を'+srName(c)+'に引き継ぎ');render();
   toast(S.filer==='self'?nm+'の書類を提出済みにしました':srName(c)+'に引き継ぎました'+(bad?'。要対応'+bad+'件も伝えています':'')+'（試作）');},
  fask(d){const c=byId(S.caseId),f=fS(c),doc=fDoc(d.d);
   if(doc&&doc.k==='vend'){f.ask[doc.id]=true;flog(c,'s','研修会社に「'+doc.n+'」の記入を依頼');render();toast('研修会社に記入を依頼しました（試作）');return;}
@@ -2706,7 +3204,7 @@ const A={
   else if(m.k==='ask'){srMsg(c,'r',t);srNote(c,S.t.name+'に確認を依頼');}
   else{x.st='ask';x.q=t;srNote(c,'労働局からの問い合わせを記録');}
   S.modal=null;render();toast(m.k==='back'?'差し戻しました。'+S.t.name+'の「今日やること」に出ます':m.k==='ask'?'送りました':'記録しました');},
- srsub(d){const c=byId(d.id),x=sw(c)[d.ph],L=SRCHK(c,d.ph),n=L.filter((_,i)=>x.chk[i]).length;if(n<L.length){toast('提出前の確認が、あと'+(L.length-n)+'つ残っています');return;}
+ srsub(d){const c=byId(d.id),x=sw(c)[d.ph],L=SRCHK(c,d.ph),n=L.filter((_,i)=>x.chk[i]).length;if(n<L.length){toast('提出前の確認が、あと'+(L.length-n)+'つ残っています');return;}if(!x.conf){toast('社労士の確認印を押してから、提出を記録してください');return;}
   x.st='sent';x.at=fmt(TODAY0);if(d.ph==='apply'){if(c.stage<5)setStage(c,5);c.wait='none';}else c.wait='sr';
   srNote(c,PHN[d.ph]+'を提出（'+({e:'電子申請',w:'労働局の窓口',m:'郵送'})[x.how]+'）');render();toast('提出を記録しました。お客様のマイページにもお知らせが出ます');},
  srok(d){const c=byId(d.id),x=sw(c)[d.ph];x.at=fmt(TODAY0);
@@ -2720,10 +3218,19 @@ const A={
  vsend(d){const c=byId(d.id),e=$('#thTs'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}srMsg(c,'s',v);render();toast(srOf(c).n+'に送りました');},
  cmsg(d){const c=byId(d.id),e=$('#cmT'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}cmL(c).push({f:'c',n:sei(c)+'様',t:v,at:'今日 '+hm()});flog(c,'c','メッセージ：'+v.slice(0,30));render();toast('送りました。担当の'+ownerNm(c)+'に届きます');},
  smsg(d){const c=byId(d.id),e=$('#smT'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}cmL(c).push({f:'s',n:staffSide(c),t:v,at:'今日 '+hm()});flog(c,'s','お客様にメッセージ');render();toast('送りました。お客様のマイページとLINEに届きます');},
- dkrun(d){const c=byId(d.id),k=d.k,r=dkS(c,k);if(dkSt(c,k)!=='got'||r.busy)return;const by=actor(),bn=actorNm(c);r.busy=true;render();
-  setTimeout(()=>{r.busy=false;r.res=dkRun(c,k,by);r.res.n=bn;const nm=DKT[k].n.replace(/（.*?）/,'');flog(c,by,'「'+nm+'」をAIでチェック：'+DKLV[r.res.lv][1]);if(r.res.lv!=='ok')S.dkx[c.id+k]=true;render();toast(nm+'：'+DKRES[r.res.lv]);},900);},
+ proctog(d){S.pox=S.pox||{};S.pox[d.k]=d.o!=='1';render();},
+ proced(){S.proced=!S.proced;render();},
+ rqok(d){S.rq=S.rq||{};const Q=S.rq[d.id]=S.rq[d.id]||{};Q[d.r]=!Q[d.r];render();},
+ chgadd(d){const c=byId(d.id);S.chg=S.chg||{};const L=S.chg[c.id]=S.chg[c.id]||[],x={t:$('#chgT').value,a:$('#chgA').value,b:$('#chgB').value};if(!x.a||!x.b){toast('元の日と新しい日を入れてください');return;}L.push(x);const r=chgDue(c,x);flog(c,actor(),'計画の変更を記録（'+((isSys(c)?CHGK:CHGT).find(t=>t[0]===x.t)||['',''])[1]+'）');render();toast(r.re?'計画届の出し直しが必要です（'+fmt(r.d)+'まで）':r.d?'変更届の期限は '+fmt(r.d)+' です':'支給申請書を出すまでに変更届を出します');},
+ chgdel(d){(S.chg[d.id]||[]).splice(+d.i,1);render();},
+ srmake(d){const c=byId(d.id),f=fS(c),ds=fDocs(c,f,d.ph).filter(x=>x.k==='auto'||x.k==='cust');ds.forEach(x=>{f.made[x.id]=true;});srNote(c,PHN[d.ph]+'の書類 '+ds.length+'点の下書きを作成（社労士）');render();toast(ds.length+'点の下書きを作りました。「プレビュー」で確認できます');},
+ srdcall(d){const c=byId(d.id),x=sw(c)[d.ph];fDocs(c,fS(c),d.ph).forEach(dd=>{x.dc[dd.id]=true;});render();},
+ srconf(d){const c=byId(d.id),x=sw(c)[d.ph],ds=fDocs(c,fS(c),d.ph),left=ds.filter(dd=>!x.dc[dd.id]).length;if(left){toast('確認していない書類が、あと'+left+'点あります');return;}const op=srOpenAI(c);if(op.length){toast('AIの判定が分かれた・要確認の書類が'+op.length+'点あります。先に確認してください');return;}x.conf=srStamp(c,fmt(TODAY0)+' '+hm(),x.kind);srNote(c,PHN[d.ph]+'の書類を社労士が確認（'+SRKIND[x.kind]+'）');render();toast('確認印を押しました。'+S.t.name+'の画面にも出ます');},
+ srunconf(d){sw(byId(d.id))[d.ph].conf=null;render();toast('確認印を取り消しました');},
+ dkrun(d){const c=byId(d.id),k=d.k,r=dkS(c,k);if(dkSt(c,k)!=='got'||r.busy)return;const by=actor(),bn=actorNm(c);r.busy=true;r.step=1;render();
+  setTimeout(()=>{r.res=dkRun(c,k,by);r.res.n=bn;r.step=2;render();setTimeout(()=>{r.busy=false;r.step=0;r.res2=dkRun2(c,k,by);r.res2.n=bn;const v=dkVerdict(r),nm=DKT[k].n.replace(/（.*?）/,'');flog(c,by,'「'+nm+'」をAIで二重チェック：'+DKV[v][1]);if(v!=='ok')S.dkx[c.id+k]=true;render();toast(nm+'：'+DKV[v][1]);},450);},450);},
  dkall(d){const c=byId(d.id),ks=dkList(c).filter(k=>dkSt(c,k)==='got'&&!dkS(c,k).busy),by=actor(),bn=actorNm(c);if(!ks.length){toast('チェックできる書類がまだありません');return;}ks.forEach(k=>{dkS(c,k).busy=true;});render();
-  setTimeout(()=>{let bad=0;ks.forEach(k=>{const r=dkS(c,k);r.busy=false;r.res=dkRun(c,k,by);r.res.n=bn;if(r.res.lv!=='ok'){bad++;S.dkx[c.id+k]=true;}});flog(c,by,ks.length+'点の書類をAIでチェック'+(bad?'（確認が必要 '+bad+'点）':'（すべてOK）'));render();toast(ks.length+'点をチェックしました。'+(bad?'確認が必要な書類が'+bad+'点あります':'問題は見つかりませんでした'));},1100);},
+  ks.forEach(k=>{dkS(c,k).step=1;});setTimeout(()=>{ks.forEach(k=>{const r=dkS(c,k);r.res=dkRun(c,k,by);r.res.n=bn;r.step=2;});render();setTimeout(()=>{let bad=0,sp=0;ks.forEach(k=>{const r=dkS(c,k);r.busy=false;r.step=0;r.res2=dkRun2(c,k,by);r.res2.n=bn;const v=dkVerdict(r);if(v!=='ok'){bad++;if(v==='split')sp++;S.dkx[c.id+k]=true;}});flog(c,by,ks.length+'点の書類をAIで二重チェック'+(bad?'（確認が必要 '+bad+'点'+(sp?'・うち判定が分かれた '+sp+'点':'')+'）':'（すべてOK）'));render();toast(ks.length+'点を二重チェックしました。'+(bad?'確認が必要な書類が'+bad+'点あります'+(sp?'（判定が分かれた '+sp+'点）':''):'2つのAIとも、問題は見つかりませんでした'));},550);},550);},
  dkopen(d){S.dkx[d.id+d.k]=d.o!=='1';render();},
  dkok(d){const c=byId(d.id),r=dkS(c,d.k),by=actor();r.hum={lv:'ok',by,n:actorNm(c),t:'',at:'今日 '+hm(),v:r.v};S.dkx[d.id+d.k]=false;flog(c,by,'「'+DKT[d.k].n.replace(/（.*?）/,'')+'」を確認済みにした');render();toast('確認済みにしました。お客様のマイページにも出ます');},
  dkreq(d){S.modal={type:'dkreq',cid:d.id,k:d.k};renderModal();},
@@ -2762,6 +3269,7 @@ document.addEventListener('input',e=>{const t=e.target;
 document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset&&t.dataset.dkfile){const p=t.dataset.dkfile.split('|');A.upload({id:p[0],k:p[1]});return;}
  if(t.dataset&&t.dataset.dked){const p=t.dataset.dked.split('|'),r=dkS(byId(p[0]),p[1]);r.ed[p[2]]=t.value;render();return;}
+ if(t.dataset&&t.dataset.srdc){const p=t.dataset.srdc.split('|');sw(byId(p[0]))[p[1]].dc[p[2]]=t.checked;render();return;}
  if(t.dataset&&t.dataset.srchk){const p=t.dataset.srchk.split('|');sw(byId(p[0]))[p[1]].chk[p[2]]=t.checked;render();return;}
  if(t.dataset&&t.dataset.cview){S.cview=t.value;cl.screen='home';cl.help=null;cl.editing=null;render();return;}
  if(t.dataset&&t.dataset.srp){S.srp=t.value;S.src=null;render();return;}
@@ -2794,8 +3302,8 @@ function render(){if(!canV(S.view)){S.view=homeV();setHash();}syncMidori();apply
  if(S.view==='manual')fitShots();
  renderModal();}
 /* デモ用の初期データ：社労士への引き継ぎ・メッセージ */
-(()=>{const c9=byId('c9'),f=fS(c9);fDocs(c9,f,'plan').forEach(d=>{if(d.k==='auto'||d.k==='cust')f.made[d.id]=true;if(d.k==='cust'||d.k==='vend')f.ask[d.id]=true;});f.sent.plan=true;
- (S.flog=S.flog||{}).c9=[['s','計画届の書類（下書き・写し・チェック結果）を'+srOf(c9).n+'に引き継ぎ','昨日'],['a','書類のAIチェック：履歴事項全部証明書は有効期限に注意','昨日']];
+(()=>{const c9=byId('c9'),f=fS(c9);fDocs(c9,f,'plan').forEach(d=>{if((d.k==='auto'||d.k==='cust')&&S.filer==='self')f.made[d.id]=true;if(d.k==='vend')f.ask[d.id]=true;});f.sent.plan=true;
+ (S.flog=S.flog||{}).c9=[['s','計画届の書類（写し・申請データ・AIの二重チェックの結果）を'+srOf(c9).n+'に引き継ぎ','昨日'],['a','書類のAIチェック：履歴事項全部証明書は有効期限に注意','昨日']];
  sw(c9).msg.push({f:'s',n:ownerNm(c9),t:'計画届の書類一式をお送りします。職業能力開発推進者は総務部長の森田様です。履歴事項全部証明書は発行から2か月半たっているため、提出が遅れる場合は取り直しをお願いします。',at:'昨日 16:20'});
  const c6=byId('c6');sw(c6).msg.push({f:'r',n:srOf(c6).who,t:'労働局から、受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を求められています。給与計算の設定画面の写しを、お客様にお願いできますか。',at:'昨日 10:31'});
  const c4=byId('c4');cmL(c4).push({f:'s',n:ownerNm(c4),t:'10月14日の出勤について、マイページの「いまやること」から教えてください。選ぶだけの1問です。',at:'今日 8:30'});})();
