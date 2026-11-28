@@ -1706,7 +1706,7 @@ function knRow(k){const kd=knKind(k),open=k.act?`<button class="btn o sm" data-a
 function knList(r){const its=knItems(r);return KNCATS.filter(c=>S.kn.cat==='all'||S.kn.cat===c).map(c=>{const L=its.filter(k=>k.cat===c);return L.length?`<section class="kng"><h2>${c}<span>${L.length}件</span></h2><div class="card knl">${L.map(knRow).join('')}</div></section>`:'';}).join('')||'<div class="card pad"><p class="tiny">当てはまる資料がありません。</p></div>';}
 function knBody(r){const all=KNOW.concat(S.kn.add).filter(k=>k.who.indexOf(r)>-1),its=knItems(r),cnt=c=>all.filter(k=>k.cat===c).length;
  const canAdd=r==='admin'||r==='super';
- return `<div class="ph"><div><h1>ナレッジ</h1><p class="sub">操作マニュアル・営業資料など、このツールを使うときの資料です。${r==='sr'?'社労士の方に関係する資料だけを出しています。':r==='staff'?'申請担当に関係する資料を出しています（営業資料は管理者に表示）。':''}</p></div></div>
+ return `<div class="ph"><div><h1>ナレッジ</h1><p class="sub">操作マニュアル・営業資料など、このツールを使うときの資料です。${r==='super'?'スーパー管理者は、すべての役割（お客様・申請担当・管理者・社労士）の資料と営業資料を見られます。':r==='sr'?'社労士の方に関係する資料だけを出しています。':r==='staff'?'申請担当に関係する資料を出しています（営業資料は管理者に表示）。':''}</p></div></div>
  <div class="kntop"><div class="knc" role="group" aria-label="分類でしぼり込む"><button class="chipb" data-act="knf" data-c="all" aria-pressed="${S.kn.cat==='all'}">すべて <b>${all.length}</b></button>${KNCATS.filter(c=>cnt(c)).map(c=>`<button class="chipb" data-act="knf" data-c="${c}" aria-pressed="${S.kn.cat===c}">${c} <b>${cnt(c)}</b></button>`).join('')}</div>
  <div class="fld knq"><label for="knQ" class="vh">資料をさがす</label><input type="search" id="knQ" placeholder="資料をさがす（例：AIチェック、確認印）" value="${esc(S.kn.q)}"></div></div>
  ${r==='client'?'':`<div class="card pad knmap"><h2 style="font-size:15px">どのマニュアルを読めばいい？</h2><div class="knw">${[['お客様','m-client','スマホで書類を出す・進み具合を見る'],['申請担当','m-staff','案件を進める・書類を確かめる'],['管理者','m-admin','全体の進み具合と工数を見る'],['社労士','m-sr','確認して、確認印を押して出す']].map(x=>{const k=KNOW.find(y=>y.id===x[1]);return k.who.indexOf(r)>-1?`<a href="${k.href}" target="_blank" rel="noopener"><span class="chip brand">${x[0]}</span><b>${x[0]}向け</b><span>${x[2]}</span></a>`:`<div class="off"><span class="chip mute">${x[0]}</span><b>${x[0]}向け</b><span>${x[2]}（この役割では表示しません）</span></div>`;}).join('')}</div></div>`}
@@ -2883,8 +2883,8 @@ function loginV(){const a=me(),L=accts();
  <div class="card note">${ic('shield','l')}<div><h3>お客様のIDとパスワードも預かりません</h3><p>GビズIDや雇用関係助成金ポータルのログイン情報は、どのアカウントにも保存・入力しません。</p></div></div></div>`;}
 
 /* ================= 運営（スーパー管理者だけ） ================= */
-const OPSNAV=[['dash','today','ダッシュボード'],['tenants','shield','テナント・提携先'],['accts','user','アカウント'],['clients','cases','お客様'],['audit','doc','操作の記録']];
-function opsV(){const body=({dash:opsDash,tenants:opsTen,accts:opsAcc,clients:opsCli,audit:opsAud})[S.ops]||opsDash;
+const OPSNAV=[['dash','today','ダッシュボード'],['tenants','shield','テナント・提携先'],['accts','user','アカウント'],['clients','cases','お客様'],['audit','doc','操作の記録'],['know','doc','ナレッジ']];
+function opsV(){const body=({dash:opsDash,tenants:opsTen,accts:opsAcc,clients:opsCli,audit:opsAud,know:()=>knBody('super')})[S.ops]||opsDash;
  return `<div class="wrap st"><aside class="side" aria-label="運営の画面のメニュー">${OPSNAV.map(n=>`<button data-act="onav" data-s="${n[0]}" aria-current="${S.ops===n[0]}">${ic(n[1])}${n[2]}</button>`).join('')}</aside><div class="main">${body()}</div></div>`;}
 function opsDash(){const L=accts(),near=c=>{const n=nextDue(c);return n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;};
  const nomfa=L.filter(a=>!a.mfa&&!a.off),off=L.filter(a=>a.off),bad=dkBadAll(),busy=s=>['new','work','ask'].indexOf(s)>-1;
@@ -2954,7 +2954,7 @@ function srTop(p){const sup=isSuper();return `<div class="wrap"><div class="acct
 function srV(){let p=S.partners.find(x=>x.id===S.srp);if(role()==='sr'){p=S.partners.find(x=>x.id===me().ref)||p;}if(!p)p=S.partners[0];S.srp=p.id;
  const cs=CASES.filter(c=>srOf(c).id===p.id);if(S.src&&!cs.some(c=>c.id===S.src))S.src=null;
  const act=srItems(cs).filter(x=>x.o<=2).length;
- const body=S.src?srDetail(byId(S.src),p):({home:srHome,conf:srConfV,cases:srList,cal:srCal,know:()=>knBody('sr'),office:srOffice})[S.srs](p,cs);
+ const body=S.src?srDetail(byId(S.src),p):({home:srHome,conf:srConfV,cases:srList,cal:srCal,know:()=>knBody(isSuper()?'super':'sr'),office:srOffice})[S.srs](p,cs);
  return srTop(p)+`<div class="wrap st"><aside class="side" aria-label="社労士の画面のメニュー">${SRNAV.map(n=>`<button data-act="srnav" data-s="${n[0]}" aria-current="${S.src?n[0]==='cases':S.srs===n[0]}">${ic(n[1])}${n[2]}${n[0]==='home'&&act?`<span class="cnt">${act}</span>`:''}</button>`).join('')}</aside><div class="main">${body}</div></div>`;}
 function srNear(cs){return cs.map(c=>{const w=sw(c),d=dates(c);return ['plan','apply'].filter(ph=>['later','new','work','back'].indexOf(w[ph].st)>-1&&(ph==='plan'?c.stage<=2:c.stage>=3&&c.stage<=4)).map(ph=>({c,ph,d:ph==='plan'?d.pt:d.at}));}).reduce((a,b)=>a.concat(b),[]).sort((a,b)=>a.d-b.d);}
 function srHome(p,cs){const it=srItems(cs),need=it.filter(x=>x.o<=2),W=cs.map(sw),cnt=st=>W.reduce((a,w)=>a+(w.plan.st===st?1:0)+(w.apply.st===st?1:0),0),near=srNear(cs).slice(0,5);
@@ -3786,7 +3786,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(
 document.addEventListener('input',e=>{const t=e.target;
  if(t.id==='caseQ'){S.q=t.value.trim();$('#caseList').innerHTML=caseList();return;}
  if(t.id==='glQ'){S.glq=t.value.trim();$('#glList').innerHTML=glList();return;}
- if(t.id==='knQ'){S.kn.q=t.value;const l=$('#knList');if(l)l.innerHTML=S.view==='sr'?knList('sr'):knList(knRole());return;}
+ if(t.id==='knQ'){S.kn.q=t.value;const l=$('#knList');if(l)l.innerHTML=knList(S.view==='sr'&&!isSuper()?'sr':knRole());return;}
  if(t.id==='oQ'){S.oq=t.value.trim();$('#oList').innerHTML=opsAccList();return;}
  if(!t.dataset||!t.dataset.bind)return;const h=getHolder(t.dataset.bind);h[0][h[1]]=t.type==='checkbox'?t.checked:t.value;
  if(t.dataset.bind.indexOf('t.')===0){const p=$('#brandPrev');if(p)p.innerHTML=brandPrev();return;}

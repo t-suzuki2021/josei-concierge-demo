@@ -398,7 +398,8 @@ section{position:relative}
 .ft b{color:#fff}
 .ft ul{margin:8px 0 0;padding-left:1.2em;line-height:1.9}
 .ft a{color:#C9D8F8}
-.ft .cp{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font:500 12px/1.6 var(--num);color:#7F8BA6}
+.ft .cp{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.1);padding-top:18px;font:500 12px/1.6 var(--num);color:#7F8BA6;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 20px}
+.ft .lg{display:flex;flex-wrap:wrap;gap:4px 18px}.ft .lg a{color:#AEB9D1;text-decoration:none;font-family:var(--sans,inherit)}.ft .lg a:hover{color:#fff;text-decoration:underline}
 
 /* スマホ用の固定ボタン */
 .fix{display:none}
@@ -1087,7 +1088,7 @@ section{position:relative}
     <li>掲載の画面は開発中の試作で、会社名・人名・数値は架空の例です。試算・工数は目安です。</li>
     <li>申請書類の作成・提出（報酬を得て行うもの）は社会保険労務士の業務です。</li>
    </ul></div>
-  <div class="cp">© Smart Contents Inc.</div>
+  <div class="cp"><nav class="lg" aria-label="規約・方針"><a href="https://smartcontents.co.jp/law/" target="_blank" rel="noopener">特定商取引法に基づく表記</a><a href="https://smartcontents.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a><a href="https://smartcontents.co.jp/company/" target="_blank" rel="noopener">会社概要</a></nav><span>© Smart Contents Inc.</span></div>
  </div>
 </footer>
 
