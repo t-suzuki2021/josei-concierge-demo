@@ -613,20 +613,146 @@ button.tstep:hover .tname{text-decoration:underline}
   body.printing .sheet{border:0;padding:0;break-after:page}
   body.printing .tscroll{overflow:visible}
 }
+/* accounts, ops, sr portal, AI check */
+input[type=password]{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%}
+.views[hidden],.tenant[hidden],.views:empty{display:none}
+.views{overflow-x:auto;max-width:100%}
+.views button{padding:7px 12px}
+.topr{margin-left:auto;display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap}
+.topr .tenant{margin-left:0}
+.me{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 14px 4px 4px;text-align:left;line-height:1.3;max-width:260px}
+.me[aria-current=true]{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.me .av{flex:none;width:30px;height:30px;border-radius:50%;background:var(--brand-pale);color:var(--brand);display:grid;place-items:center}
+.me b{display:block;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me small{display:block;font-size:11px;color:var(--muted);white-space:nowrap}
+.me>span:last-child{min-width:0}
+.mono{font-family:ui-monospace,'SFMono-Regular',Consolas,monospace;font-size:12.5px;background:var(--sunk);border-radius:5px;padding:1px 6px;white-space:nowrap}
+.asbar{max-width:1180px;margin:-10px auto 18px;display:flex;gap:10px 14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--amber-pale);color:var(--amber);border:1px solid var(--amber);border-radius:12px;padding:10px 16px;font-size:13px;font-weight:700}
+.asbar>span{display:flex;gap:8px;align-items:flex-start}
+.asbar .ic{margin-top:3px}
+.lg{display:flex;flex-direction:column;gap:18px}
+.lgtop{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.lgtop>.lgf:only-child{max-width:520px}
+.mec{padding:18px;display:flex;flex-direction:column;gap:12px}
+.mec .h{display:flex;gap:12px;align-items:center}
+.mec .av{flex:none;width:44px;height:44px;border-radius:50%;background:var(--brand-pale);color:var(--brand);display:grid;place-items:center}
+.mec h2{font-size:17px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lgf{padding:18px;display:flex;flex-direction:column;gap:12px}
+.lsec{display:flex;flex-direction:column;gap:8px}
+.lsec h3{display:flex;gap:10px;align-items:center;font-size:14px}
+.lsec h3 span:last-child{font-size:12px;color:var(--muted);font-weight:500}
+.lrow{display:grid;grid-template-columns:11.5em minmax(0,1.1fr) minmax(0,1.3fr) auto;gap:10px 14px;align-items:center;padding:10px 16px;border-top:1px solid var(--line-2);font-size:13px}
+.lrow:first-child{border-top:0}
+.lrow .who b{display:block;font-size:13.5px}
+.lrow .who .tiny{display:block}
+.lrow .sc{color:var(--body);font-size:12.5px}
+.lrow.off,tr.off{opacity:.55}
+.srcard{display:flex;flex-direction:column;gap:12px}
+.srcard .fstep{padding:4px 0}
+.srh{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.srh h2{font-size:18px}
+.sract{display:flex;gap:8px;flex-wrap:wrap}
+.srchk{display:flex;flex-direction:column;gap:2px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.srchk label{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-top:1px solid var(--line-2);font-size:13.5px;cursor:pointer}
+.srchk label:first-child{border-top:0}
+.srchk input{margin-top:4px;width:17px;height:17px;flex:none;accent-color:var(--brand)}
+.srsub{display:flex;flex-direction:column;gap:10px}
+.srsub .fld{max-width:360px}
+.srv{display:flex;flex-direction:column;gap:10px}
+.thr{display:flex;flex-direction:column;gap:10px}
+.thr h3{font-size:14px}
+.bubs{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto}
+.bub{align-self:flex-start;max-width:88%;background:var(--sunk);border-radius:12px 12px 12px 4px;padding:8px 12px}
+.bub.me{align-self:flex-end;background:var(--brand-pale);border-radius:12px 12px 4px 12px}
+.bub p{font-size:13.5px;white-space:pre-wrap;word-break:break-word}
+.bub .tiny{font-size:11px}
+.thr-in{display:flex;gap:8px;align-items:flex-end}
+.thr-in textarea{flex:1;min-width:0}
+.cal{display:flex;flex-direction:column;gap:10px}
+.calh{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.calh b{font-size:16px}
+.cw,.cg{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cw span{text-align:center;font-size:12px;color:var(--muted);font-weight:700}
+.cd{min-height:78px;border:1px solid var(--line-2);border-radius:8px;padding:4px 5px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.cd.o{border:0}
+.cd.t{border-color:var(--brand);box-shadow:inset 0 0 0 1px var(--brand)}
+.dn{font-size:12px;font-family:var(--num);color:var(--muted)}
+.cd.t .dn{color:var(--brand);font-weight:700}
+.ev{display:block;border-radius:4px;padding:1px 4px;font-size:10.5px;font-style:normal;font-weight:700;line-height:1.4;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;background:var(--sunk);color:var(--body)}
+.ev.warn{background:var(--warn-pale);color:var(--warn)}
+.ev.info{background:var(--info-pale);color:var(--info)}
+.ev.brand{background:var(--brand-pale);color:var(--brand)}
+.cleg{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.cleg span{display:flex;gap:6px;align-items:center}
+.cleg .ev{width:12px;height:12px;padding:0}
+.dkp{padding-bottom:6px}
+.dkr{border-top:1px solid var(--line-2)}
+.dkr-h{display:grid;grid-template-columns:30px minmax(0,1fr) auto auto;gap:10px 12px;align-items:center;padding:10px 18px}
+.dkr-h .r{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.dkic{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--sunk);color:var(--muted)}
+.dkic.ok{background:var(--ok-pale);color:var(--ok)}
+.dkic.warn{background:var(--warn-pale);color:var(--warn)}
+.dkic.amber{background:var(--amber-pale);color:var(--amber)}
+.dkic.info{background:var(--info-pale);color:var(--info)}
+.dkn b{display:block;font-size:13.5px;line-height:1.4}
+.dkd{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:14px;padding:4px 18px 16px}
+.dkex{background:var(--sunk);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+.dkres{display:flex;flex-direction:column;gap:10px}
+.dkres .acts{display:flex;gap:6px;flex-wrap:wrap}
+.lbl{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em}
+.dkin{padding:3px 6px!important;font-size:12.5px!important;width:auto!important;max-width:150px;text-align:right}
+.dki{display:flex;flex-direction:column;gap:6px}
+.dkit{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;font-size:12.5px;padding:7px 10px;border-radius:9px;background:var(--surface);border:1px solid var(--line-2)}
+.dkit.bad{background:var(--warn-pale);border-color:transparent}
+.dkit.warn{background:var(--amber-pale);border-color:transparent}
+.dkit b{display:block;font-size:13px}
+.dkit p{color:var(--body)}
+.dkh{border-left:3px solid var(--ok);background:var(--ok-pale);border-radius:0 9px 9px 0;padding:7px 12px;font-size:12.5px}
+.dkh.req{border-color:var(--warn);background:var(--warn-pale)}
+.dkh b{display:block;font-size:13px}
+.doc.bad{border-color:var(--warn);background:color-mix(in srgb,var(--warn-pale) 45%,var(--surface))}
+.cmenu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.cmenu button{display:flex;flex-direction:column;align-items:flex-start;gap:3px;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:12px;text-align:left;color:var(--brand)}
+.cmenu button:hover{border-color:var(--brand)}
+.cmenu b{font-size:14px;color:var(--fg);line-height:1.35}
+.cmenu span{font-size:12px;color:var(--muted)}
+.news{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.nw{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;padding:10px 12px;border-top:1px solid var(--line-2)}
+.nw:first-child{border-top:0}
+.nw b{display:block;font-size:13.5px;line-height:1.4}
+.nw p{font-size:12.5px;color:var(--body)}
+.seg.col{flex-direction:column}
+.seg.col button{border-right:0;border-top:1px solid var(--line);padding:13px 12px}
+.seg.col button:first-child{border-top:0}
+.tl .dot.r{background:var(--ok)}
+@media (max-width:860px){ .lgtop,.dkd{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:640px){
+  .views button{flex:1 0 auto}
+  .topr{margin-left:0;width:100%;justify-content:space-between}
+  .me{max-width:100%}
+  .lrow{grid-template-columns:minmax(0,1fr) auto;padding:10px 12px}
+  .lrow>span:first-child{grid-column:1/-1}
+  .lrow .sc{grid-column:1/-1;order:3}
+  .dkr-h{grid-template-columns:30px minmax(0,1fr);padding:10px 12px}
+  .dkr-h>.chip{grid-column:2;justify-self:start}
+  .dkr-h .r{grid-column:1/-1;justify-content:flex-start}
+  .dkd{padding:4px 12px 14px}
+  .cd{min-height:46px;padding:3px}
+  .cd .ev{font-size:0;height:6px;padding:0;border-radius:3px}
+  .cd .ev span{display:none}
+  .thr-in{flex-direction:column;align-items:stretch}
+  .asbar{margin-top:-6px}
+}
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="logo"><span class="logo-mark" id="logoMark"></span><span>人材開発支援助成金コンシェルジュ<small>操作できる試作</small></span></div>
-  <nav class="views" id="views" aria-label="画面の切り替え">
-    <button data-act="view" data-v="overview">概要</button>
-    <button data-act="view" data-v="staff">スタッフ画面</button>
-    <button data-act="view" data-v="client">お客様の画面</button>
-    <button data-act="view" data-v="manual">マニュアル</button>
-  </nav>
-  <div class="tenant"><label for="tenantSel">表示ブランド</label>
+  <nav class="views" id="views" aria-label="画面の切り替え"></nav>
+  <div class="topr"><div class="tenant" id="tenantBox"><label for="tenantSel">表示ブランド</label>
     <select id="tenantSel"><option value="smacon">スマートコンテンツ</option><option value="other">他社（社労士事務所）の例</option></select></div>
+   <button class="me" id="meBtn" data-act="view" data-v="login" title="アカウントとログイン"></button></div>
 </header>
 <main id="app"></main>
 <div class="modal" id="modal" hidden></div>
@@ -1058,13 +1184,14 @@ const CASES=[
  mk('株式会社さくら介護サービス','訪問介護事業','桜井 由美',[9,1,12],4,-75,28,{course:'ikusei',train:'喀痰吸引等研修',people:4,hours:50,fee:120000,wait:'client',miss:['受講料の振込記録'],upd:'今日',docsN:5}),
  mk('株式会社あおぞら不動産','不動産仲介業','青木 大地',[7,0,2],5,-120,30,{people:3,wait:'none',upd:'4日前',docsN:6,mail:true}),
  mk('有限会社たちばな印刷','印刷業','橘 美咲',[8,1,2],6,-200,30,{people:6,wait:'none',upd:'先週',docsN:6}),
- mk('株式会社かえで工務店','木造建築工事業','楓 誠',[5,0,1],3,-10,20,{course:'toushi',train:'定額制オンライン研修',people:5,hours:30,fee:60000,wait:'us',upd:'3日前',docsN:4})];
+ mk('株式会社かえで工務店','木造建築工事業','楓 誠',[5,0,1],3,-10,20,{course:'toushi',train:'定額制オンライン研修',people:5,hours:30,fee:60000,wait:'us',upd:'3日前',docsN:4}),
+ mk('株式会社はるかぜ食品','食料品製造業（菓子）','春野 陽子',[10,2,6],2,52,21,{people:4,hours:12,wait:'sr',upd:'昨日',docsN:6})];
 const MIDORI=CASES[0];
-CASES.forEach((c,i)=>{c.sr=[0,2,3].indexOf(i)>-1?'p1':'p2';});
+CASES.forEach((c,i)=>{c.sr=[0,2,3,8].indexOf(i)>-1?'p1':'p2';});
 const byId=id=>CASES.find(c=>c.id===id);
 /* 申請担当とアカウント。s1 は設定の「担当者名」と同じ人。S.acct が 'admin' のときは管理アカウントで、全担当の案件が見える */
 const STAFFS=[{id:'s1'},{id:'s2',n:'佐藤'},{id:'s3',n:'中村'}];
-['s1','s1','s1','s2','s2','s3','s3','s1'].forEach((o,i)=>{CASES[i].owner=o;});
+['s1','s1','s1','s2','s2','s3','s3','s1','s2'].forEach((o,i)=>{CASES[i].owner=o;});
 const isAdmin=()=>S.acct==='admin';
 const staffNm=id=>{const x=STAFFS.find(v=>v.id===id);return x?(x.n||S.t.staff.replace(/（.*?）/,'')):'未定';};
 const ownerNm=c=>staffNm(c.owner);
@@ -1083,8 +1210,8 @@ function TODAY(){const c3=dates(byId('c3')),c5=dates(byId('c5'));return [
  {id:'a3',type:'ai',cid:'c2',title:'研修案に、対象外になる内容があります',desc:'カリキュラムの「ビジネスマナー」1時間は、令和8年8月3日以降の計画では対象外です。除くと合計9時間になり、10時間に届きません。',btn:'研修案を作り直す',act:'cur'},
  {id:'a4',type:'deadline',cid:'c5',title:`支給申請の期限まで、あと${diff(c5.at)}日`,desc:'残りは受講料の振込記録だけです。届けば申請書を作れます。',btn:'催促文を見る',act:'nudge'},
  {id:'a5',type:'mail',cid:'c6',title:'労働局から問い合わせのメール',desc:'AIの要約：受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を確認したい。',btn:'内容を見る',tab:'log'},
- {id:'a6',type:'money',cid:'c7',title:'入金を確認しました',desc:'研修後に賃金を5%以上上げていれば、差額の追加申請ができます。対象者の賃金を確認しましょう。',btn:'案件を開く',tab:'offer'}];}
-const TKIND={deadline:['clock','warn','期限が近い'],ai:['spark','info','確認してください'],mail:['mail','amber','労働局から連絡'],nudge:['bell','amber','催促のタイミング'],money:['yen','ok','入金']};
+ {id:'a6',type:'money',cid:'c7',title:'入金を確認しました',desc:'研修後に賃金を5%以上上げていれば、差額の追加申請ができます。対象者の賃金を確認しましょう。',btn:'案件を開く',tab:'offer'}].concat(dynTodo());}
+const TKIND={deadline:['clock','warn','期限が近い'],ai:['spark','info','確認してください'],mail:['mail','amber','労働局から連絡'],nudge:['bell','amber','催促のタイミング'],money:['yen','ok','入金'],sr:['shield','ok','社労士から'],cmsg:['chat','amber','お客様から']};
 const OPPS=[
  {id:'o1',cid:'c2',kind:'AI研修のご提案',why:'リスキリング支援コースは令和8年度末までの時限措置です。計画届は訓練開始日の1か月前までなので、2月末までに始める研修は早めの準備が必要です。',offer:'AI Officeの活用研修（12時間）。経費の75%と賃金1時間1,000円が助成の対象',msg:'リスキリング支援コースは今年度末で終了する予定のため、AIの活用研修をご検討中でしたら、今が使える最後のタイミングです。研修内容は、歯科医院の受付・予約・問診票の業務に合わせて組み立てます。'},
  {id:'o2',cid:'c7',kind:'追加申請',why:'入金済み。研修のあとに受講者の賃金を5%以上上げていれば、人材育成支援コースでは助成率の差額を追加で申請できます。',offer:'賃金要件の確認と、差額の追加申請のお手伝い',msg:'研修後に受講された方の賃金を上げられた場合、助成金の差額を追加で申請できる場合があります。対象になるか、賃金台帳で確認させてください。'},
@@ -1122,6 +1249,7 @@ function qDone(q){return !!cl.ans[q.id];}
 function cStat(){const qs=S.questions.filter(q=>q.on);const qn=qs.filter(qDone).length;const got=cl.docs.filter(d=>d==='got'||d==='auto').length;const later=cl.docs.filter(d=>d==='later').length;
  return{qs,qt:qs.length,qn,got,later,dt:cl.docs.length};}
 function syncMidori(){const c=MIDORI,s=cStat();const m=[];
+ {const r=S.dk&&S.dk.c1&&S.dk.c1.touki;if(!r||r.st!=='got')m.push('履歴事項全部証明書');else if(r.res&&r.res.lv==='bad'&&r.res.sig===dkSig(c,'touki')||r.hum&&r.hum.lv==='req'&&r.hum.v===r.v)m.push('履歴事項全部証明書（取り直し）');}
  cl.docs.forEach((d,i)=>{if(d!=='got'&&d!=='auto')m.push(CDOCS[i].n.replace(/（.*?）/,''));});
  if(s.qn<s.qt)m.push('質問 あと'+(s.qt-s.qn)+'つ');if(!cl.wish.sent)m.push('研修のご要望');if(!cl.planOk)m.push('事業内職業能力開発計画の確認');
  c.miss=m;c.wait=m.length?'client':'us';c.docsN=s.got;c.docsT=s.dt;c.upd=(s.got>1||s.qn||cl.sent)?'たった今':'今日';
@@ -1130,7 +1258,7 @@ function applyBrand(){const b=BRANDS[S.t.brand]||BRANDS[0],r=document.documentEl
  r.setProperty('--brand-l',b.l);r.setProperty('--brand-d',b.d);r.setProperty('--brand-pale-l',b.pl);r.setProperty('--brand-pale-d',b.pd);}
 
 /* ---------- shared bits ---------- */
-const waitChip=c=>c.wait==='client'?'<span class="chip amber">お客様待ち</span>':c.wait==='us'?'<span class="chip brand">自社の対応</span>':c.stage>=6?'<span class="chip mute">完了</span>':'<span class="chip info">労働局の審査中</span>';
+const waitChip=c=>c.wait==='sr'?'<span class="chip ok">社労士が対応中</span>':c.wait==='client'?'<span class="chip amber">お客様待ち</span>':c.wait==='us'?'<span class="chip brand">自社の対応</span>':c.stage>=6?'<span class="chip mute">完了</span>':'<span class="chip info">労働局の審査中</span>';
 const missShort=c=>c.miss.length>2?c.miss.slice(0,2).join('・')+' ほか'+(c.miss.length-2)+'件':c.miss.join('・');
 function dueChip(c){const n=nextDue(c);if(!n)return '';const k=diff(n.d);if(c.stage===0&&n.label==='計画届の提出開始')return `<span class="chip mute">提出開始 ${fmtS(n.d)}</span>`;
  return `<span class="chip ${k<=14&&c.stage!==3?'warn':k<=30?'amber':'mute'}">${n.label.replace('計画届の','計画届').replace('支給申請の','申請')} あと${k}日</span>`;}
@@ -1147,10 +1275,10 @@ function overview(){
  const cmp=[['お客様の入力','長い依頼文を読んで準備','5問＋書類の写真'],['期限の管理','人が計算','訓練日から自動計算'],['全体のどこにいるか','担当者しか知らない','双方が同じ流れを見る'],['書類どうしの確認','目で突き合わせ','AIが自動で照合']];
  const vals=[
   {i:'today',who:'スタッフ',h:'期限を落とさず、ミスなく進む',li:['計画届・支給申請の期限を、訓練日から自動で計算','出勤簿と受講記録、賃金台帳を自動で突き合わせ','対象外になる研修内容を、計画の段階で検知','今日やることが、優先順に1画面で並ぶ'],go:['staff','today','「今日やること」を見る']},
-  {i:'camera',who:'お客様',h:'やることと所要時間が、いつも分かる',li:['いまの段階と、次の期限を最初に表示','やることごとに、想定の作業時間を表示','事業内職業能力開発計画はひな形から作成','訓練中は、毎月の書類をLINEでお知らせ'],go:['client','','お客様の画面を見る']},
+  {i:'camera',who:'お客様',h:'やることと所要時間が、いつも分かる',li:['いまの段階と、次の期限を最初に表示','やることごとに、想定の作業時間を表示','事業内職業能力開発計画はひな形から作成','訓練中は、毎月の書類をLINEでお知らせ','アップした書類を、その場でAIがチェック（発行日・有効期限・人数・金額）'],go:['client','','お客様の画面を見る']},
   {i:'bulb',who:'営業',h:'研修の実績が、次の提案につながる',li:['研修内容・受講者数・助成額が顧客台帳に貯まる','時限措置の終了や追加申請の時期を自動で知らせる','AI研修からAI Officeの導入まで、一続きで提案'],go:['staff','crm','「顧客・提案」を見る']},
   {i:'grad',who:'研修の企画',h:'要望を入れるだけで、カリキュラムのたたき台',li:['お客様の要望、または業種・職種から、要項に沿った10時間のカリキュラム案を作成','初級1・初級2・中級の3セット（年30時間）を、科目が重ならないように用意','1日の受講時間（2〜8時間）に合わせて時間割を作成','マナー研修など対象外の内容は自動で外し、DX化の内容の下書きも作る'],go:['staff','cur','「カリキュラム作成」を見る']},
-  {i:'shield',who:'提携社労士',h:'作成・提出は、提携する社労士へ',li:['提携する社労士事務所を登録し、案件ごとに担当を決める','書類・申請データ・AIチェックの結果をそのまま共有','社労士事務所が使う場合は、自事務所で作成・提出する設定に'],go:['staff','partner','「提携社労士」を見る']},
+  {i:'shield',who:'提携社労士',h:'作成・提出は、提携する社労士へ',li:['提携する社労士事務所を登録し、案件ごとに担当を決める','書類・申請データ・AIチェックの結果をそのまま共有','社労士事務所が使う場合は、自事務所で作成・提出する設定に','社労士には専用のマイページ。書類の受け取り・差し戻し・提出・受理までを記録'],go:['staff','partner','「提携社労士」を見る']},
   {i:'link',who:'連携',h:'研修の記録や勤怠とつながる',li:['研修の受講記録（LMS）を自動で取り込み','勤怠・給与システムから出勤簿と賃金台帳を受け取る','PMS、LINE、Gmail、Slackと連携','AI導入補助金コンシェルジュと顧客を共有'],go:['staff','links','「連携」を見る']}];
  return `<div class="wrap ov">
  <section class="hero">
@@ -1158,7 +1286,7 @@ function overview(){
    <p class="eyebrow">人材開発支援助成金の申請をサポートする業務ツール</p>
    <h1><span>研修の助成金を、</span><span>期限どおり、</span><span>迷わず最後まで。</span></h1>
    <p class="lead">人材開発支援助成金は、計画届から支給申請まで半年以上かかり、期限が2回あります。このツールは、訓練の日付から期限を自動で計算し、お客様とスタッフが同じ流れを見ながら進められるようにします。</p>
-   <div class="hero-cta"><button class="btn p lg" data-act="go" data-v="staff" data-s="today">スタッフ画面を触ってみる</button><button class="btn o lg" data-act="view" data-v="client">お客様の画面を触ってみる</button></div>
+   <div class="hero-cta"><button class="btn p lg" data-act="go" data-v="staff" data-s="today">スタッフ画面を触ってみる</button><button class="btn o lg" data-act="view" data-v="client">お客様の画面を触ってみる</button><button class="btn g lg" data-act="view" data-v="login">役割ごとのアカウントで試す</button></div>
    <p class="tiny">画面はすべて操作できます。会社名・人名は架空の例で、入力内容は保存されません。</p>
   </div>
   <div class="card cmp" aria-label="今と導入後の比較">${cmp.map(r=>`<div class="cmp-r"><span class="cmp-k">${r[0]}</span><span class="cmp-b">${r[1]}</span><span class="muted">${ic('arrow','s')}</span><span class="cmp-a">${r[2]}</span></div>`).join('')}</div>
@@ -1174,7 +1302,7 @@ function overview(){
  </section>
  <section>
   <h2>ほかの事業者でも、そのまま使える設計</h2>
-  <p class="lead">社労士事務所、研修会社、ITベンダーのどこが使っても成り立つよう、設定で差し替えられるようにしています。右上の「表示ブランド」で、社労士事務所が使った場合の見え方を確認できます。</p>
+  <p class="lead">社労士事務所、研修会社、ITベンダーのどこが使っても成り立つよう、設定で差し替えられるようにしています。スーパー管理者の「運営」の画面、または右上の「表示ブランド」で、社労士事務所が使った場合の見え方を確認できます。</p>
   <div class="three">
    <div class="card"><h3>ブランドを差し替える</h3><p>社名・色・担当者名を設定するだけで、お客様の画面が自社の名前になります。申請担当ごとのアカウントと、全員分を見られる管理アカウントを分けられます。</p></div>
    <div class="card"><h3>コースごとにテンプレート化</h3><p>リスキリング支援、人材育成支援、人への投資促進など、コースごとに書類と質問のセットを切り替えます。</p></div>
@@ -1211,8 +1339,8 @@ function staff(){
 
 function acctBar(){const n=VIS().length;
  return `<div class="wrap"><div class="acct"><span class="av">${ic('user')}</span>
-  <div class="fld"><label for="acctSel">アカウント</label><select id="acctSel" data-acct="1"><optgroup label="申請担当（自分の担当のお客様だけ）">${STAFFS.map(x=>`<option value="${x.id}" ${S.acct===x.id?'selected':''}>${esc(staffNm(x.id))}（申請担当）</option>`).join('')}</optgroup><optgroup label="管理（全員分）"><option value="admin" ${isAdmin()?'selected':''}>管理者（全担当を表示）</option></optgroup></select></div>
-  <p>${isAdmin()?`<span class="chip brand">管理アカウント</span> 全担当のお客様 ${n}社を表示しています。担当の変更と、担当者の追加ができます。`:`<span class="chip mute">申請担当のアカウント</span> ${n?esc(staffNm(S.acct))+"さんが担当するお客様 "+n+"社だけを表示しています。":esc(staffNm(S.acct))+"さんが担当するお客様は、まだありません。"}`}<span class="tiny">試作のため、ここで切り替えます。実際の画面では、ログインしたアカウントで決まります。</span></p></div></div>`;}
+  ${role()==='staff'?'':`<div class="fld"><label for="acctSel">表示するアカウント</label><select id="acctSel" data-acct="1"><optgroup label="申請担当（自分の担当のお客様だけ）">${STAFFS.map(x=>`<option value="${x.id}" ${S.acct===x.id?'selected':''}>${esc(staffNm(x.id))}（申請担当）</option>`).join('')}</optgroup><optgroup label="管理（全員分）"><option value="admin" ${isAdmin()?'selected':''}>管理者（全担当を表示）</option></optgroup></select></div>`}
+  <p>${isAdmin()?`<span class="chip brand">管理アカウント</span> 全担当のお客様 ${n}社を表示しています。担当の変更と、担当者の追加ができます。`:`<span class="chip mute">申請担当のアカウント</span> ${n?esc(staffNm(S.acct))+"さんが担当するお客様 "+n+"社だけを表示しています。":esc(staffNm(S.acct))+"さんが担当するお客様は、まだありません。"}`}<span class="tiny">${role()==='staff'?'ログインしたアカウント（'+esc(me().id)+'）で決まります。ほかの担当者の案件は表示されません。':'ログイン中：'+esc(me()?me().n:'')+'（'+(me()?ROLES[me().role].n:'')+'）。担当者ごとの見え方に切り替えて確認できます。'}</span></p></div></div>`;}
 function teamV(){const near=c=>{const n=nextDue(c);return n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;},todo=TODAY().filter(a=>!S.done[a.id]);
  return `<div class="ph"><div><h1>担当者</h1><p class="sub">申請担当ごとの担当件数と期限を確認し、お客様の担当を変更できます。この画面は、管理アカウントだけに表示されます。</p></div></div>
  <div class="pgrid">${STAFFS.map(x=>{const cs=CASES.filter(c=>c.owner===x.id),sum=cs.reduce((a,c)=>{const e=est(c);return a+(e?e.all:0);},0);
@@ -1269,7 +1397,7 @@ function caseDetail(c){
 function tabFlow(c){
  const st=ok=>ok?'<span class="chip ok">済</span>':'<span class="chip warn">未</span>';
  const g=[['事前準備',[['職業能力開発推進者の選任',c.stage>=2||c===MIDORI&&cl.ans.q1,c===MIDORI&&cl.ans.q1?esc(cl.ans.q1):c.stage>=2?'選任済み':'未定'],['事業内職業能力開発計画の策定・周知',c.stage>=2||c===MIDORI&&cl.planOk,c.stage>=2||c===MIDORI&&cl.planOk?'ひな形から作成・周知済み':'未作成'],['就業規則・雇用契約書',c.stage>=2||c===MIDORI&&cl.docs[0]==='got'&&cl.docs[1]==='got',c.stage>=2?'受領':'—']]],
-  ['計画届',[['職業訓練実施計画届・対象労働者一覧・事前確認書',c.stage>=3,c.stage>=3?'提出済み':S.forms&&S.forms[c.id]&&S.forms[c.id].sent.plan?(S.filer==='self'?'提出済み':'社労士に引き継ぎ済み'):S.forms&&S.forms[c.id]&&S.forms[c.id].made.p1?'下書きあり':c.stage===2?'作成中':'これから'],['研修機関との契約書・申込書',c.stage>=3,c.stage===2?'未受領':c.stage>=3?'受領':'—']]],
+  ['計画届',[['職業訓練実施計画届・対象労働者一覧・事前確認書',c.stage>=3,c.stage>=3?'提出済み':S.forms&&S.forms[c.id]&&S.forms[c.id].sent.plan?(S.filer==='self'?'提出済み':'社労士：'+srStLbl('plan',sw(c).plan.st)):S.forms&&S.forms[c.id]&&S.forms[c.id].made.p1?'下書きあり':c.stage===2?'作成中':'これから'],['研修機関との契約書・申込書',c.stage>=3,c.stage===2?'未受領':c.stage>=3?'受領':'—']]],
   ['訓練の実施',[['出勤簿・賃金台帳（毎月）',c.stage>=4||c.stage===3&&!c.miss.length,c.stage===3?(c.miss.length?'10月分が不足':'受領中'):c.stage>=4?'全期間受領':'—'],['受講記録',c.stage>=4,c.stage===3?'自動で取り込み中':c.stage>=4?'取り込み済み':'—'],['受講料の支払い',c.stage>=5||c.stage===4&&!c.miss.length,c.stage===4?(c.miss.length?'振込記録が未着':'確認済み'):c.stage>=5?'確認済み':'—']]],
   ['支給申請',[['支給申請書類一式',c.stage>=5,c.stage>=5?'提出済み':'—']]]];
  const tasks=c.stage<=1?[['事前準備のフォロー','進行中']]:c.stage===2?[['計画届の作成','進行中'],['提出期限の管理','進行中']]:c.stage===3?[['毎月の書類回収','進行中']]:c.stage===4?[['支給申請書の作成','進行中']]:[['労働局対応','完了'],['入金確認と次の提案','進行中']];
@@ -1292,8 +1420,8 @@ function tabDocs(c){
  const docs=[['研修のカリキュラム（研修会社から自動登録）',[['研修名',esc(c.train)],['実訓練時間',c.hours+'時間'],['受講料',yen(c.fee)+'／1人'],['実施方法','通学制・同時双方向型の通信']]],
   ['就業規則',[['所定労働時間','8時間／日'],['資格等手当の規定','なし（賃金要件は賃上げで判定）']]],
   ['雇用契約書・労働条件通知書',[['対象者',c.people+'名（雇用保険被保険者）'],['雇用形態','正社員']]]];
- return `<div class="card"><div class="grp"><h3>AIによる自動チェック</h3></div>${chk.map(x=>`<div class="chk ${x.ok?'':'bad'}">${x.ok?'<span class="chip ok">'+ic('check','s')+'OK</span>':'<span class="chip warn">要対応</span>'}<div><b>${x.t}</b><p>${x.p}</p></div>${x.a?`<div class="acts">${x.a}</div>`:''}</div>`).join('')}</div>
- ${docs.map(dc=>`<div class="card dcard"><div class="thumb"><i></i><i></i><i></i><i></i><i></i></div><div><h3>${dc[0]}<span class="chip ok">受領</span></h3>${dc[1].map(r=>`<div class="ex"><span class="k">${r[0]}</span><span>${r[1]}</span><span class="chip info">AI</span></div>`).join('')}</div></div>`).join('')}`;}
+ return dkPanel(c,'s')+`<div class="card"><div class="grp"><h3>書類どうしの照合（AI）</h3></div>${chk.map(x=>`<div class="chk ${x.ok?'':'bad'}">${x.ok?'<span class="chip ok">'+ic('check','s')+'OK</span>':'<span class="chip warn">要対応</span>'}<div><b>${x.t}</b><p>${x.p}</p></div>${x.a?`<div class="acts">${x.a}</div>`:''}</div>`).join('')}</div>
+ ${docs.slice(0,1).map(dc=>`<div class="card dcard"><div class="thumb"><i></i><i></i><i></i><i></i><i></i></div><div><h3>${dc[0]}<span class="chip ok">受領</span></h3>${dc[1].map(r=>`<div class="ex"><span class="k">${r[0]}</span><span>${r[1]}</span><span class="chip info">AI</span></div>`).join('')}</div></div>`).join('')}`;}
 function tabCalc(c){const k=S.calc;
  const co=COURSE(k.course),ok=co&&co.capN;
  const r=ok?est({course:k.course,hours:+k.h||0,people:+k.n||0,fee:+k.fee||0}):null;
@@ -1323,7 +1451,8 @@ function tabLog(c){
  if(c.stage>=6)L.push(['a','入金を確認']);
  const n=L.length;
  return `<div class="card"><ul class="tl">${L.map((l,i)=>`<li><span class="t">${i===n-1?c.upd:(n-1-i)*4+'日前'}</span><span><i class="dot ${l[0]==='a'||l[0]==='m'?'a':l[0]==='c'?'c':''}"></i></span><div>${l[1]} <span class="chip ${l[0]==='c'?'amber':l[0]==='s'?'brand':'info'}">${l[0]==='c'?'お客様':l[0]==='s'?'スタッフ':'自動'}</span>${l[0]==='m'?`<div class="sum"><b>AIの要約</b><br>受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を確認したい。回答期限の記載あり。<br><span class="tiny">対応：今日やることに追加しました。</span></div>`:''}</div></li>`).join('')}${flogHtml(c)}</ul></div>
- <div class="card pad" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="text" id="memo" placeholder="メモを残す（例：来週月曜に電話で確認）" style="flex:1;min-width:200px"><button class="btn g sm" data-act="msg" data-m="メモを記録しました">記録する</button></div>`;}
+ <div class="card pad" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><input type="text" id="memo" placeholder="メモを残す（例：来週月曜に電話で確認）" style="flex:1;min-width:200px"><button class="btn g sm" data-act="msg" data-m="メモを記録しました">記録する</button></div>
+ ${thr(cmL(c),'s','smT','smsg',c.id,'例）就業規則は、顧問の社労士の方からもらえますか','お客様とのメッセージ（マイページ）')}`;}
 function tabOffer(c){const os=OPPS.filter(o=>o.cid===c.id);
  return os.length?`<div class="opps">${os.map(oppCard).join('')}</div>`:`<div class="card empty"><p><b>今は、提案のタイミングではありません。</b></p><p>入金のあとや、時限措置の終了が近づいたときに、ここに出ます。</p></div>`;}
 const oppCard=o=>{const c=byId(o.cid);return `<article class="card opp"><p><span class="chip brand">${o.kind}</span></p><h3>${esc(c.co)}</h3><p>${o.why}</p><p class="of">${ic('bulb','s')} ${o.offer}</p><button class="btn o sm" data-act="offer" data-o="${o.id}">${ic('spark','s')}提案メモをつくる</button></article>`;};
@@ -1380,7 +1509,7 @@ function settingsV(){
   <div class="tpl">${tpl.map(t=>`<div class="${t[2]?'on':''}"><b>${t[0]}</b>${t[1]} ${t[2]?'<span class="chip brand">使用中</span>':''}</div>`).join('')}</div></div>
  <div class="card pad"><h2 style="font-size:16px">お客様に聞く質問</h2><p class="tiny" style="margin:4px 0 8px">書類や公開情報から分かることは、聞きません。オフにした質問は、お客様の画面から消えます。</p>
   ${S.questions.map((q,i)=>`<div class="qrow"><span>${esc(q.label)}${q.custom?' <span class="chip mute">追加した質問</span>':''}</span><button class="sw" role="switch" aria-checked="${q.on}" aria-label="${esc(q.label)}" data-act="tog" data-k="questions.${i}.on"><i></i></button></div>`).join('')}
-  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input type="text" id="newQ" placeholder="質問を追加（例：研修を受けたい時期）" style="flex:1;min-width:200px"><button class="btn g sm" data-act="addq">${ic('plus','s')}追加する</button></div></div>`;}
+  <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><input type="text" id="newQ" placeholder="質問を追加（例：研修を受けたい時期）" style="flex:1;min-width:200px"><button class="btn g sm" data-act="addq">${ic('plus','s')}追加する</button></div></div>${dkRules()}`;}
 
 /* ================= CURRICULUM BUILDER ================= */
 function curPast(){const k=S.cur;return (PAST[k.cid]||[]).filter(p=>k.past[p.id]).concat(k.extra.map(t=>({t,custom:1})));}
@@ -1549,12 +1678,13 @@ function ypImport(){const p=planDecode(location.hash),n=p&&planNorm(p);if(!n)ret
  try{history.replaceState(null,'','#staff');}catch(e){}return true;}
 /* 案件の記録（やりとりのタブに出す） */
 function flog(c,k,t){S.flog=S.flog||{};(S.flog[c.id]=S.flog[c.id]||[]).push([k,t]);}
-const flogHtml=c=>((S.flog&&S.flog[c.id])||[]).map(l=>`<li><span class="t">たった今</span><span><i class="dot ${l[0]==='a'?'a':l[0]==='c'?'c':''}"></i></span><div>${esc(l[1])} <span class="chip ${l[0]==='c'?'amber':l[0]==='s'?'brand':'info'}">${l[0]==='c'?'お客様':l[0]==='s'?'スタッフ':'自動'}</span></div></li>`).join('');
+const FLK={a:['a','info','自動'],c:['c','amber','お客様'],s:['','brand','スタッフ'],r:['r','ok','社労士']};
+const flogHtml=c=>((S.flog&&S.flog[c.id])||[]).map(l=>{const k=FLK[l[0]]||FLK.a;return `<li><span class="t">${l[2]||'たった今'}</span><span><i class="dot ${k[0]}"></i></span><div>${esc(l[1])} <span class="chip ${k[1]}">${k[2]}</span></div></li>`;}).join('');
 
 /* ================= 申請書類（計画届・支給申請の下書き） =================
    書類の一覧は、リスキリング支援コース（通学制）の詳細版パンフレット P42・P45〜46 の「提出書類」に沿う（●必ず出す ▲該当する場合）。
    作るのは社労士が書類を作るための下書き。作成・提出は社労士（またはお客様本人）が行う。番号・氏名などは架空の例 */
-const FPREF=[['埼玉',11,'埼玉県戸田市新曽0-0-0','048'],['東京',13,'東京都練馬区豊玉北0-0-0','03'],['神奈川',14,'神奈川県横浜市港北区新横浜0-0-0','045'],['東京',13,'東京都江東区豊洲0-0-0','03'],['千葉',12,'千葉県船橋市本町0-0-0','047'],['東京',13,'東京都世田谷区太子堂0-0-0','03'],['埼玉',11,'埼玉県川口市本町0-0-0','048'],['神奈川',14,'神奈川県相模原市中央区中央0-0-0','042']];
+const FPREF=[['埼玉',11,'埼玉県戸田市新曽0-0-0','048'],['東京',13,'東京都練馬区豊玉北0-0-0','03'],['神奈川',14,'神奈川県横浜市港北区新横浜0-0-0','045'],['東京',13,'東京都江東区豊洲0-0-0','03'],['千葉',12,'千葉県船橋市本町0-0-0','047'],['東京',13,'東京都世田谷区太子堂0-0-0','03'],['埼玉',11,'埼玉県川口市本町0-0-0','048'],['神奈川',14,'神奈川県相模原市中央区中央0-0-0','042'],['東京',13,'東京都大田区蒲田0-0-0','03']];
 const FNAMES=['青木 一郎','石井 花子','上野 翔','江口 美咲','大野 健太','加藤 彩','木下 誠','久保 陽菜','小池 拓海','斉藤 結衣','清水 大輔','杉山 葵','関 直人','曽我 舞'];
 const FSUI=['総務部長 森田 由紀','総務課長 岡本 拓也','管理部長 佐々木 健'];
 const FKIND={auto:'このツールで下書き',cust:'下書きを作り、お客様が確認して記名',att:'集めた書類の写し',vend:'研修会社が記入'};
@@ -1606,7 +1736,7 @@ function fData(c){const f=fS(c),d=dates(c),co=COURSE(c.course)||COURSES[0],mid=c
   purpose:cr&&cr.goal||c.train+'を通じて、'+jb+'の職務に必要な知識・技能を習得する',
   dx:cr&&cr.dx||'当社は'+ind+'を営んでいる。生成AIを業務に取り入れ、書類作成とデータ活用のデジタル化を進める。これに伴い、'+jb+'を担当する従業員に、生成AIを使った業務の手法を習得させる訓練を実施する。'};}
 function fAtt(c,id){const st=c.stage;
- if(id==='p7')return st===2&&c.id==='c3'?['warn','未着']:st>=2?['ok','受領']:['mute','研修会社から受け取る'];
+ if(id==='p7'){const x=dkSt(c,'cont');return st>=2?(x==='got'?['ok','受領']:['warn','未着']):['mute','研修会社から受け取る'];}
  if(id==='a8')return st>=2||c===MIDORI&&cl.docs[1]==='got'?['ok','受領']:['warn','未着'];
  if(id==='a9')return st>=4?['ok','受領']:st===3?['brand','毎月受領中']:['mute','訓練中に毎月集める'];
  if(id==='a10')return c.check==='attend'&&!c.fixed?['warn','確認が必要']:c.miss.some(x=>/出勤簿/.test(x))?['warn','未着']:st>=4?['ok','受領']:st===3?['brand','毎月受領中']:['mute','訓練中に毎月集める'];
@@ -1677,6 +1807,7 @@ function tabForms(c){const f=fS(c),D=fData(c),ph=f.ph,ds=fDocs(c,f,ph),mk=ds.fil
  <div class="card"><div class="fsec"><h3>3. 提出前の自動チェック${bad?'（要対応 '+bad+'件）':''}</h3></div>${chk.map(x=>`<div class="chk">${lv[x.lv]}<div><b>${x.t}</b><p>${x.p}</p></div>${x.a?`<div class="acts">${x.a}</div>`:''}</div>`).join('')}</div>
  <div class="card fhand"><h3 style="font-size:15px">4. ${self?'提出':'社労士に引き継ぐ'}</h3><p class="tiny">${self?'下書きを確認し、最新の様式で書類を作って、雇用関係助成金ポータル（電子申請）か窓口・郵送で提出します。提出したら「提出済みにする」を押してください。':'下書き・集めた書類の写し・チェック結果をまとめて、'+esc(srName(c))+'に渡します。申請書類の作成・提出は社労士が行います。'}</p>
   <div class="acts"><button class="btn p" data-act="fsend" ${sent?'disabled':''}>${sent?(self?'提出済み':'引き継ぎ済み'):self?'提出済みにする':'社労士に引き継ぐ'}</button><button class="btn o" data-act="fask" data-d="cust">${ic('chat','s')}お客様に確認を依頼</button><button class="btn o" data-act="fall">${ic('doc','s')}まとめてプレビュー・印刷</button><button class="btn g" data-act="msg" data-m="電子申請に入力する順に並べたデータを書き出しました（試作のためファイルは作られません）">電子申請用のデータ（CSV）</button></div></div>
+ ${self?'':srVend(c,ph)}
  <p class="tiny">${c.course!=='reskill'?'このコースの書類・様式番号は、リスキリング支援コースと異なる場合があります。画面の様式番号は、リスキリング支援コース（通学制）の例です。':'書類の一覧は、リスキリング支援コースのパンフレット（通学制・同時双方向型）の提出書類に沿っています。'}氏名・番号などは試作用の架空の例です。</p>`;}
 /* ---------- 書類の下書き（様式に近い形の表示） ---------- */
 const KVT=r=>'<table class="kvt"><tbody>'+r.map(x=>'<tr><th>'+x[0]+'</th><td>'+x[1]+'</td></tr>').join('')+'</tbody></table>';
@@ -1725,6 +1856,441 @@ function fAskModal(m){const c=byId(m.cid),f=fS(c),D=fData(c),ph=f.ph,L=[];
  const txt=sei(c)+'様\n\n'+S.t.name+'の'+staffNm(c.owner)+'です。\n人材開発支援助成金の'+(ph==='plan'?'計画届':'支給申請')+'の準備で、次のことをお願いします。\n\n'+L.map(x=>'・'+x).join('\n')+'\n\n下のリンクから進められます（10分ほどです）。\nhttps://josei.example/r/'+c.id+'-XXXX\n\n'+(ph==='plan'?'計画届の提出期限は '+fmt(D.d.pt)+' です。':'支給申請の期限は '+fmt(D.d.at)+' です。')+'\nよろしくお願いいたします。';
  return `<h2>お客様に確認を依頼（LINE用）</h2><p class="tiny">${esc(c.co)}の${ph==='plan'?'計画届':'支給申請'}で、お客様の確認・記名が要るものだけを並べています。</p><textarea id="mTxt" aria-label="依頼文">${esc(txt)}</textarea><div class="m-acts"><button class="btn g" data-act="close">閉じる</button><button class="btn o" data-act="copyta">${ic('copy','s')}コピーする</button><button class="btn p" data-act="fasked">送ったことにする</button></div>`;}
 
+/* ================= ACCOUNTS（試作のデモ用。パスワードは全員 demo。実際の運用では画面に出さない） =================
+   役割：super スーパー管理者（全テナント・全アカウント・代理表示）／admin 管理者（自社の全担当）／staff 申請担当（自分の担当だけ）
+         client お客様（自社の案件のマイページだけ）／sr 提携社労士（引き継がれた案件だけ） */
+const PW='demo';
+const ROLES={
+ super:{n:'スーパー管理者',c:'warn',d:'すべてのテナントの管理者・担当者・お客様・提携社労士。アカウントの停止と、各画面の代理表示'},
+ admin:{n:'管理者',c:'brand',d:'自社の全担当者の案件と進み具合。担当の割り当てと担当者の追加'},
+ staff:{n:'申請担当',c:'info',d:'自分が担当するお客様の案件だけ'},
+ client:{n:'お客様',c:'amber',d:'自社の案件のマイページだけ（書類とAIチェック・期限・メッセージ）'},
+ sr:{n:'提携社労士',c:'ok',d:'引き継がれた案件の書類・申請データ・期限だけ'}};
+const ROLEORD=['super','admin','staff','client','sr'];
+const CSLUG={c1:'midori',c2:'hikari',c3:'soleil',c4:'yamato',c5:'sakura',c6:'aozora',c7:'tachibana',c8:'kaede',c9:'harukaze'};
+const PSLUG={p1:'minato',p2:'aoba'};
+const LAST=['今日 9:12','今日 8:47','昨日 18:05','昨日 10:31','3日前','先週'];
+const hm=()=>{const d=new Date();return pad(d.getHours())+':'+pad(d.getMinutes());};
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+S.me='super-admin';S.as=null;S.ast={};S.xadm=[];S.tenant='smacon';S.ops='dash';S.oq='';S.orole='all';S.lgid='';
+S.alog=[['今日 9:12','運営 管理者','ログイン'],['今日 8:47','小林 真理','担当の割り当てを変更（株式会社はるかぜ食品 → 佐藤）'],['昨日 18:05','港 一郎','株式会社やまと運送の計画届を「受理済み」に更新'],['昨日 16:20','佐藤','株式会社はるかぜ食品の計画届の書類を、みなと社会保険労務士事務所（例）に引き継ぎ'],['昨日 10:31','青葉 恵子','株式会社あおぞら不動産で、労働局からの問い合わせを記録'],['3日前','運営 管理者','提携先「あおば社会保険労務士法人（例）」の共有をオン'],['先週','運営 管理者','アカウント「smc-staff03」を作成']];
+const srAcctId=p=>'sr-'+(PSLUG[p.id]||p.id);
+const clAcctId=c=>'cl-'+(CSLUG[c.id]||c.id);
+const stAcctId=i=>'smc-staff'+pad(i+1);
+function accts(){const L=[],org=TENANTS.smacon.name,add=a=>{const o=S.ast[a.id]||{};if(o.mfa!=null)a.mfa=o.mfa;a.off=!!o.off;a.last=a.last||LAST[L.length%LAST.length];L.push(a);};
+ add({id:'super-admin',role:'super',n:'運営 管理者',org:'コンシェルジュ運営事務局（例）',mfa:true,last:'今日 9:12'});
+ add({id:'smc-admin',role:'admin',n:'小林 真理',org,mfa:true});
+ S.xadm.forEach(x=>add({id:x.id,role:'admin',n:x.n,org,mfa:false,last:'まだログインしていません'}));
+ STAFFS.forEach((x,i)=>add({id:stAcctId(i),role:'staff',ref:x.id,n:staffNm(x.id),org,mfa:i===0,last:i>2?'まだログインしていません':''}));
+ CASES.forEach(c=>add({id:clAcctId(c),role:'client',ref:c.id,n:c.rep,org:c.co,mfa:c.no%3===0}));
+ S.partners.forEach(p=>add({id:srAcctId(p),role:'sr',ref:p.id,n:p.who,org:p.n,mfa:true}));
+ return L;}
+const me=()=>S.me?accts().find(a=>a.id===S.me)||null:null;
+const role=()=>{const a=me();return a?a.role:'none';};
+const isSuper=()=>role()==='super';
+function alog(t){const a=me();S.alog.unshift(['今日 '+hm(),a?a.n:'—',t]);}
+const VIEWS=[['overview','概要'],['ops','運営'],['staff','スタッフ画面'],['client','お客様の画面'],['sr','社労士の画面'],['manual','マニュアル']];
+const CANV={super:['overview','ops','staff','client','sr','manual'],admin:['overview','staff','client','manual'],staff:['overview','staff','client','manual'],client:['client'],sr:['sr'],none:['overview']};
+const canV=v=>v==='login'||(CANV[role()]||[]).indexOf(v)>-1;
+const homeV=()=>({super:'ops',admin:'staff',staff:'staff',client:'client',sr:'sr'})[role()]||'login';
+function headBar(){const a=me(),vs=VIEWS.filter(v=>canV(v[0])),nav=$('#views');
+ nav.innerHTML=vs.length>1?vs.map(v=>`<button data-act="view" data-v="${v[0]}" aria-current="${S.view===v[0]}">${v[1]}</button>`).join(''):'';nav.hidden=vs.length<2;
+ const tb=$('#tenantBox');if(tb){tb.hidden=!isSuper();const ts=$('#tenantSel');if(ts)ts.value=S.tenant;}
+ const b=$('#meBtn');b.setAttribute('aria-current',String(S.view==='login'));
+ b.innerHTML=`<span class="av">${ic('user','s')}</span><span><b>${a?esc(a.n):'ログイン'}</b><small>${a?ROLES[a.role].n+(S.as?'（代理表示）':''):'アカウントを選ぶ'}</small></span>`;}
+function asBar(){if(!S.as)return '';const a=me(),o=accts().find(x=>x.id===S.as);if(!a)return '';
+ return `<div class="asbar" role="status"><span>${ic('shield','s')}<span>${esc(o?o.n:'運営')}（スーパー管理者）が、${esc(a.n)}さん（${ROLES[a.role].n}・${esc(a.id)}）の画面を代理で表示しています。操作は記録されます。</span></span><button class="btn o sm" data-act="unas">運営の画面にもどる</button></div>`;}
+function doLogin(id,keep){const a=accts().find(x=>x.id===id);if(!a)return false;if(a.off){toast('停止中のアカウントです。運営の画面で再開できます');return false;}
+ if(!keep)S.as=null;S.me=id;S.modal=null;S.caseId=null;S.block=null;S.src=null;
+ if(a.role!=='super'&&S.tenant!=='smacon'){S.tenant='smacon';S.t=Object.assign({},TENANTS.smacon);S.filer='partner';}
+ if(a.role==='staff'){setAcct(a.ref);S.staff='today';}else if(a.role==='admin'||a.role==='super'){setAcct('admin');S.staff='today';}
+ if(a.role==='client'){S.cview=a.ref;cl.screen='home';cl.help=null;cl.editing=null;}
+ if(a.role==='sr'){S.srp=a.ref;S.srs='home';}
+ S.view=homeV();return true;}
+function meCard(a){return `<div class="card mec"><div class="h"><span class="av">${ic('user','l')}</span><div><p class="tiny">ログイン中</p><h2>${esc(a.n)} <span class="chip ${ROLES[a.role].c}">${ROLES[a.role].n}</span></h2><p class="tiny">${esc(a.org)}</p></div></div>
+ <dl class="kv"><dt>ログインID</dt><dd><code class="mono">${esc(a.id)}</code></dd><dt>見られる範囲</dt><dd>${ROLES[a.role].d}</dd><dt>最終ログイン</dt><dd>${esc(a.last)}</dd></dl>
+ <div class="qrow"><span>二段階認証（ログインのときにSMSの確認コード）</span><button class="sw" role="switch" aria-checked="${!!a.mfa}" aria-label="二段階認証" data-act="mfa" data-id="${esc(a.id)}"><i></i></button></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn o sm" data-act="msg" data-m="パスワードを変える画面を開きます（試作のため変更はできません）">パスワードを変える</button><button class="btn g sm" data-act="logout">ログアウト</button></div></div>`;}
+function loginV(){const a=me(),L=accts();
+ const sc=x=>x.role==='staff'?'担当のお客様 '+CASES.filter(c=>c.owner===x.ref).length+'社':x.role==='client'?esc(x.org)+'の案件':x.role==='sr'?'担当の案件 '+CASES.filter(c=>srOf(c).id===x.ref).length+'件（引き継ぎ前を含む）':ROLES[x.role].d;
+ const row=x=>`<div class="lrow ${x.off?'off':''}"><span><code class="mono">${esc(x.id)}</code></span><span class="who"><b>${esc(x.n)}</b><span class="tiny">${esc(x.org)}</span></span><span class="sc">${sc(x)}${x.mfa?'':' <span class="chip mute">二段階認証なし</span>'}${x.off?' <span class="chip warn">停止中</span>':''}</span><span>${x.id===S.me?'<span class="chip brand">ログイン中</span>':`<button class="btn o sm" data-act="login" data-id="${esc(x.id)}" ${x.off?'disabled':''}>この人でログイン</button>`}</span></div>`;
+ return `<div class="wrap lg"><div class="ph"><div><h1>ログインとアカウント</h1><p class="sub">役割ごとに、見られる画面と案件が変わります。下のデモ用アカウントでログインすると、それぞれの見え方を確認できます。</p></div></div>
+ <div class="lgtop">${a?meCard(a):''}
+  <div class="card lgf"><h2 style="font-size:16px">ログイン</h2>
+   <div class="fld"><label for="lgId">ログインID</label><input type="text" id="lgId" autocomplete="off" placeholder="例）cl-midori" value="${esc(S.lgid)}"></div>
+   <div class="fld"><label for="lgPw">パスワード</label><input type="password" id="lgPw" autocomplete="off" placeholder="デモはすべて demo"></div>
+   <div><button class="btn p" data-act="loginf">ログイン</button></div>
+   <p class="tiny">試作のデモ用です。パスワードはすべて <code class="mono">demo</code>。実際の運用では、パスワードは本人だけが設定し、運営も見られません。</p></div></div>
+ ${ROLEORD.map(r=>{const xs=L.filter(x=>x.role===r);return xs.length?`<section class="lsec"><h3><span class="chip ${ROLES[r].c}">${ROLES[r].n}</span><span>${xs.length}件</span></h3><p class="tiny">見られる範囲：${ROLES[r].d}</p><div class="card">${xs.map(row).join('')}</div></section>`:'';}).join('')}
+ <div class="card note">${ic('shield','l')}<div><h3>お客様のIDとパスワードも預かりません</h3><p>GビズIDや雇用関係助成金ポータルのログイン情報は、どのアカウントにも保存・入力しません。</p></div></div></div>`;}
+
+/* ================= 運営（スーパー管理者だけ） ================= */
+const OPSNAV=[['dash','today','ダッシュボード'],['tenants','shield','テナント・提携先'],['accts','user','アカウント'],['clients','cases','お客様'],['audit','doc','操作の記録']];
+function opsV(){const body=({dash:opsDash,tenants:opsTen,accts:opsAcc,clients:opsCli,audit:opsAud})[S.ops]||opsDash;
+ return `<div class="wrap st"><aside class="side" aria-label="運営の画面のメニュー">${OPSNAV.map(n=>`<button data-act="onav" data-s="${n[0]}" aria-current="${S.ops===n[0]}">${ic(n[1])}${n[2]}</button>`).join('')}</aside><div class="main">${body()}</div></div>`;}
+function opsDash(){const L=accts(),near=c=>{const n=nextDue(c);return n&&c.stage>=1&&c.stage!==3&&diff(n.d)<=14;};
+ const nomfa=L.filter(a=>!a.mfa&&!a.off),off=L.filter(a=>a.off),bad=dkBadAll(),busy=s=>['new','work','ask'].indexOf(s)>-1;
+ const srAct=CASES.filter(c=>{const w=sw(c);return busy(w.plan.st)||busy(w.apply.st);}),back=CASES.filter(c=>{const w=sw(c);return w.plan.st==='back'||w.apply.st==='back';}),nr=CASES.filter(near);
+ const tiles=[['アカウント',L.length,off.length?'停止中 '+off.length+'件':'すべて利用中',''],['進行中の案件',CASES.filter(c=>c.stage<6).length,'全担当の合計',''],['社労士が対応中',srAct.length,'提携 '+S.partners.length+'事務所',''],['AIチェックで要対応',bad.length,'差し替え・要確認の書類',bad.length?'w':'']];
+ const it=[];
+ if(bad.length)it.push(['spark','warn','書類のAIチェック','差し替え・確認が必要な書類が'+bad.length+'点あります',bad.slice(0,3).map(x=>esc(x.c.co.replace(/株式会社|有限会社/g,''))+'「'+esc(DKT[x.k].n.replace(/（.*?）/,''))+'」').join('、')+(bad.length>3?' ほか':''),`<button class="btn p sm" data-act="onav" data-s="clients">お客様を見る</button>`]);
+ if(back.length)it.push(['back','amber','社労士から差し戻し',back.length+'件の書類が差し戻されています',back.map(c=>esc(c.co)).join('、'),`<button class="btn o sm" data-act="open" data-id="${back[0].id}" data-tab="forms">案件を開く</button>`]);
+ if(nr.length)it.push(['clock','warn','期限が近い','期限まで14日以内の案件が'+nr.length+'件あります',nr.map(c=>esc(c.co)+'（担当：'+esc(ownerNm(c))+'）').join('、'),`<button class="btn o sm" data-act="go" data-v="staff" data-s="cases">案件を見る</button>`]);
+ if(nomfa.length)it.push(['shield','amber','セキュリティ','二段階認証が未設定のアカウントが'+nomfa.length+'件あります',nomfa.slice(0,4).map(a=>esc(a.n)).join('、')+(nomfa.length>4?' ほか':''),`<button class="btn o sm" data-act="onav" data-s="accts">アカウントを見る</button>`]);
+ const rc=ROLEORD.map(r=>[ROLES[r].n,L.filter(a=>a.role===r).length]),mx=Math.max.apply(null,rc.map(x=>x[1]))||1;
+ const sc=STAFFS.map(x=>[staffNm(x.id),CASES.filter(c=>c.owner===x.id).length]),ms=Math.max.apply(null,sc.map(x=>x[1]))||1;
+ return `<div class="ph"><div><h1>運営のダッシュボード</h1><p class="sub">すべてのテナントの管理者・担当者・お客様・提携社労士の状況を、まとめて見られます。スーパー管理者だけの画面です。</p></div></div>
+ <div class="tiles">${tiles.map(t=>`<div class="tile ${t[3]}"><span class="l">${t[0]}</span><span class="n num">${t[1]}</span><span class="tiny">${t[2]}</span></div>`).join('')}</div>
+ <div class="cols"><div class="card todo">${it.length?it.map(x=>`<div class="td"><span class="td-ic ${x[1]}">${ic(x[0],'l')}</span><div><p class="td-k"><span>${x[2]}</span></p><p class="td-t">${x[3]}</p><p class="td-d">${x[4]}</p></div><div class="td-a">${x[5]}</div></div>`).join(''):'<div class="empty"><p><b>注意が必要なことはありません。</b></p></div>'}</div>
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+   <div class="card pad sidecard"><h3>役割ごとのアカウント</h3>${rc.map(r=>`<div class="sb"><span>${r[0]}</span><span class="tr"><i style="width:${r[1]/mx*100}%"></i></span><span class="num">${r[1]}</span></div>`).join('')}</div>
+   <div class="card pad sidecard"><h3>申請担当ごとの案件</h3>${sc.map(r=>`<div class="sb"><span>${esc(r[0])}</span><span class="tr"><i style="width:${r[1]/ms*100}%"></i></span><span class="num">${r[1]}</span></div>`).join('')}</div>
+   <div class="card pad sidecard"><h3>最近の操作</h3><ul class="dl">${S.alog.slice(0,5).map(l=>`<li><span><b>${esc(l[2])}</b><span class="tiny">${esc(l[1])}</span></span><span class="tiny">${esc(l[0])}</span></li>`).join('')}</ul><button class="lnk" data-act="onav" data-s="audit">すべて見る ${ic('arrow','s')}</button></div>
+  </div></div>`;}
+function opsTen(){const T=[['smacon',TENANTS.smacon.name,'利用中','申請担当 '+STAFFS.length+'名・管理者 '+(1+S.xadm.length)+'名・お客様 '+CASES.length+'社','提携する社労士事務所に依頼'],['other',TENANTS.other.name+'（例）','試用中（デモ）','社労士事務所が自分で使う場合の例','自事務所で作成・提出']];
+ const live=w=>['new','work','sent','ask','back'].indexOf(w.plan.st)>-1||['new','work','sent','ask','back'].indexOf(w.apply.st)>-1;
+ return `<div class="ph"><div><h1>テナント・提携先</h1><p class="sub">このツールを使う事業者（テナント）と、提携する社労士事務所の一覧です。テナントごとに、社名・色・担当者・お客様の画面が分かれます。</p></div></div>
+ <div class="pgrid">${T.map(t=>`<article class="card pc"><div class="h"><div><h3>${esc(t[1])}</h3><p class="tiny">${t[3]}</p></div><span class="chip ${t[0]===S.tenant?'brand':'mute'}">${t[0]===S.tenant?'表示中':t[2]}</span></div><dl class="kv"><dt>申請書類の作成・提出</dt><dd>${t[4]}</dd><dt>状態</dt><dd>${t[2]}</dd></dl><div><button class="btn o sm" data-act="tenant" data-v="${t[0]}" ${t[0]===S.tenant?'disabled':''}>このテナントの画面で見る</button></div></article>`).join('')}</div>
+ <h2 style="font-size:16px;margin-top:6px">提携社労士</h2>
+ <div class="pgrid">${S.partners.map(p=>{const cs=CASES.filter(c=>srOf(c).id===p.id),n=cs.filter(c=>live(sw(c))).length;return `<article class="card pc"><div class="h"><div><h3>${esc(p.n)}</h3><p class="tiny">担当：${esc(p.who)}・ID <code class="mono">${esc(srAcctId(p))}</code></p></div><span class="chip ${p.share?'ok':'mute'}">${p.share?'共有オン':'共有オフ'}</span></div><dl class="kv"><dt>担当の案件</dt><dd>${cs.length}件（対応中 ${n}件）</dd><dt>対応エリア</dt><dd>${esc(p.area)}</dd></dl><div><button class="btn o sm" data-act="as" data-id="${esc(srAcctId(p))}">社労士のマイページを見る</button></div></article>`;}).join('')}</div>`;}
+function opsAcc(){return `<div class="ph"><div><h1>アカウント</h1><p class="sub">全テナントのアカウントを管理します。停止すると、その人はログインできなくなります。パスワードは運営も見られません。</p></div></div>
+ <div class="bar"><select id="oRole" data-orole="1" aria-label="役割で絞り込む" style="width:auto"><option value="all">すべての役割</option>${ROLEORD.map(r=>`<option value="${r}" ${S.orole===r?'selected':''}>${ROLES[r].n}</option>`).join('')}</select><input type="search" id="oQ" placeholder="ID・名前・会社名でさがす" value="${esc(S.oq)}" aria-label="ID・名前・会社名でさがす"></div>
+ <div id="oList">${opsAccList()}</div>
+ <div class="card pad" style="display:flex;flex-direction:column;gap:10px"><h2 style="font-size:15px">アカウントを追加する</h2><div class="addp" style="grid-template-columns:minmax(0,200px) minmax(0,260px) auto;justify-content:start"><div class="fld"><label for="aaR">役割</label><select id="aaR"><option value="staff">申請担当</option><option value="admin">管理者</option></select></div><div class="fld"><label for="aaN">名前</label><input type="text" id="aaN" placeholder="例）木村"></div><button class="btn p sm" data-act="aadd">${ic('plus','s')}追加する</button></div><p class="tiny">お客様のアカウントは案件を作ると、社労士のアカウントは提携先を追加すると、自動でできます。追加した人には、パスワードを設定するリンクをメールで送ります。</p></div>`;}
+function opsAccList(){const q=S.oq.toLowerCase(),L=accts().filter(a=>(S.orole==='all'||a.role===S.orole)&&(!q||(a.id+a.n+a.org).toLowerCase().indexOf(q)>-1));
+ if(!L.length)return '<div class="card empty">条件に合うアカウントはありません。</div>';
+ return `<div class="card tscroll"><table style="min-width:900px"><thead><tr><th>ログインID</th><th>名前・所属</th><th>役割</th><th>二段階認証</th><th>最終ログイン</th><th>利用</th><th>操作</th></tr></thead><tbody>${L.map(a=>`<tr class="${a.off?'off':''}"><td><code class="mono">${esc(a.id)}</code></td><td><b>${esc(a.n)}</b><br><span class="tiny">${esc(a.org)}</span></td><td><span class="chip ${ROLES[a.role].c}">${ROLES[a.role].n}</span></td><td>${a.mfa?'<span class="chip ok">設定済み</span>':'<span class="chip mute">未設定</span>'}</td><td class="tiny">${esc(a.last)}</td><td>${a.role==='super'?'<span class="tiny">—</span>':`<button class="sw" role="switch" aria-checked="${!a.off}" aria-label="${esc(a.id)}を利用できる" data-act="aoff" data-id="${esc(a.id)}"><i></i></button>`}</td><td><div style="display:flex;gap:6px;flex-wrap:wrap">${a.role==='super'?'':`<button class="btn o sm" data-act="as" data-id="${esc(a.id)}" ${a.off?'disabled':''}>この人の画面を見る</button>`}<button class="btn g sm" data-act="apw" data-id="${esc(a.id)}">パスワード再設定</button></div></td></tr>`).join('')}</tbody></table></div>`;}
+function opsCli(){return `<div class="ph"><div><h1>お客様</h1><p class="sub">全テナントのお客様と、マイページのログインID、書類のAIチェックの状況です。</p></div></div>
+ <div class="card tscroll"><table style="min-width:940px"><thead><tr><th>会社</th><th>お客様のID</th><th>申請担当</th><th>社労士</th><th>段階</th><th>書類のAIチェック</th><th>操作</th></tr></thead><tbody>${CASES.map(c=>`<tr><td><b>${esc(c.co)}</b></td><td><code class="mono">${esc(clAcctId(c))}</code></td><td>${esc(ownerNm(c))}</td><td class="tiny">${esc(srOf(c).n)}</td><td>${SNAME[c.stage]}</td><td>${dkCountChips(dkCount(c))}</td><td><div style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn o sm" data-act="as" data-id="${esc(clAcctId(c))}">マイページを見る</button><button class="btn g sm" data-act="open" data-id="${c.id}" data-tab="docs">案件を開く</button></div></td></tr>`).join('')}</tbody></table></div>`;}
+function opsAud(){return `<div class="ph"><div><h1>操作の記録</h1><p class="sub">ログイン・代理表示・アカウントの変更・案件の引き継ぎなどを記録します。記録は消せません。</p></div></div>
+ <div class="card tscroll"><table style="min-width:620px"><thead><tr><th>日時</th><th>誰が</th><th>操作</th></tr></thead><tbody>${S.alog.map(l=>`<tr><td class="tiny num" style="white-space:nowrap">${esc(l[0])}</td><td style="white-space:nowrap">${esc(l[1])}</td><td>${esc(l[2])}</td></tr>`).join('')}</tbody></table></div>`;}
+
+/* ================= 社労士のマイページ ================= */
+const SRST={later:['mute','引き継ぎ前'],new:['brand','新しく届いた'],back:['amber','差し戻し中'],work:['info','作成中'],sent:['info','提出済み・結果待ち'],ask:['warn','労働局から問い合わせ'],done:['ok','受理済み'],paid:['ok','入金済み']};
+const srStLbl=(ph,st)=>ph==='apply'&&st==='done'?'支給決定':ph==='apply'&&st==='sent'?'提出済み・審査中':SRST[st][1];
+const PHN={plan:'計画届',apply:'支給申請'};
+const SRNAV=[['home','today','ホーム'],['cases','cases','案件'],['cal','cal','期限カレンダー'],['office','set','事務所の設定']];
+const SRCHK=(c,ph)=>{const d=dates(c);return ph==='plan'?['最新の様式で、計画届・対象労働者一覧・事前確認書を作成した','事業主の記名を確認した（事前確認書・委任状）','カリキュラム・契約書と、計画届の日時・時間・受講料が合っている','提出期間内（'+fmt(d.pf)+'〜'+fmt(d.pt)+'）に労働局へ届く']:['最新の様式で、支給申請書と内訳を作成した','出勤簿と受講記録に食い違いがない','受講料の全額の支払いを確認した','申請期限（'+fmt(d.at)+'）までに労働局へ届く'];};
+S.srp='p1';S.srs='home';S.src=null;S.srph='plan';S.srf='all';S.srmon=null;S.srn={};S.dkx={};S.cview='c1';S.cm={};S.cn={};
+S.rk={toukiM:3,filed:true,payEq:true,empTerm:true};
+function setStage(c,n){if(c===MIDORI)c.manual=n;else c.stage=n;}
+function sw(c){S.sw=S.sw||{};if(S.sw[c.id])return S.sw[c.id];const f=fS(c),st=c.stage,d=dates(c),P=()=>({st:'later',chk:{},how:'e',no:'',amt:'',q:'',why:'',at:''});
+ const w=S.sw[c.id]={plan:P(),apply:P(),msg:[]};
+ if(st>=3){w.plan.st='done';w.plan.no='受理番号 '+(c.no*1371+40213);w.plan.at=fmt(addD(d.pt,-6));}else if(f.sent.plan)w.plan.st='new';
+ if(st>=6){w.apply.st='paid';const e=est(c);w.apply.amt=e?Math.round(e.all):0;w.apply.at=fmt(addD(d.at,-20));}
+ else if(st===5){w.apply.st=c.mail?'ask':'sent';w.apply.at=fmt(addD(d.at,-30));if(c.mail)w.apply.q='受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を確認したい。';}
+ else if(f.sent.apply)w.apply.st='new';
+ return w;}
+const srPh=c=>{const w=sw(c);return w.apply.st!=='later'||w.plan.st==='done'?'apply':'plan';};
+const staffSide=c=>role()==='staff'?staffNm(S.acct):role()==='admin'?me().n:ownerNm(c);
+function srMsg(c,f,t){sw(c).msg.push({f,n:f==='r'?srOf(c).who:staffSide(c),t,at:'今日 '+hm()});}
+function srNote(c,t){flog(c,'r',t);alog(c.co+'：'+t);}
+function srItems(cs){const R=[];cs.forEach(c=>{const w=sw(c),d=dates(c);['plan','apply'].forEach(ph=>{const x=w[ph],due=ph==='plan'?d.pt:d.at,dl=fmt(due)+'（あと'+diff(due)+'日）',P=PHN[ph],lb=ph==='plan'?'提出期限 ':'申請期限 ';
+  if(x.st==='ask')R.push({o:0,c,ph,ic:['mail','warn'],k:'労働局から問い合わせ',t:P+'について、労働局から問い合わせがあります',d:esc(x.q),due});
+  else if(x.st==='new')R.push({o:1,c,ph,ic:['doc','info'],k:'新しく届いた書類',t:P+'の書類一式が届きました',d:lb+dl+'。内容を確認して、受け取るか差し戻してください。',due});
+  else if(x.st==='work'){const n=SRCHK(c,ph).filter((_,i)=>x.chk[i]).length;R.push({o:2,c,ph,ic:['clock','amber'],k:'作成中',t:P+'を作成中（提出前の確認 '+n+'/4）',d:lb+dl,due});}
+  else if(x.st==='back')R.push({o:3,c,ph,ic:['back','amber'],k:'差し戻し中',t:esc(S.t.name)+'が書類を直しています',d:'差し戻した理由：'+esc(x.why),due});
+  else if(x.st==='sent')R.push({o:4,c,ph,ic:['check','ok'],k:'結果待ち',t:P+'の'+(ph==='plan'?'受理':'支給決定')+'を待っています',d:'提出日 '+esc(x.at)+'。結果が届いたら記録してください。',due});});});
+ return R.sort((a,b)=>a.o-b.o||a.due-b.due);}
+function srTop(p){const sup=isSuper();return `<div class="wrap"><div class="acct"><span class="av">${ic('shield')}</span>${sup?`<div class="fld"><label for="srpSel">表示する社労士事務所</label><select id="srpSel" data-srp="1">${S.partners.map(x=>`<option value="${x.id}" ${x.id===p.id?'selected':''}>${esc(x.n)}</option>`).join('')}</select></div>`:''}<p><span class="chip ok">提携社労士のマイページ</span> <b>${esc(p.n)}</b>（${esc(p.who)}）<span class="tiny">${esc(S.t.name)}から引き継がれた案件だけが表示されます。お客様との契約・報酬は、事務所とお客様が直接決めます。</span></p></div></div>`;}
+function srV(){let p=S.partners.find(x=>x.id===S.srp);if(role()==='sr'){p=S.partners.find(x=>x.id===me().ref)||p;}if(!p)p=S.partners[0];S.srp=p.id;
+ const cs=CASES.filter(c=>srOf(c).id===p.id);if(S.src&&!cs.some(c=>c.id===S.src))S.src=null;
+ const act=srItems(cs).filter(x=>x.o<=2).length;
+ const body=S.src?srDetail(byId(S.src),p):({home:srHome,cases:srList,cal:srCal,office:srOffice})[S.srs](p,cs);
+ return srTop(p)+`<div class="wrap st"><aside class="side" aria-label="社労士の画面のメニュー">${SRNAV.map(n=>`<button data-act="srnav" data-s="${n[0]}" aria-current="${S.src?n[0]==='cases':S.srs===n[0]}">${ic(n[1])}${n[2]}${n[0]==='home'&&act?`<span class="cnt">${act}</span>`:''}</button>`).join('')}</aside><div class="main">${body}</div></div>`;}
+function srNear(cs){return cs.map(c=>{const w=sw(c),d=dates(c);return ['plan','apply'].filter(ph=>['later','new','work','back'].indexOf(w[ph].st)>-1&&(ph==='plan'?c.stage<=2:c.stage>=3&&c.stage<=4)).map(ph=>({c,ph,d:ph==='plan'?d.pt:d.at}));}).reduce((a,b)=>a.concat(b),[]).sort((a,b)=>a.d-b.d);}
+function srHome(p,cs){const it=srItems(cs),need=it.filter(x=>x.o<=2),W=cs.map(sw),cnt=st=>W.reduce((a,w)=>a+(w.plan.st===st?1:0)+(w.apply.st===st?1:0),0),near=srNear(cs).slice(0,5);
+ const tiles=[['new','新しく届いた',cnt('new')],['work','作成中',cnt('work')],['sent','提出済み・結果待ち',cnt('sent')+cnt('ask')],['due','期限まで14日以内',srNear(cs).filter(x=>diff(x.d)<=14).length]];
+ const msgs=cs.map(c=>sw(c).msg.filter(m=>m.f==='s').slice(-1).map(m=>({c,m}))).reduce((a,b)=>a.concat(b),[]).slice(0,3);
+ return `<div class="ph"><div><h1>${esc(p.who)}さん、対応が必要な案件は${need.length}件です</h1><p class="sub">${esc(S.t.name)}から引き継がれた書類と、期限の近い順のやることです。</p></div></div>
+ <div class="tiles">${tiles.map(t=>`<button class="tile ${t[0]==='due'&&t[2]?'w':''}" data-act="srf" data-f="${t[0]}"><span class="l">${t[1]}</span><span class="n num">${t[2]}</span></button>`).join('')}</div>
+ <div class="cols"><div class="card todo">${it.length?it.map(x=>`<div class="td"><span class="td-ic ${x.ic[1]}">${ic(x.ic[0],'l')}</span><div><p class="td-k"><span>${x.k}</span><span>${esc(x.c.co)}</span><span>${PHN[x.ph]}</span></p><p class="td-t">${x.t}</p><p class="td-d">${x.d}</p></div><div class="td-a"><button class="btn ${x.o<=2?'p':'o'} sm" data-act="srcase" data-id="${x.c.id}" data-ph="${x.ph}">開く</button></div></div>`).join(''):'<div class="empty"><p><b>いま対応が必要な案件はありません。</b></p><p>書類が届くと、ここに出ます。</p></div>'}</div>
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+   <div class="card pad sidecard"><h3>近い期限</h3>${near.length?`<ul class="dl">${near.map(x=>`<li><span><b>${esc(x.c.co)}</b><span class="tiny">${x.ph==='plan'?'計画届の提出期限':'支給申請の期限'}・${fmt(x.d)}${sw(x.c)[x.ph].st==='later'?'・引き継ぎ前':''}</span></span><span class="chip ${diff(x.d)<=14?'warn':'mute'}">あと${diff(x.d)}日</span></li>`).join('')}</ul>`:'<p class="tiny">近い期限はありません。</p>'}</div>
+   <div class="card pad sidecard"><h3>${esc(S.t.name)}からのメッセージ</h3>${msgs.length?`<ul class="dl">${msgs.map(x=>`<li><span><b>${esc(x.c.co)}</b><span class="tiny">${esc(x.m.t.slice(0,46))}${x.m.t.length>46?'…':''}</span></span><button class="lnk" data-act="srcase" data-id="${x.c.id}" data-ph="${srPh(x.c)}">開く</button></li>`).join('')}</ul>`:'<p class="tiny">新しいメッセージはありません。</p>'}</div>
+   <div class="card pad sidecard"><h3>IDとパスワードは預かりません</h3><p class="tiny">GビズIDと電子申請のログイン情報は、このツールに入力・保存しません。電子申請は、事務所の環境から行ってください。</p></div>
+  </div></div>`;}
+function srList(p,cs){const F=[['all','すべて'],['new','新しく届いた'],['work','作成中'],['sent','結果待ち'],['due','期限14日以内'],['done','完了']];
+ const rows=cs.map(c=>{const ph=srPh(c),x=sw(c)[ph],d=dates(c);return {c,ph,x,due:ph==='plan'?d.pt:d.at};}).filter(r=>S.srf==='all'||(S.srf==='due'?diff(r.due)>=0&&diff(r.due)<=14&&['later','new','work','back'].indexOf(r.x.st)>-1:S.srf==='sent'?['sent','ask'].indexOf(r.x.st)>-1:S.srf==='done'?['done','paid'].indexOf(r.x.st)>-1:r.x.st===S.srf));
+ return `<div class="ph"><div><h1>案件</h1><p class="sub">引き継がれた案件と、これから引き継がれる予定の案件です。行を押すと、書類・申請データ・AIチェックの結果を確認できます。</p></div></div>
+ <div class="chips">${F.map(f=>`<button class="pick" data-act="srf" data-f="${f[0]}" aria-pressed="${S.srf===f[0]}">${f[1]}</button>`).join('')}</div>
+ ${rows.length?`<div class="card tscroll"><table style="min-width:780px"><thead><tr><th>会社</th><th>手続き</th><th>状況</th><th>期限</th><th>お客様の担当</th><th>書類のAIチェック</th></tr></thead><tbody>${rows.map(r=>`<tr class="row" data-act="srcase" data-id="${r.c.id}" data-ph="${r.ph}"><td><b>${esc(r.c.co)}</b><br><span class="tiny">${esc(COURSE(r.c.course).short)}・${r.c.people}名</span></td><td>${PHN[r.ph]}</td><td><span class="chip ${SRST[r.x.st][0]}">${srStLbl(r.ph,r.x.st)}</span></td><td class="num">${fmt(r.due)}<br><span class="tiny">${diff(r.due)>=0?'あと'+diff(r.due)+'日':'—'}</span></td><td>${esc(ownerNm(r.c))}</td><td>${dkCountChips(dkCount(r.c))}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card empty">条件に合う案件はありません。</div>'}`;}
+function srCal(p,cs){const WD='日月火水木金土',ev=[],mo=i=>new Date(TODAY0.getFullYear(),TODAY0.getMonth()+i,1),hasM=i=>{const x=mo(i);return ev.some(e=>e.d.getFullYear()===x.getFullYear()&&e.d.getMonth()===x.getMonth());};
+ cs.forEach(c=>{const d=dates(c),w=sw(c);
+  if(c.stage<=2&&['done','sent'].indexOf(w.plan.st)<0){ev.push({d:d.pf,c,t:'計画届の提出開始',k:'info',ph:'plan'});ev.push({d:d.pt,c,t:'計画届の提出期限',k:'warn',ph:'plan'});}
+  if(c.stage<=3&&diff(d.st)>=0)ev.push({d:d.st,c,t:'訓練の開始',k:'brand',ph:'plan'});
+  if(c.stage<=4&&['sent','ask','done','paid'].indexOf(w.apply.st)<0){ev.push({d:d.en,c,t:'訓練の終了',k:'brand',ph:'apply'});ev.push({d:d.at,c,t:'支給申請の期限',k:'warn',ph:'apply'});}});
+ if(S.srmon==null){S.srmon=0;for(let i=0;i<6;i++)if(hasM(i)){S.srmon=i;break;}}
+ const b=mo(S.srmon),y=b.getFullYear(),m=b.getMonth(),first=b.getDay(),days=new Date(y,m+1,0).getDate();
+ const inM=ev.filter(e=>e.d.getFullYear()===y&&e.d.getMonth()===m).sort((a,b)=>a.d-b.d),cells=[];
+ for(let i=0;i<first;i++)cells.push('<div class="cd o"></div>');
+ for(let dd=1;dd<=days;dd++){const t=+new Date(y,m,dd)===+TODAY0,es=inM.filter(e=>e.d.getDate()===dd);cells.push(`<div class="cd ${t?'t':''}"><span class="dn">${dd}</span>${es.map(e=>`<i class="ev ${e.k}" title="${esc(e.c.co)} ${e.t}"><span>${esc(e.c.co.replace(/株式会社|有限会社/g,''))}</span></i>`).join('')}</div>`);}
+ return `<div class="ph"><div><h1>期限カレンダー</h1><p class="sub">引き継がれた案件と、これから引き継がれる案件の期限です。計画届は訓練開始日の1か月前まで、支給申請は訓練終了日の翌日から2か月以内です。</p></div><div class="r"><button class="btn o sm" data-act="msg" data-m="事務所のカレンダーに読み込めるファイル（.ics）を書き出しました（試作のためファイルは作られません）">${ic('cal','s')}カレンダーに追加（.ics）</button></div></div>
+ <div class="card pad cal"><div class="calh"><button class="btn g sm" data-act="srmon" data-v="-1" aria-label="前の月">${ic('back','s')}前の月</button><b>${y}年${m+1}月</b><button class="btn g sm" data-act="srmon" data-v="1" aria-label="次の月">次の月<span style="display:inline-flex;transform:scaleX(-1)">${ic('back','s')}</span></button></div>
+  <div class="cw">${WD.split('').map(x=>`<span>${x}</span>`).join('')}</div><div class="cg">${cells.join('')}</div>
+  <div class="cleg"><span><i class="ev warn"></i>提出・申請の期限</span><span><i class="ev info"></i>計画届の提出開始</span><span><i class="ev brand"></i>訓練の開始・終了</span></div></div>
+ <div class="card"><div class="fsec"><h3>${m+1}月の予定（${inM.length}件）</h3></div>${inM.length?inM.map(e=>`<div class="ap"><span class="k num">${fmtS(e.d)}（${WD[e.d.getDay()]}）</span><span class="v"><b>${esc(e.c.co)}</b>・${e.t}</span><button class="btn g sm" data-act="srcase" data-id="${e.c.id}" data-ph="${e.ph}">開く</button></div>`).join(''):'<p class="tiny" style="padding:0 18px 14px">この月の予定はありません。</p>'}</div>`;}
+function srOffice(p){const i=S.partners.indexOf(p),n=S.srn[p.id]=S.srn[p.id]||{new:true,due:true,msg:true,week:false};
+ const N=[['new','新しい書類が届いたとき'],['due','期限の14日前と3日前'],['msg','メッセージが届いたとき'],['week','毎週月曜に、今週の期限をまとめて']];
+ return `<div class="ph"><div><h1>事務所の設定</h1><p class="sub">事務所の情報と、通知の受け取り方を決めます。ここで変えた内容は、${esc(S.t.name)}の「提携社労士」の画面にも反映されます。</p></div></div>
+ <div class="set"><div class="card pad" style="display:flex;flex-direction:column;gap:12px"><h2 style="font-size:16px">事務所の情報</h2>
+  <div class="fld"><label for="soN">事務所名</label><input type="text" id="soN" data-bind="partners.${i}.n" value="${esc(p.n)}"></div>
+  <div class="fld"><label for="soW">担当の社会保険労務士</label><input type="text" id="soW" data-bind="partners.${i}.who" value="${esc(p.who)}"></div>
+  <div class="fld"><label for="soA">対応エリア</label><input type="text" id="soA" data-bind="partners.${i}.area" value="${esc(p.area)}"></div>
+  <div class="fld"><label for="soC">連絡方法</label><input type="text" id="soC" data-bind="partners.${i}.contact" value="${esc(p.contact)}"></div></div>
+ <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
+  <div class="card pad"><h2 style="font-size:16px">通知</h2>${N.map(x=>`<div class="qrow"><span>${x[1]}</span><button class="sw" role="switch" aria-checked="${!!n[x[0]]}" aria-label="${x[1]}" data-act="tog" data-k="srn.${p.id}.${x[0]}"><i></i></button></div>`).join('')}<p class="tiny" style="margin-top:6px">通知はメールで届きます。</p></div>
+  <div class="card pad"><h2 style="font-size:16px">提携の内容</h2><dl class="kv" style="margin-top:8px"><dt>提携先</dt><dd>${esc(S.t.name)}</dd><dt>担当の案件</dt><dd>${CASES.filter(c=>srOf(c).id===p.id).length}件</dd><dt>共有されるもの</dt><dd>${p.share?'書類一式・申請データ・AIチェックの結果・期限':'共有がオフです（'+esc(S.t.name)+'の設定）'}</dd><dt>ログインID</dt><dd><code class="mono">${esc(srAcctId(p))}</code></dd></dl></div>
+  <div class="card note">${ic('shield','l')}<div><h3>GビズIDは入力しません</h3><p>電子申請のログイン情報は、このツールに保存しません。お客様との委任契約・報酬は、事務所とお客様が直接結びます。</p></div></div>
+ </div></div>`;}
+function srDetail(c,p){const w=sw(c),ph=w[S.srph]?S.srph:'plan',x=w[ph],f=fS(c),D=fData(c),d=D.d,due=ph==='plan'?d.pt:d.at,later=x.st==='later',nm=esc(S.t.name);
+ const steps=ph==='plan'?['届いた','作成','提出','受理']:['届いた','作成','提出・審査','支給決定','入金'],pos={later:-1,new:0,back:0,work:1,sent:2,ask:2,done:3,paid:4}[x.st],fin=x.st==='paid'||ph==='plan'&&x.st==='done';
+ const stepH=`<ol class="fstep" style="grid-template-columns:repeat(${steps.length},minmax(0,1fr))">${steps.map((s,i)=>`<li class="${i<pos||fin&&i===pos?'done':i===pos?'now':''}">${s}</li>`).join('')}</ol>`;
+ let act='';
+ if(later)act=`<p>まだ引き継がれていません。${nm}が書類を集めています。${ph==='plan'?'計画届の提出期限は '+fmt(d.pt):'支給申請の期限は '+fmt(d.at)}です。</p>`;
+ else if(x.st==='new')act=`<p>${nm}（担当：${esc(ownerNm(c))}）から、${PHN[ph]}の書類一式が届きました。下の書類・申請データ・AIチェックの結果を確認してください。</p><div class="sract"><button class="btn p" data-act="sracc" data-id="${c.id}" data-ph="${ph}">受け取って作成を始める</button><button class="btn o" data-act="srback" data-id="${c.id}" data-ph="${ph}">差し戻す（不足・不備）</button><button class="btn g" data-act="srask" data-id="${c.id}" data-ph="${ph}">${nm}に確認する</button></div>`;
+ else if(x.st==='back')act=`<p>差し戻しました。理由：<b>${esc(x.why)}</b></p><p class="tiny">${nm}が直して、もう一度引き継ぐと「新しく届いた」にもどります。</p>`;
+ else if(x.st==='work'){const L=SRCHK(c,ph),n=L.filter((_,i)=>x.chk[i]).length;act=`<p class="lbl">提出前の確認（${n}/${L.length}）</p><div class="srchk">${L.map((t,i)=>`<label><input type="checkbox" data-srchk="${c.id}|${ph}|${i}" ${x.chk[i]?'checked':''}><span>${t}</span></label>`).join('')}</div>
+  <div class="srsub"><div class="fld"><label for="srHow">提出のしかた</label><select id="srHow" data-bind="sw.${c.id}.${ph}.how"><option value="e" ${x.how==='e'?'selected':''}>電子申請（雇用関係助成金ポータル）</option><option value="w" ${x.how==='w'?'selected':''}>労働局の窓口</option><option value="m" ${x.how==='m'?'selected':''}>郵送（届いた日が提出日）</option></select></div>
+  <div class="sract"><button class="btn p" data-act="srsub" data-id="${c.id}" data-ph="${ph}">提出したことを記録する</button><button class="btn g" data-act="srask" data-id="${c.id}" data-ph="${ph}">${nm}に確認する</button></div></div>`;}
+ else if(x.st==='sent')act=`<p>${esc(x.at)}に提出しました。${ph==='plan'?'受理の連絡':'支給決定の通知'}が届いたら記録してください。</p>
+  <div class="srsub">${ph==='plan'?`<div class="fld"><label for="srNo">受理番号</label><input type="text" id="srNo" placeholder="例）受理番号 12345"></div>`:`<div class="fld"><label for="srAmt">支給決定額（円）</label><input type="number" id="srAmt" value="${Math.round(D.keihiSum+D.wageSum)}"></div>`}
+  <div class="sract"><button class="btn p" data-act="srok" data-id="${c.id}" data-ph="${ph}">${ph==='plan'?'受理されたことを記録':'支給決定を記録'}</button><button class="btn o" data-act="srq" data-id="${c.id}" data-ph="${ph}">労働局から問い合わせがあった</button></div></div>`;
+ else if(x.st==='ask')act=`<div class="banner" style="border-radius:10px"><span><b>労働局からの問い合わせ</b><br>${esc(x.q)}</span></div><div class="fld"><label for="srAns">回答の内容（記録用）</label><textarea id="srAns" rows="3" placeholder="例）賃金の計算方法の説明と、10月分の勤怠の写しを提出"></textarea></div><div class="sract"><button class="btn p" data-act="srans" data-id="${c.id}" data-ph="${ph}">回答したことを記録</button><button class="btn o" data-act="srask" data-id="${c.id}" data-ph="${ph}">${nm}に資料を頼む</button></div>`;
+ else if(x.st==='done')act=ph==='plan'?`<p>${esc(x.no)}で受理されました（${esc(x.at)}）。訓練が終わると、支給申請の書類が届きます。</p>`:`<p>支給決定：<b>${yen(+x.amt||0)}</b>。お客様の口座に振り込まれます。</p>`;
+ else if(x.st==='paid')act=`<p>入金済み：<b>${yen(+x.amt||0)}</b>。この案件の手続きは完了です。</p>`;
+ const ds=fDocs(c,f,ph);
+ const docs=`<div class="card"><div class="fsec"><h3>引き継がれた書類（${ds.length}点）</h3>${later?'':`<button class="btn o sm" data-act="srall" data-id="${c.id}" data-ph="${ph}">${ic('doc','s')}まとめてプレビュー</button>`}</div>${ds.map(dd=>{const st=later?['mute','引き継ぎ前']:dd.k==='att'?fAtt(c,dd.id):dd.k==='vend'?(f.ask[dd.id]?['brand','研修会社に依頼済み']:['mute','研修会社が記入']):f.made[dd.id]?['ok','下書きあり']:['mute','未作成'],can=!later&&dd.k!=='att'&&(dd.k==='vend'||f.made[dd.id]);
+  return `<div class="fdoc"><span class="mk ${dd.m?'':'opt'}">${dd.m?'●':'▲'}</span><div><b>${esc(dd.n)}</b><p>${esc(dd.no)}・${FKIND[dd.k]}</p></div><div class="r"><span class="chip ${st[0]}">${st[1]}</span>${can?`<button class="btn g sm" data-act="srview" data-id="${c.id}" data-ph="${ph}" data-d="${dd.id}">プレビュー</button>`:''}</div></div>`;}).join('')}</div>`;
+ const rows=[['事業主の名称',c.co],['代表者',c.rep],['所在地',D.addr],['法人番号',D.num],['雇用保険適用事業所番号',D.eno],['労働保険番号',D.lno],['コース',D.course.n],['訓練コース名',c.train],['訓練の期間',fmt(d.st)+' 〜 '+fmt(d.en)],['実訓練時間',c.hours+'時間'],['受講する人',c.people+'名'],['受講料（1人）',yen(c.fee)],['職業能力開発推進者',D.sui||'未選任'],['提出先',D.bureau]];
+ const data=`<div class="card"><div class="fsec"><h3>申請データ</h3><span class="tiny">電子申請に入力する順です</span></div>${rows.map(r=>`<div class="ap"><span class="k">${r[0]}</span><span class="v">${esc(r[1])}</span><button class="btn g sm" data-act="copy" data-text="${esc(r[1])}">${ic('copy','s')}コピー</button></div>`).join('')}</div>`;
+ const lv={ok:'<span class="chip ok">'+ic('check','s')+'OK</span>',warn:'<span class="chip warn">期限が近い</span>',bad:'<span class="chip warn">要対応</span>',info:'<span class="chip info">確認</span>'};
+ const checks=`<div class="card"><div class="fsec"><h3>提出前の自動チェック</h3><span class="tiny">${nm}の画面と同じ結果です</span></div>${fChecks(c,f,D,ph).map(k=>`<div class="chk">${lv[k.lv]}<div><b>${k.t}</b><p>${k.p}</p></div></div>`).join('')}</div>`;
+ return `<button class="lnk back" data-act="srclose">${ic('back','s')}案件の一覧にもどる</button>
+ <div class="ph"><div><h1>${esc(c.co)}</h1><p class="sub">${esc(c.ind)}・従業員${total(c)}名・${COURSE(c.course).short}・${esc(c.train)}（${c.hours}時間×${c.people}名）・お客様の担当：${esc(ownerNm(c))}</p></div>
+  <div class="r"><div class="seg2"><button data-act="srph" data-v="plan" aria-pressed="${ph==='plan'}">計画届</button><button data-act="srph" data-v="apply" aria-pressed="${ph==='apply'}">支給申請</button></div></div></div>
+ <div class="card pad srcard"><div class="srh"><div><p class="eyebrow">${PHN[ph]}</p><h2>${srStLbl(ph,x.st)}</h2></div><span class="chip ${diff(due)<=14&&['later','new','work','back'].indexOf(x.st)>-1?'warn':'mute'}">${ph==='plan'?'提出期限':'申請期限'} ${fmt(due)}${diff(due)>=0?'（あと'+diff(due)+'日）':''}</span></div>${stepH}${act}</div>
+ ${!p.share?`<div class="card note am">${ic('shield','l')}<div><h3>共有がオフになっています</h3><p>${nm}の設定で、この事務所への共有がオフです。書類と申請データは表示されません。</p></div></div>`:''}
+ <div class="cols"><div style="display:flex;flex-direction:column;gap:14px;min-width:0">${p.share?(later?docs:docs+dkPanel(c,'r')+data+checks):''}</div>
+  <div style="display:flex;flex-direction:column;gap:14px;min-width:0">${thr(w.msg,'r','thTr','thsend',c.id,'例）事前確認書の記名を、お客様にお願いできますか',nm+'とのメッセージ')}
+   <div class="card pad sidecard"><h3>期限</h3><ul class="dl"><li><span><b>計画届</b><span class="tiny">${fmt(d.pf)} 〜 ${fmt(d.pt)}</span></span><span class="chip ${SRST[w.plan.st][0]}">${srStLbl('plan',w.plan.st)}</span></li><li><span><b>支給申請</b><span class="tiny">${fmt(d.af)} 〜 ${fmt(d.at)}</span></span><span class="chip ${SRST[w.apply.st][0]}">${srStLbl('apply',w.apply.st)}</span></li></ul></div>
+  </div></div>`;}
+/* ベンダー側（申請書類のタブ）に出す、社労士の対応状況 */
+function srVend(c,ph){const w=sw(c),x=w[ph];if(x.st==='later'&&!w.msg.length)return '';
+ return `<div class="card pad srv"><div class="srh"><div><p class="eyebrow">${esc(srOf(c).n)}の対応状況</p><h2>${PHN[ph]}：${srStLbl(ph,x.st)}</h2></div>${isSuper()?`<button class="btn o sm" data-act="as" data-id="${esc(srAcctId(srOf(c)))}" data-cid="${c.id}" data-ph="${ph}">社労士の画面で見る</button>`:''}</div>
+  ${x.st==='back'?`<div class="card blocked">差し戻されました：${esc(x.why)}<br><span style="font-weight:400">直してから、上の「社労士に引き継ぐ」をもう一度押してください。</span></div>`:''}
+  ${x.st==='ask'?`<div class="banner" style="border-radius:10px"><span><b>労働局からの問い合わせ（社労士が対応中）</b><br>${esc(x.q)}</span></div>`:''}
+  ${x.no?`<p class="tiny">${esc(x.no)}（${esc(x.at)}）</p>`:''}</div>
+ ${thr(w.msg,'s','thTs','vsend',c.id,'例）契約書の写しを追加しました','社労士とのメッセージ')}`;}
+function srBackText(c,ph){const L=[];dkList(c).forEach(k=>{const r=dkS(c,k);if(dkSt(c,k)!=='got'&&k!=='cont'){L.push('・'+DKT[k].n+'：まだ届いていません');return;}if(r.res&&!dkStale(c,k))r.res.items.filter(i=>i.lv!=='ok').forEach(i=>L.push('・'+DKT[k].n.replace(/（.*?）/,'')+'（'+i.t+'）：'+i.p));});
+ fChecks(c,fS(c),fData(c),ph).filter(x=>x.lv==='bad').forEach(x=>L.push('・'+x.t+'：'+x.p.replace(/<[^>]+>/g,'')));
+ return L.join('\n');}
+function srmModal(m){const c=byId(m.cid),T={back:['書類を差し戻す','差し戻す理由（'+S.t.name+'に伝わります）',srBackText(c,m.ph)],ask:['確認する',S.t.name+'への質問・資料の依頼',''],q:['労働局からの問い合わせを記録','問い合わせの内容','']}[m.k];
+ return `<h2>${T[0]}</h2><p class="tiny">${esc(c.co)}・${PHN[m.ph]}${m.k==='back'&&T[2]?'。AIチェックと提出前のチェックで見つかった点を入れてあります':''}</p><div class="fld"><label for="srmT">${esc(T[1])}</label><textarea id="srmT" style="min-height:150px">${esc(T[2])}</textarea></div><div class="m-acts"><button class="btn g" data-act="close">やめる</button><button class="btn p" data-act="srmsend">${m.k==='back'?'差し戻す':m.k==='q'?'記録する':'送る'}</button></div>`;}
+/* メッセージ（ベンダーとお客様、ベンダーと社労士） */
+function thr(L,meK,tid,act,id,ph,title){return `<div class="card pad thr"><h3>${title}</h3><div class="bubs">${L.length?L.map(m=>`<div class="bub ${m.f===meK?'me':''}"><span class="tiny">${esc(m.n)}・${esc(m.at)}</span><p>${esc(m.t)}</p></div>`).join(''):'<p class="tiny">まだメッセージはありません。</p>'}</div><div class="thr-in"><textarea id="${tid}" rows="2" placeholder="${esc(ph)}" aria-label="メッセージ"></textarea><button class="btn p sm" data-act="${act}" data-id="${id}">送る</button></div></div>`;}
+const cmL=c=>S.cm[c.id]=S.cm[c.id]||[{f:'s',n:ownerNm(c),t:'ご不明な点は、ここに書いてください。書類のことでも、助成金のことでも大丈夫です。',at:'はじめに'}];
+/* ベンダーの「今日やること」に、社労士・お客様・AIチェックから自動で足す */
+function dynTodo(){const R=[];CASES.forEach(c=>{const w=S.sw&&S.sw[c.id];
+ if(w){['plan','apply'].forEach(ph=>{if(w[ph].st==='back')R.push({id:'b-'+c.id+'-'+ph+'-'+w.msg.length,type:'sr',cid:c.id,title:esc(srOf(c).n)+'から'+PHN[ph]+'の書類が差し戻されました',desc:'理由：'+esc(w[ph].why)+'。直してから、もう一度引き継いでください。',btn:'申請書類を見る',tab:'forms'});});
+  const l=w.msg[w.msg.length-1];if(l&&l.f==='r'&&l.t.indexOf('【差し戻し】')!==0)R.push({id:'m-'+c.id+'-'+w.msg.length,type:'sr',cid:c.id,title:'社労士からメッセージ（'+esc(l.n)+'）',desc:esc(l.t),btn:'返信する',tab:'forms'});}
+ const m=S.cm[c.id],ml=m&&m[m.length-1];if(ml&&ml.f==='c')R.push({id:'c-'+c.id+'-'+m.length,type:'cmsg',cid:c.id,title:'お客様からメッセージ',desc:esc(ml.t),btn:'返信する',tab:'log'});
+ const D=S.dk&&S.dk[c.id];if(D)Object.keys(D).forEach(k=>{const r=D[k];if(r.res&&r.res.by==='c'&&r.res.lv!=='ok'&&!(r.hum&&r.hum.v===r.v)&&!dkStale(c,k)&&dkSt(c,k)==='got'){const it=r.res.items.find(i=>i.lv!=='ok');R.push({id:'k-'+c.id+'-'+k+'-'+r.v,type:'ai',cid:c.id,title:'お客様のAIチェックで「'+esc(DKT[k].n.replace(/（.*?）/,''))+'」が'+(r.res.lv==='bad'?'NG':'要確認'),desc:esc(it?it.p:''),btn:'書類を確認',tab:'docs'});}});});
+ return R;}
+
+/* ================= 書類のAIチェック =================
+   お客様・申請担当・社労士の誰が「AIでチェック」を押しても、同じルールで同じ結果を出す。結果と人の確認は案件ごとに1つで、3者の画面に同じものが出る。
+   履歴事項全部証明書の有効期間は、人材開発支援助成金の公式資料に定めが見当たらないため、設定で変えられる社内ルール（初期値3か月）にしている */
+const DKT={
+ touki:{n:'履歴事項全部証明書（登記事項証明書）',how:'法務局の窓口か、インターネット（登記・供託オンライン申請システム）で取得できます。写しで大丈夫です。',min:5},
+ rules:{n:'就業規則（または労働協約）',s:'会社で使っている最新版',how:'社内の共有フォルダや、顧問の社労士の方が持っていることが多い書類です。',min:3},
+ emp:{n:'雇用契約書・労働条件通知書',how:'入社時にお渡ししている書類です。写真で大丈夫です。',min:5},
+ attw:{n:'直近1か月の出勤簿と賃金台帳',s:'所定労働時間と賃金を確認します',how:'勤怠・給与のシステムから出力したものか、紙の写真で大丈夫です。',min:5},
+ cont:{n:'研修機関との契約書・申込書',s:'研修会社から届きます',how:'研修会社との契約書か、受講の申込書の写しです。',min:2,from:'研修会社から届く書類です。届いていない場合は、担当者が研修会社に依頼します。'},
+ att:{n:'訓練期間の出勤簿',s:'受講した日の出勤の記録',how:'勤怠システムから、訓練期間の分を出力してください。',min:5},
+ wage:{n:'訓練期間の賃金台帳',s:'訓練中も賃金を払っていることの確認',how:'給与システムから、訓練期間の分を出力してください。',min:5},
+ pay:{n:'受講料の振込記録',s:'振込の明細か、領収書',how:'ネットバンキングの振込明細の画面か、研修会社の領収書で大丈夫です。',min:3}};
+const MAPI={rules:0,emp:1,attw:2};
+const DKMISS={c2:['touki','rules','emp','attw'],c3:['cont'],c5:['pay']};
+const CAP={c1:10000000,c2:null,c3:3000000,c4:20000000,c5:5000000,c6:10000000,c7:3000000,c8:10000000,c9:8000000};
+const SME=c=>/飲食|カフェ|小売|商店/.test(c.ind)?{n:'小売業（飲食店を含む）',cap:50000000,emp:50}:/卸売/.test(c.ind)?{n:'卸売業',cap:100000000,emp:100}:/歯科|医療|介護|福祉|サービス|宿泊|教育/.test(c.ind)?{n:'サービス業',cap:50000000,emp:100}:{n:'その他の業種',cap:300000000,emp:300};
+const DKLV={ok:['ok','OK'],warn:['amber','要確認'],bad:['warn','NG']};
+const DKRES={ok:'問題は見つかりませんでした',warn:'確認が必要な点があります',bad:'差し替えが必要です'};
+const BYN={a:'自動',c:'お客様',s:'担当者',r:'社労士'};
+const dkDesc=(k,c)=>k==='touki'?'法務局で取得。発行から'+(+S.rk.toukiM)+'か月以内のもの':k==='emp'?'受講する'+c.people+'名分':DKT[k].s;
+const dkList=c=>['touki','rules','emp','attw'].concat(c.stage>=2?['cont']:[]).concat(c.stage>=3?['att','wage']:[]).concat(c.stage>=4?['pay']:[]);
+function dkS(c,k){S.dk=S.dk||{};const D=S.dk[c.id]=S.dk[c.id]||{};if(D[k])return D[k];
+ const miss=c===MIDORI||(DKMISS[c.id]||[]).indexOf(k)>-1,r=D[k]={st:miss?'none':'got',n:miss?0:1,v:0,res:null,hum:null,ed:{},busy:false,up:'c'};
+ if(!miss){r.res=dkRun(c,k,'a');r.res.at=c.stage>=3?'先月':'3日前';if(r.res.lv==='ok'&&c.stage>=2)r.hum={lv:'ok',by:'s',n:ownerNm(c),t:'',at:r.res.at,v:0};}
+ return r;}
+const dkSt=(c,k)=>c===MIDORI&&MAPI[k]!=null?cl.docs[MAPI[k]]:dkS(c,k).st;
+function dkSet(c,k,v){if(c===MIDORI&&MAPI[k]!=null)cl.docs[MAPI[k]]=v;else dkS(c,k).st=v;}
+const dkSig=(c,k)=>{const r=dkS(c,k);return JSON.stringify(S.rk)+'|'+r.v+'|'+JSON.stringify(r.ed)+'|'+(c.fixed?1:0);};
+const dkStale=(c,k)=>{const r=dkS(c,k);return !!(r.res&&r.res.sig!==dkSig(c,k));};
+/* AIが書類から読み取った内容（試作のため、案件のデータから作った例）。v は差し替えの回数 */
+function dkEx(c,k){const r=dkS(c,k),v=r.v||0,e=r.ed||{},d=dates(c),mid=c===MIDORI,pf=FPREF[Math.max(0,CASES.indexOf(c))%FPREF.length],X={};
+ if(k==='touki'){const iss=e.issued?new Date(e.issued+'T00:00:00'):mid?(v?addD(TODAY0,-3):addD(addM(TODAY0,-4),-8)):c.id==='c9'?addD(TODAY0,-75):c.stage>=3?addD(d.pt,-40):addD(TODAY0,-30);
+  X.issued=isNaN(iss)?TODAY0:iss;X.cap=CAP[c.id]!==undefined?CAP[c.id]:10000000;
+  X.f=[['発行日',fmt(X.issued),'issued'],['商号',c.co],['本店',mid?CO.addr:pf[2]],['代表者',(/株式会社/.test(c.co)?'代表取締役 ':/有限会社/.test(c.co)?'取締役 ':'')+c.rep],['資本金',X.cap?man(X.cap):'記載なし']];}
+ else if(k==='rules'){X.filed=mid&&v===0?'なし':total(c)>=10?'あり':'—（従業員10人未満）';X.f=[['所定労働時間','8時間／日'],['休日','土日祝'],['労働基準監督署の受付印',X.filed],['改定日',fmt(addM(TODAY0,-14))],['資格等手当','規定なし']];}
+ else if(k==='emp'){X.n=c.people;X.f=[['対象者',c.people+'名分'],['雇用形態','正社員'],['契約期間','期間の定めなし'],['雇用保険','加入'],['所定労働時間','8時間／日']];}
+ else if(k==='attw'){X.f=[['対象月',(TODAY0.getMonth()===0?12:TODAY0.getMonth())+'月分'],['出勤簿',c.people+'名分・日ごとの始業終業あり'],['賃金台帳',c.people+'名分']];}
+ else if(k==='cont'){const cd=new Date(Math.min(+addD(TODAY0,-5),+addD(d.pt,-20)));X.f=[['研修名',c.train],['研修期間',fmt(d.st)+' 〜 '+fmt(d.en)],['受講料',yen(c.fee)+'×'+c.people+'名'],['契約日',fmt(cd)],['研修機関',S.filer==='self'?'研修会社（例）':S.t.name]];}
+ else if(k==='att'){X.gap=c.check==='attend'&&!c.fixed&&v===0;X.f=[['期間',fmt(d.st)+' 〜 '+fmt(c.stage>=4?d.en:TODAY0)],['受講日の出勤',X.gap?'1日分の記録なし（10/14）':'すべて記録あり'],['人数',c.people+'名分']];}
+ else if(k==='wage'){X.calc=c.id==='c6'&&v===0?'記載なし':'時間給で計算（記載あり）';X.f=[['期間','訓練期間の各月'],['訓練中の賃金','通常どおり支払い'],['訓練時間の賃金の計算',X.calc],['人数',c.people+'名分']];}
+ else if(k==='pay'){X.need=c.fee*c.people;X.amt=e.amt!=null&&e.amt!==''?+e.amt:c.id==='c5'&&v===0?X.need-880:X.need;X.f=[['振込額',yen(X.amt),'amt'],['振込日',fmt(addD(d.en,-3))],['振込元',c.co],['振込先',S.filer==='self'?'研修会社（例）':S.t.name]];}
+ return X;}
+function dkRun(c,k,by){const x=dkEx(c,k),d=dates(c),I=[],M=+S.rk.toukiM||3,ok=(t,p)=>I.push({lv:'ok',t,p}),wa=(t,p)=>I.push({lv:'warn',t,p}),ng=(t,p)=>I.push({lv:'bad',t,p});
+ if(k==='touki'){const exp=addM(x.issued,M),sub=c.stage>=3,base=sub?addD(d.pt,-6):TODAY0,T='発行日（'+M+'か月以内）';
+  if(x.issued>TODAY0)ng('発行日','発行日（'+fmt(x.issued)+'）が今日より後になっています。読み取りの誤りか、書類を確認してください。');
+  else if(exp<base)ng(T,'発行日 '+fmt(x.issued)+'。発行から'+M+'か月の期限（'+fmt(exp)+'）を過ぎています。取り直した証明書をアップしてください。');
+  else if(!sub&&exp<d.pt)wa(T,'発行日 '+fmt(x.issued)+'。'+fmt(exp)+'に'+M+'か月を過ぎ、計画届の提出期限（'+fmt(d.pt)+'）より前に期限が切れます。'+fmt(exp)+'までに提出できない場合は、取り直してください。');
+  else ok(T,'発行日 '+fmt(x.issued)+'。'+(sub?'計画届を出した時点で、':'')+fmt(exp)+'まで有効です。');
+  ok('商号','案件の会社名「'+c.co+'」と一致しています。');
+  ok('代表者','代表者「'+c.rep+'」は、名刺・申請データと一致しています。');
+  const sm=SME(c),cap=x.cap,e=total(c);
+  if(cap!=null&&cap<=sm.cap||e<=sm.emp)ok('中小企業の判定',sm.n+'：資本金 '+(cap!=null?man(cap):'記載なし')+'（'+man(sm.cap)+'以下）、または従業員 '+e+'名（'+sm.emp+'名以下）。中小企業の助成率で計算します。');
+  else ng('中小企業の判定',sm.n+'の中小企業の範囲（資本金'+man(sm.cap)+'以下、または従業員'+sm.emp+'名以下）を超えています。助成率が変わります。');}
+ else if(k==='rules'){if(total(c)>=10&&S.rk.filed){if(x.filed==='あり')ok('労働基準監督署への届出','従業員'+total(c)+'名（10人以上）。受付印のある就業規則です。');else wa('労働基準監督署への届出','従業員'+total(c)+'名（10人以上）のため、届け出た就業規則が必要です。受付印のあるもの（電子申請の場合は控え）か、確認してください。');}
+  else ok('労働基準監督署への届出',total(c)>=10?'届出の確認はオフにしています。':'従業員10人未満のため、届出は必須ではありません。');
+  const H=fData(c).H;if(H<=8)ok('所定労働時間','1日8時間。受講（1日'+H+'時間）は所定労働時間内に収まります。');else wa('所定労働時間','1日の受講時間（'+H+'時間）が、所定労働時間（8時間）を超えています。');
+  ok('改定日','改定日 '+x.f[3][1]+'。最新版として扱います。');}
+ else if(k==='emp'){if(x.n>=c.people)ok('人数','受講する'+c.people+'名分がそろっています。');else ng('人数','受講する'+c.people+'名のうち、'+x.n+'名分です。');
+  ok('雇用保険','全員、雇用保険の被保険者です（助成の対象になります）。');
+  ok('契約期間',S.rk.empTerm?'全員「期間の定めなし」。訓練の期間中に契約が切れる人はいません。':'契約期間の確認はオフにしています。');}
+ else if(k==='attw'){ok('対象月',x.f[0][1]+'。直近1か月の分です。');ok('人数','出勤簿・賃金台帳とも'+c.people+'名分です。');}
+ else if(k==='cont'){ok('研修名と期間','カリキュラムの研修名・期間（'+fmt(d.st)+' 〜 '+fmt(d.en)+'）と一致しています。');ok('受講料','1人 '+yen(c.fee)+'。申請データと一致しています。');ok('契約日','契約日 '+x.f[3][1]+'。訓練の開始より前です。');}
+ else if(k==='att'){if(x.gap)ng('出勤簿と受講記録','10月14日に3時間の受講記録がありますが、出勤簿に出勤の記録がありません。打刻漏れなら、直した出勤簿をアップしてください。');else ok('出勤簿と受講記録','受講日はすべて出勤の記録があり、所定労働時間内の受講です。');}
+ else if(k==='wage'){ok('訓練中の賃金','訓練期間も、通常どおり賃金が払われています。');if(x.calc==='記載なし')wa('訓練時間の賃金の計算','訓練時間の賃金の計算方法が分かる記載がありません。労働局から計算の根拠を求められることがあります。');else ok('訓練時間の賃金の計算','時間給の計算が記載されています。');}
+ else if(k==='pay'){if(x.amt===x.need)ok('振込額','受講料の合計 '+yen(x.need)+'（'+yen(c.fee)+'×'+c.people+'名）と一致しています。');
+  else if(!S.rk.payEq)ok('振込額','金額の一致の確認はオフにしています。');
+  else if(x.amt<x.need)wa('振込額','振込額 '+yen(x.amt)+'が、受講料の合計 '+yen(x.need)+'より'+yen(x.need-x.amt)+'少なくなっています。振込手数料を差し引いた場合、全額を払ったことにならないことがあります。');
+  else wa('振込額','振込額 '+yen(x.amt)+'が、受講料の合計 '+yen(x.need)+'と違います。');
+  ok('振込元','振込元が事業主（'+c.co+'）です。');ok('振込日','支給申請より前に払っています。');}
+ return {lv:I.some(i=>i.lv==='bad')?'bad':I.some(i=>i.lv==='warn')?'warn':'ok',items:I,by:by||'a',n:'',at:'今日 '+hm(),sig:dkSig(c,k)};}
+function dkSum(c,k){const st=dkSt(c,k),r=dkS(c,k);
+ if(st==='none')return k==='cont'?['mute','研修会社から届く']:['mute','未提出'];
+ if(st==='reading')return ['info','読み取り中'];if(st==='later')return ['amber','後日アップ'];
+ if(r.busy)return ['info','チェック中'];
+ if(r.hum&&r.hum.v===r.v)return r.hum.lv==='ok'?['ok','確認済み']:['warn','差し替えを依頼中'];
+ if(!r.res)return ['mute','未チェック'];if(dkStale(c,k))return ['amber','再チェックが必要'];
+ return r.res.lv==='bad'?['warn','差し替えが必要']:r.res.lv==='warn'?['amber','要確認']:['ok','AIチェックOK'];}
+function dkCount(c){const n={got:0,ok:0,warn:0,bad:0,wait:0,un:0};dkList(c).forEach(k=>{const st=dkSt(c,k),s=dkSum(c,k);if(st==='got')n.got++;
+ if(st==='none'||st==='later'){if(k!=='cont')n.wait++;}else if(s[0]==='ok')n.ok++;else if(s[0]==='warn')n.bad++;else if(s[0]==='amber')n.warn++;else n.un++;});return n;}
+const dkCountChips=n=>[n.bad?`<span class="chip warn">差し替え ${n.bad}</span>`:'',n.warn?`<span class="chip amber">要確認 ${n.warn}</span>`:'',n.wait?`<span class="chip mute">未提出 ${n.wait}</span>`:'',n.ok?`<span class="chip ok">OK ${n.ok}</span>`:''].filter(Boolean).join(' ')||'<span class="tiny">—</span>';
+function dkBadAll(){const L=[];CASES.forEach(c=>dkList(c).forEach(k=>{if(dkSt(c,k)!=='got')return;const s=dkSum(c,k);if(s[0]==='warn'||s[0]==='amber')L.push({c,k,s});}));return L;}
+const actor=()=>S.view==='client'?'c':S.view==='sr'?'r':'s';
+const actorNm=c=>{const a=actor();return a==='c'?sei(c)+'様':a==='r'?srOf(c).who+'（社労士）':staffSide(c);};
+function dkItems(res,compact){const L=compact?res.items.filter(i=>i.lv!=='ok'):res.items,okN=res.items.filter(i=>i.lv==='ok').length;
+ return `<div class="dki">${L.map(i=>`<div class="dkit ${i.lv}"><span class="chip ${DKLV[i.lv][0]}">${DKLV[i.lv][1]}</span><div><b>${esc(i.t)}</b><p>${esc(i.p)}</p></div></div>`).join('')}${compact?`<p class="tiny">${L.length?'ほかの'+okN+'項目はOKです。':'チェックした'+okN+'項目は、すべてOKです。'}</p>`:''}</div>`;}
+const dkHumBox=h=>`<div class="dkh ${h.lv}"><b>${h.lv==='ok'?(h.by==='r'?'社労士':'担当者')+'が確認しました':'差し替えのお願い'}</b><p>${esc(h.n)}・${esc(h.at)}${h.t?'：'+esc(h.t):''}</p></div>`;
+function dkPanel(c,who){const ks=dkList(c),n=dkCount(c);
+ return `<div class="card dkp"><div class="fsec"><h3>書類のAIチェック（${ks.length}点）</h3>${n.got?`<button class="btn p sm" data-act="dkall" data-id="${c.id}">${ic('spark','s')}まとめてAIでチェック</button>`:''}</div>
+ <p class="tiny" style="padding:0 18px 10px">お客様がマイページでアップした書類です。発行日・有効期限・会社名・人数・金額などを、案件のデータと照らし合わせます。お客様・担当者・社労士の誰がチェックしても、結果と確認はお互いの画面に同じように出ます。</p>
+ ${ks.map(k=>dkRow(c,k,who)).join('')}</div>`;}
+function dkRow(c,k,who){const r=dkS(c,k),st=dkSt(c,k),s=dkSum(c,k),got=st==='got',key=c.id+k,open=got&&(S.dkx[key]!=null?S.dkx[key]:s[0]==='warn'||s[0]==='amber');
+ const meta=got?(r.res?'AIチェック：'+esc(r.res.at)+'・'+(r.res.n?esc(r.res.n):BYN[r.res.by]):'まだAIでチェックしていません'):dkDesc(k,c);
+ const icn=s[0]==='ok'?'check':s[0]==='warn'?'x':got?'spark':'doc';
+ return `<div class="dkr"><div class="dkr-h"><span class="dkic ${s[0]}">${ic(icn,'s')}</span><div class="dkn"><b>${DKT[k].n}</b><span class="tiny">${meta}</span></div><span class="chip ${s[0]}">${s[1]}</span>
+  <div class="r">${got?`${r.busy?'':`<button class="btn ${r.res&&!dkStale(c,k)?'g':'p'} sm" data-act="dkrun" data-id="${c.id}" data-k="${k}">${ic('spark','s')}AIでチェック</button>`}<button class="btn g sm" data-act="dkopen" data-id="${c.id}" data-k="${k}" data-o="${open?1:0}" aria-expanded="${open}">${open?'閉じる':'詳しく'}</button>`:st==='reading'?'':`<button class="btn o sm" data-act="upload" data-id="${c.id}" data-k="${k}">代わりにアップ（サンプル）</button>`}</div></div>
+  ${open?dkDet(c,k,who):''}</div>`;}
+function dkDet(c,k,who){const r=dkS(c,k),x=dkEx(c,k),res=r.res,h=r.hum&&r.hum.v===r.v?r.hum:null;
+ return `<div class="dkd"><div class="dkex"><p class="lbl">AIが読み取った内容</p>${x.f.map(f=>`<div class="exr"><span>${f[0]}</span>${f[2]?`<b><input class="dkin" type="${f[2]==='issued'?'date':'number'}" data-dked="${c.id}|${k}|${f[2]}" value="${f[2]==='issued'?iso(x.issued):x.amt}" aria-label="${f[0]}を直す"></b>`:`<b>${esc(f[1])}</b>`}</div>`).join('')}${x.f.some(f=>f[2])?'<p class="tiny">読み取りが違うときは、ここで直せます。直したら、もう一度チェックしてください。</p>':''}</div>
+ <div class="dkres">${r.busy?'<div class="read"><span class="spin"></span>AIがチェックしています</div>':res?(dkStale(c,k)?'<p class="tiny" style="color:var(--amber);font-weight:700">書類・読み取り・ルールが変わりました。もう一度チェックしてください。</p>':'')+dkItems(res,false):'<p class="tiny">まだAIでチェックしていません。「AIでチェック」を押してください。</p>'}
+  ${h?dkHumBox(h):''}
+  ${who!=='c'&&!r.busy?`<div class="acts">${h?`<button class="btn g sm" data-act="dkhundo" data-id="${c.id}" data-k="${k}">${h.lv==='ok'?'確認を取り消す':'依頼を取り消す'}</button>`:`<button class="btn o sm" data-act="dkok" data-id="${c.id}" data-k="${k}">${ic('check','s')}確認済みにする</button><button class="btn o sm" data-act="dkreq" data-id="${c.id}" data-k="${k}">お客様に差し替えを依頼</button>`}</div>`:''}</div></div>`;}
+function dkReqModal(m){const c=byId(m.cid),r=dkS(c,m.k),it=r.res?r.res.items.filter(i=>i.lv!=='ok'):[],t=it.length?it.map(i=>i.p).join('\n'):'内容を確認したところ、差し替えが必要です。';
+ return `<h2>お客様に差し替えを依頼</h2><p class="tiny">${esc(c.co)}・${esc(DKT[m.k].n)}。お客様のマイページの「いまやること」とお知らせに出て、LINEでも知らせます。</p><div class="fld"><label for="dkT">お客様に伝える理由</label><textarea id="dkT" style="min-height:140px">${esc(t)}</textarea></div><div class="m-acts"><button class="btn g" data-act="close">やめる</button><button class="btn p" data-act="dkreqsend">依頼する</button></div>`;}
+function dkUp(c,k){const r=dkS(c,k);r.n=(r.n||0)+1;r.v=r.n-1;r.res=null;r.ed={};r.up=actor();dkSet(c,k,'reading');cl.help=null;render();
+ setTimeout(()=>{if(dkSt(c,k)==='reading'){dkSet(c,k,'got');dkAfterUp(c,k);render();}},1200);}
+function dkAfterUp(c,k){const r=dkS(c,k),nm=DKT[k].n.replace(/（.*?）/,''),who=r.up==='c'?'c':r.up==='r'?'r':'s';
+ if(r.hum&&r.hum.lv==='req'){r.hum=null;flog(c,who,'差し替えの「'+nm+'」が届きました');}else flog(c,who,'「'+nm+'」をアップロード');
+ if(k==='pay'){c.miss=c.miss.filter(x=>!/振込/.test(x));if(c.id==='c5')S.done.a4=true;}
+ if(k==='att'&&r.v>=1&&c.check==='attend'&&!c.fixed){c.fixed=true;c.miss=c.miss.filter(x=>!/出勤簿/.test(x));S.done.a2=true;}
+ if(c!==MIDORI&&!c.miss.length&&c.wait==='client')c.wait='us';}
+function dkRules(){return `<div class="card pad" style="display:flex;flex-direction:column;gap:6px"><h2 style="font-size:16px">書類のAIチェックのルール</h2><p class="tiny">お客様・担当者・社労士が「AIでチェック」を押したときに使うルールです。変えると、チェック済みの書類は「再チェックが必要」になります。</p>
+ <div class="qrow"><span><label for="rkM">履歴事項全部証明書の有効期間（発行日から）</label>${TBC}</span><select id="rkM" data-bind="rk.toukiM" data-re="1" style="width:auto">${[1,2,3,6].map(n=>`<option value="${n}" ${+S.rk.toukiM===n?'selected':''}>${n}か月以内</option>`).join('')}</select></div>
+ ${[['filed','従業員10人以上の会社は、労働基準監督署に届け出た就業規則か確認する'],['payEq','受講料の振込額が、受講料の合計と同じか確認する（振込手数料の差し引きに注意）'],['empTerm','有期契約の人が、訓練の期間中に契約が切れないか確認する']].map(x=>`<div class="qrow"><span>${x[1]}</span><button class="sw" role="switch" aria-checked="${!!S.rk[x[0]]}" aria-label="${x[1]}" data-act="tog" data-k="rk.${x[0]}"><i></i></button></div>`).join('')}
+ <p class="tiny">人材開発支援助成金の公式資料では、登記事項証明書は中小企業であることを確かめる書類（資本金の確認）として示されていて、写しでも受け付けられます。発行からの有効期間の定めは見つかっていないため、初期値の3か月は社内ルールの例です。提出先の労働局に確認してください。</p></div>`;}
+
+/* ================= お客様のマイページ（すべてのお客様） ================= */
+const mCg=()=>{const v=isSuper()?CASES:VIS();return [byId('c4')].concat(v).find(x=>x&&x!==MIDORI&&v.indexOf(x)>-1);};
+function cDocs(){const c=cc(),ks=dkList(c),n=dkCount(c);
+ return pBar('書類とAIチェック')+`<div class="p-body"><p class="p-lead">スマホで撮った写真でも、PDFでも大丈夫です。アップするとAIが読み取り、発行日・有効期限・会社名・人数・金額などを、その場でチェックします。</p>
+ ${n.got>1?`<button class="btn o block" data-act="dkall" data-id="${c.id}">${ic('spark','s')}アップした書類をまとめてAIでチェック</button>`:''}
+ ${ks.map(k=>cDoc(c,k)).join('')}${c===MIDORI?cAutoDoc():''}
+ <p class="tiny">チェックの結果は、担当の${esc(ownerNm(c))}と社労士の画面にも同じように出ます。人が確認すると「確認済み」になります。</p>
+ <button class="btn p lg block" data-act="cnav" data-s="home">保存してもどる</button></div>`;}
+const cc=()=>{if(role()==='client'){const c=byId(me().ref);if(c)return c;}const v=VIS(),c=byId(S.cview);if(c&&(isSuper()||v.indexOf(c)>-1))return c;return v.indexOf(MIDORI)>-1||!v.length?MIDORI:v[0];};
+function cTasksG(c){const T=[];
+ if(c.check==='attend'&&!c.fixed)T.push({i:'chat',t:'10月14日の出勤について答える',d:'受講の記録と出勤簿が合っていません。選ぶだけの1問です',s:'ask',min:1});
+ dkList(c).forEach(k=>{if(k==='cont')return;const r=dkS(c,k),st=dkSt(c,k),nm=DKT[k].n.replace(/（.*?）/,'');
+  if(st==='got'&&r.hum&&r.hum.lv==='req'&&r.hum.v===r.v)T.push({i:'camera',t:'「'+nm+'」を差し替える',d:'担当者から：'+r.hum.t,s:'docs',min:5});
+  else if(st==='none'||st==='later')T.push({i:'camera',t:'「'+nm+'」をアップする',d:st==='later'?'後日アップにしています':'写真でも大丈夫です。AIがその場でチェックします',s:'docs',min:DKT[k].min});
+  else if(st==='got'&&r.res&&r.res.lv==='bad'&&!dkStale(c,k))T.push({i:'camera',t:'「'+nm+'」を確認する',d:'AIチェックで、差し替えが必要と出ています',s:'docs',min:3});});
+ return T;}
+function cNews(c){const w=sw(c),N=[],sn=esc(srOf(c).n);
+ if(w.apply.st==='paid')N.push(['ok','入金されました',yen(+w.apply.amt||0)+'が口座に振り込まれました。']);
+ if(w.apply.st==='done')N.push(['ok','支給が決定しました','支給決定額 '+yen(+w.apply.amt||0)+'。指定の口座に振り込まれます。']);
+ if(w.apply.st==='sent'||w.apply.st==='ask')N.push(['info','支給申請を提出しました',sn+'が提出し、労働局で審査中です。'+(w.apply.st==='ask'?'労働局からの問い合わせに、社労士が対応しています。':'')]);
+ if(['new','work'].indexOf(w.apply.st)>-1)N.push(['info','支給申請の書類を作成しています',sn+'が作成しています。']);
+ if(w.plan.st==='done')N.push(['ok','計画届が受理されました',esc(w.plan.no)+'（'+esc(w.plan.at)+'）']);
+ if(w.plan.st==='sent')N.push(['info','計画届を提出しました',sn+'が提出しました。受理の連絡を待っています。']);
+ if(['new','work'].indexOf(w.plan.st)>-1)N.push(['info','計画届を作成しています',sn+'が作成しています。']);
+ dkList(c).forEach(k=>{const r=dkS(c,k),h=r.hum;if(h&&h.v===r.v&&dkSt(c,k)==='got'){const nm=esc(DKT[k].n.replace(/（.*?）/,''));N.push(h.lv==='ok'?['ok','「'+nm+'」を確認しました',esc(h.n)+'・'+esc(h.at)]:['warn','「'+nm+'」の差し替えのお願い',esc(h.n)+'：'+esc(h.t)]);}});
+ N.sort((a,b)=>(a[0]==='warn'?0:1)-(b[0]==='warn'?0:1));
+ if(!N.length)N.push(['mute','お知らせはまだありません','手続きが進むと、ここでお知らせします。']);
+ return `<div class="news">${N.slice(0,4).map(n=>`<div class="nw"><span class="chip ${n[0]}">${n[0]==='ok'?'完了':n[0]==='warn'?'お願い':n[0]==='mute'?'—':'進行中'}</span><div><b>${n[1]}</b><p>${n[2]}</p></div></div>`).join('')}</div>`;}
+function cMenu(c){const n=dkCount(c),e=est(c);
+ const M=[['docs','doc','書類とAIチェック',n.wait?'あと'+n.wait+'点':n.bad+n.warn?'確認が必要 '+(n.bad+n.warn)+'点':'そろっています'],['msg','chat','メッセージ','担当：'+ownerNm(c)],['money','yen','助成金の見込み',e?man(e.all):'—'],['co','set','会社の情報・通知','ログインID・お知らせ']];
+ return `<h3 class="sec"><span>マイページ</span></h3><div class="cmenu">${M.map(m=>`<button data-act="cnav" data-s="${m[0]}">${ic(m[1],'l')}<b>${m[2]}</b><span>${esc(m[3])}</span></button>`).join('')}</div>`;}
+function cHomeG(c){const n=nextDue(c),stg=STG(c),T=cTasksG(c),leftMin=T.reduce((a,t)=>a+t.min,0);
+ return `<div class="p-head"><span class="b">${esc(S.t.name)}｜助成金サポート</span><h1>${c.stage>=6?'助成金の手続きが完了しました':'いまは「'+SNAME[c.stage]+'」の段階です'}</h1><p>${esc(c.co)} ${esc(sei(c))}様・${COURSE(c.course).short}</p>
+  ${n&&c.stage<6?`<div class="p-due">${ic('cal')}<span>${n.label}まで</span><b>あと${diff(n.d)}日</b><span>（${fmtS(n.d)}）</span></div>`:''}</div>
+ <div class="p-body">
+  <h3 class="sec"><span>全体の流れ</span><button class="lnk" data-act="cnav" data-s="help">お助け情報 ${ic('arrow','s')}</button></h3>
+  <div class="vline">${SNAME.map((nm,i)=>`<button class="vs ${i<c.stage?'d':i===c.stage?'c':''}" data-act="stage" data-id="${c.id}" data-i="${i}"><span class="vd">${i<c.stage?ic('check','s'):i+1}</span><span><b>${nm}${i===c.stage?' <span class="chip brand">いまここ</span>':''}</b></span><span class="dt">${stg[i].short}</span></button>`).join('')}</div>
+  <h3 class="sec"><span>いまやること</span><span>${T.length?'残り約'+leftMin+'分':'ありません'}</span></h3>
+  ${T.length?T.map(t=>`<button class="task" data-act="cnav" data-s="${t.s}"><span class="ti">${ic(t.i,'l')}</span><span><b>${esc(t.t)}</b><span>${esc(t.d)}</span></span><span class="r"><span class="mins">${ic('clock','s')}約${t.min}分</span></span></button>`).join(''):`<div class="task done" aria-disabled="true"><span class="ti">${ic('check','l')}</span><span><b>いまお願いすることはありません</b><span>${c.stage>=5?'労働局の審査を待っています。結果はここでお知らせします。':'次にお願いすることが出たら、LINEでお知らせします。'}</span></span></div>`}
+  <h3 class="sec"><span>お知らせ</span></h3>${cNews(c)}
+  ${cMenu(c)}
+  <div class="p-help"><span>分からないことは、担当の${esc(ownerNm(c))}まで。</span><button class="btn g sm" data-act="cnav" data-s="msg">${ic('chat','s')}メッセージ</button></div></div>`;}
+const cAutoDoc=()=>`<div class="doc got"><div class="t"><div><h3>研修のカリキュラムと見積</h3><p class="s">研修会社から届くもの</p></div><span class="chip ok">研修会社から届きました</span></div><div class="exr"><span>研修</span><b>AI活用研修（AI Office）</b></div><div class="exr"><span>実訓練時間</span><b>12時間</b></div><div class="exr"><span>受講料</span><b>200,000円／1人</b></div></div>`;
+function cDoc(c,k){const r=dkS(c,k),st=dkSt(c,k),t=DKT[k],s=dkSum(c,k),i=MAPI[k],mi=c===MIDORI&&i!=null,dd=`data-id="${c.id}" data-k="${k}"${mi?` data-i="${i}"`:''}`;
+ const head=`<div class="t"><div><h3>${t.n}</h3><p class="s">${dkDesc(k,c)}</p></div><span class="chip ${s[0]}">${s[1]}</span></div>`;
+ if(st==='reading')return `<div class="doc">${head}<div class="read"><span class="spin"></span>AIが内容を読み取っています</div></div>`;
+ if(st!=='got')return `<div class="doc">${head}${t.from?`<p class="tiny">${t.from}</p>`:''}<div class="acts"><label class="btn p sm file">${ic('camera','s')}撮影・ファイルを選ぶ<input type="file" data-dkfile="${c.id}|${k}" accept="image/*,application/pdf" aria-label="${t.n}のファイルを選ぶ"></label><button class="btn o sm" data-act="upload" ${dd}>サンプルで試す</button></div>
+  <div class="more"><button class="lnk" data-act="how" ${dd}>どこにある？</button>${st==='later'?'':`<button class="lnk" data-act="later" ${dd}>まだ手元にない</button>`}</div>${cl.help===c.id+k?`<p class="how">${t.how}</p>`:''}</div>`;
+ const ex=dkEx(c,k),res=r.res,stale=dkStale(c,k),h=r.hum&&r.hum.v===r.v?r.hum:null,bad=res&&res.lv==='bad'&&!stale||h&&h.lv==='req';
+ return `<div class="doc ${s[0]==='ok'?'got':s[0]==='warn'?'bad':''}">${head}
+  <div>${ex.f.slice(0,4).map(f=>`<div class="exr"><span>${f[0]}</span><b>${esc(f[1])}</b></div>`).join('')}</div>
+  ${r.busy?'<div class="read"><span class="spin"></span>AIがチェックしています</div>':res&&!stale?dkItems(res,true):res?'<p class="tiny">書類かルールが変わりました。もう一度チェックしてください。</p>':'<p class="tiny">まだAIでチェックしていません。</p>'}
+  ${h?dkHumBox(h):''}
+  ${r.busy?'':`<div class="acts"><button class="btn ${res&&!stale?'o':'p'} sm" data-act="dkrun" data-id="${c.id}" data-k="${k}">${ic('spark','s')}${res?'もう一度AIでチェック':'AIでチェック'}</button>${res&&!stale&&res.lv==='warn'&&!h?`<button class="btn g sm" data-act="dkask" data-id="${c.id}" data-k="${k}">担当者に確認してもらう</button>`:''}</div>`}
+  <div class="more"><button class="lnk" data-act="redo" ${dd}>${bad?'差し替える（アップし直す）':'撮り直す'}</button></div></div>`;}
+function cAsk(){const c=cc(),att=c.check==='attend'&&!c.fixed;
+ return pBar('出勤についての確認')+`<div class="p-body">${att?`<p class="p-lead">受講の記録では<b>10月14日に3時間</b>受講していますが、出勤簿に出勤の記録がありません。この日のことを教えてください。<span class="mins">${ic('clock','s')}約1分</span></p>
+  <div class="seg col"><button data-act="cans" data-v="in">出勤していた（打刻を忘れた）</button><button data-act="cans" data-v="out">休んでいた・受講していない</button></div>
+  <p class="h tiny">「出勤していた」の場合は、直した出勤簿を「書類とAIチェック」からアップしていただくと確実です。</p>`
+  :`<div class="fin"><span class="ring">${ic('check','l')}</span><h2>いまお答えいただく確認はありません</h2><p class="p-lead">分からないことは、メッセージで担当の${esc(ownerNm(c))}に送れます。</p></div><button class="btn o block" data-act="cnav" data-s="msg">${ic('chat','s')}メッセージを開く</button>`}
+  <button class="btn o lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
+function cMsg(){const c=cc();return pBar('メッセージ')+`<div class="p-body"><p class="p-lead">担当の${esc(ownerNm(c))}とのやりとりです。書類は「書類とAIチェック」からアップしてください。</p>${thr(cmL(c),'c','cmT','cmsg',c.id,'例）雇用契約書が1名分見つかりません','担当者とのメッセージ')}<button class="btn o lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
+function cMoney(){const c=cc(),e=est(c),w=sw(c),co=COURSE(c.course),d=dates(c);
+ const st=w.apply.st==='paid'?['ok','入金済み']:w.apply.st==='done'?['ok','支給決定']:['sent','ask'].indexOf(w.apply.st)>-1?['info','審査中']:c.stage>=4?['brand','支給申請の準備中']:['mute','訓練のあとに申請'];
+ return pBar('助成金の見込み')+`<div class="p-body"><p class="p-lead">${co.short}コースで、今回の研修に使える助成金の見込みです。実際の額は、労働局の審査で決まります。</p>
+  <div class="q"><span class="lb"><span>見込みの額</span><span class="chip ${st[0]}">${st[1]}</span></span><div class="mini">${e?`<div><span>研修の費用（経費助成）</span><b>${yen(e.keihi*c.people)}</b></div><div><span>研修時間の賃金（賃金助成）</span><b>${yen(e.chin*c.people)}</b></div><div><span>合計（${c.people}名）</span><b>${yen(e.all)}</b></div>`:'<div><span>見込み</span><b>訓練の種類で決まります</b></div>'}${['done','paid'].indexOf(w.apply.st)>-1?`<div><span>支給決定額</span><b>${yen(+w.apply.amt||0)}</b></div>`:''}</div>
+   <p class="h">${co.rateN?'経費助成は受講料×'+Math.round(co.rateN*100)+'%（1人あたりの上限あり）':'経費助成の率は、訓練の種類ごとに決まります'}${co.wageN?'、賃金助成は1時間'+co.wageN.toLocaleString()+'円×受講時間':''}です。</p></div>
+  <div class="q"><span class="lb"><span>入金までの流れ</span></span><div class="mini"><div><span>支給申請の期限</span><b>${fmt(d.at)}</b></div><div><span>審査・入金</span><b>申請のあと${TBC}</b></div><div><span>振込先</span><b>お客様が届に記入</b></div></div><p class="h">口座の情報は、このページでは預かりません。</p></div>
+  <button class="btn o lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
+function cCo(){const c=cc(),D=fData(c),a=accts().find(x=>x.role==='client'&&x.ref===c.id),n=S.cn[c.id]=S.cn[c.id]||{line:true,mail:true,due:true};
+ return pBar('会社の情報・通知')+`<div class="p-body">
+  <div class="q"><span class="lb"><span>会社の情報</span></span><div class="mini"><div><span>会社名</span><b>${esc(c.co)}</b></div><div><span>代表者</span><b>${esc(c.rep)}</b></div><div><span>業種</span><b>${esc(c.ind)}</b></div><div><span>従業員</span><b>${total(c)}名</b></div><div><span>所在地</span><b>${esc(D.addr)}</b></div></div><p class="h">違うところがあれば、メッセージで担当者に知らせてください。</p></div>
+  <div class="q"><span class="lb"><span>受講する方（${c.people}名）</span></span><div class="mini">${D.tr.map(t=>`<div><span>${esc(t.nm)}</span><b>正社員</b></div>`).join('')}</div><p class="h">氏名は試作用の架空の例です。</p></div>
+  <div class="q"><span class="lb"><span>担当</span></span><div class="mini"><div><span>申請の担当</span><b>${esc(S.t.name)} ${esc(ownerNm(c))}</b></div><div><span>申請書類の作成・提出</span><b>${esc(srName(c))}</b></div></div></div>
+  <div class="q"><span class="lb"><span>お知らせの受け取り方</span></span>${[['line','LINEで受け取る'],['mail','メールで受け取る'],['due','期限の14日前と3日前に知らせる']].map(x=>`<div class="qrow"><span>${x[1]}</span><button class="sw" role="switch" aria-checked="${!!n[x[0]]}" aria-label="${x[1]}" data-act="tog" data-k="cn.${c.id}.${x[0]}"><i></i></button></div>`).join('')}</div>
+  <div class="q"><span class="lb"><span>ログイン</span></span><div class="mini"><div><span>ログインID</span><b><code class="mono">${esc(a?a.id:clAcctId(c))}</code></b></div><div><span>二段階認証</span><b>${a&&a.mfa?'設定済み':'未設定'}</b></div></div><div><button class="btn o sm" data-act="msg" data-m="パスワードを変える画面を開きます（試作のため変更はできません）">パスワードを変える</button></div><p class="h">GビズIDのIDやパスワードを、このページに入力する必要はありません。</p></div>
+  <button class="btn o lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
+
 /* ================= PARTNERS ================= */
 function partnerV(){const self=S.filer==='self';
  return `<div class="ph"><div><h1>提携社労士</h1><p class="sub">申請書類の作成・提出をお願いする社会保険労務士事務所を登録し、案件ごとに担当を決めます。</p></div></div>
@@ -1734,7 +2300,7 @@ function partnerV(){const self=S.filer==='self';
   ${self?`<div class="fld" style="max-width:520px"><label for="selfSr">担当の社会保険労務士</label><input type="text" id="selfSr" data-bind="selfSr" value="${esc(S.selfSr)}"></div>`:''}</div>
  ${self?'':`<div class="pgrid">${S.partners.map((p,i)=>{const cs=VIS().filter(c=>srOf(c).id===p.id);return `<article class="card pc"><div class="h"><div><h3>${esc(p.n)}</h3><p class="tiny">担当：${esc(p.who)}</p></div><span class="chip ok">提携中</span></div>
    <dl class="kv"><dt>対応エリア</dt><dd>${esc(p.area)}</dd><dt>対応コース</dt><dd>${esc(p.courses)}</dd><dt>連絡方法</dt><dd>${esc(p.contact)}</dd><dt>担当の案件</dt><dd>${cs.length}件（${cs.map(c=>esc(c.co.replace(/株式会社|有限会社/,''))).join('、')||'なし'}）</dd></dl>
-   <div class="qrow" style="border-top:1px solid var(--line-2);padding-top:10px"><span>書類・申請データ・AIチェックの結果を共有する</span><button class="sw" role="switch" aria-checked="${p.share}" aria-label="${esc(p.n)}と共有" data-act="tog" data-k="partners.${i}.share"><i></i></button></div></article>`;}).join('')}</div>
+   <div class="qrow" style="border-top:1px solid var(--line-2);padding-top:10px"><span>書類・申請データ・AIチェックの結果を共有する</span><button class="sw" role="switch" aria-checked="${p.share}" aria-label="${esc(p.n)}と共有" data-act="tog" data-k="partners.${i}.share"><i></i></button></div>${isSuper()?`<div><button class="btn o sm" data-act="as" data-id="${esc(srAcctId(p))}">社労士のマイページを見る</button></div>`:''}</article>`;}).join('')}</div>
  <div class="card pad" style="display:flex;flex-direction:column;gap:10px"><h2 style="font-size:15px">提携先を追加する</h2><div class="addp"><div class="fld"><label for="npN">事務所名</label><input type="text" id="npN" placeholder="例）○○社会保険労務士事務所"></div><div class="fld"><label for="npW">担当の社労士</label><input type="text" id="npW" placeholder="例）山田 太郎"></div><div class="fld"><label for="npA">対応エリア</label><input type="text" id="npA" placeholder="例）関東"></div><button class="btn p" data-act="addpartner">${ic('plus','s')}追加</button></div></div>
  <h2 style="font-size:16px;margin-top:6px">案件ごとの担当</h2>
  <div class="card tscroll"><table style="min-width:640px"><thead><tr><th>会社</th><th>段階</th><th>次の期限</th><th>担当の社労士事務所</th></tr></thead><tbody>${VIS().map(c=>{const n=nextDue(c);return `<tr><td><b>${esc(c.co)}</b></td><td>${SNAME[c.stage]}</td><td class="num">${n?fmt(n.d):'—'}</td><td><select data-srsel="${c.id}" aria-label="${esc(c.co)}の担当">${S.partners.map(p=>`<option value="${p.id}" ${srOf(c).id===p.id?'selected':''}>${esc(p.n)}</option>`).join('')}</select></td></tr>`;}).join('')}</tbody></table></div>`}
@@ -1749,12 +2315,12 @@ function prefill(){const d0=cl.docs[0]==='got',d1=cl.docs[1]==='got',na='書類�
   ['所定労働時間',d0?'8時間／日':na,d0?'doc':'na'],['受講する方',d1?'5名（正社員）':na,d1?'doc':'na']];}
 function pBar(t){return `<div class="p-bar"><button data-act="cnav" data-s="home" aria-label="もどる">${ic('back')}</button><h1>${t}</h1></div>`;}
 function cTasks(){const s=cStat();return [
- {k:'docs',i:'camera',t:'会社の書類をアップする',d:s.later?`${s.later}点は後日でも大丈夫です`:'3点。写真でも大丈夫です',ok:cl.docs.slice(0,3).every(x=>x==='got'),r:`${cl.docs.slice(0,3).filter(x=>x==='got').length}/3`,min:CDOCS.slice(0,3).reduce((a,x)=>a+x.min,0)},
+ {k:'docs',i:'camera',t:'会社の書類をアップする',d:s.later?`${s.later}点は後日でも大丈夫です`:'4点。写真でも大丈夫です。AIがその場でチェックします',ok:cl.docs.slice(0,3).every(x=>x==='got')&&dkSt(MIDORI,'touki')==='got',r:`${cl.docs.slice(0,3).filter(x=>x==='got').length+(dkSt(MIDORI,'touki')==='got'?1:0)}/4`,min:CDOCS.slice(0,3).reduce((a,x)=>a+x.min,0)+5},
  {k:'qs',i:'chat',t:`${s.qt}つの質問に答える`,d:'書類からは分からないことだけ',ok:s.qn>=s.qt,r:`${s.qn}/${s.qt}`,min:S.questions.filter(q=>q.on).reduce((a,q)=>a+(q.min||1),0)},
  {k:'wish',i:'bulb',t:'研修のご要望を伝える',d:'選ぶだけ。研修の中身は当社がつくります',ok:cl.wish.sent,r:'',min:5},
  {k:'plan',i:'doc',t:'社内の育成計画を確認する',d:'ひな形を作ってあります。確認して社内に知らせるだけ',ok:cl.planOk,r:cl.planOk?'':'0/1',min:15},
  {k:'confirm',i:'check',t:'内容を確認して送信',d:'自動で入った内容を見るだけです',ok:cl.sent,r:'',min:3}];}
-function cHome(){const s=cStat(),c=MIDORI,d=dates(c),T=cTasks();
+function cHome(){if(cc()!==MIDORI)return cHomeG(cc());const s=cStat(),c=MIDORI,d=dates(c),T=cTasks();
  const left=T.filter(t=>!t.ok),leftMin=left.reduce((a,t)=>a+t.min,0);
  const pf=prefill().filter(r=>r[2]!=='na');const stg=STG(c);
  const later=[['訓練が始まったら','毎月の出勤簿・賃金台帳をアップ',5,`${fmtS(d.st)}〜${fmtS(d.en)}・毎月`],['訓練が終わったら','受講料の振込記録をアップ',5,`${fmtS(d.en)}以降`],['支給申請の前に','申請内容を確認する',10,`${fmtS(d.at)}まで`]];
@@ -1768,18 +2334,9 @@ function cHome(){const s=cStat(),c=MIDORI,d=dates(c),T=cTasks();
   <details class="pre"><summary>${ic('check')}${pf.length}項目は、すでに入力してあります</summary><div class="rows">${pf.map(r=>`<div class="ir"><span class="k">${r[0]}</span><span class="v">${esc(r[1])}</span><span class="s">${SRC[r[2]]}</span></div>`).join('')}</div></details>
   <h3 class="sec"><span>このあとやること</span></h3>
   ${later.map(l=>`<div class="task later" aria-disabled="true"><span class="ti">${ic('cal','l')}</span><span><b>${l[1]}</b><span>${l[0]}・${l[3]}</span></span><span class="r"><span class="mins">${ic('clock','s')}約${l[2]}分</span></span></div>`).join('')}
+  ${cMenu(MIDORI)}
   <div class="p-help"><span>分からないことは、担当の${esc(ownerNm(MIDORI))}まで。</span><button class="btn g sm" data-act="msg" data-m="実際の画面では、LINEのトークが開きます">${ic('chat','s')}LINEで質問</button></div></div>`;}
 const EXT=()=>[[['所定労働時間','8時間／日'],['休日','土日祝'],['資格等手当','規定なし']],[['対象者','5名'],['雇用形態','正社員'],['雇用保険','加入']],[['対象月','先月'],['出勤簿','5名分・日ごとの始業終業あり'],['賃金台帳','5名分']]];
-function cDocs(){
- return pBar('会社の書類をアップする')+`<div class="p-body"><p class="p-lead">スマホで撮った写真でも、PDFでも大丈夫です。アップするとAIが読み取り、必要な項目を自動で入力します。</p>
- ${CDOCS.map((dc,i)=>{const st=cl.docs[i];if(st==='auto')return `<div class="doc got"><div class="t"><div><h3>${dc.n}</h3><p class="s">${dc.s}</p></div><span class="chip ok">研修会社から届きました</span></div><div class="exr"><span>研修</span><b>AI活用研修（AI Office）</b></div><div class="exr"><span>実訓練時間</span><b>12時間</b></div><div class="exr"><span>受講料</span><b>200,000円／1人</b></div></div>`;
-  return `<div class="doc ${st==='got'?'got':''}"><div class="t"><div><h3>${dc.n}</h3><p class="s">${dc.s}</p></div>${st==='got'?'<span class="chip ok">受け取りました</span>':st==='later'?'<span class="chip amber">後日アップ</span>':st==='reading'?'<span class="chip info">読み取り中</span>':`<span class="mins">${ic('clock','s')}約${dc.min}分</span>`}</div>
-  ${st==='reading'?`<div class="read"><span class="spin"></span>AIが内容を読み取っています</div>`
-   :st==='got'?`<div>${EXT()[i].map(r=>`<div class="exr"><span>${r[0]}</span><b>${esc(r[1])}</b></div>`).join('')}</div><div class="more"><button class="lnk" data-act="redo" data-i="${i}">撮り直す</button></div>`
-   :`<div class="acts"><label class="btn p sm file">${ic('camera','s')}撮影・ファイルを選ぶ<input type="file" id="file${i}" data-file="${i}" accept="image/*,application/pdf"></label><button class="btn o sm" data-act="upload" data-i="${i}">サンプルで試す</button></div>
-     <div class="more"><button class="lnk" data-act="how" data-i="${i}">どこにある？</button>${st==='later'?'':`<button class="lnk" data-act="later" data-i="${i}">まだ手元にない</button>`}</div>${cl.help===i?`<p class="how">${dc.how}</p>`:''}`}
- </div>`;}).join('')}
- <button class="btn p lg block" data-act="cnav" data-s="home">保存してもどる</button></div>`;}
 function cQs(){const s=cStat(),a=cl.ans;
  return pBar(`${s.qt}つの質問`)+`<div class="p-body"><p class="p-lead">書類からは分からないことだけ、お聞きします。入力は自動で保存されます。合計 約${s.qs.reduce((x,q)=>x+(q.min||1),0)}分です。</p>
  ${s.qs.map((q,i)=>{const ok=qDone(q),hd=`<span>${'①②③④⑤⑥⑦⑧'[i]||''} ${esc(q.label)}</span><span class="chip ok okc">OK</span>`;
@@ -1814,29 +2371,35 @@ function cDone(){syncMidori();const m=MIDORI.miss,d=dates(MIDORI);
  return pBar('送信しました')+`<div class="p-body"><div class="fin"><span class="ring">${ic('check','l')}</span><h2>ありがとうございます</h2><p class="p-lead">${esc(ownerNm(MIDORI))}が内容を確認し、計画届の準備を進めます。計画届の提出期限は ${fmt(d.pt)} です。</p>
  <div class="left"><b>残っていること</b>${m.length?m.map(x=>`<div>□ ${esc(x)}</div>`).join(''):'<div>ありません。次は訓練が始まったら、毎月の書類をお願いします。</div>'}</div></div>
  <button class="btn o lg block" data-act="cnav" data-s="home">やることリストにもどる</button></div>`;}
-function cHelp(){const d=dates(MIDORI);
+function cHelp(){const C=cc(),d=dates(C),co=COURSE(C.course),e=est(C);
  return pBar('お助け情報')+`<div class="p-body">
   <div class="q"><span class="lb"><span>どんな制度？</span></span><p class="p-lead">従業員の方に、仕事に関係する研修を計画どおり受けてもらうと、研修の費用と研修時間の賃金の一部が国から戻ってきます。</p></div>
-  <div class="q"><span class="lb"><span>御社の場合の目安</span></span><div class="mini"><div><span>コース</span><b>リスキリング支援</b></div><div><span>研修の費用</span><b>75%が助成</b></div><div><span>研修時間の賃金</span><b>1人1時間 1,000円</b></div><div><span>見込み（5名）</span><b>${man(est(MIDORI).all)}</b></div></div><p class="h">実際の額は審査で決まります。</p></div>
+  <div class="q"><span class="lb"><span>御社の場合の目安</span></span><div class="mini"><div><span>コース</span><b>${co.short}</b></div><div><span>研修の費用</span><b>${co.rateN?Math.round(co.rateN*100)+'%が助成':'訓練の種類で決まります'}</b></div><div><span>研修時間の賃金</span><b>${co.wageN?'1人1時間 '+co.wageN.toLocaleString()+'円':'—'}</b></div><div><span>見込み（${C.people}名）</span><b>${e?man(e.all):'—'}</b></div></div><p class="h">実際の額は審査で決まります。</p></div>
   <div class="q"><span class="lb"><span>大事な期限は2回</span></span><div class="mini"><div><span>計画届（研修の1か月前まで）</span><b>${fmtS(d.pt)}</b></div><div><span>支給申請（研修後2か月以内）</span><b>${fmtS(d.at)}</b></div></div><p class="h">どちらも当社がお知らせします。過ぎると助成を受けられません。</p></div>
   <div class="q"><span class="lb"><span>研修中にお願いすること</span></span><p class="p-lead">研修の時間も、ふだんどおり給料を払ってください。出勤簿は毎日つけてください。受講料は、支給申請の前に全額お支払いください。</p></div>
   <div class="q"><span class="lb"><span>公式サイト</span></span><a href="${URL_TOP}" target="_blank" rel="noopener">厚生労働省 人材開発支援助成金のページ</a><a href="${URL_P_RESKILL}" target="_blank" rel="noopener">リスキリング支援コースのパンフレット（PDF）</a></div>
   <button class="btn p lg block" data-act="cnav" data-s="home">もどる</button></div>`;}
 const CNOTE={home:['いまの段階と次の期限を、開いた瞬間に出す','全体の7段階を見せ、どこにいるかが分かるようにする','やることごとに想定の作業時間を出し、残りの合計も出す','このあとやることも先に見せて、心づもりをしてもらう'],
- docs:['写真でよい、と最初に伝える','研修のカリキュラムは研修会社から自動で届くので、お客様は出さなくてよい','読み取った結果をすぐ見せる','ファイルがなくても「サンプルで試す」で動きを確認できます'],
+ docs:['写真でよい、と最初に伝える','アップした書類は、その場でAIがチェックする（発行日・有効期限・会社名・人数・金額）','担当者・社労士のチェック結果や、差し替えのお願いも同じ画面に出る','ファイルがなくても「サンプルで試す」で動きを確認できます'],
  qs:['書類から分からないことだけを聞く','研修の目的から、合いそうなコースをその場で示す','質問は設定画面で追加・非表示にできる'],
  wish:['研修の中身を考えてもらうのではなく、困っている業務を選んでもらうだけにする','過去の研修は当社の記録を見せ、重なりを防ぐ','届いた要望は、スタッフ画面の「カリキュラム作成」に取り込めます'],
  plan:['難しい計画書を一から書かせず、ひな形を確認するだけにする','要件として必要な記載を、ひと言で説明する'],
  confirm:['どこから取った情報かを、行ごとに表示する','違うところだけ直してもらう'],
  done:['残っていることと次の期限だけを、短く伝える'],
- help:['制度の説明は、お客様に関係する数字だけにしぼる','期限は御社の日付で示す','公式サイトへのリンクも置く']};
+ help:['制度の説明は、お客様に関係する数字だけにしぼる','期限は御社の日付で示す','公式サイトへのリンクも置く'],
+ msg:['担当者とのやりとりを1か所に残す','書類の差し替えのお願いも、ここに届く'],
+ money:['見込みの額と、経費助成・賃金助成の内訳を示す','審査の状況（申請前・審査中・支給決定・入金）を出す','口座の情報は預からない'],
+ co:['登録されている会社の情報を確認できる','お知らせの受け取り方を、お客様が選べる','ログインIDと二段階認証の状態を出す。GビズIDは入力させない'],
+ ask:['食い違いの確認は、選ぶだけの1問にする','答えると担当者に届き、「今日やること」から消える']};
 // お客様の画面の定義。操作マニュアルもこの順で作る
-const CVIEW={home:cHome,docs:cDocs,qs:cQs,wish:cWish,plan:cPlan,confirm:cConfirm,done:cDone,help:cHelp};
-const CPATH={home:'スタッフが送った専用リンクを開く',done:'「内容の確認」で送信すると表示',help:'ホームの下の「お助け情報」を押す'};
-function client(){const scr=CVIEW[cl.screen]();
- return `<div class="wrap cv"><div class="phone">${scr}</div><aside class="cnote"><div><p class="eyebrow">この画面のねらい</p><ul>${CNOTE[cl.screen].map(n=>`<li>${n}</li>`).join('')}</ul></div>
-  <div class="card pad"><h2>スタッフ画面とつながっています</h2><p class="tiny" style="margin:4px 0 10px">ここでアップや回答をすると、スタッフ画面の「${esc(CO.name)}」の案件に反映されます。</p><button class="btn o sm" data-act="open" data-id="c1">スタッフ画面で見る</button></div>
-  <div><button class="lnk" data-act="creset">お客様の画面を最初の状態にもどす</button></div></aside></div>`;}
+const CVIEW={home:cHome,docs:cDocs,qs:cQs,wish:cWish,plan:cPlan,confirm:cConfirm,done:cDone,help:cHelp,msg:cMsg,money:cMoney,co:cCo,ask:cAsk};
+const CPATH={home:'スタッフが送った専用リンクを開く',done:'「内容の確認」で送信すると表示',help:'ホームの下の「お助け情報」を押す',msg:'ホームの「マイページ」の「メッセージ」を押す',money:'ホームの「マイページ」の「助成金の見込み」を押す',co:'ホームの「マイページ」の「会社の情報・通知」を押す',ask:'ホームの「いまやること」の「出勤について答える」を押す（確認があるときだけ）'};
+function client(){const c=cc(),mid=c===MIDORI,cr=role()==='client';if(!mid&&['qs','wish','plan','confirm','done'].indexOf(cl.screen)>-1)cl.screen='home';const scr=CVIEW[cl.screen](),vis=isSuper()?CASES:VIS();
+ const pick=cr?`<div class="card pad"><h2>${esc(c.co)}のマイページ</h2><p class="tiny" style="margin-top:4px">お客様のアカウント（<code class="mono">${esc(clAcctId(c))}</code>）でログインしています。自社の案件だけが表示されます。</p></div>`
+  :`<div class="card pad"><div class="fld"><label for="cvSel">表示するお客様</label><select id="cvSel" data-cview="1">${vis.map(x=>`<option value="${x.id}" ${x===c?'selected':''}>${esc(x.co)}（${SNAME[x.stage]}）</option>`).join('')}</select></div><p class="tiny" style="margin-top:6px">お客様が自分のアカウント（この会社は <code class="mono">${esc(clAcctId(c))}</code>）でログインしたときの画面です。</p></div>`;
+ return `<div class="wrap cv"><div class="phone">${scr}</div><aside class="cnote">${pick}<div><p class="eyebrow">この画面のねらい</p><ul>${(CNOTE[cl.screen]||[]).map(n=>`<li>${n}</li>`).join('')}</ul></div>
+  ${cr?'':`<div class="card pad"><h2>スタッフ画面とつながっています</h2><p class="tiny" style="margin:4px 0 10px">ここでアップや回答をすると、スタッフ画面の「${esc(c.co)}」の案件に反映されます。書類のAIチェックの結果も、お互いの画面に同じように出ます。</p><button class="btn o sm" data-act="open" data-id="${c.id}">スタッフ画面で見る</button></div>`}
+  ${mid&&!cr?`<div><button class="lnk" data-act="creset">お客様の画面を最初の状態にもどす</button></div>`:''}</aside></div>`;}
 
 /* ================= MANUAL（画面から自動で作る） ================= */
 // 操作の説明。[決まった名前（nullならボタンの文字を使う）, 説明]。0はマニュアルに載せない操作
@@ -1895,10 +2458,50 @@ const ACTDOC={view:0,go:0,snav:0,tab:0,close:0,creset:0,mopen:0,mjump:0,
  addpartner:[null,'社労士事務所を提携先に追加します'],
  asacct:[null,'その申請担当のアカウントに切り替えて、担当者から見える画面を確認します'],
  addstaff:[null,'申請担当のアカウントを1つ追加します'],
+ login:['この人でログイン','そのアカウントでログインし直して、その役割から見える画面を確認します（デモ用）'],
+ loginf:['ログイン','ログインIDとパスワードでログインします'],
+ logout:[null,'ログアウトします'],
+ mfa:['二段階認証','ログインのときに、SMSの確認コードを使うかどうかを切り替えます'],
+ as:[null,'その人の画面を、スーパー管理者が代理で表示します。操作は記録されます'],
+ unas:[null,'代理表示をやめて、運営の画面にもどります'],
+ onav:[null,'運営の画面を切り替えます'],
+ tenant:['このテナントの画面で見る','そのテナント（事業者）の社名・色・設定で、画面を表示します'],
+ aoff:['利用（オン・オフ）','アカウントを停止・再開します。停止すると、その人はログインできません'],
+ apw:[null,'本人に、パスワードを再設定するリンクを送ります'],
+ aadd:[null,'申請担当または管理者のアカウントを追加します'],
+ srnav:[null,'社労士の画面を切り替えます'],
+ srf:[null,'案件を状況でしぼり込みます'],
+ srcase:['案件を開く','書類・申請データ・AIチェックの結果・期限を確認します'],
+ srclose:[null,'案件の一覧にもどります'],
+ srph:[null,'計画届と支給申請を切り替えます'],
+ srmon:[null,'カレンダーの月を切り替えます'],
+ sracc:[null,'届いた書類を受け取り、作成を始めます。ベンダーの画面に「作成中」と出ます'],
+ srback:[null,'不足・不備のある書類を差し戻します。AIチェックと提出前のチェックで見つかった点が、理由に入ります'],
+ srask:[null,'ベンダーに、質問や資料の依頼を送ります'],
+ srsub:[null,'提出前の確認がすべて済んだら、提出したことを記録します'],
+ srok:[null,'計画届の受理、または支給決定を記録します。お客様のマイページにも出ます'],
+ srq:[null,'労働局からの問い合わせを記録します'],
+ srans:[null,'問い合わせに回答したことを記録します'],
+ srmsend:[null,'入力した内容で、差し戻し・確認・記録をします'],
+ srview:['プレビュー','引き継がれた書類の下書きを表示します'],
+ srall:[null,'引き継がれた書類をまとめて表示し、印刷します'],
+ thsend:['送る','ベンダーにメッセージを送ります'],
+ vsend:['送る','担当の社労士事務所にメッセージを送ります'],
+ cmsg:['送る','担当者にメッセージを送ります'],
+ smsg:['送る','お客様のマイページにメッセージを送ります。LINEでも知らせます'],
+ dkrun:['AIでチェック','アップした書類を、発行日・有効期限・会社名・人数・金額などについてAIがチェックします'],
+ dkall:[null,'アップ済みの書類を、まとめてAIでチェックします'],
+ dkopen:['詳しく','AIが読み取った内容とチェックの結果を開きます。読み取りが違うときは、その場で直せます'],
+ dkok:[null,'人が確認した印を付けます。お客様のマイページにも出ます'],
+ dkreq:[null,'お客様に差し替えを依頼します。理由はAIチェックの結果から入ります'],
+ dkreqsend:[null,'差し替えの依頼を送ります'],
+ dkhundo:[null,'確認・依頼を取り消します'],
+ dkask:[null,'「要確認」と出た書類を、担当者に確認してもらいます'],
+ cans:['選択肢を選ぶ','出勤についての確認に答えます。担当者に届きます'],
  wtag:['困っている業務を選ぶ','研修で解決したい業務を選びます'],
  wsend:[null,'選んだ内容を担当スタッフに送ります']};
 // 画面を一時的に切り替えて、その画面のHTMLを作る（状態はもとにもどす）
-function snap(p,fn){const sk=['view','staff','caseId','tab','block','calc','modal','acct','own','cur'],ck=['screen','help','editing'],sv={},cv={};
+function snap(p,fn){const sk=['view','staff','caseId','tab','block','calc','modal','acct','own','cur','me','as','cview','ops','srs','src','srph','srp','srf','srmon','dkx','orole','oq'],ck=['screen','help','editing'],sv={},cv={};
  sk.forEach(k=>sv[k]=S[k]);ck.forEach(k=>cv[k]=cl[k]);Object.assign(S,p.S||{});Object.assign(cl,p.cl||{});
  try{return fn();}finally{Object.assign(S,sv);Object.assign(cl,cv);}}
 function mPages(){const P=[],c=MIDORI,T=cTasks();
@@ -1913,7 +2516,13 @@ function mPages(){const P=[],c=MIDORI,T=cTasks();
  CTABS.forEach(t=>P.push({g:'case',k:t[0],t:t[1],desc:t[2],path:'スタッフ画面 › 案件 › 案件のカードを押す › タブ「'+t[1]+'」',w:1100,
   html:snap({S:{view:'staff',acct:'s1',caseId:c.id,tab:t[0],block:null,calc:{n:c.people,h:c.hours,fee:c.fee,course:'reskill'}}},staff)}));
  Object.keys(CVIEW).forEach(k=>{const tk=T.find(x=>x.k===k);P.push({g:'client',k,path:'お客様の画面 › '+(tk?'ホームの「'+tk.t+'」を押す':CPATH[k]||''),w:400,
-  html:snap({cl:{screen:k,help:null,editing:null}},()=>'<div class="phone">'+CVIEW[k]()+'</div>')});});
+  html:snap({S:{cview:'c1'},cl:{screen:k,help:null,editing:null}},()=>'<div class="phone">'+CVIEW[k]()+'</div>')});});
+ const cg=mCg();if(cg)P.push({g:'client',k:'homeg',t:'ホーム（手続きが進んだお客様）',path:'お客様のアカウントでログイン（例：'+clAcctId(cg)+'）',w:400,desc:'どのお客様も、ログインすると自社の案件のマイページが開きます。いまやること・お知らせ・書類とAIチェック・メッセージ・助成金の見込み・会社の情報が、同じ形で並びます。',
+  html:snap({S:{cview:cg.id},cl:{screen:'home',help:null,editing:null}},()=>'<div class="phone">'+cHome()+'</div>')});
+ P.push({g:'acct',k:'login',t:'ログインとアカウント',path:'右上のアカウントのボタン',w:1100,desc:'役割（スーパー管理者・管理者・申請担当・お客様・提携社労士）ごとのアカウントです。ログインした役割で、見られる画面と案件が決まります。二段階認証の設定とログアウトもここで行います。',html:snap({S:{view:'login'}},loginV)});
+ if(isSuper()){OPSNAV.forEach(n=>P.push({g:'ops',k:n[0],t:n[2],path:'運営 › 左のメニュー「'+n[2]+'」',w:1100,html:snap({S:{view:'ops',ops:n[0]}},opsV)}));
+  SRNAV.forEach(n=>P.push({g:'sr',k:n[0],t:n[2],path:'社労士の画面 › 左のメニュー「'+n[2]+'」',w:1100,html:snap({S:{view:'sr',srs:n[0],src:null,srp:'p1'}},srV)}));
+  P.push({g:'sr',k:'case',t:'案件の詳細（社労士）',path:'社労士の画面 › 案件 › 行を押す',w:1100,desc:'引き継がれた書類・申請データ・AIチェックの結果を確認し、受け取り・差し戻し・提出・受理までを記録します。記録した内容は、ベンダーの画面とお客様のマイページにも出ます。',html:snap({S:{view:'sr',src:'c9',srph:'plan',srp:'p1'}},srV)});}
  return P;}
 const sq=t=>String(t||'').replace(/\s+/g,' ').trim();
 function mScan(p){const d=document.createElement('div');d.innerHTML=p.html;
@@ -1941,7 +2550,7 @@ function mDiff(P){if(S.mdiff)return S.mdiff;const inv={};P.forEach(p=>inv[p.id]=
 function manualV(){const P=mPages();P.forEach(mScan);const df=mDiff(P);
  const miss=[];P.forEach(p=>p.miss.forEach(a=>{if(miss.indexOf(a)<0)miss.push(a);}));Object.keys(A).forEach(a=>{if(ACTDOC[a]===undefined&&miss.indexOf(a)<0)miss.push(a);});
  const nOps=P.reduce((a,p)=>a+p.ops.length,0),NEW='<span class="chip brand">新しい</span>';
- const G=[['staff','スタッフ画面','左のメニューから開く画面です。'],['case','案件の詳細','案件のカードを押すと開きます。例として'+CO.name+'の案件を表示しています。'],['client','お客様の画面','お客様がスマホで開く画面です。スタッフが送る専用リンクから開きます。']];
+ const G=[['acct','ログインとアカウント','役割ごとに、見られる画面と案件が変わります。'],['ops','運営（スーパー管理者）','スーパー管理者だけに出る画面です。すべてのテナント・アカウント・お客様を管理します。'],['staff','スタッフ画面','左のメニューから開く画面です。'],['case','案件の詳細','案件のカードを押すと開きます。例として'+CO.name+'の案件を表示しています。'],['client','お客様の画面','お客様がスマホで開く画面です。スタッフが送る専用リンクから、お客様のアカウントでログインして開きます。'],['sr','社労士の画面','提携社労士が、自分のアカウントでログインして開く画面です。例として'+S.partners[0].n+'の画面を表示しています。']].filter(g=>(g[0]!=='ops'&&g[0]!=='sr')||isSuper());
  const card=p=>{const nw=df.ops[p.id]||{};return '<article class="card mpg" id="'+p.id+'"><div class="mpg-t">'
   +'<h3>'+esc(p.t)+(df.pages[p.id]?NEW:'')+'</h3><p class="mpath">開き方：<b>'+esc(p.path)+'</b></p>'+(p.desc?'<p>'+esc(p.desc)+'</p>':'')
   +(p.ops.length?'<h4>この画面でできること</h4><ul class="mops">'+p.ops.map(o=>'<li><b>'+esc(o.name)+(nw[o.name]?' '+NEW:'')+'</b><span>'+esc(o.desc)+'</span></li>').join('')+'</ul>':'')
@@ -1969,7 +2578,7 @@ const MOD={
  nudge(m){const c=byId(m.id);return `<h2>催促文（LINE用）</h2><p class="tiny">${esc(c.co)}の不足分だけを並べています。期限は自動で文面に入ります。</p><textarea id="mTxt" aria-label="催促文">${esc(nudgeText(c))}</textarea><div class="m-acts"><button class="btn g" data-act="close">閉じる</button><button class="btn p" data-act="copyta">${ic('copy','s')}コピーする</button></div>`;},
  offer(m){const o=OPPS.find(x=>x.id===m.o),c=byId(o.cid);return `<h2>提案メモ</h2><p class="tiny">${esc(c.co)}：${o.why}</p><textarea id="mTxt" aria-label="提案メモ">${esc(offerText(o))}</textarea><div class="m-acts"><button class="btn g" data-act="close">閉じる</button><button class="btn o" data-act="msg" data-m="PMSの営業タスクに登録しました">PMSにタスク登録</button><button class="btn p" data-act="copyta">${ic('copy','s')}コピーする</button></div>`;},
  form(m){return fModal(m);},
- fask(m){return fAskModal(m);},
+ fask(m){return fAskModal(m);},srm(m){return srmModal(m);},dkreq(m){return dkReqModal(m);},
  newcase(m){const n=m.n,wz=`<div class="wz">${[0,1,2].map(i=>`<i class="${i<=Math.min(2,m.step>1?m.step-1:0)?'on':''}"></i>`).join('')}</div>`;
   if(m.step===0)return `<h2>新しい案件をつくる</h2>${wz}<div class="drop">${ic('card','l')}<p><b>名刺の写真を選んでください</b><br><span class="tiny">会社名と担当者をAIが読み取り、公開情報で残りを埋めます</span></p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><label class="btn p file">${ic('camera','s')}名刺を撮る・選ぶ<input type="file" id="cardFile" data-card="1" accept="image/*"></label><button class="btn o" data-act="wiz" data-step="1">サンプルの名刺で試す</button></div></div>`;
   if(m.step===1)return `<h2>新しい案件をつくる</h2>${wz}<div class="drop"><div class="read"><span class="spin"></span>名刺を読み取り、公開情報を照会しています</div></div>`;
@@ -2008,7 +2617,7 @@ const A={
  fixc(d){const c=byId(d.id);c.fixed=true;c.miss=c.miss.filter(x=>x.indexOf('出勤簿')<0&&x.indexOf('AIチェック')<0);if(c.check==='manner'){c.hours=11;c.check=null;S.done.a3=true;}else{S.done.a2=true;}S.block=null;render();toast(c.check===null?'研修案を更新しました（合計11時間）':'記録しました');},
  nudge(d){S.modal={type:'nudge',id:d.id};renderModal();},
  offer(d){S.modal={type:'offer',o:d.o};renderModal();},
- newcase(){S.modal={type:'newcase',step:0,n:NEWCO[(seq-8)%NEWCO.length]};renderModal();},
+ newcase(){S.modal={type:'newcase',step:0,n:NEWCO[(seq-9)%NEWCO.length]};renderModal();},
  wiz(d){const st=+d.step;if(st===1){S.modal.step=1;renderModal();setTimeout(()=>{if(S.modal&&S.modal.type==='newcase'){S.modal.step=2;renderModal();}},1300);return;}
   if(st===3){const n=S.modal.n;const c=mk(n.co,n.ind,n.rep,n.emp,0,70,14,{wait:'client',miss:['会社の書類','質問5つ'],upd:'たった今'});c.owner=meId();c.sr='p1';CASES.push(c);S.modal={type:'newcase',step:3,cid:c.id,n:n};render();}},
  close(){S.modal=null;renderModal();},
@@ -2019,10 +2628,10 @@ const A={
  brand(d){S.t.brand=+d.i;render();},
  addq(){const i=$('#newQ'),v=(i.value||'').trim();if(!v){toast('質問文を入力してください');i.focus();return;}S.questions.push({id:'qx'+Date.now(),label:v,type:'text',ph:'',on:true,custom:true,min:1});render();toast('質問を追加しました。お客様の画面に出ます');},
  cnav(d){cl.screen=d.s;cl.help=null;cl.editing=null;render();window.scrollTo(0,0);},
- upload(d){const i=+d.i;cl.docs[i]='reading';cl.help=null;render();setTimeout(()=>{if(cl.docs[i]==='reading'){cl.docs[i]='got';render();}},1200);},
- later(d){cl.docs[+d.i]='later';cl.help=null;render();},
- redo(d){cl.docs[+d.i]='none';render();},
- how(d){cl.help=cl.help===+d.i?null:+d.i;render();},
+ upload(d){const c=d.id?byId(d.id):MIDORI,k=d.k||['rules','emp','attw'][+d.i];if(!c||!k)return;dkUp(c,k);},
+ later(d){const c=d.id?byId(d.id):MIDORI,k=d.k||['rules','emp','attw'][+d.i];dkSet(c,k,'later');cl.help=null;render();},
+ redo(d){const c=d.id?byId(d.id):MIDORI,k=d.k||['rules','emp','attw'][+d.i];dkSet(c,k,'none');render();},
+ how(d){const key=(d.id||'c1')+(d.k||['rules','emp','attw'][+d.i]);cl.help=cl.help===key?null:key;render();},
  seg(d){cl.ans[d.k]=d.v;render();},
  fix(d){cl.editing=+d.i;render();const e=$('#fix'+d.i);if(e)e.focus();},
  fixok(){cl.editing=null;render();},
@@ -2059,32 +2668,104 @@ const A={
  fsend(){const c=byId(S.caseId),f=fS(c),ph=f.ph,ds=fDocs(c,f,ph),mk=ds.filter(d=>d.k==='auto'||d.k==='cust'),bad=fChecks(c,f,fData(c),ph).filter(x=>x.lv==='bad').length,nm=ph==='plan'?'計画届':'支給申請';
   if(mk.some(d=>!f.made[d.id])){toast('先に「書類を作る」で下書きを作ってください');return;}
   if(S.filer==='self'&&bad){toast('要対応のチェックが'+bad+'件あります。直してから提出してください');return;}
-  f.sent[ph]=true;flog(c,'s',S.filer==='self'?nm+'の書類を提出済みにした':nm+'の書類（下書き'+mk.length+'点・写し・チェック結果）を'+srName(c)+'に引き継ぎ');render();
+  f.sent[ph]=true;if(S.filer!=='self'){const x=sw(c)[ph];x.st='new';x.why='';x.chk={};if(c!==MIDORI)c.wait='sr';alog(c.co+'の'+nm+'の書類を'+srName(c)+'に引き継ぎ');}flog(c,'s',S.filer==='self'?nm+'の書類を提出済みにした':nm+'の書類（下書き'+mk.length+'点・写し・チェック結果）を'+srName(c)+'に引き継ぎ');render();
   toast(S.filer==='self'?nm+'の書類を提出済みにしました':srName(c)+'に引き継ぎました'+(bad?'。要対応'+bad+'件も伝えています':'')+'（試作）');},
  fask(d){const c=byId(S.caseId),f=fS(c),doc=fDoc(d.d);
   if(doc&&doc.k==='vend'){f.ask[doc.id]=true;flog(c,'s','研修会社に「'+doc.n+'」の記入を依頼');render();toast('研修会社に記入を依頼しました（試作）');return;}
   S.modal={type:'fask',cid:c.id};renderModal();},
  fasked(){const c=byId(S.modal.cid),f=fS(c);fDocs(c,f,f.ph).filter(d=>d.k==='cust').forEach(d=>{f.ask[d.id]=true;});flog(c,'s','お客様に'+(f.ph==='plan'?'計画届':'支給申請')+'の確認・記名を依頼（LINE）');S.modal=null;render();toast('依頼を記録しました（試作）');},
  fcur(d){const c=byId(d.id);if(c.check==='manner'){A.todo({a:'a3'});return;}setCurC(c.id);S.cur.src=c.id===S.cur.tcid?'wish':'series';S.cur.fromPlan=null;S.caseId=null;S.staff='cur';render();window.scrollTo(0,0);},
+ login(d){if(doLogin(d.id)){alog('ログイン');setHash();render();window.scrollTo(0,0);const a=me();toast(a.n+'さん（'+ROLES[a.role].n+'）でログインしました');}},
+ loginf(){const id=($('#lgId').value||'').trim(),pw=$('#lgPw').value||'';S.lgid=id;const a=accts().find(x=>x.id===id);
+  if(!a||pw!==PW){toast('ログインIDかパスワードが違います（デモのパスワードは demo）');return;}A.login({id});},
+ logout(){alog('ログアウト');S.me=null;S.as=null;S.modal=null;S.view='login';setHash();render();window.scrollTo(0,0);toast('ログアウトしました');},
+ mfa(d){const a=accts().find(x=>x.id===d.id);if(!a)return;const o=S.ast[d.id]=S.ast[d.id]||{};o.mfa=!a.mfa;alog('二段階認証を'+(o.mfa?'オン':'オフ')+'（'+d.id+'）');render();toast(o.mfa?'二段階認証をオンにしました':'二段階認証をオフにしました');},
+ as(d){if(!isSuper())return;const from=S.me,a=accts().find(x=>x.id===d.id);if(!a||a.off)return;alog('代理表示を開始：'+a.n+'（'+a.id+'）');
+  if(doLogin(d.id,true)){S.as=from;if(a.role==='sr'&&d.cid){S.src=d.cid;S.srph=d.ph||srPh(byId(d.cid));}setHash();render();window.scrollTo(0,0);toast(a.n+'さんの画面を代理で表示しています');}},
+ unas(){const b=S.as;if(!b)return;const n=me()?me().n:'';S.as=null;doLogin(b);alog('代理表示を終了：'+n);setHash();render();window.scrollTo(0,0);toast('運営の画面にもどりました');},
+ onav(d){S.ops=d.s;render();window.scrollTo(0,0);},
+ tenant(d){S.tenant=d.v;S.t=Object.assign({},TENANTS[d.v]);S.filer=d.v==='other'?'self':'partner';alog('表示するテナントを「'+TENANTS[d.v].name+'」に切り替え');render();toast(d.v==='other'?'社労士事務所が使った場合の見え方に切り替えました':'スマートコンテンツの表示にもどしました');},
+ aoff(d){const a=accts().find(x=>x.id===d.id);if(!a||a.role==='super')return;const o=S.ast[d.id]=S.ast[d.id]||{};o.off=!a.off;alog('アカウント「'+d.id+'」を'+(o.off?'停止':'再開'));
+  const L=$('#oList');if(L)L.innerHTML=opsAccList();else render();toast(d.id+(o.off?'を停止しました。ログインできなくなります':'を再開しました'));},
+ apw(d){alog('パスワード再設定のリンクを送信（'+d.id+'）');toast(d.id+'に、パスワードを再設定するリンクを送りました（試作のため送信はしません）');},
+ aadd(){const r=$('#aaR').value,i=$('#aaN'),n=(i.value||'').trim();if(!n){toast('名前を入力してください');i.focus();return;}
+  let id;if(r==='staff'){STAFFS.push({id:'s'+Date.now(),n});id=stAcctId(STAFFS.length-1);}else{id='smc-admin'+pad(S.xadm.length+2);S.xadm.push({id,n});}
+  alog('アカウント「'+id+'」（'+ROLES[r].n+'・'+n+'）を作成');render();toast(n+'さんのアカウント（'+id+'）を追加しました');},
+ srnav(d){S.srs=d.s;S.src=null;render();window.scrollTo(0,0);},
+ srf(d){S.srf=d.f;S.srs='cases';S.src=null;render();},
+ srcase(d){S.src=d.id;S.srph=d.ph||srPh(byId(d.id));render();window.scrollTo(0,0);},
+ srclose(){S.src=null;S.srs='cases';render();window.scrollTo(0,0);},
+ srph(d){S.srph=d.v;render();},
+ srmon(d){S.srmon=(S.srmon||0)+(+d.v);render();},
+ sracc(d){const c=byId(d.id),x=sw(c)[d.ph];x.st='work';srNote(c,PHN[d.ph]+'の書類を受け取り、作成を開始');render();toast('受け取りました。'+S.t.name+'の画面に「作成中」と出ます');},
+ srback(d){S.modal={type:'srm',k:'back',cid:d.id,ph:d.ph};renderModal();},
+ srask(d){S.modal={type:'srm',k:'ask',cid:d.id,ph:d.ph};renderModal();},
+ srq(d){S.modal={type:'srm',k:'q',cid:d.id,ph:d.ph};renderModal();},
+ srmsend(){const m=S.modal,c=byId(m.cid),x=sw(c)[m.ph],e=$('#srmT'),t=(e.value||'').trim();if(!t){toast('内容を入力してください');e.focus();return;}
+  if(m.k==='back'){const L=t.split('\n').filter(Boolean);x.st='back';x.why=L[0].replace(/^・/,'')+(L.length>1?' ほか'+(L.length-1)+'件':'');srMsg(c,'r','【差し戻し】\n'+t);fS(c).sent[m.ph]=false;c.wait='us';srNote(c,PHN[m.ph]+'の書類を差し戻し');}
+  else if(m.k==='ask'){srMsg(c,'r',t);srNote(c,S.t.name+'に確認を依頼');}
+  else{x.st='ask';x.q=t;srNote(c,'労働局からの問い合わせを記録');}
+  S.modal=null;render();toast(m.k==='back'?'差し戻しました。'+S.t.name+'の「今日やること」に出ます':m.k==='ask'?'送りました':'記録しました');},
+ srsub(d){const c=byId(d.id),x=sw(c)[d.ph],L=SRCHK(c,d.ph),n=L.filter((_,i)=>x.chk[i]).length;if(n<L.length){toast('提出前の確認が、あと'+(L.length-n)+'つ残っています');return;}
+  x.st='sent';x.at=fmt(TODAY0);if(d.ph==='apply'){if(c.stage<5)setStage(c,5);c.wait='none';}else c.wait='sr';
+  srNote(c,PHN[d.ph]+'を提出（'+({e:'電子申請',w:'労働局の窓口',m:'郵送'})[x.how]+'）');render();toast('提出を記録しました。お客様のマイページにもお知らせが出ます');},
+ srok(d){const c=byId(d.id),x=sw(c)[d.ph];x.at=fmt(TODAY0);
+  if(d.ph==='plan'){const v=(($('#srNo')||{}).value||'').trim();x.no=v?(/受理番号/.test(v)?v:'受理番号 '+v):'受理番号 '+(c.no*1371+40213);x.st='done';if(c.stage<3)setStage(c,3);c.wait='us';srNote(c,'計画届が受理された（'+x.no+'）');}
+  else{const D=fData(c),v=+(($('#srAmt')||{}).value||0);x.amt=v||Math.round(D.keihiSum+D.wageSum);x.st='done';c.wait='none';srNote(c,'支給決定（'+yen(x.amt)+'）');}
+  render();toast(d.ph==='plan'?'受理を記録しました。案件は「訓練の実施」に進みます':'支給決定を記録しました');},
+ srans(d){const c=byId(d.id),x=sw(c)[d.ph],t=(($('#srAns')||{}).value||'').trim();x.st='sent';srNote(c,'労働局の問い合わせに回答'+(t?'（'+t.slice(0,40)+'）':''));if(c.mail)S.done.a5=true;render();toast('回答を記録しました。審査の結果待ちにもどります');},
+ srview(d){S.modal={type:'form',cid:d.id,ph:d.ph,d:d.d};renderModal();},
+ srall(d){S.modal={type:'form',cid:d.id,ph:d.ph,d:'all'};renderModal();},
+ thsend(d){const c=byId(d.id),e=$('#thTr'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}srMsg(c,'r',v);render();toast(S.t.name+'に送りました');},
+ vsend(d){const c=byId(d.id),e=$('#thTs'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}srMsg(c,'s',v);render();toast(srOf(c).n+'に送りました');},
+ cmsg(d){const c=byId(d.id),e=$('#cmT'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}cmL(c).push({f:'c',n:sei(c)+'様',t:v,at:'今日 '+hm()});flog(c,'c','メッセージ：'+v.slice(0,30));render();toast('送りました。担当の'+ownerNm(c)+'に届きます');},
+ smsg(d){const c=byId(d.id),e=$('#smT'),v=(e.value||'').trim();if(!v){toast('メッセージを入力してください');e.focus();return;}cmL(c).push({f:'s',n:staffSide(c),t:v,at:'今日 '+hm()});flog(c,'s','お客様にメッセージ');render();toast('送りました。お客様のマイページとLINEに届きます');},
+ dkrun(d){const c=byId(d.id),k=d.k,r=dkS(c,k);if(dkSt(c,k)!=='got'||r.busy)return;const by=actor(),bn=actorNm(c);r.busy=true;render();
+  setTimeout(()=>{r.busy=false;r.res=dkRun(c,k,by);r.res.n=bn;const nm=DKT[k].n.replace(/（.*?）/,'');flog(c,by,'「'+nm+'」をAIでチェック：'+DKLV[r.res.lv][1]);if(r.res.lv!=='ok')S.dkx[c.id+k]=true;render();toast(nm+'：'+DKRES[r.res.lv]);},900);},
+ dkall(d){const c=byId(d.id),ks=dkList(c).filter(k=>dkSt(c,k)==='got'&&!dkS(c,k).busy),by=actor(),bn=actorNm(c);if(!ks.length){toast('チェックできる書類がまだありません');return;}ks.forEach(k=>{dkS(c,k).busy=true;});render();
+  setTimeout(()=>{let bad=0;ks.forEach(k=>{const r=dkS(c,k);r.busy=false;r.res=dkRun(c,k,by);r.res.n=bn;if(r.res.lv!=='ok'){bad++;S.dkx[c.id+k]=true;}});flog(c,by,ks.length+'点の書類をAIでチェック'+(bad?'（確認が必要 '+bad+'点）':'（すべてOK）'));render();toast(ks.length+'点をチェックしました。'+(bad?'確認が必要な書類が'+bad+'点あります':'問題は見つかりませんでした'));},1100);},
+ dkopen(d){S.dkx[d.id+d.k]=d.o!=='1';render();},
+ dkok(d){const c=byId(d.id),r=dkS(c,d.k),by=actor();r.hum={lv:'ok',by,n:actorNm(c),t:'',at:'今日 '+hm(),v:r.v};S.dkx[d.id+d.k]=false;flog(c,by,'「'+DKT[d.k].n.replace(/（.*?）/,'')+'」を確認済みにした');render();toast('確認済みにしました。お客様のマイページにも出ます');},
+ dkreq(d){S.modal={type:'dkreq',cid:d.id,k:d.k};renderModal();},
+ dkreqsend(){const m=S.modal,c=byId(m.cid),r=dkS(c,m.k),e=$('#dkT'),t=(e.value||'').trim(),by=actor(),bn=actorNm(c),nm=DKT[m.k].n.replace(/（.*?）/,'');if(!t){toast('理由を入力してください');e.focus();return;}
+  r.hum={lv:'req',by,n:bn,t,at:'今日 '+hm(),v:r.v};cmL(c).push({f:'s',n:bn,t:'「'+nm+'」の差し替えをお願いします。\n'+t,at:'今日 '+hm()});if(c!==MIDORI)c.wait='client';flog(c,by,'お客様に「'+nm+'」の差し替えを依頼');S.modal=null;render();toast('依頼しました。お客様のマイページとLINEに届きます');},
+ dkhundo(d){const c=byId(d.id),r=dkS(c,d.k);r.hum=null;render();toast('取り消しました');},
+ dkask(d){const c=byId(d.id),k=d.k,r=dkS(c,k),nm=DKT[k].n.replace(/（.*?）/,''),it=r.res?r.res.items.filter(i=>i.lv!=='ok'):[];
+  cmL(c).push({f:'c',n:sei(c)+'様',t:'「'+nm+'」のAIチェックで「要確認」と出ました。確認をお願いします。'+(it[0]?'\n（'+it[0].t+'：'+it[0].p+'）':''),at:'今日 '+hm()});flog(c,'c','「'+nm+'」の確認を担当者に依頼');render();toast('担当の'+ownerNm(c)+'に、確認をお願いしました');},
+ cans(d){const c=cc(),inn=d.v==='in';c.fixed=true;c.miss=c.miss.filter(x=>!/出勤簿/.test(x));S.done.a2=true;
+  cmL(c).push({f:'c',n:sei(c)+'様',t:inn?'10月14日は出勤していました（打刻を忘れていました）。':'10月14日は休んでいて、受講していません。',at:'今日 '+hm()});flog(c,'c','10月14日の出勤について回答：'+(inn?'出勤していた':'休んでいた（受講していない）'));
+  if(c!==MIDORI&&!c.miss.length&&c.wait==='client')c.wait='us';cl.screen='home';render();window.scrollTo(0,0);toast('回答を送りました。'+ownerNm(c)+'に届きます');},
  filer(d){S.filer=d.v;render();},
  addpartner(){const n=$('#npN').value.trim(),w=$('#npW').value.trim(),a=$('#npA').value.trim();if(!n){toast('事務所名を入力してください');$('#npN').focus();return;}S.partners.push({id:'p'+Date.now(),n,who:w||'—',area:a||'—',courses:'—',contact:'—',share:true});render();toast('提携先を追加しました');},
  wtag(d){cl.wish.tags[d.k]=!cl.wish.tags[d.k];render();},
  wsend(){if(!Object.keys(cl.wish.tags).some(x=>cl.wish.tags[x])&&!cl.wish.text.trim()){toast('業務を1つ以上選ぶか、ひと言書いてください');return;}cl.wish.sent=true;cl.screen='home';S.cur.imported=false;render();window.scrollTo(0,0);toast('ご要望を送りました');},
- mopen(d){if(d.g==='case'){A.open({id:MIDORI.id,tab:d.s});return;}
+ mopen(d){const go=()=>{setHash();render();window.scrollTo(0,0);};
+  if(d.g==='acct'){S.view='login';go();return;}
+  if(d.g==='ops'){S.view='ops';S.ops=d.s;go();return;}
+  if(d.g==='sr'){S.view='sr';S.srp='p1';if(d.s==='case'){S.src='c9';S.srph='plan';}else{S.srs=d.s;S.src=null;}go();return;}
+  if(d.g==='client'){const cg=d.s==='homeg'?mCg():null;S.cview=cg?cg.id:'c1';if(d.s==='homeg'){S.view='client';cl.screen='home';cl.help=null;cl.editing=null;go();return;}}
+  if(d.g==='case'){A.open({id:MIDORI.id,tab:d.s});return;}
   if(d.s==='newcase'){S.view='staff';S.caseId=null;setHash();render();A.newcase();return;}
   if(d.g==='staff'){S.view='staff';S.staff=({acct:'today',curplan:'cur'})[d.s]||d.s;S.caseId=null;S.block=null;if(d.s==='curplan'){S.cur.src='plan';S.cur.res=null;}}else{S.view='client';cl.screen=d.s;cl.help=null;cl.editing=null;}
   setHash();render();window.scrollTo(0,0);},
  mjump(d){const e=document.getElementById(d.id);if(e)e.scrollIntoView({block:'start'});},
- creset(){Object.assign(cl,{screen:'home',docs:['none','none','none','auto'],ans:{},sent:false,fixes:{},editing:null,help:null,agree:false,planOk:false,wish:{tags:{},text:'',past:'',sent:false}});MIDORI.manual=0;render();toast('最初の状態にもどしました');}
+ creset(){Object.assign(cl,{screen:'home',docs:['none','none','none','auto'],ans:{},sent:false,fixes:{},editing:null,help:null,agree:false,planOk:false,wish:{tags:{},text:'',past:'',sent:false}});MIDORI.manual=0;if(S.dk)delete S.dk.c1;if(S.cm)delete S.cm.c1;render();toast('最初の状態にもどしました');}
 };
 document.addEventListener('click',e=>{const t=e.target.closest('[data-act]');if(!t||t.disabled)return;const f=A[t.dataset.act];if(f)f(t.dataset,t);});
 document.addEventListener('input',e=>{const t=e.target;
  if(t.id==='caseQ'){S.q=t.value.trim();$('#caseList').innerHTML=caseList();return;}
+ if(t.id==='oQ'){S.oq=t.value.trim();$('#oList').innerHTML=opsAccList();return;}
  if(!t.dataset||!t.dataset.bind)return;const h=getHolder(t.dataset.bind);h[0][h[1]]=t.type==='checkbox'?t.checked:t.value;
  if(t.dataset.bind.indexOf('t.')===0){const p=$('#brandPrev');if(p)p.innerHTML=brandPrev();return;}
  const qe=t.closest('.q[data-q]');if(qe){const q=S.questions.find(x=>x.id===qe.dataset.q);if(q)qe.classList.toggle('okq',qDone(q));}
  if(t.dataset.re&&t.type==='checkbox')render();});
 document.addEventListener('change',e=>{const t=e.target;
+ if(t.dataset&&t.dataset.dkfile){const p=t.dataset.dkfile.split('|');A.upload({id:p[0],k:p[1]});return;}
+ if(t.dataset&&t.dataset.dked){const p=t.dataset.dked.split('|'),r=dkS(byId(p[0]),p[1]);r.ed[p[2]]=t.value;render();return;}
+ if(t.dataset&&t.dataset.srchk){const p=t.dataset.srchk.split('|');sw(byId(p[0]))[p[1]].chk[p[2]]=t.checked;render();return;}
+ if(t.dataset&&t.dataset.cview){S.cview=t.value;cl.screen='home';cl.help=null;cl.editing=null;render();return;}
+ if(t.dataset&&t.dataset.srp){S.srp=t.value;S.src=null;render();return;}
+ if(t.dataset&&t.dataset.orole){S.orole=t.value;$('#oList').innerHTML=opsAccList();return;}
  if(t.dataset&&t.dataset.file!=null){A.upload({i:t.dataset.file});return;}
  if(t.dataset&&t.dataset.card){A.wiz({step:1});return;}
  if(t.dataset&&t.dataset.curind){Object.assign(S.cur,{ii:+t.value,ji:0,res:null});if(!catTracksFor(S.cur.ii).some(x=>x.id===S.cur.tid))S.cur.tid='ai';render();return;}
@@ -2099,20 +2780,26 @@ document.addEventListener('change',e=>{const t=e.target;
  if(t.dataset&&t.dataset.curpast){S.cur.past[t.dataset.curpast]=t.checked;S.cur.res=null;render();return;}
  if(t.dataset&&t.dataset.srsel){byId(t.dataset.srsel).sr=t.value;render();toast('担当の社労士事務所を変更しました');return;}
  if(t.dataset&&t.dataset.re&&t.type!=='checkbox'){const id=t.id;render();const n=document.getElementById(id);if(n&&n.focus){n.focus();}return;}
- if(t.id==='tenantSel'){S.t=Object.assign({},TENANTS[t.value]);S.filer=t.value==='other'?'self':'partner';render();toast(t.value==='other'?'社労士事務所が使った場合の見え方に切り替えました':'スマートコンテンツの表示にもどしました');}});
+ if(t.id==='tenantSel'){S.tenant=t.value;S.t=Object.assign({},TENANTS[t.value]);S.filer=t.value==='other'?'self':'partner';render();toast(t.value==='other'?'社労士事務所が使った場合の見え方に切り替えました':'スマートコンテンツの表示にもどしました');}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&S.modal)A.close();});
 window.addEventListener('afterprint',()=>document.body.classList.remove('printing'));
-window.addEventListener('hashchange',()=>{if(ypImport()){render();window.scrollTo(0,0);toast('研修メニューのプランを取り込みました');return;}const v=location.hash.slice(1);if(['overview','staff','client','manual'].indexOf(v)>-1&&v!==S.view){S.view=v;render();}});
+window.addEventListener('hashchange',()=>{if(ypImport()){render();window.scrollTo(0,0);toast('研修メニューのプランを取り込みました');return;}const v=location.hash.slice(1);if(VIEWS.map(v=>v[0]).concat('login').indexOf(v)>-1&&v!==S.view){S.view=v;render();}});
 
 function setCurC(id){const keep=S.cur.src==='plan'&&S.cur.yp&&S.cur.yp.from==='lp'?S.cur.yp:null;Object.assign(S.cur,{ii:Math.max(0,indIdx(byId(id))),ji:0,cid:id,tid:'ai',past:{},extra:[],out:{},res:null,imported:false});(PAST[id]||[]).forEach(p=>S.cur.past[p.id]=true);if(keep){keep.cid=id;keep.hit=true;S.cur.yp=keep;}}
 function setAcct(id){S.acct=id;S.own='all';S.caseId=null;S.block=null;if(S.staff==='team'&&!isAdmin())S.staff='today';if(!canSee(S.cur.cid)&&VIS().length)setCurC(VIS()[0].id);}
-function render(){syncMidori();applyBrand();
- document.querySelectorAll('#views button').forEach(b=>b.setAttribute('aria-current',String(b.dataset.v===S.view)));
+function render(){if(!canV(S.view)){S.view=homeV();setHash();}syncMidori();applyBrand();headBar();
  $('#logoMark').innerHTML=ic('grad');
- $('#app').innerHTML=S.view==='overview'?overview():S.view==='staff'?staff():S.view==='manual'?manualV():client();
+ const V={overview,staff,manual:manualV,ops:opsV,sr:srV,login:loginV,client};
+ $('#app').innerHTML=asBar()+V[S.view]();
  if(S.view==='manual')fitShots();
  renderModal();}
-const h0=location.hash.slice(1),took=ypImport();if(!took&&['overview','staff','client','manual'].indexOf(h0)>-1)S.view=h0;
+/* デモ用の初期データ：社労士への引き継ぎ・メッセージ */
+(()=>{const c9=byId('c9'),f=fS(c9);fDocs(c9,f,'plan').forEach(d=>{if(d.k==='auto'||d.k==='cust')f.made[d.id]=true;if(d.k==='cust'||d.k==='vend')f.ask[d.id]=true;});f.sent.plan=true;
+ (S.flog=S.flog||{}).c9=[['s','計画届の書類（下書き・写し・チェック結果）を'+srOf(c9).n+'に引き継ぎ','昨日'],['a','書類のAIチェック：履歴事項全部証明書は有効期限に注意','昨日']];
+ sw(c9).msg.push({f:'s',n:ownerNm(c9),t:'計画届の書類一式をお送りします。職業能力開発推進者は総務部長の森田様です。履歴事項全部証明書は発行から2か月半たっているため、提出が遅れる場合は取り直しをお願いします。',at:'昨日 16:20'});
+ const c6=byId('c6');sw(c6).msg.push({f:'r',n:srOf(c6).who,t:'労働局から、受講者1名の10月分の賃金台帳について、訓練時間の賃金の計算根拠を求められています。給与計算の設定画面の写しを、お客様にお願いできますか。',at:'昨日 10:31'});
+ const c4=byId('c4');cmL(c4).push({f:'s',n:ownerNm(c4),t:'10月14日の出勤について、マイページの「いまやること」から教えてください。選ぶだけの1問です。',at:'今日 8:30'});})();
+const h0=location.hash.slice(1),took=ypImport();if(!took&&VIEWS.map(v=>v[0]).concat('login').indexOf(h0)>-1)S.view=h0;
 render();if(took)toast('研修メニューのプランを取り込みました');
 })();
 </script>
